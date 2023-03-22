@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */; };
 		02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */; };
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
 		02E9DB9F29C0FC2800AA15FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E9DB9E29C0FC2800AA15FA /* Assets.xcassets */; };
@@ -16,6 +17,11 @@
 		02E9DBB229C0FC2800AA15FA /* _40YardsLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DBB129C0FC2800AA15FA /* _40YardsLeftTests.swift */; };
 		02E9DBBC29C0FC2800AA15FA /* _40YardsLeftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DBBB29C0FC2800AA15FA /* _40YardsLeftUITests.swift */; };
 		02E9DBBE29C0FC2800AA15FA /* _40YardsLeftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DBBD29C0FC2800AA15FA /* _40YardsLeftUITestsLaunchTests.swift */; };
+		02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */; };
+		02FACCB229C6C62E00B55E6D /* WelcomeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */; };
+		02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCB329C6D7D600B55E6D /* NewUserForm.swift */; };
+		02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */; };
+		02FACCB829C6DF9500B55E6D /* TextValiditity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCB729C6DF9500B55E6D /* TextValiditity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
 		02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _40YardsLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftApp.swift; sourceTree = "<group>"; };
 		02E9DB9C29C0FC2700AA15FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +56,11 @@
 		02E9DBB729C0FC2800AA15FA /* _40YardsLeftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _40YardsLeftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DBBB29C0FC2800AA15FA /* _40YardsLeftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftUITests.swift; sourceTree = "<group>"; };
 		02E9DBBD29C0FC2800AA15FA /* _40YardsLeftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAnimation.swift; sourceTree = "<group>"; };
+		02FACCB329C6D7D600B55E6D /* NewUserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserForm.swift; sourceTree = "<group>"; };
+		02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithValiditity.swift; sourceTree = "<group>"; };
+		02FACCB729C6DF9500B55E6D /* TextValiditity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValiditity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +113,8 @@
 			children = (
 				02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */,
 				02E9DB9C29C0FC2700AA15FA /* ContentView.swift */,
+				02FACCB929C6DFDD00B55E6D /* Views */,
+				02E9DBCA29C0FCC400AA15FA /* Models */,
 				02E9DB9E29C0FC2800AA15FA /* Assets.xcassets */,
 				02E9DBA329C0FC2800AA15FA /* Persistence.swift */,
 				02E9DBA829C0FC2800AA15FA /* _40YardsLeft.entitlements */,
@@ -133,6 +147,34 @@
 				02E9DBBD29C0FC2800AA15FA /* _40YardsLeftUITestsLaunchTests.swift */,
 			);
 			path = _40YardsLeftUITests;
+			sourceTree = "<group>";
+		};
+		02E9DBCA29C0FCC400AA15FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		02FACCB029C6C61500B55E6D /* WelcomeScreenChildren */ = {
+			isa = PBXGroup;
+			children = (
+				02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */,
+				02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */,
+				02FACCB329C6D7D600B55E6D /* NewUserForm.swift */,
+				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
+			);
+			path = WelcomeScreenChildren;
+			sourceTree = "<group>";
+		};
+		02FACCB929C6DFDD00B55E6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */,
+				02FACCB029C6C61500B55E6D /* WelcomeScreenChildren */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +307,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02E9DBA429C0FC2800AA15FA /* Persistence.swift in Sources */,
+				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
+				02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */,
+				02FACCB229C6C62E00B55E6D /* WelcomeAnimation.swift in Sources */,
 				02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */,
+				02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */,
+				02FACCB829C6DF9500B55E6D /* TextValiditity.swift in Sources */,
 				02E9DBA729C0FC2800AA15FA /* _40YardsLeft.xcdatamodeld in Sources */,
 				02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */,
 			);
@@ -428,6 +476,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"_40YardsLeft/Preview Content\"";
+				DEVELOPMENT_TEAM = DQPVQK6SUR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -438,8 +487,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "LoganUnderwood.-40YardsLeft";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -453,6 +506,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"_40YardsLeft/Preview Content\"";
+				DEVELOPMENT_TEAM = DQPVQK6SUR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -463,8 +517,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "LoganUnderwood.-40YardsLeft";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
