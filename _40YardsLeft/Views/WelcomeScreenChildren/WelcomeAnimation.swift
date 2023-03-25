@@ -84,6 +84,12 @@ struct WelcomeAnimation: View {
 
                     
             }
+            .onChange(of: user, perform: { newValue in
+                if user != nil {
+                    self.newUserForm = false
+                    self.loginForm = false
+                }
+            })
             .sheet(isPresented: self.$newUserForm, content: {
                 NewUserForm(user: self.$user)
             })

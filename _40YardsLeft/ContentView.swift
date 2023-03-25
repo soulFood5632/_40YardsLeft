@@ -12,15 +12,19 @@ import FirebaseAuth
 struct ContentView: View {
     
     @State private var user: User?
-    
+    @State private var currentView: ViewScreens = .home
 
     var body: some View {
         
         WelcomeScreen(user: self.$user)
             .opacity(user == nil ? 1 : 0)
+            .animation(.easeInOut, value: user)
         
-        TabView()
-            .scaleEffect(user != nil ? .zero : CGSize(width: 1, height: 1))
+        
+        
+            
+                
+        
         
 
     }

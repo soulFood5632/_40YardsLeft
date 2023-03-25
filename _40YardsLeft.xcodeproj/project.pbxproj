@@ -229,8 +229,8 @@
 		02E9DBCA29C0FCC400AA15FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
 				02FEA16929CD142700BCD7A4 /* Authenticator.swift */,
+				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
 				02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */,
 			);
 			path = Models;

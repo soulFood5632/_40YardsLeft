@@ -7,35 +7,30 @@
 
 import SwiftUI
 
-struct TabView: View {
-    @State private var currentView: ViewScreens = .home
+struct UserView: View {
+    
     var body: some View {
-        Group {
-            switch currentView {
-            case .home:
-                HomeView()
-            case .roundEntry:
-                RoundView()
-            case .stats:
-                StatView()
-            }
-        }
-        .toolbar {
-            ToolbarItemGroup (placement: .bottomBar) {
-                HStack {
-                    ImageIcon(systemName: "house", iconValue: .home, currentScreen: $currentView)
-                    Divider()
-                    ImageIcon(systemName: "figure.golfer", iconValue: .roundEntry, currentScreen: $currentView)
-                    Divider()
-                    ImageIcon(systemName: "figure.golfer", iconValue: .roundEntry, currentScreen: $currentView)
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home", systemImage: "house")
                 }
-            }
+            RoundView()
+                .tabItem {
+                    Label("Add Round", systemImage: "figure.golf")
+                }
+            StatView()
+                .tabItem {
+                    Label("Analysis", systemImage: "chart.bar")
+
+                }
+                
         }
     }
 }
 
-struct TabView_Previews: PreviewProvider {
+struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        TabView()
+        UserView()
     }
 }
