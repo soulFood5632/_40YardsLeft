@@ -15,7 +15,9 @@ struct TextFieldWithValiditity: View {
     @Binding var text: String
     let prompt: String
     
-    var isValid: Bool { self.currentValidity.isEmpty }
+    let isSecureField: Bool
+    
+    @Binding var isValid: Bool
     
     
     
@@ -23,18 +25,29 @@ struct TextFieldWithValiditity: View {
         VStack {
             
             let textFieldColour = self.getColour()
-            
-            TextField(text: $text) {
-                Text(prompt)
-            }
-            .autocorrectionDisabled()
-            .onChange(of: text) { newText in
-                withAnimation {
-                    self.currentValidity = condition(newText)
+            if isSecureField {
+                SecureField(prompt, text: self.$text)
+                    .autocorrectionDisabled()
+                    .onChange(of: text) { newText in
+                        withAnimation {
+                            self.currentValidity = condition(newText)
+                        }
+                    }
+                    .border(textFieldColour, width: 3)
+                    .shadow(color: textFieldColour, radius: 3)
+            } else {
+                TextField(text: $text) {
+                    Text(prompt)
                 }
-            }
-            .border(textFieldColour, width: 3)
-            .shadow(color: textFieldColour, radius: 3)
+                .autocorrectionDisabled()
+                .onChange(of: text) { newText in
+                    withAnimation {
+                        self.currentValidity = condition(newText)
+                    }
+                }
+                .border(textFieldColour, width: 3)
+                .shadow(color: textFieldColour, radius: 3)
+        }
             
             if !currentValidity.isEmpty {
                 VStack(alignment: .leading) {
@@ -45,7 +58,7 @@ struct TextFieldWithValiditity: View {
                         } icon: {
                             Image(systemName: "xmark")
                         }
-                        .font(.system(size: 9.8))
+                        .font(.system(size: 11))
                         .foregroundColor(.red)
                         .multilineTextAlignment(.leading)
                     }
@@ -56,6 +69,13 @@ struct TextFieldWithValiditity: View {
                 }
             }
             
+        }
+        .onChange(of: currentValidity) { newErrors in
+            if newErrors.isEmpty {
+                self.isValid = true
+            } else {
+                self.isValid = false
+            }
         }
             
     }
@@ -95,8 +115,9 @@ struct TextFieldWithValiditity_Previews: PreviewProvider {
     
     static let prompt = "hello"
     @State static var binding = ""
+    @State static var bool = false
     static var previews: some View {
-        TextFieldWithValiditity(condition: validity, text: $binding, prompt: prompt)
+        TextFieldWithValiditity(condition: validity, text: $binding, prompt: prompt, isSecureField: true, isValid: $bool)
             .border(.green)
             .padding()
             

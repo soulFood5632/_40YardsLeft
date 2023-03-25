@@ -9,21 +9,37 @@ import SwiftUI
 import Firebase
 
 struct OldUserWelcome: View {
-    @State var user: User?
+    @Binding var user: User?
     @State private var emailAddress = ""
     @State private var password = ""
+    @FocusState private var focuser: FocusedFeild?
 
+    @State private var showAlert = false
+    @State private var errorText: String?
     var body: some View {
-        VStack {
+        GroupBox {
             
-            Text("Login Below")
-                .bold()
-                .font(.title)
+            Image(systemName: "person.crop.circle")
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 140)
+                .padding()
+            
             
             Group {
                 TextField("Email Address", text: self.$emailAddress)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .submitLabel(.next)
+                    .focused(self.$focuser, equals: .email)
+                    .onSubmit {
+                        self.focuser = .password1
+                    }
                     
-                TextField("Password", text: self.$password)
+                SecureField("Password", text: self.$password)
+                    .textContentType(.password)
+                    .focused(self.$focuser, equals: .password1)
+                    
             }
             .textFieldStyle(.roundedBorder)
             
@@ -46,7 +62,10 @@ struct OldUserWelcome: View {
             
             
             
+        } label: {
+            Label("Welcome Back", systemImage: "hand.wave.fill")
         }
+        
         .padding()
         
         
@@ -54,8 +73,8 @@ struct OldUserWelcome: View {
 }
 
 struct OldUserWelcome_Previews: PreviewProvider {
-    @State private var showScreen = true
+    @State static private var user: User?
     static var previews: some View {
-        OldUserWelcome()
+        OldUserWelcome(user: $user)
     }
 }

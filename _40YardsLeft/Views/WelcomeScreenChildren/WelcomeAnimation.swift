@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct WelcomeAnimation: View {
     
     @State private var animationMode = SizeAnimation()
     
-    private var signaller = Timer.publish(every: 1.8, tolerance: 0.1, on: .main, in: .common).autoconnect()
+    private let signaller = Timer.publish(every: 1.8, tolerance: 0.1, on: .main, in: .common).autoconnect()
     
     
     @State private var newUserForm = false
     @State private var loginForm = false
+    
+    @Binding var user: User?
  
     
     var body: some View {
-         
-            
-            
+
             VStack {
                 
                 let welcomeUserSize = animationMode.getSize(triggerValue: 1)
@@ -62,7 +63,6 @@ struct WelcomeAnimation: View {
                         } label: {
                             Label("Log In", systemImage: "person.crop.circle")
                         }
-                        
                         .buttonStyle(.borderedProminent)
                         .padding(.top, 40)
                         
@@ -73,9 +73,10 @@ struct WelcomeAnimation: View {
                             Label("Create Account", systemImage: "person.crop.circle.badge.plus")
                             
                         }
-                        
                         .buttonStyle(.borderedProminent)
+                        
                     }
+                    .font(.title2)
                     .scaleEffect(loginSize)
                 }
                 .padding(.horizontal)
@@ -84,10 +85,10 @@ struct WelcomeAnimation: View {
                     
             }
             .sheet(isPresented: self.$newUserForm, content: {
-                NewUserForm()
+                NewUserForm(user: self.$user)
             })
             .sheet(isPresented: self.$loginForm, content: {
-                OldUserWelcome()
+                OldUserWelcome(user: self.$user)
             })
             .onReceive(self.signaller) { _ in
                 
@@ -104,7 +105,9 @@ struct WelcomeAnimation: View {
 
 
 struct WelcomeAnimation_Previews: PreviewProvider {
+    @State static private var user: User?
     static var previews: some View {
-        WelcomeAnimation()
+        WelcomeAnimation(user: self.$user)
+            .background(.black)
     }
 }

@@ -7,30 +7,30 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 struct WelcomeScreen : View {
     
-    @State private var endRadiusChange: CGFloat = Self.START_RADIUS * 2
+    @Binding var user: User?
     
     private static let END_RADIUS: CGFloat = 400
+    private static let START_RADIUS: CGFloat = 100
     
-    private static let START_RADIUS: CGFloat = 67
-    
-    @State private var screenReady = false
+    @State private var endRadius = Self.START_RADIUS * 2
     
  
     var body: some View {
         
         ZStack {
-            RadialGradient(colors: [.blue, .cyan, .green, .mint], center: .center, startRadius: Self.START_RADIUS, endRadius: self.endRadiusChange)
+            RadialGradient(colors: [.blue, .cyan, .green, .mint], center: .center, startRadius: Self.START_RADIUS, endRadius: self.endRadius)
                 .ignoresSafeArea()
             
-            WelcomeAnimation()
+            WelcomeAnimation(user: self.$user)
             
         }
         .onAppear {
-            withAnimation (.easeInOut(duration: 2)) {
-                endRadiusChange = Self.END_RADIUS
+            withAnimation (.spring(dampingFraction: 0.6)) {
+                endRadius = Self.END_RADIUS
             }
             
         }
