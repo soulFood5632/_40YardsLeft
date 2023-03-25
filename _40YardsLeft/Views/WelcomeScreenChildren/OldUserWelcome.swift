@@ -14,8 +14,8 @@ struct OldUserWelcome: View {
     @State private var password = ""
     @FocusState private var focuser: FocusedFeild?
 
-    @State private var showAlert = false
-    @State private var errorText: String?
+    @State private var showAlert: (Bool, String?) = (false, nil)
+    
     var body: some View {
         GroupBox {
             
@@ -46,10 +46,18 @@ struct OldUserWelcome: View {
             Button {
                 Task {
                     do {
-                        self.user = try await Authenticator.logIn(emailAddress: emailAddress, password: self.password)
+                        
+                        let tempUser = try await Authenticator.logIn(emailAddress: emailAddress, password: self.password)
+                        
+                        withAnimation(.easeInOut(duration: 1)) {
+                            self.user = tempUser
+                            tempUser
+                        }
+                        
                         
                     } catch {
-                        //add error handlers
+                        self.showAlert.1 = error.localizedDescription
+                        self.showAlert.0 = true
                     }
                         
                     
@@ -65,10 +73,27 @@ struct OldUserWelcome: View {
         } label: {
             Label("Welcome Back", systemImage: "hand.wave.fill")
         }
+        .alert("Login Error", isPresented: self.$showAlert.0, actions: {
+            Button {
+                self.resetFields()
+                
+            } label: {
+                Text("Retry")
+            }
+        }, message: {
+            Text(self.showAlert.1 ?? "Unknown Error")
+        })
         
         .padding()
         
         
+    }
+}
+
+extension OldUserWelcome {
+    private func resetFields() {
+        self.password = ""
+        self.emailAddress = ""
     }
 }
 

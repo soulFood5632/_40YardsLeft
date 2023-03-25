@@ -15,7 +15,7 @@ struct NewUserForm: View {
     @FocusState private var focuser: FocusedFeild?
     
     @Binding var user: User?
-    @State private var showAlert: Error? = nil
+    @State private var showAlert: (Bool, String?) = (false, nil)
     
     @State private var isValidEntries = [false, false, false]
     
@@ -64,10 +64,17 @@ struct NewUserForm: View {
                 
                 Task {
                     do {
-                        self.user = try await Authenticator.createUser(emailAddress: email, password: self.password)
+                        
+                        let tempUser = try await Authenticator.createUser(emailAddress: email, password: self.password)
+                        
+                        withAnimation (.easeInOut(duration: 1)) {
+                            self.user = tempUser
+                        }
+                        
                         
                     } catch {
-                        // add error handlers
+                        self.showAlert.1 = error.localizedDescription
+                        self.showAlert.0 = true
                         
                     }
                     
@@ -86,6 +93,16 @@ struct NewUserForm: View {
         } label: {
             Label("Hello User", systemImage: "hand.wave.fill")
         }
+        .alert("Account Creation Error", isPresented: self.$showAlert.0, actions: {
+            Button {
+                self.resetFields()
+            } label: {
+                Text("Retry")
+            }
+
+        }, message: {
+            Text(self.showAlert.1 ?? "Unknown Error")
+        })
         .padding()
     }
 }
@@ -101,6 +118,12 @@ extension NewUserForm {
     /// - Returns: True if all criterion are met, false otherwise.
     private func isValidEntry() -> Bool {
         return !self.isValidEntries.contains(false)
+    }
+    
+    private func resetFields() {
+        self.password = ""
+        self.passwordChecker = ""
+        self.email = ""
     }
 }
 
