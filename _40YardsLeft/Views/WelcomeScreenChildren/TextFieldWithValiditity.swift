@@ -15,7 +15,7 @@ struct TextFieldWithValiditity: View {
     @Binding var text: String
     let prompt: String
     
-    @State var isValid: Bool = false
+    var isValid: Bool { self.currentValidity.isEmpty }
     
     
     
@@ -27,14 +27,10 @@ struct TextFieldWithValiditity: View {
             TextField(text: $text) {
                 Text(prompt)
             }
+            .autocorrectionDisabled()
             .onChange(of: text) { newText in
                 withAnimation {
                     self.currentValidity = condition(newText)
-                }
-                if self.currentValidity.isEmpty {
-                    self.isValid = true
-                } else {
-                    self.isValid = false
                 }
             }
             .border(textFieldColour, width: 3)

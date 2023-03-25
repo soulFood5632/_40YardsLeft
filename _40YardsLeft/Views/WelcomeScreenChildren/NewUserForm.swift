@@ -6,18 +6,23 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct NewUserForm: View {
-    @State private var username: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     
-    @Binding var actionComplete: Bool
-    @State private var showAlert = false
+    @State var user: User?
+    @State private var showAlert: Error? = nil
     
     var body: some View {
         VStack {
+            Text("Add Account Details")
+                .bold()
+                .font(.title)
+            
             Group {
-                TextField("Username", text: self.$username)
+                TextFieldWithValiditity(condition: TextValiditity.emailChecker, text: self.$email, prompt: "Email Address")
                     
                 TextFieldWithValiditity(condition: TextValiditity.passwordCheck, text: self.$password, prompt: "Password")
             }
@@ -25,26 +30,36 @@ struct NewUserForm: View {
             
             
             Button {
-                // create account API call
-                self.actionComplete = false
+                
+                Task {
+                    do {
+                        self.user = try await Authenticator.createUser(emailAddress: email, password: self.password)
+                        
+                    } catch {
+                        // add error handlers
+                        
+                    }
+                    
+                }
+                
             } label: {
                 Text("Make Account")
                 
-                //TODO: change this to fit with the requirments.
-                    .disabled(false)
+                
             }
             .buttonStyle(.bordered)
             
+           
+            
         }
-        //TODO: add alert
         .padding()
     }
 }
 
 struct NewUserForm_Previews: PreviewProvider {
-    @State static private var username = false
+    @State static private var user: User?
   
     static var previews: some View {
-        NewUserForm(actionComplete: self.$username)
+        NewUserForm()
     }
 }

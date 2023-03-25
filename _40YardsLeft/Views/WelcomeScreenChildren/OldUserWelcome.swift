@@ -6,50 +6,49 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct OldUserWelcome: View {
-    @State public var actionComplete = false
-    @State private var username = ""
+    @State var user: User?
+    @State private var emailAddress = ""
     @State private var password = ""
-    
-    @State private var newUserForm = false
-    
-    @State private var newUserCreated = false
-    
+
     var body: some View {
         VStack {
-            Text("Please Login Below")
-                .foregroundColor(.white)
-                .font(.system(size: 55))
-                .bold()
-                .multilineTextAlignment(.center)
             
-            TextField("Username", text: self.$username)
-            TextField("Password", text: self.$password)
+            Text("Login Below")
+                .bold()
+                .font(.title)
+            
+            Group {
+                TextField("Email Address", text: self.$emailAddress)
+                    
+                TextField("Password", text: self.$password)
+            }
+            .textFieldStyle(.roundedBorder)
             
             Button {
                 Task {
-                    //api call to check
+                    do {
+                        self.user = try await Authenticator.logIn(emailAddress: emailAddress, password: self.password)
+                        
+                    } catch {
+                        //add error handlers
+                    }
+                        
+                    
                 }
             } label: {
                 Text("Login")
             }
             .buttonStyle(.bordered)
             
-            Button {
-                self.newUserForm = true
-            } label: {
-                Text("Create New Account")
-            }
+            
+            
+            
         }
-        .sheet(isPresented: self.$newUserForm) {
-            NewUserForm(actionComplete: self.$newUserCreated)
-        }
-        onChange(of: self.newUserCreated) { isSuccess in
-            if isSuccess {
-                
-            }
-        }
+        .padding()
+        
         
     }
 }

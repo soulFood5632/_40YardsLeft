@@ -10,6 +10,8 @@ import Foundation
 /// A struct used to contain all the error checking mechanisms for
 struct TextValiditity {
     
+    
+    /// A password validitity checker used to ensure that user passwords are valid
     static let passwordCheck: (String) -> [String] = { password in
         var errorList = [String]()
         
@@ -40,6 +42,17 @@ struct TextValiditity {
         
         return errorList
 
+    }
+    
+    static let emailChecker: (String) -> [String] = { entry in
+        var errorList = [String]()
+        
+        if !entry.contains(try! Regex("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[A-z0-9-]+\\.)+[A-z]{2,6}$")) {
+            errorList.append("Invalid Email Address")
+        }
+        
+        return errorList
+        
     }
 }
 

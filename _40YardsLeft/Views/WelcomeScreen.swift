@@ -25,19 +25,14 @@ struct WelcomeScreen : View {
             RadialGradient(colors: [.blue, .cyan, .green, .mint], center: .center, startRadius: Self.START_RADIUS, endRadius: self.endRadiusChange)
                 .ignoresSafeArea()
             
-            if screenReady {
-                WelcomeAnimation()
-            }
+            WelcomeAnimation()
             
         }
         .onAppear {
             withAnimation (.easeInOut(duration: 2)) {
                 endRadiusChange = Self.END_RADIUS
             }
-            Task {
-                //call core data to see if a user has been entered.
-                self.screenReady = true
-            }
+            
         }
         
     }
