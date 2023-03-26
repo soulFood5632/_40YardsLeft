@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-class Authenticator {
+struct Authenticator {
     static func createUser(emailAddress: String, password: String) async throws -> User {
        
         

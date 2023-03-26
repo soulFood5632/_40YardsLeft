@@ -12,13 +12,17 @@ struct NewUserForm: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var passwordChecker: String = ""
+    @State private var name = ""
+    @State private var gender = Gender.man
+    //TODO: Add home course
     @FocusState private var focuser: FocusedFeild?
     
     @Binding var user: User?
     @State private var showAlert: (Bool, String?) = (false, nil)
     
-    @State private var isValidEntries = [false, false, false]
+    @State private var isValidEntries = [false, false, false, false]
     
+    //MARK: New User form body
     var body: some View {
         GroupBox {
             Image(systemName: "person.crop.circle")
@@ -28,7 +32,19 @@ struct NewUserForm: View {
                 .padding()
             
             Group {
-                TextFieldWithValiditity(condition: TextValiditity.emailChecker, text: self.$email, prompt: "Email Address", isSecureField: false, isValid: self.$isValidEntries[0])
+                
+                let mustNotBeEmpty = TextFieldWithValiditity.mustNotBeEmptyCondition
+                TextFieldWithValiditity(condition: mustNotBeEmpty,
+                                        text: self.$name, prompt: "Username",
+                                        isSecureField: false,
+                                        isValid: self.$isValidEntries[0])
+                    .submitLabel(.next)
+                    .focused(self.$focuser, equals: .username)
+                    .onSubmit {
+                        self.focuser = .email
+                    }
+                
+                TextFieldWithValiditity(condition: TextValiditity.emailChecker, text: self.$email, prompt: "Email Address", isSecureField: false, isValid: self.$isValidEntries[1])
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                     .submitLabel(.next)
@@ -37,7 +53,7 @@ struct NewUserForm: View {
                         self.focuser = .password1
                     }
                     
-                TextFieldWithValiditity(condition: TextValiditity.passwordCheck, text: self.$password, prompt: "Password", isSecureField: true, isValid: self.$isValidEntries[1])
+                TextFieldWithValiditity(condition: TextValiditity.passwordCheck, text: self.$password, prompt: "Password", isSecureField: true, isValid: self.$isValidEntries[2])
                     .textContentType(.newPassword)
                     .submitLabel(.next)
                     .focused(self.$focuser, equals: .password1)
@@ -52,9 +68,26 @@ struct NewUserForm: View {
                     return []
                 }
                 
-                TextFieldWithValiditity(condition: condition, text: self.$passwordChecker, prompt: "Re-Enter Password", isSecureField: true, isValid: self.$isValidEntries[2])
+                TextFieldWithValiditity(condition: condition, text: self.$passwordChecker, prompt: "Re-Enter Password", isSecureField: true, isValid: self.$isValidEntries[3])
                     .textContentType(.newPassword)
                     .focused(self.$focuser, equals: .password2)
+                
+                HStack {
+                    Text("Select Gender")
+                        .font(.callout)
+                    
+                    Image(systemName: "figure.dress.line.vertical.figure")
+                    Spacer()
+                    Picker(selection: self.$gender) {
+                        ForEach(Gender.allCases, id: \.self) { gender in
+                            Text(gender.rawValue)
+                        }
+                    } label: {
+                        Text("Select Gender")
+                    }
+                }
+                
+                
                     
             }
             .textFieldStyle(.roundedBorder)
@@ -63,6 +96,8 @@ struct NewUserForm: View {
             Button {
                 
                 Task {
+                    
+                    
                     do {
                         
                         let tempUser = try await Authenticator.createUser(emailAddress: email, password: self.password)
@@ -70,6 +105,8 @@ struct NewUserForm: View {
                         withAnimation (.easeInOut(duration: 1)) {
                             self.user = tempUser
                         }
+                        
+                        let newGolfer = Golfer(firebaseID: tempUser.providerID, gender: self.gender, name: self.name)
                         
                         
                     } catch {
@@ -108,7 +145,7 @@ struct NewUserForm: View {
 }
 
 enum FocusedFeild : Hashable {
-    case email, password1, password2
+    case username, email, password1, password2
 }
 
 extension NewUserForm {

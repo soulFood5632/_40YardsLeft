@@ -83,6 +83,9 @@ struct TextFieldWithValiditity: View {
 
 
 extension TextFieldWithValiditity {
+    
+    /// Gets the colour from the given current conditions of the text.
+    /// - Returns: Red if the text does not meet conditions, green if it does, and finally white if no text has been entered.
     private func getColour() -> Color {
         withAnimation {
             if self.text.isEmpty {
@@ -95,6 +98,16 @@ extension TextFieldWithValiditity {
             
             return .red
         }
+    }
+    
+    ///An example condition used to ensure that the entry is not empty
+    static var mustNotBeEmptyCondition: (String) -> [String] = { value in
+        if value.isEmpty {
+            return ["Must Not Be Empty"]
+        }
+        
+        return []
+        
     }
 }
 

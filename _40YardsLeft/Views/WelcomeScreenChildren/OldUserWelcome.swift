@@ -51,7 +51,7 @@ struct OldUserWelcome: View {
                         
                         withAnimation(.easeInOut(duration: 1)) {
                             self.user = tempUser
-                            tempUser
+                            
                         }
                         
                         

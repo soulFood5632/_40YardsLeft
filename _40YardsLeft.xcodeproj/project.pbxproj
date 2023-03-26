@@ -86,6 +86,10 @@
 		02FEA1AE29CF9CEA00BCD7A4 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1AD29CF9CEA00BCD7A4 /* Round.swift */; };
 		02FEA1AF29CF9CEA00BCD7A4 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1AD29CF9CEA00BCD7A4 /* Round.swift */; };
 		02FEA1B029CF9CEA00BCD7A4 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1AD29CF9CEA00BCD7A4 /* Round.swift */; };
+		02FEA1B629CFB7E000BCD7A4 /* DatabaseCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1B529CFB7E000BCD7A4 /* DatabaseCommunicator.swift */; };
+		02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */; };
+		02FEA1BC29D0F5F500BCD7A4 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */; };
+		02FEA1BD29D0F5F500BCD7A4 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +141,8 @@
 		02FEA1A529CF7D4700BCD7A4 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		02FEA1A929CF9BE600BCD7A4 /* Hole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hole.swift; sourceTree = "<group>"; };
 		02FEA1AD29CF9CEA00BCD7A4 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		02FEA1B529CFB7E000BCD7A4 /* DatabaseCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCommunicator.swift; sourceTree = "<group>"; };
+		02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,8 +259,9 @@
 		02E9DBCA29C0FCC400AA15FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				02FEA16929CD142700BCD7A4 /* Authenticator.swift */,
+				02FEA1B929CFB7E600BCD7A4 /* FirebaseTools */,
 				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
+				02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */,
 				02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */,
 				02FEA19429CF757700BCD7A4 /* ObjectModels */,
 			);
@@ -322,6 +329,15 @@
 				02FEA1A529CF7D4700BCD7A4 /* Course.swift */,
 			);
 			path = ObjectModels;
+			sourceTree = "<group>";
+		};
+		02FEA1B929CFB7E600BCD7A4 /* FirebaseTools */ = {
+			isa = PBXGroup;
+			children = (
+				02FEA16929CD142700BCD7A4 /* Authenticator.swift */,
+				02FEA1B529CFB7E000BCD7A4 /* DatabaseCommunicator.swift */,
+			);
+			path = FirebaseTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,9 +512,11 @@
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
+				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,
 				02FEA19129CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
 				02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */,
+				02FEA1B629CFB7E000BCD7A4 /* DatabaseCommunicator.swift in Sources */,
 				02FEA19A29CF791600BCD7A4 /* Position.swift in Sources */,
 				02FACCB229C6C62E00B55E6D /* WelcomeAnimation.swift in Sources */,
 				02FEA16A29CD142700BCD7A4 /* Authenticator.swift in Sources */,
@@ -520,6 +538,7 @@
 			files = (
 				02FEA18429CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				02FEA18829CECA0000BCD7A4 /* RoundView.swift in Sources */,
+				02FEA1BC29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				02FEA1A729CF7D4700BCD7A4 /* Course.swift in Sources */,
 				02FEA1A329CF7BB500BCD7A4 /* Shot.swift in Sources */,
 				02FEA18C29CECA0A00BCD7A4 /* StatView.swift in Sources */,
@@ -538,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02FEA19329CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
+				02FEA1BD29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				02FEA1AC29CF9BE600BCD7A4 /* Hole.swift in Sources */,
 				02FEA1A829CF7D4700BCD7A4 /* Course.swift in Sources */,
 				02FEA18D29CECA0A00BCD7A4 /* StatView.swift in Sources */,
