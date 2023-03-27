@@ -28,11 +28,6 @@ struct TextFieldWithValiditity: View {
             if isSecureField {
                 SecureField(prompt, text: self.$text)
                     .autocorrectionDisabled()
-                    .onChange(of: text) { newText in
-                        withAnimation {
-                            self.currentValidity = condition(newText)
-                        }
-                    }
                     .border(textFieldColour, width: 3)
                     .shadow(color: textFieldColour, radius: 3)
             } else {
@@ -40,35 +35,36 @@ struct TextFieldWithValiditity: View {
                     Text(prompt)
                 }
                 .autocorrectionDisabled()
-                .onChange(of: text) { newText in
-                    withAnimation {
-                        self.currentValidity = condition(newText)
-                    }
-                }
                 .border(textFieldColour, width: 3)
                 .shadow(color: textFieldColour, radius: 3)
             }
             
-            
-            VStack(alignment: .leading) {
-                ForEach(currentValidity, id: \.self) { error in
-                    Label {
-                        Text(error)
-                        
-                    } icon: {
-                        Image(systemName: "xmark")
+            if !text.isEmpty  {
+                VStack(alignment: .leading) {
+                    ForEach(currentValidity, id: \.self) { error in
+                        Label {
+                            Text(error)
+                            
+                        } icon: {
+                            Image(systemName: "xmark")
+                        }
+                        .font(.system(size: 11))
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.leading)
                     }
-                    .font(.system(size: 11))
-                    .foregroundColor(.red)
-                    .multilineTextAlignment(.leading)
+                }
+                .background {
+                    RoundedRectangle(cornerRadius: 2)
+                        .foregroundColor(.white)
                 }
             }
-            .background {
-                RoundedRectangle(cornerRadius: 2)
-                    .foregroundColor(.white)
+            
+            
+        }
+        .onChange(of: text) { newText in
+            withAnimation {
+                self.currentValidity = condition(newText)
             }
-            
-            
         }
         .onChange(of: currentValidity) { newErrors in
             if newErrors.isEmpty {
@@ -76,6 +72,9 @@ struct TextFieldWithValiditity: View {
             } else {
                 self.isValid = false
             }
+        }
+        .onAppear {
+            self.currentValidity = condition(self.text)
         }
             
     }

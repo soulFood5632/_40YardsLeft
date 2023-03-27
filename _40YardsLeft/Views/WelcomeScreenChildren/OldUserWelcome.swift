@@ -75,7 +75,9 @@ struct OldUserWelcome: View {
         }
         .alert("Login Error", isPresented: self.$showAlert.0, actions: {
             Button {
-                self.resetFields()
+                withAnimation {
+                    self.resetFields()
+                }
                 
             } label: {
                 Text("Retry")

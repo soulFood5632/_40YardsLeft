@@ -111,6 +111,8 @@ struct NewUserForm: View {
                         
                         
                         
+                        
+                        
                     } catch {
                         self.showAlert.1 = error.localizedDescription
                         self.showAlert.0 = true
@@ -119,7 +121,7 @@ struct NewUserForm: View {
                     
                     do {
                         if tempUser != nil {
-                            let newGolfer = Golfer(firebaseID: tempUser!.providerID, gender: self.gender, name: self.name)
+                            let newGolfer = Golfer(firebaseID: tempUser!.uid, gender: self.gender, name: self.name)
                             
                             _ = try await DatabaseCommunicator.addGolfer(golfer: newGolfer)
                         }
@@ -145,7 +147,9 @@ struct NewUserForm: View {
         }
         .alert("Account Creation Error", isPresented: self.$showAlert.0, actions: {
             Button {
-                self.resetFields()
+                withAnimation {
+                    self.resetFields()
+                }
             } label: {
                 Text("Retry")
             }

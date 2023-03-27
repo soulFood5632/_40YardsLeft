@@ -6,31 +6,36 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Promises
 
 struct UserView: View {
+    @Binding var golfer: Golfer
+    
+    
     
     var body: some View {
-        TabView {
+        NavigationStack {
+            
             HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
+                .toolbar {
+                    ToolbarItem (placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            Image("gearshape.2")
+                        }
+                    }
+                    
+                    
                 }
-            RoundView()
-                .tabItem {
-                    Label("Add Round", systemImage: "figure.golf")
-                }
-            StatView()
-                .tabItem {
-                    Label("Analysis", systemImage: "chart.bar")
-
-                }
-                
+                .navigationTitle("At A Glance")
         }
+            
+        
     }
 }
 
-struct UserView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserView()
-    }
+enum LoginError: Error {
+    case UserNotLoggedIn
 }
