@@ -54,6 +54,28 @@ struct TextValiditity {
         return errorList
         
     }
+    
+    ///An example condition used to ensure that the entry is not empty
+    static let mustNotBeEmptyCondition: (String) -> [String] = { value in
+        if value.isEmpty {
+            return ["Must Not Be Empty"]
+        }
+        
+        return []
+    }
+    
+    static func betweenSizes(range: Range<Int>) -> (String) -> [String] {
+        return { newValue in
+            if newValue.count < range.lowerBound {
+                return ["Must contain \(range.lowerBound) characters"]
+            }
+            
+            if newValue.count > range.upperBound {
+                return ["Must contain less than \(range.upperBound) characters"]
+            }
+            return []
+        }
+    }
 }
 
 

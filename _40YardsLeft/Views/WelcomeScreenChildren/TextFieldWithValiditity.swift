@@ -47,27 +47,27 @@ struct TextFieldWithValiditity: View {
                 }
                 .border(textFieldColour, width: 3)
                 .shadow(color: textFieldColour, radius: 3)
-        }
+            }
             
-            if !currentValidity.isEmpty {
-                VStack(alignment: .leading) {
-                    ForEach(currentValidity, id: \.self) { error in
-                        Label {
-                            Text(error)
-                                
-                        } icon: {
-                            Image(systemName: "xmark")
-                        }
-                        .font(.system(size: 11))
-                        .foregroundColor(.red)
-                        .multilineTextAlignment(.leading)
+            
+            VStack(alignment: .leading) {
+                ForEach(currentValidity, id: \.self) { error in
+                    Label {
+                        Text(error)
+                        
+                    } icon: {
+                        Image(systemName: "xmark")
                     }
-                }
-                .background {
-                    RoundedRectangle(cornerRadius: 2)
-                        .foregroundColor(.white)
+                    .font(.system(size: 11))
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.leading)
                 }
             }
+            .background {
+                RoundedRectangle(cornerRadius: 2)
+                    .foregroundColor(.white)
+            }
+            
             
         }
         .onChange(of: currentValidity) { newErrors in
@@ -99,16 +99,8 @@ extension TextFieldWithValiditity {
             return .red
         }
     }
+
     
-    ///An example condition used to ensure that the entry is not empty
-    static var mustNotBeEmptyCondition: (String) -> [String] = { value in
-        if value.isEmpty {
-            return ["Must Not Be Empty"]
-        }
-        
-        return []
-        
-    }
 }
 
 

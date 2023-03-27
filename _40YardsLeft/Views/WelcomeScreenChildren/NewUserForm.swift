@@ -33,7 +33,7 @@ struct NewUserForm: View {
             
             Group {
                 
-                let mustNotBeEmpty = TextFieldWithValiditity.mustNotBeEmptyCondition
+                let mustNotBeEmpty = TextValiditity.betweenSizes(range: 1..<15)
                 TextFieldWithValiditity(condition: mustNotBeEmpty,
                                         text: self.$name, prompt: "Username",
                                         isSecureField: false,
@@ -90,6 +90,9 @@ struct NewUserForm: View {
                 
                     
             }
+            .onChange(of: self.isValidEntries, perform: { newValue in
+                print(isValidEntries)
+            })
             .textFieldStyle(.roundedBorder)
             
             
@@ -97,22 +100,32 @@ struct NewUserForm: View {
                 
                 Task {
                     
-                    
+                    var tempUser: User?
                     do {
                         
-                        let tempUser = try await Authenticator.createUser(emailAddress: email, password: self.password)
+                        tempUser = try await Authenticator.createUser(emailAddress: email, password: self.password)
                         
                         withAnimation (.easeInOut(duration: 1)) {
-                            self.user = tempUser
+                            self.user = tempUser!
                         }
                         
-                        let newGolfer = Golfer(firebaseID: tempUser.providerID, gender: self.gender, name: self.name)
                         
                         
                     } catch {
                         self.showAlert.1 = error.localizedDescription
                         self.showAlert.0 = true
                         
+                    }
+                    
+                    do {
+                        if tempUser != nil {
+                            let newGolfer = Golfer(firebaseID: tempUser!.providerID, gender: self.gender, name: self.name)
+                            
+                            _ = try await DatabaseCommunicator.addGolfer(golfer: newGolfer)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                        //Deal with this error here
                     }
                     
                 }
@@ -161,6 +174,7 @@ extension NewUserForm {
         self.password = ""
         self.passwordChecker = ""
         self.email = ""
+        self.name = ""
     }
 }
 
