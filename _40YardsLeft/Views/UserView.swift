@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FirebaseAuth
-import Promises
 
 struct UserView: View {
     @Binding var golfer: Golfer
@@ -17,7 +16,7 @@ struct UserView: View {
     var body: some View {
         NavigationStack {
             
-            HomeView()
+            HomeView(golfer: $golfer)
                 .toolbar {
                     ToolbarItem (placement: .navigationBarTrailing) {
                         NavigationLink {

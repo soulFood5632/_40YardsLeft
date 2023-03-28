@@ -6,11 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
+struct newSettings {
+    var gender: Gender
+    var name: String
+    var email: String
+}
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if let user = Auth.auth().currentUser {
+            
+        }
     }
+        
 }
 
 struct SettingsView_Previews: PreviewProvider {

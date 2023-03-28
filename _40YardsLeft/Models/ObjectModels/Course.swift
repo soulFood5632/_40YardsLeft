@@ -13,6 +13,15 @@ struct Course : Codable, Equatable {
     var location: Address
     var name: String
     
+    func hasTee(_ tee: Tee) -> Bool {
+        return listOfTees.contains(tee)
+    }
+    
+}
+
+//MARK: Course Extension
+extension Course {
+    //TODO: Make example course
 }
 
 

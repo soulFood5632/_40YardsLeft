@@ -94,6 +94,7 @@ struct NewUserForm: View {
                 print(isValidEntries)
             })
             .textFieldStyle(.roundedBorder)
+            .padding(.vertical, 1.5)
             
             
             Button {

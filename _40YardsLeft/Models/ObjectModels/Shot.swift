@@ -8,6 +8,8 @@
 import Foundation
 
 struct Shot : Codable, Equatable {
+    
+    
     let type: ShotType
     let startPosition: Position
     let endPosition: Position

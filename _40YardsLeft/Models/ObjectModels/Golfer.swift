@@ -24,6 +24,15 @@ struct Golfer : Codable, Equatable {
         //TODO: add home course. once courses have been added to populate things
     }
     
+    
+
+}
+
+extension Golfer {
+    var handicap: Double { return 0
+        //TODO: Imploment this function
+    }
+    
     mutating func addRound(_ round : Round) -> Bool {
         if self.rounds.contains(round) {
             return false
@@ -32,9 +41,12 @@ struct Golfer : Codable, Equatable {
         self.rounds.append(round)
         return true
     }
-
 }
 
 enum Gender : String, Codable, CaseIterable {
     case man = "Male", woman = "Female"
+}
+
+extension Golfer {
+    static var golfer: Golfer { Golfer(firebaseID: "exampleID", gender: .man, name: "Logan") }
 }

@@ -54,8 +54,6 @@
 		02FEA17929CE93DE00BCD7A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02FEA17629CE93DE00BCD7A4 /* GoogleService-Info.plist */; };
 		02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17A29CEC86100BCD7A4 /* UserView.swift */; };
 		02FEA17F29CEC89700BCD7A4 /* ViewScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */; };
-		02FEA18029CEC89700BCD7A4 /* ViewScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */; };
-		02FEA18129CEC89700BCD7A4 /* ViewScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */; };
 		02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18229CEC9F100BCD7A4 /* HomeView.swift */; };
 		02FEA18429CEC9F100BCD7A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18229CEC9F100BCD7A4 /* HomeView.swift */; };
 		02FEA18529CEC9F100BCD7A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18229CEC9F100BCD7A4 /* HomeView.swift */; };
@@ -88,11 +86,18 @@
 		02FEA1B029CF9CEA00BCD7A4 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1AD29CF9CEA00BCD7A4 /* Round.swift */; };
 		02FEA1B629CFB7E000BCD7A4 /* DatabaseCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1B529CFB7E000BCD7A4 /* DatabaseCommunicator.swift */; };
 		02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */; };
-		02FEA1BC29D0F5F500BCD7A4 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */; };
-		02FEA1BD29D0F5F500BCD7A4 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */; };
 		02FEA1C329D1518200BCD7A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C229D1518200BCD7A4 /* SettingsView.swift */; };
 		02FEA1C429D1518200BCD7A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C229D1518200BCD7A4 /* SettingsView.swift */; };
 		02FEA1C529D1518200BCD7A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C229D1518200BCD7A4 /* SettingsView.swift */; };
+		02FEA1C729D3372600BCD7A4 /* RoundEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */; };
+		02FEA1C829D3372600BCD7A4 /* RoundEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */; };
+		02FEA1C929D3372600BCD7A4 /* RoundEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */; };
+		02FEA1CC29D3391C00BCD7A4 /* HoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */; };
+		02FEA1CD29D3391C00BCD7A4 /* HoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */; };
+		02FEA1CE29D3391C00BCD7A4 /* HoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */; };
+		02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
+		02FEA1D229D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
+		02FEA1D329D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +152,9 @@
 		02FEA1B529CFB7E000BCD7A4 /* DatabaseCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCommunicator.swift; sourceTree = "<group>"; };
 		02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		02FEA1C229D1518200BCD7A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundEntry.swift; sourceTree = "<group>"; };
+		02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleByHole.swift; sourceTree = "<group>"; };
+		02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,9 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				02FEA1B929CFB7E600BCD7A4 /* FirebaseTools */,
-				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
-				02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */,
-				02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */,
+				02FEA1CF29D33BCB00BCD7A4 /* ViewTools */,
 				02FEA19429CF757700BCD7A4 /* ObjectModels */,
 			);
 			path = Models;
@@ -309,6 +315,7 @@
 			children = (
 				02FEA18229CEC9F100BCD7A4 /* HomeView.swift */,
 				02FEA18629CECA0000BCD7A4 /* RoundView.swift */,
+				02FEA1CA29D3373B00BCD7A4 /* RoundEntryTools  */,
 				02FEA1C229D1518200BCD7A4 /* SettingsView.swift */,
 				02FEA18A29CECA0A00BCD7A4 /* StatView.swift */,
 			);
@@ -326,6 +333,7 @@
 		02FEA19429CF757700BCD7A4 /* ObjectModels */ = {
 			isa = PBXGroup;
 			children = (
+				02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */,
 				02FEA19529CF785C00BCD7A4 /* Golfer.swift */,
 				02FEA19929CF791600BCD7A4 /* Position.swift */,
 				02FEA1A929CF9BE600BCD7A4 /* Hole.swift */,
@@ -343,6 +351,25 @@
 				02FEA1B529CFB7E000BCD7A4 /* DatabaseCommunicator.swift */,
 			);
 			path = FirebaseTools;
+			sourceTree = "<group>";
+		};
+		02FEA1CA29D3373B00BCD7A4 /* RoundEntryTools  */ = {
+			isa = PBXGroup;
+			children = (
+				02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */,
+				02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */,
+			);
+			path = "RoundEntryTools ";
+			sourceTree = "<group>";
+		};
+		02FEA1CF29D33BCB00BCD7A4 /* ViewTools */ = {
+			isa = PBXGroup;
+			children = (
+				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
+				02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */,
+				02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */,
+			);
+			path = ViewTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,14 +538,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */,
+				02FEA1C729D3372600BCD7A4 /* RoundEntry.swift in Sources */,
 				02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */,
 				02FEA16629CCEBE600BCD7A4 /* SizeAnimation.swift in Sources */,
 				02FEA1A229CF7BB500BCD7A4 /* Shot.swift in Sources */,
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
+				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,
+				02FEA1CC29D3391C00BCD7A4 /* HoleByHole.swift in Sources */,
 				02FEA19129CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
 				02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */,
 				02FEA1B629CFB7E000BCD7A4 /* DatabaseCommunicator.swift in Sources */,
@@ -542,16 +572,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02FEA1C829D3372600BCD7A4 /* RoundEntry.swift in Sources */,
 				02FEA18429CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				02FEA18829CECA0000BCD7A4 /* RoundView.swift in Sources */,
-				02FEA1BC29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				02FEA1A729CF7D4700BCD7A4 /* Course.swift in Sources */,
 				02FEA1A329CF7BB500BCD7A4 /* Shot.swift in Sources */,
+				02FEA1CD29D3391C00BCD7A4 /* HoleByHole.swift in Sources */,
 				02FEA18C29CECA0A00BCD7A4 /* StatView.swift in Sources */,
 				02FEA19729CF785C00BCD7A4 /* Golfer.swift in Sources */,
 				02FEA1C429D1518200BCD7A4 /* SettingsView.swift in Sources */,
-				02FEA18029CEC89700BCD7A4 /* ViewScreens.swift in Sources */,
 				02FEA19229CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
+				02FEA1D229D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02FEA19B29CF791600BCD7A4 /* Position.swift in Sources */,
 				02E9DBB229C0FC2800AA15FA /* _40YardsLeftTests.swift in Sources */,
 				02FEA1AF29CF9CEA00BCD7A4 /* Round.swift in Sources */,
@@ -563,15 +594,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02FEA1D329D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02FEA1C529D1518200BCD7A4 /* SettingsView.swift in Sources */,
+				02FEA1CE29D3391C00BCD7A4 /* HoleByHole.swift in Sources */,
 				02FEA19329CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
-				02FEA1BD29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				02FEA1AC29CF9BE600BCD7A4 /* Hole.swift in Sources */,
 				02FEA1A829CF7D4700BCD7A4 /* Course.swift in Sources */,
+				02FEA1C929D3372600BCD7A4 /* RoundEntry.swift in Sources */,
 				02FEA18D29CECA0A00BCD7A4 /* StatView.swift in Sources */,
 				02E9DBBC29C0FC2800AA15FA /* _40YardsLeftUITests.swift in Sources */,
 				02FEA18529CEC9F100BCD7A4 /* HomeView.swift in Sources */,
-				02FEA18129CEC89700BCD7A4 /* ViewScreens.swift in Sources */,
 				02E9DBBE29C0FC2800AA15FA /* _40YardsLeftUITestsLaunchTests.swift in Sources */,
 				02FEA1A429CF7BB500BCD7A4 /* Shot.swift in Sources */,
 				02FEA19829CF785C00BCD7A4 /* Golfer.swift in Sources */,
