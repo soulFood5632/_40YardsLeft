@@ -11,8 +11,8 @@ import Foundation
 
 struct Position : Codable, Equatable {
     
-    let lie: Lie
-    let yardage: Distance
+    var lie: Lie
+    var yardage: Distance
     
     
     /// Gets the expected strokes to hole out from this position.
@@ -28,15 +28,26 @@ struct Position : Codable, Equatable {
 }
 
 //MARK: Lie Enum
-enum Lie : String, Codable, Equatable {
-    case fairway, rough, tee, bunker, penalty, recovery, green
+enum Lie : String, Codable, Equatable, CaseIterable, Identifiable {
+    
+    case fairway = "Fairway"
+    case rough = "Rough"
+    case tee = "Tee"
+    case bunker = "Sand"
+    case penalty = "Penatly"
+    case recovery = "Recovery"
+    case green = "Green"
+}
+
+extension Lie {
+    var id: Self { self }
 }
 
 //MARK: Distance Struct
 
 /// <#Description#>
 struct Distance : Codable, Equatable {
-    public let yardage: Double
+    var yardage: Double
     
     private static let METERS_IN_A_YARD = 1.09361
     private static let FEET_IN_A_YARD = 3

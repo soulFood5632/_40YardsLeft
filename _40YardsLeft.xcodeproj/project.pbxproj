@@ -98,6 +98,7 @@
 		02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
 		02FEA1D229D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
 		02FEA1D329D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
+		02FEA1D629D3D1F400BCD7A4 /* ShotElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D529D3D1F400BCD7A4 /* ShotElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundEntry.swift; sourceTree = "<group>"; };
 		02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleByHole.swift; sourceTree = "<group>"; };
 		02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictor.swift; sourceTree = "<group>"; };
+		02FEA1D529D3D1F400BCD7A4 /* ShotElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +360,7 @@
 			children = (
 				02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */,
 				02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */,
+				02FEA1D529D3D1F400BCD7A4 /* ShotElement.swift */,
 			);
 			path = "RoundEntryTools ";
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */,
 				02FEA16629CCEBE600BCD7A4 /* SizeAnimation.swift in Sources */,
 				02FEA1A229CF7BB500BCD7A4 /* Shot.swift in Sources */,
+				02FEA1D629D3D1F400BCD7A4 /* ShotElement.swift in Sources */,
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,

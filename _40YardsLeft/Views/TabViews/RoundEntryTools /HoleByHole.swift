@@ -12,7 +12,7 @@ struct HoleByHole: View {
     let holeNumber: Int
     let tee: Tee
     
-    @State private var shotList = [Shot]()
+    @State private var shotList = [ShotIntermediate]()
     
     var body: some View {
         let hole = round.tee.holeData[holeNumber - 1]
@@ -32,12 +32,24 @@ struct HoleByHole: View {
             
             GroupBox {
                 List {
-//                    ForEach(shotList) { shot in
-//                        HStack {
-//                            Text("\(shot.startPosition) -> \(shot.endPosition)")
-//                        }
-//                    }
-                    //TODO: make editable list in the style of the new item with a green plus. It should include the option for drag and drops
+                    ForEach($shotList) { shot in
+                        ShotElement(shot: shot)
+                    }
+                    
+                    Button {
+                        self.shotList.append(ShotIntermediate(distance: "10", lie: .green, type: .putt))
+                    } label: {
+                        Label {
+                            Text("Add shot")
+                        } icon: {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(.green)
+                        }
+
+                    }
+
+                    //TODO: make editable list in the style of the new item with a green plus. It should include the option for drag and drops, and the ability to slide to delete
+                    
                 }
             } label: {
                 Label("Shot Entry", systemImage: "figure.golf")
@@ -56,3 +68,10 @@ struct HoleByHole: View {
 //        HoleByHole()
 //    }
 //}
+
+struct ShotIntermediate : Identifiable {
+    let id: UUID = UUID()
+    var distance: String
+    var lie: Lie
+    var type: ShotType
+}
