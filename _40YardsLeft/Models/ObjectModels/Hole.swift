@@ -20,4 +20,30 @@ struct Hole : Codable, Equatable {
         return Position(lie: .tee, yardage: holeData.yardage)
     }
     
+    
+    
+}
+
+extension Hole {
+    var isComplete: Bool {
+        if shots.isEmpty {
+            return false
+        }
+        
+        return isHoled()
+        
+        
+    }
+    
+    
+    /// Finds if the last shot has was holed
+    ///
+    /// - Requires: The shot list must not be empty
+    ///
+    /// - Returns: True if the last shot was holed, false otherwise
+    private func isHoled() -> Bool {
+        precondition(!shots.isEmpty)
+        
+        return shots.last!.endPosition == .holed
+    }
 }

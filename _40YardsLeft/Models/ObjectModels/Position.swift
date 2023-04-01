@@ -27,6 +27,10 @@ struct Position : Codable, Equatable {
     }
 }
 
+extension Position {
+    static let holed = Position(lie: .green, yardage: .zero)
+}
+
 //MARK: Lie Enum
 enum Lie : String, Codable, Equatable, CaseIterable, Identifiable {
     
@@ -34,7 +38,7 @@ enum Lie : String, Codable, Equatable, CaseIterable, Identifiable {
     case rough = "Rough"
     case tee = "Tee"
     case bunker = "Sand"
-    case penalty = "Penatly"
+    case penalty = "Penalty"
     case recovery = "Recovery"
     case green = "Green"
 }
@@ -66,6 +70,22 @@ struct Distance : Codable, Equatable {
     init(feet: Int) {
         self.yardage = Double(feet * Self.FEET_IN_A_YARD)
     }
+    
+    static func meters(_ meters: Int) -> Distance {
+        return self.init(meters: meters)
+    }
+    
+    static func yards(_ yards: Int) -> Distance {
+        return self.init(yards: yards)
+    }
+    
+    static func feet(_ feet: Int) -> Distance {
+        return self.init(feet: feet)
+    }
+}
+
+extension Distance {
+    static let zero = Distance(yards: 0)
 }
 
 

@@ -12,14 +12,12 @@ import Firebase
 @main
 struct _40YardsLeftApp: App {
     
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
-    
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+
                 
         }
     }

@@ -19,7 +19,7 @@ struct Shot : Codable, Equatable {
 //MARK: ShotType Enum
 enum ShotType : String, Codable, CaseIterable {
     case drive = "Drive"
-    case approach = "Appraoch"
+    case approach = "Approach"
     case chip_pitch = "Chip/Pitch"
     case putt = "Putt"
     case penalty = "Penalty"
