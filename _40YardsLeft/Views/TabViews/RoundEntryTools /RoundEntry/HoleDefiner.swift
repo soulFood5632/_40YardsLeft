@@ -28,6 +28,8 @@ struct SingleHoleText: View {
     let holeNumber: Int
     var body: some View {
         
+        //TODO: add smart autofill for holedata so that par automatically updates with soft reference 
+        
             Text("\(holeNumber).")
                 .bold()
             

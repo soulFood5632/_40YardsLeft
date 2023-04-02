@@ -18,12 +18,12 @@ struct RoundEntry: View {
     @State private var newCourse = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 if course == nil {
                     Group {
                         GroupBox {
-                            PickACourse()
+                            PickACourse(course: self.$course)
                         } label: {
                             Label("Pick From Previous", systemImage: "list.bullet.clipboard")
                         }
@@ -48,6 +48,22 @@ struct RoundEntry: View {
                     .padding(.horizontal)
                 } else {
                     
+                    Text(course!.name)
+                        .font(.title)
+                        .bold()
+                    
+                    Divider()
+                    
+                    Text(course!.location.addressLine1)
+                
+                    Text("\(course!.location.city), \(course!.location.province.rawValue)")
+                    
+                    Text(course!.location.country.rawValue)
+                        .font(.title3)
+                    
+                    
+                    
+                    
                     GroupBox {
                         let unwrappedBinding = Binding<Course> {
                             return self.course!
@@ -55,12 +71,11 @@ struct RoundEntry: View {
                             self.course = newValue
                         }
                         
-                        
-                        
                         RoundPrepView(round: self.$round, course: unwrappedBinding)
                     } label: {
                         Label("Setup Round", systemImage: "slider.horizontal.3")
                     }
+                    .padding()
                 }
                 
                 

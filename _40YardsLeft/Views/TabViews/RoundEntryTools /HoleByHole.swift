@@ -9,8 +9,8 @@ import SwiftUI
 
 /// <#Description#>
 struct HoleByHole: View {
-    @Binding var round: Round
-    @Binding var holeNumber: Int {
+    @State var round: Round
+    @State var holeNumber: Int {
         // a task to complete prior to the update of the holeNumber
         willSet {
             Task {
@@ -18,6 +18,7 @@ struct HoleByHole: View {
             }
         }
     }
+
     
     /// A state variable which holds a map to each shotIntermediate for each hole in the round
     @State private var shotList: [[ShotIntermediate]] = {
@@ -144,6 +145,10 @@ struct HoleByHole: View {
                 let startPosition = Position(lie: .tee,
                                              yardage: hole.yardage)
                 //TODO: Imploment the autofill function here
+                
+                Task {
+                    try await DatabaseCommunicator.addCourse(course: self.round.course)
+                }
             }
 
     
@@ -179,7 +184,7 @@ struct HoleByHole_Previews: PreviewProvider {
     @State static private var holeNumber = 1
     @State private static var round = Round.example1
     static var previews: some View {
-        HoleByHole(round: $round, holeNumber: $holeNumber)
+        HoleByHole(round: round, holeNumber: holeNumber)
     }
 }
 

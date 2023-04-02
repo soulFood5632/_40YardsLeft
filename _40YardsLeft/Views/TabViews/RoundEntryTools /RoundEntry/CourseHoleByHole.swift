@@ -22,8 +22,8 @@ struct TeeBuffer {
 
 struct CourseHoleByHole: View {
     @State var buffer = TeeBuffer()
-    
     @Binding var course: Course
+    @Binding var showView: Bool
     
     @State private var numberOfHoles = 18
     
@@ -95,25 +95,39 @@ struct CourseHoleByHole: View {
             Button {
                 do {
                     self.course.addTee(try TeeBuffer.formulateTee(from: self.buffer))
+                    
+                    self.showView = false
+                    
+                    
                 } catch {
                     self.isAlert = (true, error.localizedDescription)
                 }
             } label: {
                 Label("Add Tee", systemImage: "plus.circle")
             }
+            .disabled(!self.isAddReady)
         }
-        
-        
+        .alert("Tee Creation Error", isPresented: self.$isAlert.0) {
+            //no addtional actions
+        } message: {
+            if let alert = self.isAlert.1 {
+                Text(alert)
+                //TODO: add more descriptive errors so the user can actually understand what is wrong
+            }
+        }
 
-        
-
-        
     }
 }
 
 extension CourseHoleByHole {
     
-    
+    private var isAddReady: Bool {
+        if buffer.holeData.isEmpty {
+            return false
+        }
+        
+        return !buffer.name.isEmpty
+    }
 
     
     private func addHoles(_ number: Int) {
@@ -131,7 +145,8 @@ extension Int: Identifiable {
 
 struct CourseHoleByHole_Previews: PreviewProvider {
     @State private static var course = Course.example1
+    @State private static var showView = true
     static var previews: some View {
-        CourseHoleByHole(course: $course)
+        CourseHoleByHole(course: $course, showView: self.$showView)
     }
 }

@@ -11,7 +11,7 @@ struct HomeView: View {
     @Binding var golfer: Golfer
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 GroupBox {
                     HStack {

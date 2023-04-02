@@ -8,15 +8,17 @@
 import Foundation
 
 //MARK: Course Struct
-struct Course : Codable, Equatable {
+struct Course : Codable, Equatable, Identifiable {
     private(set) var listOfTees: [Tee]
     var location: Address
     var name: String
+    let id: UUID
     
     init(listOfTees: [Tee], location: Address, name: String) {
         self.listOfTees = listOfTees
         self.location = location
         self.name = name
+        self.id = UUID()
     }
     
     init(location: Address, name: String) {
@@ -42,6 +44,13 @@ struct Course : Codable, Equatable {
         return listOfTees.contains(tee)
     }
     
+}
+
+extension Course: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+        _ = hasher.finalize()
+    }
 }
 
 //MARK: Course Extension
@@ -82,6 +91,7 @@ extension Course {
 }
 
 
+
 //MARK: Address Struct
 struct Address : Codable, Equatable {
     let addressLine1: String
@@ -102,6 +112,10 @@ enum Province: String, CaseIterable, Codable {
 enum Country: String, CaseIterable, Codable {
     case Canada = "Canada"
     case US = "United States"
+}
+
+extension Country: Identifiable {
+    var id: Self { self }
 }
 
 //MARK: Address extension
