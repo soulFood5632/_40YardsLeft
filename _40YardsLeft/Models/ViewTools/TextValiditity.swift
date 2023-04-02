@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /// A struct used to contain all the error checking mechanisms for
 struct TextValiditity {
@@ -75,6 +76,46 @@ struct TextValiditity {
             }
             return []
         }
+    }
+    
+    static func valueOfNumberWithin(range: Range<Double>) -> (String) -> [String] {
+        return { newValue in
+            if let numericalValue = Double(newValue) {
+                if !range.contains(numericalValue) {
+                    return ["Must be within " + range.lowerBound.toDecimalPlaces(0) + " and " + range.upperBound.toDecimalPlaces(0)]
+                }
+                return []
+            } else {
+                return ["Must be a number"]
+            }
+        }
+    }
+    
+    
+}
+
+extension Double {
+    
+    /// Gets the string of a decimal to a certain number of decimal places
+    ///
+    /// - Parameter numberOfDecimalPlaces: The number of decimal places you would like to get your number to
+    /// - Returns: A string containing the number with the number decimal places provided
+    func toDecimalPlaces(_ numberOfDecimalPlaces: Int) -> String {
+        return String(format: "%.\(numberOfDecimalPlaces)f", self)
+    }
+}
+
+extension Formatter {
+    static var wholeNumber: Formatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        return formatter
+    }
+    static func decimal(numOfDigits: Int)-> Formatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = numOfDigits
+        return formatter
     }
 }
 

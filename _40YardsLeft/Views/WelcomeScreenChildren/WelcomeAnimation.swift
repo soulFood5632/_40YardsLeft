@@ -27,9 +27,9 @@ struct WelcomeAnimation: View {
                 
                 let welcomeUserSize = animationMode.getSize(triggerValue: 1)
                 
-                let getStartedSize = animationMode.getSize(triggerValue: 2)
+                let getStartedSize = animationMode.getSize(triggerValue: 1)
                 
-                let loginSize: CGSize = animationMode.getSize(triggerValue: 3)
+                let loginSize: CGSize = animationMode.getSize(triggerValue: 1)
                 Group {
                     Text("Welcome User")
                         .foregroundColor(.white)

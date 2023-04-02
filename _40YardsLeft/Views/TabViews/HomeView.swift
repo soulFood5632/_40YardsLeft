@@ -56,7 +56,7 @@ struct HomeView: View {
                 .padding()
                 
                 NavigationLink {
-                    RoundView()
+                    RoundEntry()
                 } label: {
                     Text("add Round")
                 }

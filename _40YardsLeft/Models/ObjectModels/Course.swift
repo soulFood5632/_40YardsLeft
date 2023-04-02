@@ -9,7 +9,7 @@ import Foundation
 
 //MARK: Course Struct
 struct Course : Codable, Equatable {
-    var listOfTees: [Tee]
+    private(set) var listOfTees: [Tee]
     var location: Address
     var name: String
     
@@ -22,6 +22,19 @@ struct Course : Codable, Equatable {
     init(location: Address, name: String) {
             self.init(listOfTees: [], location: location, name: name)
         
+    }
+    
+    @discardableResult
+    /// Adds a new tee to this course
+    /// - Parameter tee: A tee to be added
+    /// - Returns: True if this tee was added succsefully exists, false if the tee has already been added.
+    mutating func addTee(_ tee: Tee) -> Bool {
+        if listOfTees.contains(tee) {
+            return false
+        }
+        
+        listOfTees.append(tee)
+        return true
     }
     
     
@@ -60,7 +73,7 @@ extension Course {
         ]
         let holeData = HoleData.massEntry(data: dataList)
         
-        let myTee = Tee(rating: 73.8, slope: 123, holeData: holeData)
+        let myTee = try! Tee(rating: 73.8, slope: 123, holeData: holeData, name: "Black")
         
         course.listOfTees.append(myTee)
         
@@ -76,17 +89,19 @@ struct Address : Codable, Equatable {
     let province: Province
     let country: Country
     
-    enum Province: String, CaseIterable, Codable {
-        case BC = "British Columbia"
-        case AB = "Alberta"
-        //TODO: complete this list
-    }
     
-    enum Country: String, CaseIterable, Codable {
-        case Canada = "Canada"
-        case US = "United States"
-    }
     
+}
+
+enum Province: String, CaseIterable, Codable {
+    case BC = "British Columbia"
+    case AB = "Alberta"
+    //TODO: complete this list
+}
+
+enum Country: String, CaseIterable, Codable {
+    case Canada = "Canada"
+    case US = "United States"
 }
 
 //MARK: Address extension
@@ -97,30 +112,36 @@ extension Address {
 
 
 //MARK: Tee Struct
-struct Tee : Codable, Equatable {
+struct Tee : Codable, Equatable, Hashable, Identifiable {
     var rating: Double
     var slope: Int
     var holeData: [HoleData]
+    var name: String
+    let id: UUID
     
     
     /// Creates a new instance of a tee
     ///
     /// - Warning: There are many important preconditions to be met when instantiating a tee object, please be mindful of them
     ///
+    /// - Throws: `inavlidSlope` when the slope is invalid
+    /// - Throws: `inavlidRating` when the rating is invalid
+    /// - Throws: `tooManyHoles` when the number of holes provided is larger than 18
+    /// - Throws: `inavlidHandicap` when the handicaps are not entered correctly, either there are duplicates or there is values which are not between 1 and 18.
+    ///
     /// - Parameters:
     ///   - rating: The rating of this tee which must be greater than 0
     ///   - slope: The slope of this tee which must satisfy: 55 <= slope <= 155
     ///   - holeData: The list of holeData which this tee comntains. All handicaps must be unqiue and must be of values between 1 and 18.
-    init(rating: Double, slope: Int, holeData: [HoleData]) {
+    init(rating: Double, slope: Int, holeData: [HoleData], name: String) throws {
         self.rating = rating
         self.slope = slope
         self.holeData = holeData
+        self.name = name
+        self.id = UUID()
         
-        do {
-            try self.isHoleDataValid()
-        } catch {
-            preconditionFailure(error.localizedDescription)
-        }
+        
+        try self.isHoleDataValid()
         
     }
     
@@ -138,7 +159,7 @@ struct Tee : Codable, Equatable {
     /// - Throws: `inavlidSlope` when the slope is invalid
     /// - Throws: `inavlidRating` when the rating is invalid
     /// - Throws: `tooManyHoles` when the number of holes provided is larger than 18
-    /// - Throws: `inavlidHandicas` when the handicaps are not entered correctly, either there are duplicates or there is values which are not between 1 andf 18.
+    /// - Throws: `inavlidHandicap` when the handicaps are not entered correctly, either there are duplicates or there is values which are not between 1 and 18.
     ///
     /// - Parameter tee: The tee you would like to see if it is valid.
     /// - Returns: True if the course is valid, false otherwise.
@@ -172,9 +193,24 @@ struct Tee : Codable, Equatable {
         return true
     }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+        _ = hasher.finalize()
+    }
+    
     
 }
 
+extension Tee {
+    /// The yardage of this teebox
+    var yardage: Int {
+        self.holeData.reduce(0) { partialResult, data in
+            return partialResult + Int(data.yardage.yardage)
+        }
+    }
+}
+
+//MARK: Array extension
 extension Array where Element: Hashable {
     
     var isUnique: Bool {
@@ -195,7 +231,9 @@ enum TeeError : Error {
 
 
 //MARK: Hole Data Struct
-struct HoleData : Codable, Equatable {
+struct HoleData: Codable, Equatable, Identifiable {
+    
+    let id: UUID
     
     /// The yardage pf the hole which must not be negative
     var yardage: Distance
@@ -204,7 +242,24 @@ struct HoleData : Codable, Equatable {
     /// The par of the hole, which must not be negative
     var par: Int
     
+    
+    /// Creates a new instance of HoleData
+    ///
+    /// - Parameters:
+    ///   - yardage: The yardage of the hole
+    ///   - handicap: The handicap of the hole
+    ///   - par: The par of this hole
+    init(yardage: Distance, handicap: Int, par: Int) {
+        self.id = UUID()
+        self.yardage = yardage
+        self.handicap = handicap
+        self.par = par
+    }
+    
+    
 }
+
+
 //MARK: HoleData Extension
 extension HoleData {
     
@@ -217,5 +272,7 @@ extension HoleData {
     static func massEntry(data: [(Distance, Int, Int)]) -> [HoleData] {
         return data.map { HoleData(yardage: $0.0, handicap: $0.1, par: $0.2) }
     }
+    
+    static let averageHole = HoleData(yardage: .yards(400), handicap: 10, par: 4)
 }
 
