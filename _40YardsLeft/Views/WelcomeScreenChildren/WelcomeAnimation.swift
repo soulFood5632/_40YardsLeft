@@ -56,7 +56,7 @@ struct WelcomeAnimation: View {
                     
                     .scaleEffect(getStartedSize)
                     
-                    
+                      
                     Group {
                         Button {
                             self.loginForm = true
@@ -71,6 +71,16 @@ struct WelcomeAnimation: View {
                             self.newUserForm = true
                         } label: {
                             Label("Create Account", systemImage: "person.crop.circle.badge.plus")
+                            
+                        }
+                        .buttonStyle(.borderedProminent)
+                        
+                        Button {
+                            Task {
+                                self.user = try await Authenticator.logIn(emailAddress: "loganu@gmail.com", password: "Magenta^2")
+                            }
+                        } label: {
+                            Label("Admin", systemImage: "person.crop.circle.badge.plus")
                             
                         }
                         .buttonStyle(.borderedProminent)

@@ -13,7 +13,22 @@ struct ScorecardView: View {
     @Binding var currentHole: Int
     
     var body: some View {
-        HoleButtons(round: round, holeNumber: self.$currentHole)
+        VStack {
+            GroupBox {
+                ScorecardImage(round: self.round)
+                    .padding(.vertical, 3)
+            } label: {
+                Label("Scorecard", systemImage: "square.grid.3x2")
+            }
+            .padding()
+            
+            GroupBox {
+                HoleButtons(round: round, holeNumber: self.$currentHole)
+            } label: {
+                Label("Navigation", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
+            }
+            .padding()
+        }
     }
 }
 

@@ -16,6 +16,8 @@ struct TeeBuffer {
     static func formulateTee(from buffer: TeeBuffer) throws -> Tee {
         return try Tee(rating: buffer.rating, slope: buffer.slope, holeData: buffer.holeData, name: buffer.name)
     }
+    
+    
 }
 
 
@@ -43,6 +45,7 @@ struct CourseHoleByHole: View {
                         TextField("Slope", value: self.$buffer.slope, formatter: .wholeNumber)
                             .textFieldStyle(.roundedBorder)
                             .keyboardType(.numberPad)
+                            
                         
                         
                         TextField("Rating", value: self.$buffer.rating, formatter: .decimal(numOfDigits: 1))
@@ -120,6 +123,8 @@ struct CourseHoleByHole: View {
 }
 
 extension CourseHoleByHole {
+    
+    
     
     private var isAddReady: Bool {
         if buffer.holeData.isEmpty {

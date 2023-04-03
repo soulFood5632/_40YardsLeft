@@ -222,6 +222,12 @@ extension Tee {
             return partialResult + Int(data.yardage.yardage)
         }
     }
+    
+    var par: Int {
+        self.holeData.reduce(0) { partialResult, data in
+            return partialResult + data.par
+        }
+    }
 }
 
 //MARK: Array extension

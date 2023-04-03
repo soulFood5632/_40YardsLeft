@@ -47,8 +47,74 @@ extension Round {
     /// - Returns: True if the hole is complete, false otherwise
     func isHoleFilled(_ hole: Int) -> Bool {
         precondition(hole > 0)
-        precondition(hole < self.holes.count)
-        return holes[hole].isComplete
+        precondition(hole <= self.holes.count)
+        //hole minus 1 becuase of natural indexing
+        return holes[hole - 1].isComplete
+    }
+    
+    
+    private func getFrontNine() -> [Hole] {
+        var frontNine = self.holes
+        frontNine.removeLast(9)
+        
+        return frontNine
+    }
+    
+    private func getBackNine() -> [Hole] {
+        var frontNine = self.holes
+        frontNine.removeFirst(9)
+        
+        return frontNine
+    }
+    
+    
+    /// The score of the golfer on this front nine thus far
+    var frontNineScore: Int {
+        let frontNine = self.getFrontNine()
+        return frontNine.map { $0.score }.reduce(0) { partialResult, score in
+            return partialResult + score
+        }
+    }
+    
+    var backNineScore: Int {
+        let backNine = self.getBackNine()
+        return backNine.map { $0.score }.reduce(0) { partialResult, score in
+            return partialResult + score
+        }
+    }
+    
+    var roundScore: Int {
+        return backNineScore + frontNineScore
+    }
+    
+    var frontNinePar: Int {
+        let frontNine = self.getFrontNine()
+        return frontNine.map { $0.holeData.par }.reduce(0) { partialResult, par in
+            return partialResult + par
+        }
+    }
+    
+    var backNinePar: Int {
+        let frontNine = self.getFrontNine()
+        return frontNine.map { $0.holeData.par }.reduce(0) { partialResult, par in
+            return partialResult + par
+        }
+    }
+    
+    var totalPar: Int {
+        return backNinePar + frontNinePar
+    }
+    
+    var scoreToPar: Int {
+        return roundScore - totalPar
+    }
+    
+    func numberOfHolesEntered() -> Int {
+        return self.holes.map { $0.score}.filter { $0 != 0 }.count
+    }
+    /// Is the round complete (do all holes have entries)
+    var isComplete: Bool {
+        return numberOfHolesEntered() == 18
     }
 }
 

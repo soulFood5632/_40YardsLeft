@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Hole : Codable, Equatable {
     
@@ -31,9 +32,24 @@ extension Hole {
         }
         
         return isHoled()
-        
-        
     }
+    
+    var score: Int { self.shots.count }
+    
+    var scoreToPar: Int { score - holeData.par }
+    
+    static func getColourFromScore(score: Int) -> Color {
+        if score == 0 {
+            return .blue
+        }
+        if score < 0 {
+            return .red
+        }
+        
+        return .black
+    }
+    
+
     
     
     /// Finds if the last shot has was holed

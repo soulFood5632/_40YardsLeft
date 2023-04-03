@@ -43,6 +43,8 @@
 		0260D1E629D8EAC400EFAE79 /* CourseHoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1E529D8EAC400EFAE79 /* CourseHoleByHole.swift */; };
 		0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1E729D8FD3300EFAE79 /* HoleDefiner.swift */; };
 		0260D1EA29D92EDE00EFAE79 /* RoundPrepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1E929D92EDE00EFAE79 /* RoundPrepView.swift */; };
+		0260D1EC29DA214400EFAE79 /* RoundSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1EB29DA214400EFAE79 /* RoundSetupView.swift */; };
+		0260D1F029DA74A000EFAE79 /* ScorecardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1EF29DA74A000EFAE79 /* ScorecardImage.swift */; };
 		02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */; };
 		02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */; };
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
@@ -135,6 +137,8 @@
 		0260D1E529D8EAC400EFAE79 /* CourseHoleByHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHoleByHole.swift; sourceTree = "<group>"; };
 		0260D1E729D8FD3300EFAE79 /* HoleDefiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleDefiner.swift; sourceTree = "<group>"; };
 		0260D1E929D92EDE00EFAE79 /* RoundPrepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPrepView.swift; sourceTree = "<group>"; };
+		0260D1EB29DA214400EFAE79 /* RoundSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSetupView.swift; sourceTree = "<group>"; };
+		0260D1EF29DA74A000EFAE79 /* ScorecardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardImage.swift; sourceTree = "<group>"; };
 		02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
 		02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _40YardsLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftApp.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			children = (
 				0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */,
 				0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */,
+				0260D1EF29DA74A000EFAE79 /* ScorecardImage.swift */,
 			);
 			path = ScoreCardHelpers;
 			sourceTree = "<group>";
@@ -240,13 +245,30 @@
 			isa = PBXGroup;
 			children = (
 				0260D1DE29D8E38200EFAE79 /* PickACourse.swift */,
-				0260D1E929D92EDE00EFAE79 /* RoundPrepView.swift */,
-				0260D1E129D8E48E00EFAE79 /* CreateCourse.swift */,
-				0260D1E529D8EAC400EFAE79 /* CourseHoleByHole.swift */,
-				0260D1E729D8FD3300EFAE79 /* HoleDefiner.swift */,
-				0260D1E329D8E74400EFAE79 /* BasicCourseInfo.swift */,
+				0260D1ED29DA24DA00EFAE79 /* RoundSetup */,
+				0260D1EE29DA24FA00EFAE79 /* CreateCourse */,
 			);
 			path = RoundEntry;
+			sourceTree = "<group>";
+		};
+		0260D1ED29DA24DA00EFAE79 /* RoundSetup */ = {
+			isa = PBXGroup;
+			children = (
+				0260D1EB29DA214400EFAE79 /* RoundSetupView.swift */,
+				0260D1E929D92EDE00EFAE79 /* RoundPrepView.swift */,
+				0260D1E529D8EAC400EFAE79 /* CourseHoleByHole.swift */,
+				0260D1E729D8FD3300EFAE79 /* HoleDefiner.swift */,
+			);
+			path = RoundSetup;
+			sourceTree = "<group>";
+		};
+		0260D1EE29DA24FA00EFAE79 /* CreateCourse */ = {
+			isa = PBXGroup;
+			children = (
+				0260D1E129D8E48E00EFAE79 /* CreateCourse.swift */,
+				0260D1E329D8E74400EFAE79 /* BasicCourseInfo.swift */,
+			);
+			path = CreateCourse;
 			sourceTree = "<group>";
 		};
 		02E9DB8E29C0FC2700AA15FA = {
@@ -581,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0260D1F029DA74A000EFAE79 /* ScorecardImage.swift in Sources */,
 				0260D1DF29D8E38200EFAE79 /* PickACourse.swift in Sources */,
 				02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */,
 				02FEA1C729D3372600BCD7A4 /* RoundEntry.swift in Sources */,
@@ -609,6 +632,7 @@
 				0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */,
 				0260D1E629D8EAC400EFAE79 /* CourseHoleByHole.swift in Sources */,
 				02FEA1A629CF7D4700BCD7A4 /* Course.swift in Sources */,
+				0260D1EC29DA214400EFAE79 /* RoundSetupView.swift in Sources */,
 				02FEA1AE29CF9CEA00BCD7A4 /* Round.swift in Sources */,
 				02FEA19629CF785C00BCD7A4 /* Golfer.swift in Sources */,
 				02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */,

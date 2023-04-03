@@ -45,6 +45,7 @@ struct CreateCourse: View {
                     //TODO: add action to drop out of this view and populate bottom view with this new course
                     
                     self.course = createCourse()
+                    self.showView = false
                     
                 } label: {
                     Label("Save", systemImage: "square.and.arrow.down")
@@ -53,11 +54,6 @@ struct CreateCourse: View {
             }
         }
         .padding()
-        .onChange(of: self.course) { course in
-            if course != nil {
-                self.showView = false
-            }
-        }
     }
 }
 

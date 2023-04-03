@@ -14,6 +14,8 @@ struct PickACourse: View {
     @State private var queryResults = [Course]()
     
     @Binding var course: Course?
+    
+    @State private var chosenCourse: Course?
     var body: some View {
         VStack {
             
@@ -36,17 +38,30 @@ struct PickACourse: View {
                 
 
             }
-            
-            GroupBox {
-                Picker(selection: self.$course) {
-                    ForEach(queryResults) { result in
-                        /*@START_MENU_TOKEN@*/Text(result.name)/*@END_MENU_TOKEN@*/
+            if self.chosenCourse != nil {
+                GroupBox {
+                    
+
+                    Picker(selection: self.unwrappedChosenCourseBinding) {
+                        ForEach(queryResults) { result in
+                            /*@START_MENU_TOKEN@*/Text(result.name)/*@END_MENU_TOKEN@*/
+                        }
+                    } label: {
+                        //empty label becuase it doesn't do anything
                     }
+                    
+                    Button {
+                        withAnimation {
+                            self.course = self.chosenCourse
+                        }
+                    } label: {
+                        Label("Save Course", systemImage: "checkmark")
+                    }
+                    .buttonStyle(.bordered)
                 } label: {
-                    //empty label becuase it doesn't do anything
+                    Label("Select Course", systemImage: "cursorarrow")
                 }
-            } label: {
-                Label("Select Course", systemImage: "cursorarrow")
+                .animation(.easeInOut, value: self.chosenCourse)
             }
             
 
@@ -55,12 +70,19 @@ struct PickACourse: View {
         .onAppear {
             Task {
                 try await self.queryResults.append(contentsOf: DatabaseCommunicator.getCourses())
-                self.course = queryResults.randomElement()
+                self.chosenCourse = queryResults.first
             }
         }
-        .onChange(of: course) { newCourse in
+        .onChange(of: self.queryResults) { newQuery in
+            if let chosenCourse = self.chosenCourse {
+                if !newQuery.contains(chosenCourse) {
+                    self.chosenCourse = queryResults.first
+                }
+            }
+        }
+        .onChange(of: chosenCourse) { newCourse in
             if newCourse == nil {
-                self.course = queryResults.randomElement()
+                self.chosenCourse = queryResults.first
             }
         }
         //TODO: Complete a set of drop down menus so you can choose from database
@@ -75,6 +97,15 @@ extension PickACourse {
         self.queryResults.filter { course in
             return course.location.country == self.country
         }
+    }
+    
+    private var unwrappedChosenCourseBinding: Binding<Course> {
+        Binding {
+            self.chosenCourse!
+        } set: { newCourse in
+            self.chosenCourse = newCourse
+        }
+
     }
     
     

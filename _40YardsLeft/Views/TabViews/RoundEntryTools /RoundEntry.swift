@@ -17,78 +17,65 @@ struct RoundEntry: View {
     
     @State private var newCourse = false
     
+    @State private var startRound = false
+    
     var body: some View {
         NavigationStack {
             VStack {
-                if course == nil {
-                    Group {
-                        GroupBox {
-                            PickACourse(course: self.$course)
-                        } label: {
-                            Label("Pick From Previous", systemImage: "list.bullet.clipboard")
-                        }
-                        
-                        HStack {
-                            Text("OR")
-                                .font(.title3)
-                                .bold()
-                        }
-                        
-                        GroupBox {
-                            Button {
-                                self.newCourse = true
-                            } label: {
-                                Text("Create Course")
-                            }
-                            .buttonStyle(.borderedProminent)
-                        } label: {
-                            Label("New Course", systemImage: "pencil")
-                        }
+                Group {
+                    GroupBox {
+                        PickACourse(course: self.$course)
+                    } label: {
+                        Label("Pick From Previous", systemImage: "list.bullet.clipboard")
                     }
-                    .padding(.horizontal)
-                } else {
                     
-                    Text(course!.name)
-                        .font(.title)
-                        .bold()
-                    
-                    Divider()
-                    
-                    Text(course!.location.addressLine1)
-                
-                    Text("\(course!.location.city), \(course!.location.province.rawValue)")
-                    
-                    Text(course!.location.country.rawValue)
-                        .font(.title3)
-                    
-                    
-                    
+                    HStack {
+                        Text("OR")
+                            .font(.title3)
+                            .bold()
+                    }
                     
                     GroupBox {
-                        let unwrappedBinding = Binding<Course> {
-                            return self.course!
-                        } set: { newValue in
-                            self.course = newValue
+                        Button {
+                            self.newCourse = true
+                        } label: {
+                            Text("Create Course")
                         }
-                        
-                        RoundPrepView(round: self.$round, course: unwrappedBinding)
+                        .buttonStyle(.borderedProminent)
                     } label: {
-                        Label("Setup Round", systemImage: "slider.horizontal.3")
+                        Label("New Course", systemImage: "pencil")
                     }
-                    .padding()
+                }
+                .padding(.horizontal)
+            }
+            
+        }
+        .onAppear {
+            // I think we want to reset the cours when this view is opened
+            self.course = nil
+        }
+        .navigationDestination(isPresented: self.$startRound) {
+            if course != nil {
+                
+                let unwrappedBinding = Binding<Course> {
+                    return self.course!
+                } set: { newValue in
+                    self.course = newValue
                 }
                 
-                
-                
-
+                RoundSetupView(course: unwrappedBinding, round: self.$round)
             }
-            .navigationTitle("Round Entry")
-            .sheet(isPresented: self.$newCourse) {
-                // TODO: add on dismiss functionaility, like populate the optional course with the new value
-            } content: {
-                CreateCourse(course: self.$course, showView: self.$newCourse)
+        }
+        .onChange(of: self.course, perform: { newCourse in
+            if newCourse != nil {
+                self.startRound = true
             }
-
+        })
+        .navigationTitle("Course Selection")
+        .sheet(isPresented: self.$newCourse) {
+            CreateCourse(course: self.$course, showView: self.$newCourse)
+            
+            
         }
     }
 }

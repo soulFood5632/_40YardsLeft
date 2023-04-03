@@ -33,7 +33,7 @@ struct HoleByHole: View {
     @State private var showScorecard = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             let hole = round.tee.holeData[holeNumber - 1]
             VStack {
                 Text("Hole \(holeNumber)")
@@ -97,7 +97,7 @@ struct HoleByHole: View {
 
             }
             .toolbar {
-                ToolbarItem (placement: .navigationBarTrailing) {
+                ToolbarItem (placement: .primaryAction) {
                     if holeNumber == 18 {
                         NavigationLink {
                             EmptyView()
@@ -116,7 +116,7 @@ struct HoleByHole: View {
 
                 }
                 
-                ToolbarItem (placement: .navigationBarLeading) {
+                ToolbarItem (placement: .secondaryAction) {
                     if holeNumber > 1 {
                         Button {
                             self.holeNumber -= 1
@@ -141,12 +141,14 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber)
                 //TODO: mayeb add a showView so it knows when to drop its gaurd after a new hole has been selected
             })
+            .navigationTitle("Score Entry")
             .onAppear {
                 let startPosition = Position(lie: .tee,
                                              yardage: hole.yardage)
                 //TODO: Imploment the autofill function here
                 
                 Task {
+                    //adds this course to the database
                     try await DatabaseCommunicator.addCourse(course: self.round.course)
                 }
             }

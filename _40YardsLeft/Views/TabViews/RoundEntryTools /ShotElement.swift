@@ -16,23 +16,14 @@ struct ShotElement: View {
             
         HStack {
             
-            let yardageBinding = Binding<String> {
-                return "\(self.shot.position.yardage.yardage)"
-            } set: { newValue in
-                if let yardage = Int(newValue) {
-                    self.shot.position.yardage = Distance(yards: yardage)
-                } else {
-                    self.shot.position.yardage = Distance(yards: 0)
-                }
-            }
-            
-            
-            TextField("Yardage", text: yardageBinding)
+            TextField("Yardage", value: $shot.position.yardage.yardage, formatter: .wholeNumber)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, alignment: .center)
                 .keyboardType(.numberPad)
                 .textContentType(.none)
                 .font(.system(size: 15))
+            
+                
             
             // TODO: make this a custom binding which actually works. May have to implement testing on the simulator.
             
