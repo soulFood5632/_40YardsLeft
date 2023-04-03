@@ -33,6 +33,7 @@ struct IndividualButton: View {
         if activeHole == buttonNumber {
             return .gray.opacity(0.6)
         }
+        
         if round.isHoleFilled(self.buttonNumber) {
             return .green.opacity(0.6)
         }

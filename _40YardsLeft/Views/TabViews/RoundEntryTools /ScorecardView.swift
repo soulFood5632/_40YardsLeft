@@ -20,7 +20,7 @@ struct ScorecardView: View {
             } label: {
                 Label("Scorecard", systemImage: "square.grid.3x2")
             }
-            .padding()
+            .padding(.horizontal)
             
             GroupBox {
                 HoleButtons(round: round, holeNumber: self.$currentHole)

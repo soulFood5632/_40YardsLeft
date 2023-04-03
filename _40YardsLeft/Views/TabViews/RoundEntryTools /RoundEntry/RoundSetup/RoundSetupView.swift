@@ -16,25 +16,23 @@ struct RoundSetupView: View {
             Text(course.name)
                 .font(.title)
                 .bold()
+                .multilineTextAlignment(.center)
             
             Divider()
             
             Text(course.location.addressLine1)
             
-            Text("\(course.location.city), \(course.location.province.rawValue)")
-            
-            Text(course.location.country.rawValue)
-                .font(.title3)
-            
-            GroupBox {
+            Text("\(course.location.city), \(course.location.province.rawValue), \(course.location.country.rawValue)")
+        
                 
-                RoundPrepView(round: self.$round, course: self.$course)
-            } label: {
-                Label("Prepare Round", systemImage: "slider.horizontal.3")
-            }
+            
+            
+                
+            RoundPrepView(round: self.$round, course: self.$course)
             .padding()
-            .navigationTitle("Round Preperation")
+            
         }
+        .navigationTitle("Round Preperation")
     }
 }
 
