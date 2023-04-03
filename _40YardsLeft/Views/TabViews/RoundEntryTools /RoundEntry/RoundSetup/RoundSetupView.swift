@@ -24,15 +24,12 @@ struct RoundSetupView: View {
             
             Text("\(course.location.city), \(course.location.province.rawValue), \(course.location.country.rawValue)")
         
-                
-            
-            
-                
+
             RoundPrepView(round: self.$round, course: self.$course)
             .padding()
             
         }
-        .navigationTitle("Round Preperation")
+        
     }
 }
 

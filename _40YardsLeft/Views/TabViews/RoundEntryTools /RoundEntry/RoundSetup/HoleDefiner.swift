@@ -34,6 +34,12 @@ struct SingleHoleText: View {
                 .bold()
             
             TextField("Yardage", value: self.$holeData.yardage.yardage, formatter: .wholeNumber)
+            .onChange(of: self.holeData.yardage, perform: { yardage in
+                self.holeData.par = ShotPredictor.getParFromYardage(distance: yardage)
+            })
+            .onAppear {
+                self.holeData.par = ShotPredictor.getParFromYardage(distance: self.holeData.yardage)
+            }
             
             Picker("", selection: self.$holeData.par) {
                 ForEach(possiblePars) { par in
@@ -47,11 +53,7 @@ struct SingleHoleText: View {
                 }
             }
             
-        
-            
-            
-            
-        
+
     }
     
     
@@ -74,5 +76,28 @@ struct HoleDefiner_Previews: PreviewProvider {
     @State private static var holeData = [HoleData(yardage: .yards(400), handicap: 12, par: 10)]
     static var previews: some View {
         HoleDefiner(holeDataList: self.$holeData )
+    }
+}
+
+extension ShotPredictor {
+    /// Gets a predicted par from the provided yardage.
+    ///
+    /// The values will correspond as follows
+    ///  - < 250 yards -> 3
+    ///  - \> 500 yards -> 5
+    ///  - Otherwise -> 4
+    ///
+    ///
+    /// - Parameter distance: The distance you would like to calculate the expected par of
+    /// - Returns: The expected par value
+    static func getParFromYardage(distance: Distance) -> Int {
+        if distance.yardage < 250 {
+            return 3
+        }
+        if distance.yardage > 500 {
+            return 5
+        }
+        
+        return 4
     }
 }

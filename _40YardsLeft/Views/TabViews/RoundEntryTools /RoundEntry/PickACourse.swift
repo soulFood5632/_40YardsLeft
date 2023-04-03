@@ -55,7 +55,7 @@ struct PickACourse: View {
                             self.course = self.chosenCourse
                         }
                     } label: {
-                        Label("Save Course", systemImage: "checkmark")
+                        Label("Confirm", systemImage: "checkmark")
                     }
                     .buttonStyle(.bordered)
                 } label: {

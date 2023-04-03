@@ -13,6 +13,7 @@ struct HoleByHole: View {
     @State var holeNumber: Int {
         // a task to complete prior to the update of the holeNumber
         willSet {
+            //TODO: Fix this mechanism beucase it is bugged
             Task {
                 await self.postShots(for: self.holeNumber)
             }
@@ -97,48 +98,38 @@ struct HoleByHole: View {
 
             }
             .toolbar {
-                ToolbarItem (placement: .primaryAction) {
-                    if holeNumber == 18 {
-                        NavigationLink {
-                            EmptyView()
-                            //TODO: add round overview page
-                        } label: {
-                            Label("Finish Round", systemImage: "checkmark")
-                        }
-                        
-                    } else {
-                        Button {
-                            self.holeNumber += 1
-                        } label: {
-                            Label("Next Hole", systemImage: "arrow.forward.circle")
-                        }
-                    }
-
-                }
                 
-                ToolbarItem (placement: .secondaryAction) {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    
                     if holeNumber > 1 {
                         Button {
                             self.holeNumber -= 1
-                        
+                            
                         } label: {
                             Label("Last Hole", systemImage: "arrow.backward.circle")
                         }
-
+                        
+                    }
+                    
+                    Spacer()
+                    Button {
+                        self.holeNumber += 1
+                    } label: {
+                        Label("Next Hole", systemImage: "arrow.forward.circle")
                     }
                 }
                 
-                ToolbarItem (placement: .bottomBar) {
+                
+                ToolbarItem (placement: .primaryAction) {
                     Button {
                         self.showScorecard = true
                     } label: {
                         Label("Scorecard", systemImage: "tablecells")
                     }
-
                 }
             }
             .sheet(isPresented: self.$showScorecard, content: {
-                ScorecardView(round: self.round, currentHole: self.$holeNumber)
+                ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
                 //TODO: mayeb add a showView so it knows when to drop its gaurd after a new hole has been selected
             })
             .navigationTitle("Score Entry")
@@ -152,6 +143,7 @@ struct HoleByHole: View {
                     try await DatabaseCommunicator.addCourse(course: self.round.course)
                 }
             }
+            
 
     
                 

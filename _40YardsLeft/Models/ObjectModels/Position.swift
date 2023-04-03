@@ -86,6 +86,7 @@ struct Distance : Codable, Equatable {
 
 extension Distance {
     static let zero = Distance(yards: 0)
+    
 }
 
 

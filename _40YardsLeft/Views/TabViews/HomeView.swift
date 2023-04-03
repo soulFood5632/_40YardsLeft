@@ -23,7 +23,7 @@ struct HomeView: View {
                                         Text("Handicap:")
                                             .bold()
                                         //TODO: make to only 1 digit
-                                        Text("\(golfer.handicap)")
+                                        Text("\(golfer.handicap, format: .number)")
                                     }
                                     
                                     GridRow {

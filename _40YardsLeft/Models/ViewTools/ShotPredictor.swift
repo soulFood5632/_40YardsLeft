@@ -8,7 +8,10 @@
 import Foundation
 
 struct ShotPredictor {
-    static func predictedNextLocation(_ position: Position) -> Position {
+    
+    let driveDistance: Int
+
+    func predictedNextLocation(_ position: Position) -> Position {
         switch position.lie {
         case .tee:
             return expectShotFromTee(distance: position.yardage)
@@ -17,7 +20,21 @@ struct ShotPredictor {
         }
     }
     
-    private static func expectShotFromTee(distance: Distance) -> Position {
-        return Position(lie: .fairway, yardage: Distance(yards: Int(distance.yardage) - 280))
+    
+    private func expectShotFromTee(distance: Distance) -> Position {
+        if distance.yardage < 250 {
+            return Position(lie: .green, yardage: Distance(feet: 35))
+        }
+        
+        let expectedYardage = Int(distance.yardage) - self.driveDistance
+        
+        if expectedYardage > 90 {
+            return Position(lie: .fairway, yardage: Distance(yards: expectedYardage))
+        }
+        
+        return Position(lie: .fairway, yardage: Distance(yards: 90))
     }
+    
+    
+    
 }

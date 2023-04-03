@@ -11,6 +11,7 @@ struct ScorecardView: View {
     let round: Round
     
     @Binding var currentHole: Int
+    @Binding var showView: Bool
     
     var body: some View {
         VStack {
@@ -29,13 +30,17 @@ struct ScorecardView: View {
             }
             .padding()
         }
+        .onChange(of: self.currentHole) { _ in
+            self.showView = false
+        }
     }
 }
 
 
 struct ScorecardView_Previews: PreviewProvider {
     @State private static var currentHole = 10
+    @State private static var showView = true
     static var previews: some View {
-        ScorecardView(round: .example1, currentHole: self.$currentHole)
+        ScorecardView(round: .example1, currentHole: self.$currentHole, showView: self.$showView)
     }
 }

@@ -7,17 +7,36 @@
 
 import SwiftUI
 
+//MARK: Round Setup Buffer
 struct RoundSetupBuffer {
     var tee: Tee?
     var date: Date = .now
+    
+    
+    /// Creates a round from the provided tee buffer.
+    ///
+    /// - Requires: The tee in this buffer is not nil.
+    ///
+    /// - Requires: The tee is valid and is one of the tees on the provided course.
+    ///
+    /// - Parameter course: The course in which this round will be created on.
+    /// - Returns: A round contaning the provided inforamtion in the buffer.
+    func createRound(course: Course) -> Round {
+        precondition(tee != nil)
+        // there should be now way
+        return try! Round(course: course, tee: self.tee!, date: self.date)
+    }
+    
 }
 
+
+
+//MARK: Round Prep View
 struct RoundPrepView: View {
     @Binding var round: Round?
     @Binding var course: Course
     
-    @State private var tee: Tee?
-    @State private var date = Date.now
+    @State private var buffer = RoundSetupBuffer()
     
     @State private var isCreateNewTee = false
 
@@ -27,7 +46,7 @@ struct RoundPrepView: View {
                 GroupBox {
                     List {
                         ForEach(course.listOfTees) { tee in
-                            let isHighlighted = self.tee == tee
+                            let isHighlighted = self.buffer.tee == tee
                             HStack {
                                 Text("\(tee.name)")
                                     .bold()
@@ -41,9 +60,9 @@ struct RoundPrepView: View {
                             }
                             .onTapGesture {
                                 if isHighlighted {
-                                    self.tee = nil
+                                    self.buffer.tee = nil
                                 } else {
-                                    self.tee = tee
+                                    self.buffer.tee = tee
                                 }
                             }
                             .foregroundColor(isHighlighted ? .primary : .secondary)
@@ -75,7 +94,7 @@ struct RoundPrepView: View {
                     
                     Form {
                         
-                        DatePicker(selection: self.$date) {
+                        DatePicker(selection: self.$buffer.date) {
                             Image(systemName: "calendar.badge.clock")
                         }
                         .datePickerStyle(.compact)
@@ -91,12 +110,13 @@ struct RoundPrepView: View {
                 
                 
                 NavigationLink {
-                    // tee can be safely unwrapped here bc the button is disabled when the value is nil.
-                    if let round = self.round {
+                    //Create the new round when this button is pressed.
+                    if self.isReady {
+                        let round = self.buffer.createRound(course: self.course)
+                        
                         HoleByHole(round: round, holeNumber: 1)
-                        
-                        
                     }
+                    
                     
                 } label: {
                     Label("Start Round", systemImage: "figure.golf")
@@ -113,16 +133,15 @@ struct RoundPrepView: View {
     }
 }
 
+//MARK: Round Prep Helpers
 extension RoundPrepView {
     private var hasTees: Bool {
         return !course.listOfTees.isEmpty
     }
     
     private var isReady: Bool {
-        //TODO: fill this oput with new conditions
-        return self.tee != nil
-            
-        
+        //TODO: fill this out with new conditions
+        return self.buffer.tee != nil
     }
 }
 
