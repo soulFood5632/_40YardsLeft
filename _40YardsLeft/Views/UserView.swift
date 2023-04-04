@@ -11,8 +11,7 @@ import FirebaseAuth
 struct UserView: View {
     @Binding var golfer: Golfer
     
-    
-    
+
     var body: some View {
         NavigationStack {
             

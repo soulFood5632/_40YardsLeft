@@ -23,4 +23,5 @@ enum ShotType : String, Codable, CaseIterable {
     case chip_pitch = "Chip/Pitch"
     case putt = "Putt"
     case penalty = "Penalty"
+    case other = "Other"
 }

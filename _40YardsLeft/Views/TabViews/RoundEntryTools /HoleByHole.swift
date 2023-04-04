@@ -134,8 +134,7 @@ struct HoleByHole: View {
             })
             .navigationTitle("Score Entry")
             .onAppear {
-                let startPosition = Position(lie: .tee,
-                                             yardage: hole.yardage)
+                
                 //TODO: Imploment the autofill function here
                 
                 Task {

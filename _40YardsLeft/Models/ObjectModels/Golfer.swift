@@ -10,6 +10,8 @@ import Firebase
 
 struct Golfer : Codable, Equatable {
     
+    private static let MINUMUM_SHOTS_FOR_ANALYSIS = 1000
+    
     let firebaseID: String
     private(set) var rounds: [Round]
     var gender : Gender
@@ -40,6 +42,46 @@ extension Golfer {
         
         self.rounds.append(round)
         return true
+    }
+    
+    
+    
+    
+}
+
+extension Golfer {
+    var shotPredictor: UserDistanceValues {
+        let shots = self.getShots()
+        if shots.count < Self.MINUMUM_SHOTS_FOR_ANALYSIS {
+            return UserDistanceValues()
+        }
+        //TODO: finish implementing this method.
+        return UserDistanceValues()
+        
+        
+    }
+    
+    private static func getDriveDistance(shots: [Shot]) -> Double {
+        return 0
+        //TODO: finish implementing this method
+    }
+    
+    
+    /// Gets all of the shots of this golfer.
+    /// - Returns: A list containing all of the shots of the golfer
+    private func getShots() -> [Shot] {
+        return Array.combine(arrays: self.rounds.map { $0.getShots })
+    }
+}
+
+extension Array {
+    static func combine(arrays: [[Element]]) -> [Element] {
+        arrays.reduce([Element]()) { partialResult, list in
+            var list = partialResult
+            list.append(contentsOf: list)
+            return list
+            
+        }
     }
 }
 

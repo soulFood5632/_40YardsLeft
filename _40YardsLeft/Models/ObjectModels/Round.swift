@@ -116,6 +116,15 @@ extension Round {
     var isComplete: Bool {
         return numberOfHolesEntered() == 18
     }
+    
+    var getShots: [Shot] {
+        return self.holes.map { $0.shots }.reduce([Shot]()) { partialresult, newShotList in
+            var tempArr = partialresult
+            tempArr.append(contentsOf: newShotList)
+            return partialresult
+        }
+    }
+    
 }
 
 enum GolfErrors : Error {
