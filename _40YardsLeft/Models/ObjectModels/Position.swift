@@ -12,6 +12,7 @@ import Foundation
 struct Position : Codable, Equatable {
     
     var lie: Lie
+
     var yardage: Distance
     
     
@@ -50,39 +51,42 @@ extension Lie {
 //MARK: Distance Struct
 
 /// <#Description#>
-struct Distance : Codable, Equatable {
-    var yardage: Double
-    var feet: Double { self.yardage * Self.FEET_IN_A_YARD }
-    var meters: Double { self.yardage * Self.METERS_IN_A_YARD }
+struct Distance : Codable {
+    /// The distance value in yards
+    var yards: Double
+    ///The distance value in feet
+    var feet: Double { self.yards * Self.FEET_IN_A_YARD }
+    /// the distance value in meters
+    var meters: Double { self.yards * Self.METERS_IN_A_YARD }
     
     private static let METERS_IN_A_YARD = 1.09361
     private static let FEET_IN_A_YARD: Double = 3
     
     init(yards: Int) {
-        self.yardage = Double(yards)
+        self.yards = Double(yards)
     }
     
     init(yards: Double) {
-        self.yardage = yards
+        self.yards = yards
     }
     
     /// Creates a new distance instance from meters
     ///
     /// - Parameter meters: The number of meters you would like to
     init(meters: Int) {
-        self.yardage = Double(meters) * Self.METERS_IN_A_YARD
+        self.yards = Double(meters) * Self.METERS_IN_A_YARD
     }
     
     init(meters: Double) {
-        self.yardage = meters * Self.METERS_IN_A_YARD
+        self.yards = meters * Self.METERS_IN_A_YARD
     }
     
     init(feet: Int) {
-        self.yardage = Double(feet) * Self.FEET_IN_A_YARD
+        self.yards = Double(feet) * Self.FEET_IN_A_YARD
     }
     
     init(feet: Double) {
-        self.yardage = feet * Self.FEET_IN_A_YARD
+        self.yards = feet * Self.FEET_IN_A_YARD
     }
     
     static func meters(_ meters: Int) -> Distance {
@@ -108,6 +112,7 @@ struct Distance : Codable, Equatable {
     static func feet(_ feet: Double) -> Distance {
         return self.init(feet: feet)
     }
+    
 }
 
 //MARK: Distance -> default properties
@@ -115,5 +120,44 @@ extension Distance {
     static let zero = Distance(yards: 0)
     
 }
+//MARK: Distance Operators
+extension Distance : AdditiveArithmetic {
+    static func + (rhs: Distance, lhs: Distance) -> Distance {
+        return .yards(rhs.yards + lhs.yards)
+    }
+    
+    static func - (rhs: Distance, lhs: Distance) -> Distance {
+        return .yards(rhs.yards - lhs.yards)
+    }
+    
+}
+//MARK: Distance equatable implomentation
+extension Distance: Equatable {
+    static func == (lhs: Distance, rhs: Distance) -> Bool {
+        return lhs.yards == rhs.yards
+    }
+}
+//MARK: Distance Comparable Implemention
+extension Distance: Comparable {
+    static func < (lhs: Distance, rhs: Distance) -> Bool {
+        return lhs.yards < rhs.yards
+    }
+    
+    
+}
+
+//MARK: Distance Methods
+extension Distance {
+    
+    /// Multiples/scales the current distance by the provided factor.
+    /// - Parameter factor: A double represnting the factor by which you are looking to scale the distance by.
+    /// - Returns: A distance containing the new scaled value
+    func scaleBy(_ factor: Double) -> Distance {
+        return .yards(self.yards * factor)
+    }
+    
+
+}
+
 
 

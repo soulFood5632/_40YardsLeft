@@ -16,6 +16,10 @@ struct Shot : Codable, Equatable {
     //TODO: add club??
 }
 
+extension Shot {
+    var advancementYardage: Distance { .yards(endPosition.yardage.yardage - startPosition.yardage.yardage) }
+}
+
 //MARK: ShotType Enum
 enum ShotType : String, Codable, CaseIterable {
     case drive = "Drive"

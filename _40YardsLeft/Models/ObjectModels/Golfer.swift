@@ -50,21 +50,29 @@ extension Golfer {
 }
 
 extension Golfer {
-    var shotPredictor: UserDistanceValues {
+    func getShotPredictor() async -> UserDistanceValues {
         let shots = self.getShots()
+        var userValues = UserDistanceValues()
         if shots.count < Self.MINUMUM_SHOTS_FOR_ANALYSIS {
-            return UserDistanceValues()
+            return userValues
         }
+        
+        let shotAnalyzer = TendancyAnalyzer(shots: shots)
+        
+        //TODO: finish this method.
+        async let driveDistance = shotAnalyzer.getDriveDistance()
+        async let minApproachDistance = shotAnalyzer.getMinimumApproachAndMaxApproach().0
+        async let maxApproachDistance = shotAnalyzer.getMinimumApproachAndMaxApproach().1
+        
+        
+        
         //TODO: finish implementing this method.
         return UserDistanceValues()
         
         
     }
     
-    private static func getDriveDistance(shots: [Shot]) -> Double {
-        return 0
-        //TODO: finish implementing this method
-    }
+    
     
     
     /// Gets all of the shots of this golfer.

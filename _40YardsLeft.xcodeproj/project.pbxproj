@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0222862129DF930700FEBB91 /* TendancyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */; };
+		0222862429E0AF6D00FEBB91 /* SigmaSwiftStatistics in Frameworks */ = {isa = PBXBuildFile; productRef = 0222862329E0AF6D00FEBB91 /* SigmaSwiftStatistics */; };
 		024D76C029CB9600008FD33E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 024D76BF29CB9600008FD33E /* FirebaseAnalytics */; };
 		024D76C229CB9600008FD33E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 024D76C129CB9600008FD33E /* FirebaseAnalyticsOnDeviceConversion */; };
 		024D76C429CB9600008FD33E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 024D76C329CB9600008FD33E /* FirebaseAnalyticsSwift */; };
@@ -106,8 +108,6 @@
 		02FEA1C929D3372600BCD7A4 /* RoundEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */; };
 		02FEA1CC29D3391C00BCD7A4 /* HoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */; };
 		02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
-		02FEA1D229D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
-		02FEA1D329D3424500BCD7A4 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */; };
 		02FEA1D629D3D1F400BCD7A4 /* ShotElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA1D529D3D1F400BCD7A4 /* ShotElement.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +129,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendancyAnalyzer.swift; sourceTree = "<group>"; };
 		0260D1D729D7F25900EFAE79 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
 		0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
@@ -211,6 +212,7 @@
 				024D76F229CB9600008FD33E /* FirebaseStorage in Frameworks */,
 				024D76D629CB9600008FD33E /* FirebaseDynamicLinks in Frameworks */,
 				024D76DA29CB9600008FD33E /* FirebaseFirestoreCombine-Community in Frameworks */,
+				0222862429E0AF6D00FEBB91 /* SigmaSwiftStatistics in Frameworks */,
 				024D76EA29CB9600008FD33E /* FirebaseMessaging in Frameworks */,
 				024D76E629CB9600008FD33E /* FirebaseInstallations in Frameworks */,
 			);
@@ -233,6 +235,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0222861F29DF92E000FEBB91 /* DataAnaylsis */ = {
+			isa = PBXGroup;
+			children = (
+				0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */,
+				02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */,
+			);
+			path = DataAnaylsis;
+			sourceTree = "<group>";
+		};
 		0260D1DB29D8D73B00EFAE79 /* ScoreCardHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +354,7 @@
 		02E9DBCA29C0FCC400AA15FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0222861F29DF92E000FEBB91 /* DataAnaylsis */,
 				0260D1F329DC763D00EFAE79 /* AnalysisTools */,
 				02FEA1B929CFB7E600BCD7A4 /* FirebaseTools */,
 				02FEA1CF29D33BCB00BCD7A4 /* ViewTools */,
@@ -444,7 +456,6 @@
 			children = (
 				02FACCB729C6DF9500B55E6D /* TextValiditity.swift */,
 				02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */,
-				02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */,
 			);
 			path = ViewTools;
 			sourceTree = "<group>";
@@ -493,6 +504,7 @@
 				024D76EF29CB9600008FD33E /* FirebaseRemoteConfigSwift */,
 				024D76F129CB9600008FD33E /* FirebaseStorage */,
 				024D76F329CB9600008FD33E /* FirebaseStorageCombine-Community */,
+				0222862329E0AF6D00FEBB91 /* SigmaSwiftStatistics */,
 			);
 			productName = _40YardsLeft;
 			productReference = 02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */;
@@ -568,6 +580,7 @@
 			mainGroup = 02E9DB8E29C0FC2700AA15FA;
 			packageReferences = (
 				024D76BE29CB9600008FD33E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0222862229E0AF6D00FEBB91 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */,
 			);
 			productRefGroup = 02E9DB9829C0FC2700AA15FA /* Products */;
 			projectDirPath = "";
@@ -614,6 +627,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0222862129DF930700FEBB91 /* TendancyAnalyzer.swift in Sources */,
 				0260D1F029DA74A000EFAE79 /* ScorecardImage.swift in Sources */,
 				0260D1DF29D8E38200EFAE79 /* PickACourse.swift in Sources */,
 				02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */,
@@ -671,7 +685,6 @@
 				02FEA19729CF785C00BCD7A4 /* Golfer.swift in Sources */,
 				02FEA1C429D1518200BCD7A4 /* SettingsView.swift in Sources */,
 				02FEA19229CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
-				02FEA1D229D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02FEA19B29CF791600BCD7A4 /* Position.swift in Sources */,
 				02E9DBB229C0FC2800AA15FA /* _40YardsLeftTests.swift in Sources */,
 				02FEA1AF29CF9CEA00BCD7A4 /* Round.swift in Sources */,
@@ -683,7 +696,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02FEA1D329D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02FEA1C529D1518200BCD7A4 /* SettingsView.swift in Sources */,
 				02FEA19329CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
 				02FEA1AC29CF9BE600BCD7A4 /* Hole.swift in Sources */,
@@ -1002,6 +1014,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0222862229E0AF6D00FEBB91 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/SigmaSwiftStatistics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		024D76BE29CB9600008FD33E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1013,6 +1033,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0222862329E0AF6D00FEBB91 /* SigmaSwiftStatistics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0222862229E0AF6D00FEBB91 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */;
+			productName = SigmaSwiftStatistics;
+		};
 		024D76BF29CB9600008FD33E /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 024D76BE29CB9600008FD33E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
