@@ -16,7 +16,7 @@ struct ShotElement: View {
             
         HStack {
             
-            TextField("Yardage", value: $shot.position.yardage.yardage, formatter: .wholeNumber)
+            TextField("Yardage", value: $shot.position.yardage.yards, formatter: .wholeNumber)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, alignment: .center)
                 .keyboardType(.numberPad)
@@ -49,6 +49,7 @@ struct ShotElement: View {
             
             
         }
+        
         
     }
 }

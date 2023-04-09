@@ -28,7 +28,7 @@ class AppDelegate : NSObject, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        let db = Firestore.firestore()
+        let _ = Firestore.firestore()
         
         return true
     }

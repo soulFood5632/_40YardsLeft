@@ -11,11 +11,11 @@ import SwiftUI
 struct HoleByHole: View {
     @State var round: Round
     @State var holeNumber: Int {
-        // a task to complete prior to the update of the holeNumber
-        willSet {
+        // a task to complete after the update of the holeNumber
+        didSet {
             //TODO: Fix this mechanism beucase it is bugged
             Task {
-                await self.postShots(for: self.holeNumber)
+                await self.postShots(for: oldValue)
             }
         }
     }
@@ -33,6 +33,25 @@ struct HoleByHole: View {
     
     @State private var showScorecard = false
     
+    @ViewBuilder
+    var holeInfo: some View {
+        let hole = round.tee.holeData[holeNumber - 1]
+        HStack {
+            Text("Par \(hole.par)")
+            
+            Divider()
+            
+            
+            
+            Text("\(hole.yardage.yards, specifier: "%.0f") Yards")
+            //TODO: fix this to a dependency on the settings if this application.
+            
+            Divider()
+            
+            Text("Hcp: \(hole.handicap)")
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             let hole = round.tee.holeData[holeNumber - 1]
@@ -43,21 +62,8 @@ struct HoleByHole: View {
                 
                 Divider()
                 
-                HStack {
-                    Text("Par \(hole.par)")
-                    
-                    Divider()
-                    
-                    
-                    
-                    Text("\(hole.yardage.yardage, specifier: "%.0f") Yards")
-                    //TODO: fix this to a dependency on the settings if this application.
-                    
-                    Divider()
-                    
-                    Text("Hcp: \(hole.handicap)")
-                }
-                .frame(maxHeight: 50)
+                holeInfo
+                    .frame(maxHeight: 50)
                 
                 VStack {
                     List {
@@ -73,6 +79,16 @@ struct HoleByHole: View {
                             .bold()
                             ForEach($shotList[self.holeNumber - 1]) { shot in
                                 ShotElement(shot: shot)
+                                    
+                                
+                            }
+                            .onDelete { indexSet in
+                                indexSet.forEach { index in
+                                    shotList.remove(at: index)
+                                }
+                            }
+                            .onMove { indexSet, destination in
+                                shotList.move(fromOffsets: indexSet, toOffset: destination)
                             }
                             
                             Button {
@@ -94,10 +110,22 @@ struct HoleByHole: View {
                         //TODO: make editable list in the style of the new item with a green plus. It should include the option for drag and drops, and the ability to slide to delete
                     }
                 }
+                
+                if !self.round.isComplete {
+                    Button {
+                        //TODO: complete this action to go to then round overview page
+                    } label: {
+                        Label("Finish Round", systemImage: "checkmark")
+                    }
+                    .buttonStyle(.bordered)
+                }
+                    
                     
 
             }
             .toolbar {
+                
+        
                 
                 ToolbarItemGroup(placement: .bottomBar) {
                     
@@ -130,11 +158,11 @@ struct HoleByHole: View {
             }
             .sheet(isPresented: self.$showScorecard, content: {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
-                //TODO: mayeb add a showView so it knows when to drop its gaurd after a new hole has been selected
+                //TODO: maybe add a showView so it knows when to drop its gaurd after a new hole has been selected
             })
             .navigationTitle("Score Entry")
             .onAppear {
-                
+            
                 //TODO: Imploment the autofill function here
                 
                 Task {
@@ -142,6 +170,7 @@ struct HoleByHole: View {
                     try await DatabaseCommunicator.addCourse(course: self.round.course)
                 }
             }
+            
             
 
     
@@ -153,8 +182,9 @@ struct HoleByHole: View {
 
 extension HoleByHole {
     
+    
     private func postShots(for hole: Int) async {
-        var intermediatesList = self.shotList[hole - 1]
+        let intermediatesList = self.shotList[hole - 1]
         var index = 0
         var shotList = [Shot]()
         

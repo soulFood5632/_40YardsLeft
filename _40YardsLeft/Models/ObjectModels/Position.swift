@@ -61,11 +61,12 @@ struct Distance : Codable {
     
     private static let METERS_IN_A_YARD = 1.09361
     private static let FEET_IN_A_YARD: Double = 3
-    
+    ///Creates a new instance of a distance from yards
     init(yards: Int) {
         self.yards = Double(yards)
     }
     
+    /// Creates a new instance of distance from yards
     init(yards: Double) {
         self.yards = yards
     }
@@ -74,19 +75,20 @@ struct Distance : Codable {
     ///
     /// - Parameter meters: The number of meters you would like to
     init(meters: Int) {
-        self.yards = Double(meters) * Self.METERS_IN_A_YARD
+        self.yards = Double(meters) / Self.METERS_IN_A_YARD
     }
     
+    /// Creates a new distance from meters
     init(meters: Double) {
-        self.yards = meters * Self.METERS_IN_A_YARD
+        self.yards = meters / Self.METERS_IN_A_YARD
     }
     
     init(feet: Int) {
-        self.yards = Double(feet) * Self.FEET_IN_A_YARD
+        self.yards = Double(feet) / Self.FEET_IN_A_YARD
     }
     
     init(feet: Double) {
-        self.yards = feet * Self.FEET_IN_A_YARD
+        self.yards = feet / Self.FEET_IN_A_YARD
     }
     
     static func meters(_ meters: Int) -> Distance {

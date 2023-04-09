@@ -33,7 +33,7 @@ struct SingleHoleText: View {
             Text("\(holeNumber).")
                 .bold()
             
-            TextField("Yardage", value: self.$holeData.yardage.yardage, formatter: .wholeNumber)
+        TextField("Yardage", value: self.$holeData.yardage.yards, formatter: .wholeNumber)
             .onChange(of: self.holeData.yardage, perform: { yardage in
                 self.holeData.par = ShotPredictor.getParFromYardage(distance: yardage)
             })
@@ -91,10 +91,10 @@ extension ShotPredictor {
     /// - Parameter distance: The distance you would like to calculate the expected par of
     /// - Returns: The expected par value
     static func getParFromYardage(distance: Distance) -> Int {
-        if distance.yardage < 250 {
+        if distance.yards < 250 {
             return 3
         }
-        if distance.yardage > 500 {
+        if distance.yards > 500 {
             return 5
         }
         

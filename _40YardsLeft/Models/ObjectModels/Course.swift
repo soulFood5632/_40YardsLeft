@@ -217,9 +217,9 @@ struct Tee : Codable, Equatable, Hashable, Identifiable {
 
 extension Tee {
     /// The yardage of this teebox
-    var yardage: Int {
-        self.holeData.reduce(0) { partialResult, data in
-            return partialResult + Int(data.yardage.yardage)
+    var yardage: Distance {
+        self.holeData.reduce(Distance.zero) { partialResult, data in
+            return partialResult + data.yardage
         }
     }
     

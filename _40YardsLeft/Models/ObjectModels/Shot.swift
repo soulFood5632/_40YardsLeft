@@ -17,7 +17,7 @@ struct Shot : Codable, Equatable {
 }
 
 extension Shot {
-    var advancementYardage: Distance { .yards(endPosition.yardage.yardage - startPosition.yardage.yardage) }
+    var advancementYardage: Distance { endPosition.yardage - startPosition.yardage }
 }
 
 //MARK: ShotType Enum

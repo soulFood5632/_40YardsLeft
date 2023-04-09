@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+
+
+
 
 struct newSettings {
     var gender: Gender
@@ -16,9 +18,7 @@ struct newSettings {
 
 struct SettingsView: View {
     var body: some View {
-        if let user = Auth.auth().currentUser {
-            
-        }
+        Text("hello world")
     }
         
 }
