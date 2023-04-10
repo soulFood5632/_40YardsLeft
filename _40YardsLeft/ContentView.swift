@@ -24,8 +24,6 @@ struct ContentView: View {
                 let golferBinding = Binding {
                     golfer
                 } set: { newValue in
-                    
-                    //TODO: add post to database during change
                     self.golfer = newValue
                 }
                 
@@ -48,6 +46,7 @@ struct ContentView: View {
                 }
             }
         }
+        
 
     }
     

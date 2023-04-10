@@ -21,6 +21,7 @@
 		0222864F29E3390200FEBB91 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0222864E29E3390200FEBB91 /* FirebaseAnalytics */; };
 		0222865129E3390D00FEBB91 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0222865029E3390D00FEBB91 /* FirebaseAuth */; };
 		0222865329E34BDD00FEBB91 /* PositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865229E34BDD00FEBB91 /* PositionTests.swift */; };
+		0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865529E34DB200FEBB91 /* CourseFilter.swift */; };
 		0260D1D829D7F25900EFAE79 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D729D7F25900EFAE79 /* ScorecardView.swift */; };
 		0260D1DA29D8D5E000EFAE79 /* HoleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */; };
 		0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */; };
@@ -81,6 +82,7 @@
 		0222862B29E0C2B900FEBB91 /* _40YardsLeftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _40YardsLeftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0222862D29E0C2B900FEBB91 /* DistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
 		0222865229E34BDD00FEBB91 /* PositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTests.swift; sourceTree = "<group>"; };
+		0222865529E34DB200FEBB91 /* CourseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseFilter.swift; sourceTree = "<group>"; };
 		0260D1D729D7F25900EFAE79 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
 		0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
@@ -181,6 +183,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0222865429E34D6E00FEBB91 /* PickingCourseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0222865529E34DB200FEBB91 /* CourseFilter.swift */,
+			);
+			path = PickingCourseHelper;
+			sourceTree = "<group>";
+		};
 		0260D1DB29D8D73B00EFAE79 /* ScoreCardHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				0260D1DE29D8E38200EFAE79 /* PickACourse.swift */,
+				0222865429E34D6E00FEBB91 /* PickingCourseHelper */,
 				0260D1ED29DA24DA00EFAE79 /* RoundSetup */,
 				0260D1EE29DA24FA00EFAE79 /* CreateCourse */,
 			);
@@ -523,6 +534,7 @@
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
+				0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,

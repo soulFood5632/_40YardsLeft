@@ -9,7 +9,9 @@ import SwiftUI
 import FirebaseFirestore
 
 struct PickACourse: View {
-    @State private var country = Country.Canada
+    
+    @State private var filters = Filters()
+    
     
     @State private var queryResults = [Course]()
     
@@ -20,19 +22,7 @@ struct PickACourse: View {
         VStack {
             
             GroupBox {
-                HStack {
-                    Text("Country:")
-                        .bold()
-                    Picker(selection: $country) {
-                        ForEach(Country.allCases) { country in
-                            Text(country.rawValue)
-                        }
-                    } label: {
-                        Text("Choose a Country")
-                    }
-                }
-                //TODO: come up with more filters here and maybe make this a little more modular
-                //TODO: think about a struct which handles all of the filtering
+                CourseFilter(filter: self.$filters)
             } label: {
                 Label("Filters", systemImage: "rectangle.and.pencil.and.ellipsis")
                 
@@ -95,7 +85,7 @@ extension PickACourse {
     /// A computed value which contains all of the courses which meet the provided criteria.
     var filteredResults: [Course] {
         self.queryResults.filter { course in
-            return course.location.country == self.country
+            return course.location.country == filters.country
         }
     }
     
