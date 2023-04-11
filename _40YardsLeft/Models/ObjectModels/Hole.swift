@@ -8,15 +8,23 @@
 import Foundation
 import SwiftUI
 
+//MARK: Hole Init
 struct Hole : Codable, Equatable {
     
+    //TODO: write RI's and AF.
+    
     let holeData: HoleData
-    private(set) var shots: [Shot] = [Shot]() {
+    private(set) var shots: [Shot] {
         didSet {
             if isHoled() {
                 self.populateSimplifiedShot()
             }
         }
+    }
+    
+    init(holeData: HoleData) {
+        self.holeData = holeData
+        self.shots = [Shot]()
     }
     
     private var simplifiedShotsCache: [Shot]? = nil
@@ -26,19 +34,26 @@ struct Hole : Codable, Equatable {
         self.simplifiedShotsCache = self.getCombinedShots()
     }
     
+    
+    /// Gets the simplified shot form that does not include penatlties
+    ///
+    /// - Requires: The shot list is complete (it is holed)
+    /// - Returns: A list containing a collection of all shots where all shots that end in a pentatly are joined with the next shot's end position.
     private func getCombinedShots() -> [Shot] {
         var shotList = [Shot]()
         var index = 0
+        precondition(self.isComplete)
         while true {
             // it should not be possible for this to be the case. The first shot must not be a penatly, all penalties should have been handled at this point.
             precondition(shots[index].startPosition.lie != .penalty)
             
+            //if the last shot is holed then we can conclude that this list is done
             if shots[index].isHoled {
                 shotList.append(shots[index])
                 break
             }
             
-            
+            // if the end of this shot is a penatly we will need to combine things to have a shot that includes a penalty.
             if shots[index].endPosition.lie == .penalty {
                 let newShot = Shot(type: shots[index].type,
                                    startPosition: shots[index].startPosition,
@@ -77,7 +92,8 @@ extension Hole {
     
     @discardableResult
     /// Removes the given shot from the hole
-    /// - Parameter shot: <#shot description#>
+    /// 
+    /// - Parameter shot: The shot you would like to remove
     /// - Returns: <#description#>
     mutating func removeShot(_ shot: Shot) -> Bool {
         if shots.contains(shot) {
@@ -88,6 +104,7 @@ extension Hole {
     }
 }
 
+//MARK: Hole Stored Values
 extension Hole {
     
     /// Is the hole complete (has the last shot been holed)
@@ -103,7 +120,7 @@ extension Hole {
     /// The score of the hole
     var score: Int { self.shots.count }
     
-    /// The score of the hole to par. 
+    /// The score of the hole to par.
     var scoreToPar: Int { score - holeData.par }
     
     
@@ -161,6 +178,7 @@ extension Hole {
     }
 }
 
+//MARK: Shot Generation Error
 enum ShotGeneration: Error {
     case holeNotComplete
 }
