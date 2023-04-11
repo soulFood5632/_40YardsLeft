@@ -111,14 +111,16 @@ struct HoleByHole: View {
                     }
                 }
                 
-                if !self.round.isComplete {
+                
                     Button {
                         //TODO: complete this action to go to then round overview page
                     } label: {
                         Label("Finish Round", systemImage: "checkmark")
                     }
                     .buttonStyle(.bordered)
-                }
+                    .disabled(
+                        !self.round.isComplete)
+                
                     
                     
 
@@ -158,7 +160,7 @@ struct HoleByHole: View {
             }
             .sheet(isPresented: self.$showScorecard, content: {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
-                //TODO: maybe add a showView so it knows when to drop its gaurd after a new hole has been selected
+            
             })
             .navigationTitle("Score Entry")
             .onAppear {
@@ -169,6 +171,7 @@ struct HoleByHole: View {
                     //adds this course to the database
                     try await DatabaseCommunicator.addCourse(course: self.round.course)
                 }
+                //TODO: move this task to the on disappear after the round is added(I think anyway)
             }
             
             
@@ -199,7 +202,7 @@ extension HoleByHole {
             index += 1
         }
         
-        self.round.holes[hole - 1].shots = shotList
+        self.round.holes[hole - 1].addShots(shotList)
     }
 }
 

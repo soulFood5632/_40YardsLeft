@@ -109,13 +109,22 @@ extension Round {
         return roundScore - totalPar
     }
     
+    
+    /// The number of holes that have been entered succsefuly
+    ///
+    /// A succseful hole entry is defined as a hole which's last shot ends in the hole. As a conseqeunce that means each hole must have at least one shot.
+    ///
+    /// - Returns: The number of holes which have been succsefully entered
     func numberOfHolesEntered() -> Int {
-        return self.holes.map { $0.score}.filter { $0 != 0 }.count
+        return self.holes.map { $0.isComplete }.filter { $0 == true }.count
     }
+    
     /// Is the round complete (do all holes have entries)
     var isComplete: Bool {
+        //TODO: allow for different length of rounds functionality
         return numberOfHolesEntered() == 18
     }
+    
     
     var getShots: [Shot] {
         return self.holes.map { $0.shots }.reduce([Shot]()) { partialresult, newShotList in

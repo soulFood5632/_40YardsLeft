@@ -356,8 +356,8 @@
 				02FEA1BA29D0F5F500BCD7A4 /* Encodable.swift */,
 				02FEA19529CF785C00BCD7A4 /* Golfer.swift */,
 				02FEA19929CF791600BCD7A4 /* Position.swift */,
-				02FEA1A929CF9BE600BCD7A4 /* Hole.swift */,
 				02FEA1AD29CF9CEA00BCD7A4 /* Round.swift */,
+				02FEA1A929CF9BE600BCD7A4 /* Hole.swift */,
 				02FEA1A129CF7BB500BCD7A4 /* Shot.swift */,
 				02FEA1A529CF7D4700BCD7A4 /* Course.swift */,
 			);
