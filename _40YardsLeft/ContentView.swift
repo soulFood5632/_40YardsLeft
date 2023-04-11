@@ -13,7 +13,7 @@ struct ContentView: View {
     
     @State private var user: User?
     
-    @State private var golfer: Golfer? 
+    @State private var golfer: Golfer?
     
     
 

@@ -65,6 +65,12 @@ extension Golfer: Equatable {
 
 
 extension Golfer {
+    
+    /// The handicap of the golfer
+    ///
+    /// The handicap calculation follows the rules and regulations of RCGA, USGA, RGA. For more infromation please visit <\link>
+    ///
+    /// 
     var handicap: Double {
         let lastRounds = self.getLastRounds(20)
         
@@ -78,13 +84,23 @@ extension Golfer {
         //TODO: Imploment this function
     }
     
+    
+    /// Gets the last `X` rounds by date
+    ///
+    /// - Parameter number: The number of rounds in the past you would like to collect.
+    /// - Returns: A list of rounds ordered by newest to oldest containibng the latest `X` rounds from this golfer.
     func getLastRounds(_ number: Int) -> [Round] {
         self.rounds.sorted { round1, round2 in
             round1.date > round2.date
         }
-        .removeAfter(number)
+        .keepFirst(number)
     }
     
+    @discardableResult
+    /// Adds the given round to this golfer.
+    ///
+    /// - Parameter round: The round you would like to add
+    /// - Returns: False if the round already has been added, true if succseful.
     func addRound(_ round : Round) -> Bool {
         if self.rounds.contains(round) {
             return false
@@ -130,8 +146,11 @@ extension Golfer {
     private func getShots() -> [Shot] {
         return Array.combine(arrays: self.rounds.map { $0.getShots })
     }
+    
 }
 
+
+//MARK: Array Helper Methods
 extension Array {
     
     /// Combines the provided arrays into a single array.
@@ -139,7 +158,7 @@ extension Array {
     /// The new array will be ordered in such a way that the first array will be added to the array followed by the values in the next array.
     ///
     /// - Parameter arrays: A list of arrays of the same type which are to be combined.
-    /// - Returns: <#description#>
+    /// - Returns: A list of the combined lists in the order of the oiriginal provided list of arrays.
     static func combine(arrays: [[Element]]) -> [Element] {
         arrays.reduce([Element]()) { partialResult, list in
             var list = partialResult
@@ -149,14 +168,21 @@ extension Array {
         }
     }
     
-    func removeAfter(_ index: Int) -> [Element] {
+    
+    /// Gets an array with the first (X) elements in the array
+    ///
+    /// - Note: This function will **NOT** mutate the array.
+    /// 
+    /// - Parameter number: The number of elements you would like to keep. Must be greater or equal to 0
+    /// - Returns: A copy of an array containing the array's first `number` values. If the array was already smalleer it returns the original array
+    func keepFirst(_ number: Int) -> [Element] {
         
         var copy = self
-        if self.count < index {
+        if self.count < number {
             return self
         }
         
-        let numberToRemove = self.count - index
+        let numberToRemove = self.count - number
         
         copy.removeLast(numberToRemove)
         
@@ -168,6 +194,7 @@ extension Array {
 
 }
 
+//MARK: Gender Enum
 enum Gender : String, Codable, CaseIterable {
     case man = "Male", woman = "Female"
 }

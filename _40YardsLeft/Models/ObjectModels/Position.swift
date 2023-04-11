@@ -9,31 +9,48 @@ import Foundation
 
 //MARK: Position Struct
 
+/// A location on the golf course containing its distance to the hole and its lie.
+///
+/// From this position you
 struct Position : Codable, Equatable {
     
+    /// The lie of the position
     var lie: Lie
-
+    /// The yardage of this position from the ball to the hole.
     var yardage: Distance
     
     
     /// Gets the expected strokes to hole out from this position.
     ///
     /// - Returns: A double representing the expected strokes to hole out from this position.
-    func getExpectedStrokes() -> Double {
-        //TODO: write this method. 
-        return 1
+    func getExpectedStrokes() throws -> Double {
+        switch self.lie {
+        case .penalty:
+            throw ExpectedStrokes.noDataForLie
+        default:
+            return 1.0
+        }
     }
+    
     static func == (lhs: Position, rhs: Position) -> Bool {
         return lhs.lie == rhs.lie && lhs.yardage == rhs.yardage
     }
 }
 
+/// A set of errors used to communicate when expected strokes cannot be calculated.
+enum ExpectedStrokes : Error {
+    case noDataForLie
+}
+
 extension Position {
+    
+    /// The ball is holed out.
     static let holed = Position(lie: .green, yardage: .zero)
 }
 
 //MARK: Lie Enum
-enum Lie : String, Codable, Equatable, CaseIterable, Identifiable {
+/// A set of values which house the valid lie types on a golf course
+enum Lie : String, Codable, Equatable, CaseIterable {
     
     case fairway = "Fairway"
     case rough = "Rough"
@@ -44,13 +61,16 @@ enum Lie : String, Codable, Equatable, CaseIterable, Identifiable {
     case green = "Green"
 }
 
-extension Lie {
+
+extension Lie : Identifiable {
     var id: Self { self }
 }
 
 //MARK: Distance Struct
 
-/// <#Description#>
+/// A distance which contains a unit independant distance value.
+///
+/// You can instansiate a distance object by inputting the value in yards, meters, or feet.
 struct Distance : Codable {
     /// The distance value in yards
     var yards: Double
@@ -152,6 +172,7 @@ extension Distance: Comparable {
 extension Distance {
     
     /// Multiples/scales the current distance by the provided factor.
+    ///
     /// - Parameter factor: A double represnting the factor by which you are looking to scale the distance by.
     /// - Returns: A distance containing the new scaled value
     func scaleBy(_ factor: Double) -> Distance {

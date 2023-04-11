@@ -22,6 +22,8 @@
 		0222865129E3390D00FEBB91 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0222865029E3390D00FEBB91 /* FirebaseAuth */; };
 		0222865329E34BDD00FEBB91 /* PositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865229E34BDD00FEBB91 /* PositionTests.swift */; };
 		0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865529E34DB200FEBB91 /* CourseFilter.swift */; };
+		0222865829E4DDA900FEBB91 /* RoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865729E4DDA900FEBB91 /* RoundTests.swift */; };
+		0222865A29E51D6500FEBB91 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */; };
 		0260D1D829D7F25900EFAE79 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D729D7F25900EFAE79 /* ScorecardView.swift */; };
 		0260D1DA29D8D5E000EFAE79 /* HoleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */; };
 		0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */; };
@@ -83,6 +85,8 @@
 		0222862D29E0C2B900FEBB91 /* DistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
 		0222865229E34BDD00FEBB91 /* PositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTests.swift; sourceTree = "<group>"; };
 		0222865529E34DB200FEBB91 /* CourseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseFilter.swift; sourceTree = "<group>"; };
+		0222865729E4DDA900FEBB91 /* RoundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTests.swift; sourceTree = "<group>"; };
+		0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
 		0260D1D729D7F25900EFAE79 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
 		0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 			children = (
 				0222862D29E0C2B900FEBB91 /* DistanceTests.swift */,
 				0222865229E34BDD00FEBB91 /* PositionTests.swift */,
+				0222865729E4DDA900FEBB91 /* RoundTests.swift */,
+				0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */,
 			);
 			path = _40YardsLeftTests;
 			sourceTree = "<group>";
@@ -509,8 +515,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0222865829E4DDA900FEBB91 /* RoundTests.swift in Sources */,
 				0222865329E34BDD00FEBB91 /* PositionTests.swift in Sources */,
 				0222862E29E0C2B900FEBB91 /* DistanceTests.swift in Sources */,
+				0222865A29E51D6500FEBB91 /* ArrayExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
