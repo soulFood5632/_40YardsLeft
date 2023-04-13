@@ -19,7 +19,7 @@ struct HomeView: View {
                 GolferView(golfer: golfer)
                     .navigationTitle("Home")
                     
-                
+                RoundUpdateView(golfer: golfer)
                 NavigationLink {
                     RoundEntry()
                 } label: {

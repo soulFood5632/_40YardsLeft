@@ -39,11 +39,7 @@ struct GolferView: View {
                     }
                     .font(.title3)
                 }
-                
-                
-                
-                
-                
+ 
             }
         } label: {
             Label("Welcome Back \(golfer.name)", systemImage: "hand.wave.fill")
