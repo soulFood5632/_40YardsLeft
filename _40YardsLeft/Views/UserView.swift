@@ -16,21 +16,8 @@ struct UserView: View {
         NavigationStack {
             
             HomeView(golfer: $golfer)
-                .toolbar {
-                    ToolbarItem (placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SettingsView()
-                        } label: {
-                            Image("gearshape.2")
-                        }
-                    }
-                    
-                    
-                }
-                .navigationTitle("At A Glance")
         }
-            
-        
+
     }
 }
 

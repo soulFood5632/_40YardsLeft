@@ -40,7 +40,7 @@ struct ScorecardImage: View {
                     ForEach(1...9) { holeNumber in
                         let score = round.holes[holeNumber - 1].score
                         EmptyIfZeroText(value: score)
-                            .foregroundColor(Hole.getColourFromScore(score: round.holes[holeNumber - 1].scoreToPar))
+                            .foregroundColor(round.holes[holeNumber - 1].getColourFromScore())
                         
                     }
                     
@@ -75,7 +75,7 @@ struct ScorecardImage: View {
                     ForEach(10...18) { holeNumber in
                         let score = round.holes[holeNumber - 1].score
                         EmptyIfZeroText(value: score)
-                            .foregroundColor(Hole.getColourFromScore(score: round.holes[holeNumber - 1].scoreToPar))
+                            .foregroundColor(round.holes[holeNumber - 1].getColourFromScore())
                         
                     }
                     EmptyIfZeroText(value: round.backNineScore)
@@ -98,8 +98,8 @@ struct ScorecardImage: View {
                 }
             } else {
                 HStack {
+                    //TODO: fix this this mechanism to get colour
                     Text("\(round.scoreToPar)")
-                        .foregroundColor(Hole.getColourFromScore(score: round.scoreToPar))
                     Text("Through \(round.numberOfHolesEntered())")
                 }
             }

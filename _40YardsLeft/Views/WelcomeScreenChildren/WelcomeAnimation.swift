@@ -77,7 +77,7 @@ struct WelcomeAnimation: View {
                         
                         Button {
                             Task {
-                                self.user = try await Authenticator.logIn(emailAddress: "loganu@gmail.com", password: "Magenta^2")
+                                self.user = try await Authenticator.logIn(emailAddress: "loganu@gmail.com", password: "Falcons1SB#51")
                             }
                         } label: {
                             Label("Admin", systemImage: "person.crop.circle.badge.plus")

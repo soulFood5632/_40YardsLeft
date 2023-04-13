@@ -150,9 +150,8 @@ extension Hole {
     
     /// Gets a colour from the score to par.
     ///
-    /// - Parameter score: The score to par of the hole you would like to get the colour of
     /// - Returns: blue for a par, red for under par, black for over par.
-    func getColourFromScore(scoreToPar: Int) -> Color {
+    func getColourFromScore() -> Color {
         if score == 0 {
             return .blue
         }

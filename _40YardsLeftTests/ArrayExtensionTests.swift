@@ -31,7 +31,22 @@ final class ArrayExtensionTests: XCTestCase {
         
         XCTAssertEqual([1, 2, 3, 4, 5], array.keepFirst(8))
     }
+    
+    func testIsUnique() throws {
+        XCTAssertTrue([1, 2, 3, 4, 5].isUnique)
+    }
+    
+    func testIsUnique2() throws {
+        XCTAssertFalse([1, 2, 3, 4, 4].isUnique)
+    }
+    
+    func testIsUnique3() throws {
+        XCTAssertTrue([Int]().isUnique)
+    }
 
+    func testIsUnique4() throws {
+        XCTAssertFalse([1, 1].isUnique)
+    }
     
 
 }

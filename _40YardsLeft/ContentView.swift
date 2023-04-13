@@ -42,7 +42,7 @@ struct ContentView: View {
                 do {
                     self.golfer = try await DatabaseCommunicator.getGolfer(id: newUser!.uid)
                 } catch {
-                    //TODO: add error checking here
+                    print(error.localizedDescription)
                 }
             }
         }
