@@ -11,6 +11,8 @@ import SwiftUI
 struct RoundSetupBuffer {
     var tee: Tee?
     var date: Date = .now
+    var roundType: RoundType = .casual
+    //TODO: add the ability to change rountype
     
     
     /// Creates a round from the provided tee buffer.
@@ -24,7 +26,7 @@ struct RoundSetupBuffer {
     func createRound(course: Course) -> Round {
         precondition(tee != nil)
         // there should be now way
-        return try! Round(course: course, tee: self.tee!, date: self.date)
+        return try! Round(course: course, tee: self.tee!, date: self.date, roundType: roundType)
     }
     
 }

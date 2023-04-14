@@ -15,11 +15,23 @@ struct HomeView: View {
             VStack {
                 
                 
-                
-                GolferView(golfer: golfer)
-                    .navigationTitle("Home")
+                GroupBox {
+                    GolferView(golfer: golfer)
+                        .navigationTitle("Home")
+                } label: {
+                    Label("Welcome Back \(golfer.name)", systemImage: "hand.wave.fill")
+                        .bold()
+                        .font(.title)
+                }
+                .padding(.horizontal)
+                .frame(maxHeight: 200)
                     
-                RoundUpdateView(golfer: golfer)
+                GroupBox {
+                    RoundUpdateView(golfer: golfer)
+                } label: {
+                    
+                }
+                //TODO: temporary link (remove it
                 NavigationLink {
                     RoundEntry()
                 } label: {
@@ -39,6 +51,7 @@ struct HomeView: View {
                     Text("Settings")
                 }
             }
+            .navigationBarBackButtonHidden()
 
         }
         

@@ -11,15 +11,15 @@ struct RoundUpdateView: View {
     private static let DAYS_IN_PAST = 30
     let golfer: Golfer
     var body: some View {
-        GroupBox {
-            VStack {
-                HStack {
-                    Text("\(numberOfRoundsPlayed) rounds in the last \(Self.DAYS_IN_PAST) days")
-                    HotOrColdView(isHot: self.isRoundsPlayedHot)
-                }
-                
+        
+        VStack {
+            HStack {
+                Text("\(numberOfRoundsPlayed) rounds in the last \(Self.DAYS_IN_PAST) days")
+                HotOrColdView(isHot: self.isRoundsPlayedHot)
             }
+            
         }
+        
     }
 }
 

@@ -13,62 +13,75 @@ struct RoundViewList: View {
     @State private var roundToDelete: Round?
     var body: some View {
         
+        if golfer.rounds.isEmpty {
+            VStack {
+                Text("You haven't posted a round yet")
+                    .bold()
+                    .padding(.bottom, 1)
+                NavigationLink {
+                    // add link to new round
+                } label: {
+                    Text("Start Your First Round")
+                }
+            }
             
-        Grid {
+        } else {
             
-            ForEach(golfer.rounds) { round in
-                GridRow {
-                    HStack {
-                        Text(String(round.roundScore))
-                            .bold()
-                        
-                        Text("\(round.course.name)")
+            Grid {
+                ForEach(golfer.rounds) { round in
+                    GridRow {
+                        HStack {
+                            Text(String(round.roundScore))
+                                .bold()
                             
-                        Spacer()
-                        
-                            //TODO: think of a better to explore more info
-                        Menu {
-                            RoundInfo(round: round)
-                        } label: {
-                            Image(systemName: "info.circle")
-                        }
-                        
-                        
-                        
-                        let roundBinding = Binding {
-                            self.roundToDelete != nil
-                        } set: { valueBinding in
-                            self.roundToDelete = nil
-                        }
-                        
-                        
+                            Text("\(round.course.name)")
                             
-
-                        
-                        Image(systemName: "trash")
-                            .onTapGesture {
-                                self.roundToDelete = round
+                            Spacer()
+                            
+                            
+                            
+                            NavigationLink {
+                                HoleByHole(round: round, holeNumber: 1)
+                            } label: {
+                                Image(systemName: "pencil")
                             }
-                            .confirmationDialog("Delete Round", isPresented: roundBinding) {
-                                Button("Delete Round") {
-                                    self.golfer.deleteRound(round)
+                            
+                            
+                            
+                            let roundBinding = Binding {
+                                self.roundToDelete != nil
+                            } set: { valueBinding in
+                                self.roundToDelete = nil
+                            }
+                            
+                            Image(systemName: "trash")
+                                .onTapGesture {
+                                    self.roundToDelete = round
                                 }
+                                .confirmationDialog("Delete Round", isPresented: roundBinding) {
+                                    Button("Delete Round") {
+                                        self.golfer.deleteRound(round)
+                                    }
+                                }
+                                .foregroundColor(.red)
+                            
+                            //TODO: think of a better to explore more info
+                            Menu {
+                                RoundInfo(round: round)
+                            } label: {
+                                Image(systemName: "info.circle")
                             }
-                            .foregroundColor(.red)
-                        
-                        NavigationLink {
-                            HoleByHole(round: round, holeNumber: 1)
-                        } label: {
-                            Image(systemName: "pencil")
+                            
+                            
+                            
                         }
                         
                     }
-
                 }
             }
+            .animation(.easeInOut, value: self.golfer.rounds)
+            
         }
-        .animation(.easeInOut, value: self.golfer.rounds)
-        .frame(width: .infinity)
     }
 }
 

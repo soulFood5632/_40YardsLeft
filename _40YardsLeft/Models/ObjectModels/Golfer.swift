@@ -17,21 +17,21 @@ struct Golfer: Codable {
     var name : String
     var homeCourse : Course?
     
-    init(firebaseID: String, gender: Gender, name: String ) {
+    init(firebaseID: String, gender: Gender, name: String) {
         self.firebaseID = firebaseID
         self.rounds = [Round]()
         self.gender = gender
         self.name = name
-        //TODO: add home course. once courses have been added to populate things
+        
     }
     
-    init(firebaseID: String, gender: Gender, name: String, homeCourse: Course ) {
+    init(firebaseID: String, gender: Gender, name: String, homeCourse: Course) {
         self.firebaseID = firebaseID
         self.rounds = [Round]()
         self.gender = gender
         self.name = name
         self.homeCourse = homeCourse
-        //TODO: add home course. once courses have been added to populate things
+        
     }
     
     
@@ -190,7 +190,7 @@ extension Golfer {
     /// Gets all of the shots of this golfer.
     /// - Returns: A list containing all of the shots of the golfer
     private func getShots() -> [Shot] {
-        return Array.combine(arrays: self.rounds.map { $0.getShots })
+        return Array.combine(arrays: self.rounds.map { $0.getShots() })
     }
     
 }

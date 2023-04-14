@@ -11,14 +11,23 @@ struct RoundView: View {
     @Binding var golfer: Golfer
     var body: some View {
         NavigationStack {
-            GroupBox {
-                RoundViewList(golfer: $golfer)
+            Group {
+                GroupBox {
+                    GolferView(golfer: golfer)
+                } label: {
+                    Label("Overview", systemImage: "globe")
+                }
+                .frame(maxHeight: 200)
+                GroupBox {
+                    RoundViewList(golfer: $golfer)
                     
-            } label: {
-                Text("History")
+                } label: {
+                    Label("History", systemImage: "list.bullet")
+                    Divider()
+                }
             }
             .padding(.horizontal)
-            .navigationTitle("Round History")
+            .navigationTitle("Rounds")
         }
     }
 }

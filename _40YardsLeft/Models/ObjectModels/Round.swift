@@ -14,11 +14,12 @@ struct Round : Codable, Identifiable {
     
     
     let course: Course
-    var tee: Tee
+    let tee: Tee
     var holes: [Hole]
     var date: Date
+    var roundType: RoundType
     
-    init(course: Course, tee: Tee, date: Date) throws {
+    init(course: Course, tee: Tee, date: Date, roundType: RoundType) throws {
         if !course.hasTee(tee) {
             throw GolfErrors.teeDoesntExist
         }
@@ -27,15 +28,18 @@ struct Round : Codable, Identifiable {
         self.tee = tee
         self.holes = Self.getSkeletonHoles(from: tee)
         self.date = date
+        self.roundType = roundType
     }
     
-    init(course: Course, tee: Tee) throws {
-        try self.init(course: course, tee: tee, date: .now)
+    init(course: Course, tee: Tee, roundType: RoundType) throws {
+        try self.init(course: course, tee: tee, date: .now, roundType: roundType)
     }
     
     private static func getSkeletonHoles(from tee: Tee) -> [Hole] {
         return tee.holeData.map { Hole(holeData: $0) }
     }
+    
+    private static let SLOPE_CONSTANT = 113
     
 }
 
@@ -48,7 +52,7 @@ extension Round: Equatable {
 //MARK: Round Extension
 extension Round {
     
-    static let example1 = try! Round(course: .example1, tee: Course.example1.listOfTees[0], date: .now)
+    static let example1 = try! Round(course: .example1, tee: Course.example1.listOfTees[0], date: .now, roundType: .casual)
     
     
     /// Finds if the provided hole has valid entries (could be submitted)
@@ -130,22 +134,49 @@ extension Round {
     }
     
     /// Is the round complete (do all holes have entries)
-    var isComplete: Bool {
-        //TODO: allow for different length of rounds functionality
-        return numberOfHolesEntered() == 18
+    var isComplete: Bool { return numberOfHolesEntered() == self.numberOfHoles }
+    
+    
+    /// A list of all simplified shots (do not contain penalties).
+    ///
+    /// - Requires: That all holes have valid entries and are complete (per the method isHoled). This round must be complete before calling this method. 
+    ///
+    /// This method may throw a precondition error if it is called when the round is not complete.
+    func getShots() -> [Shot] {
+        do {
+            return try self.holes.map { try $0.getSimplifiedShots() }.reduce([Shot]()) { partialresult, newShotList in
+                var tempArr = partialresult
+                tempArr.append(contentsOf: newShotList)
+                return partialresult
+            }
+        } catch {
+            preconditionFailure("The method gets shots was called before all of the holes were finished")
+        }
+        
     }
     
     
-    var getShots: [Shot] {
-        return self.holes.map { $0.shots }.reduce([Shot]()) { partialresult, newShotList in
-            var tempArr = partialresult
-            tempArr.append(contentsOf: newShotList)
-            return partialresult
-        }
+    /// The number of holes that this round is played on.
+    ///
+    /// This value should never be anything other than 9 or 18
+    var numberOfHoles: Int { self.holes.count }
+    
+    
+    
+    /// The differential of the the round.
+    var differential: Double {
+        //TODO: change to ESC adjusted score (you will need to store the handicap of the golfer at the point of the round)
+        return (Double(self.roundScore) - self.tee.rating) * Double(self.tee.slope) / Double(Self.SLOPE_CONSTANT)
     }
     
 }
 
 enum GolfErrors : Error {
     case teeDoesntExist
+}
+
+enum RoundType : String, CaseIterable, Codable {
+    case tournament = "Tournament"
+    case casual = "Casual"
+    case competative = "Competetive"
 }
