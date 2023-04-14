@@ -12,6 +12,7 @@ struct RoundViewList: View {
     
     @State private var roundToDelete: Round?
     var body: some View {
+        
             
         Grid {
             
@@ -20,24 +21,19 @@ struct RoundViewList: View {
                     HStack {
                         Text(String(round.roundScore))
                             .bold()
-                        Divider()
+                        
                         Text("\(round.course.name)")
                             
+                        Spacer()
                         
-                        
-                        Text("\(round.course.name)")
-                        
+                            //TODO: think of a better to explore more info
                         Menu {
-                            
+                            RoundInfo(round: round)
                         } label: {
-                            Image(systemName: "ellipsis")
+                            Image(systemName: "info.circle")
                         }
                         
-                        NavigationLink {
-                            HoleByHole(round: round, holeNumber: 1)
-                        } label: {
-                            Image(systemName: "pencil")
-                        }
+                        
                         
                         let roundBinding = Binding {
                             self.roundToDelete != nil
@@ -54,19 +50,25 @@ struct RoundViewList: View {
                                 self.roundToDelete = round
                             }
                             .confirmationDialog("Delete Round", isPresented: roundBinding) {
-                                Button("OK") {
-                                    //delete round
-                                }
-                                Button("Cancel") {
-                                    // no action
+                                Button("Delete Round") {
+                                    self.golfer.deleteRound(round)
                                 }
                             }
+                            .foregroundColor(.red)
+                        
+                        NavigationLink {
+                            HoleByHole(round: round, holeNumber: 1)
+                        } label: {
+                            Image(systemName: "pencil")
+                        }
                         
                     }
 
                 }
             }
         }
+        .animation(.easeInOut, value: self.golfer.rounds)
+        .frame(width: .infinity)
     }
 }
 
@@ -77,6 +79,8 @@ extension RoundViewList {
 struct RoundViewList_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        RoundViewList(golfer: self.$golfer)
+        NavigationStack {
+            RoundViewList(golfer: self.$golfer)
+        }
     }
 }

@@ -8,14 +8,14 @@
 import Foundation
 
 
-class Golfer: Codable, ObservableObject {
+struct Golfer: Codable {
     private static let MINUMUM_SHOTS_FOR_ANALYSIS = 1000
     
     let firebaseID: String
-    @Published private(set) var rounds: [Round]
-    @Published var gender : Gender
-    @Published var name : String
-    @Published var homeCourse : Course?
+    private(set) var rounds: [Round]
+    var gender : Gender
+    var name : String
+    var homeCourse : Course?
     
     init(firebaseID: String, gender: Gender, name: String ) {
         self.firebaseID = firebaseID
@@ -25,33 +25,15 @@ class Golfer: Codable, ObservableObject {
         //TODO: add home course. once courses have been added to populate things
     }
     
-    required init(from decoder: Decoder) throws {
-        let storage = try decoder.container(keyedBy: Keys.self)
-        self.firebaseID = try storage.decode(String.self, forKey: .id)
-        self.rounds = try storage.decode([Round].self, forKey: .rounds)
-        self.gender = try storage.decode(Gender.self, forKey: .gender)
-        self.name = try storage.decode(String.self, forKey: .name)
-        self.homeCourse = try storage.decodeIfPresent(Course.self, forKey: .homeCourse)
+    init(firebaseID: String, gender: Gender, name: String, homeCourse: Course ) {
+        self.firebaseID = firebaseID
+        self.rounds = [Round]()
+        self.gender = gender
+        self.name = name
+        self.homeCourse = homeCourse
+        //TODO: add home course. once courses have been added to populate things
     }
     
-    public func encode(to encoder: Encoder) throws {
-        var values = encoder.container(keyedBy: Keys.self)
-        try values.encode(self.firebaseID, forKey: .id)
-        try values.encode(self.rounds, forKey: .rounds)
-        try values.encode(self.gender, forKey: .gender)
-        try values.encode(self.name, forKey: .name)
-        try values.encode(self.homeCourse, forKey: .homeCourse)
-    }
-    
-    
-    /// Keys used to encode and decode course objects.
-    private enum Keys: CodingKey {
-        case id
-        case rounds
-        case gender
-        case name
-        case homeCourse
-    }
     
     
 
@@ -69,13 +51,29 @@ extension Golfer {
     ///
     /// - Parameter round: The round you would like to add
     /// - Returns: False if the round already has been added, true if succseful.
-    func addRound(_ round : Round) -> Bool {
+    mutating func addRound(_ round : Round) -> Bool {
         if self.rounds.contains(round) {
             return false
         }
         
         self.rounds.append(round)
         return true
+    }
+    
+    @discardableResult
+    /// Deletes the provided round from this golfer
+    ///
+    /// - Note: This method uses the equality method found in `Round.self`.
+    ///
+    /// - Parameter round: The round you would like to delete
+    /// - Returns: Returns true if the round was succsefully deleted, false if not round was contained in this golfers list of rounds.
+    mutating func deleteRound(_ round: Round) -> Bool {
+        if self.rounds.contains(round) {
+            rounds.removeAll { $0 == round }
+            return true
+        }
+        
+        return false
     }
 }
 
@@ -250,5 +248,10 @@ enum Gender : String, Codable, CaseIterable {
 }
 
 extension Golfer {
-    static var golfer: Golfer { Golfer(firebaseID: "exampleID", gender: .man, name: "Logan") }
+    static var golfer: Golfer {
+        var golfer = Golfer(firebaseID: "exampleID", gender: .man, name: "Logan")
+        golfer.addRound(Round.example1)
+        
+        return golfer
+    }
 }

@@ -10,7 +10,16 @@ import SwiftUI
 struct RoundView: View {
     @Binding var golfer: Golfer
     var body: some View {
-        RoundViewList(golfer: $golfer)
+        NavigationStack {
+            GroupBox {
+                RoundViewList(golfer: $golfer)
+                    
+            } label: {
+                Text("History")
+            }
+            .padding(.horizontal)
+            .navigationTitle("Round History")
+        }
     }
 }
 
