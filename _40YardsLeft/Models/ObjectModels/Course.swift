@@ -228,6 +228,8 @@ extension Tee {
             return partialResult + data.par
         }
     }
+    
+    
 }
 
 //MARK: Array extension

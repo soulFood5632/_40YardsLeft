@@ -28,7 +28,8 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem (placement: .navigationBarLeading) {
-                    NavigationMenu()
+                    NavigationMenu(golfer:
+                                    $golfer)
 
                 }
                 

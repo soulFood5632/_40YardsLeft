@@ -10,24 +10,30 @@ import SwiftUI
 
 /// A view which shows a fire or ice icon based on the provided isHot value
 struct HotOrColdView: View {
-    let isHot: Bool
+    let isHot: ThreeState
+    
     
     var body: some View {
-        if isHot {
+        switch isHot {
+        case .hot:
             Image(systemName: "flame")
                 .foregroundColor(.red)
-        } else {
+        case .mild:
+            EmptyView()
+        case .cold:
             Image(systemName: "snowflake")
                 .foregroundColor(.blue)
         }
+        
     }
 }
 
 struct HotOrColdView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            HotOrColdView(isHot: true)
-            HotOrColdView(isHot: false)
+            HotOrColdView(isHot: .hot)
+            HotOrColdView(isHot: .mild)
+            HotOrColdView(isHot: .cold)
         }
     }
 }

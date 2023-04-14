@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NavigationMenu: View {
+    @Binding var golfer: Golfer
     var body: some View {
         Menu {
             
@@ -18,7 +19,7 @@ struct NavigationMenu: View {
             }
             
             NavigationLink() {
-                RoundView()
+                RoundView(golfer: $golfer)
             } label: {
                 Label("Manage Rounds", systemImage: "pencil")
             }
@@ -38,7 +39,8 @@ struct NavigationMenu: View {
 }
 
 struct Menu_Previews: PreviewProvider {
+    @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        NavigationMenu()
+        NavigationMenu(golfer: self.$golfer)
     }
 }

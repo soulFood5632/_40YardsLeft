@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct RoundUpdateView: View {
+    private static let DAYS_IN_PAST = 30
     let golfer: Golfer
     var body: some View {
         GroupBox {
-            let daysInPast = 30
-            let rounds = golfer.roundsInTheLast(days: daysInPast)
-            HStack {
-                Text("\(rounds) rounds in the last \(daysInPast) days")
-                HotOrColdView(isHot: true)
+            VStack {
+                HStack {
+                    Text("\(numberOfRoundsPlayed) rounds in the last \(Self.DAYS_IN_PAST) days")
+                    HotOrColdView(isHot: self.isRoundsPlayedHot)
+                }
+                
             }
         }
+    }
+}
+
+extension RoundUpdateView {
+    /// Gets if the the number of rounds played in the last `Self.DAYS_IN_PAST` is hot or cold
+    ///
+    ///  - `Hot` is defined as playing 0.1 more rounds per day than average
+    ///  - `Cold` is defined as playing 0.1 less rounds per day than average
+    ///  - `Mild` is defined as anywhere in the middle
+    private var isRoundsPlayedHot: ThreeState {
+        return IsHot.numOfRounds(rounds: self.numberOfRoundsPlayed, days: Self.DAYS_IN_PAST, hotThreshold: golfer.roundsPerDay + 0.1, coldThreshold: golfer.roundsPerDay - 0.1)
+    }
+    
+    
+    /// The number of rounds played in the last `Self.DAYS_IN_PAST`
+    private var numberOfRoundsPlayed: Int {
+        golfer.roundsInTheLast(days: Self.DAYS_IN_PAST)
     }
 }
 

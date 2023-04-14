@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct RoundView: View {
+    @Binding var golfer: Golfer
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        RoundViewList(golfer: $golfer)
     }
 }
 
 struct RoundView_Previews: PreviewProvider {
+    
+    @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        RoundView()
+        RoundView(golfer: $golfer)
     }
 }

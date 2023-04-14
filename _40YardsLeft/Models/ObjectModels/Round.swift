@@ -8,7 +8,10 @@
 import Foundation
 
 //MARK: Round Initilizers
-struct Round : Equatable, Codable {
+struct Round : Codable, Identifiable {
+    /// A stable identifier for the round
+    let id: UUID
+    
     
     let course: Course
     var tee: Tee
@@ -19,6 +22,7 @@ struct Round : Equatable, Codable {
         if !course.hasTee(tee) {
             throw GolfErrors.teeDoesntExist
         }
+        self.id = UUID()
         self.course = course
         self.tee = tee
         self.holes = Self.getSkeletonHoles(from: tee)
@@ -33,6 +37,12 @@ struct Round : Equatable, Codable {
         return tee.holeData.map { Hole(holeData: $0) }
     }
     
+}
+
+extension Round: Equatable {
+    static func ==(rhs: Round, lhs: Round) -> Bool {
+        return rhs.id == lhs.id
+    }
 }
 
 //MARK: Round Extension

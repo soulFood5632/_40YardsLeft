@@ -63,6 +63,66 @@ extension Golfer: Equatable {
     }
 }
 
+extension Golfer {
+    @discardableResult
+    /// Adds the given round to this golfer.
+    ///
+    /// - Parameter round: The round you would like to add
+    /// - Returns: False if the round already has been added, true if succseful.
+    func addRound(_ round : Round) -> Bool {
+        if self.rounds.contains(round) {
+            return false
+        }
+        
+        self.rounds.append(round)
+        return true
+    }
+}
+
+extension Golfer {
+    /// A number of rounds played per day since the first round of the golfer.
+    ///
+    /// The number of days since the last round will use the defintion provided by `date.daysToNow()`
+    var roundsPerDay: Double {
+        if rounds.isEmpty {
+            return 0
+        }
+        
+        let earliestRound = rounds.sorted { round1, round2 in
+            return round1.date > round2.date
+        }
+        .last!
+        
+        return Double(rounds.count) / Double(earliestRound.date.daysToNow())
+    }
+    
+    /// Gets the list of rounds sorted by date (most recent to oldest)
+    var roundsSortedByDate: [Round] {
+        rounds.sorted(by: { round1, round2 in
+            return round1.date > round2.date
+        })
+    }
+}
+
+extension Date {
+    
+    
+    /// Gets the overestimated number of days until now.
+    ///
+    /// - Returns: The overestimated number of days until now since this date. If the provided date is in the future returns 0.
+    func daysToNow() -> Int {
+        let oneDayInSeconds = TimeInterval.days(1)
+        
+        let sinceNow = self.timeIntervalSince(.now)
+        
+        if sinceNow >= 0 {
+            return 0
+        }
+        
+        return Int(-(sinceNow / oneDayInSeconds).rounded(.awayFromZero))
+    }
+}
+
 
 extension Golfer {
     
@@ -96,19 +156,7 @@ extension Golfer {
         .keepFirst(number)
     }
     
-    @discardableResult
-    /// Adds the given round to this golfer.
-    ///
-    /// - Parameter round: The round you would like to add
-    /// - Returns: False if the round already has been added, true if succseful.
-    func addRound(_ round : Round) -> Bool {
-        if self.rounds.contains(round) {
-            return false
-        }
-        
-        self.rounds.append(round)
-        return true
-    }
+    
     
     
     
@@ -148,6 +196,8 @@ extension Golfer {
     }
     
 }
+
+
 
 
 //MARK: Array Helper Methods
