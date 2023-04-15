@@ -17,6 +17,13 @@ struct Golfer: Codable {
     var name : String
     var homeCourse : Course?
     
+    
+    /// Creates a new instance of a golfer with no home course
+    ///
+    /// - Parameters:
+    ///   - firebaseID: The firebase ID realted to this golfer
+    ///   - gender: The gender of the golfer
+    ///   - name: The name of the golfer
     init(firebaseID: String, gender: Gender, name: String) {
         self.firebaseID = firebaseID
         self.rounds = [Round]()
@@ -25,6 +32,13 @@ struct Golfer: Codable {
         
     }
     
+    
+    /// Creates a new instance of a golfer with the provided home course
+    /// - Parameters:
+    ///   - firebaseID: <#firebaseID description#>
+    ///   - gender: <#gender description#>
+    ///   - name: <#name description#>
+    ///   - homeCourse: <#homeCourse description#>
     init(firebaseID: String, gender: Gender, name: String, homeCourse: Course) {
         self.firebaseID = firebaseID
         self.rounds = [Round]()

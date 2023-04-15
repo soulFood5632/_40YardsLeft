@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoundUpdateView: View {
+struct HotStreak: View {
     private static let DAYS_IN_PAST = 30
     let golfer: Golfer
     var body: some View {
@@ -17,13 +17,20 @@ struct RoundUpdateView: View {
                 Text("\(numberOfRoundsPlayed) rounds in the last \(Self.DAYS_IN_PAST) days")
                 HotOrColdView(isHot: self.isRoundsPlayedHot)
             }
+            //TODO: brainstorm some hot or cold things to show
+            HStack {
+                Text("5 birdies in the last days")
+                HotOrColdView(isHot: self.isRoundsPlayedHot)
+            }
+            
+            
             
         }
         
     }
 }
 
-extension RoundUpdateView {
+extension HotStreak {
     /// Gets if the the number of rounds played in the last `Self.DAYS_IN_PAST` is hot or cold
     ///
     ///  - `Hot` is defined as playing 0.1 more rounds per day than average
@@ -79,6 +86,6 @@ extension TimeInterval {
 
 struct RoundUpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        RoundUpdateView(golfer: Golfer.golfer)
+        HotStreak(golfer: Golfer.golfer)
     }
 }

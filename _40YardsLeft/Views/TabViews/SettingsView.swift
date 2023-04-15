@@ -6,8 +6,7 @@
 //
 
 import SwiftUI
-
-
+import FirebaseAuth
 
 
 struct newSettings {
@@ -17,14 +16,40 @@ struct newSettings {
 }
 
 struct SettingsView: View {
+    
+    
     var body: some View {
-        Text("hello world")
+        
+        VStack {
+            GroupBox {
+                AccountDetails()
+            } label: {
+                Label("Account Settings", systemImage: "key")
+                //Not sure
+            }
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem (placement: .destructiveAction) {
+                Button("Log Out", role: .destructive) {
+                    do {
+                        try Auth.auth().signOut()
+                    } catch {
+                        //TODO: finish this error checking mechanism
+                        print(error.localizedDescription)
+                    }
+                }
+                .foregroundColor(.red)
+            }
+        }
     }
         
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        NavigationStack {
+            SettingsView()
+        }
     }
 }

@@ -15,11 +15,13 @@ struct ContentView: View {
     
     @State private var golfer: Golfer?
     
+    @State private var userIsLoggedOut = false
+    
     
 
     var body: some View {
         ZStack {
-            
+            //TODO: allow the user to enter their details here 
             if let golfer = golfer {
                 let golferBinding = Binding {
                     golfer
@@ -36,15 +38,11 @@ struct ContentView: View {
                 .opacity(user == nil ? 1 : 0)
             
         }
+        .navigationDestination(isPresented: self.$userIsLoggedOut, destination: {
+            LoginScreen(user: self.$user)
+        })
         .onChange(of: Auth.auth().currentUser) { newUser in
-            self.user = newUser
-            Task {
-                do {
-                    self.golfer = try await DatabaseCommunicator.getGolfer(id: newUser!.uid)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
+            self.fetchGolferFromUser(newUser: newUser)
         }
         
 
@@ -53,6 +51,23 @@ struct ContentView: View {
     
 
     
+}
+
+extension ContentView {
+    func fetchGolferFromUser(newUser: User?) {
+        if newUser != nil {
+            self.user = newUser
+            Task {
+                do {
+                    self.golfer = try await DatabaseCommunicator.getGolfer(id: newUser!.uid)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        } else {
+            userIsLoggedOut = true
+        }
+    }
 }
 
 

@@ -26,12 +26,15 @@
 		0222865A29E51D6500FEBB91 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */; };
 		0222866929E87F7400FEBB91 /* GolferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222866829E87F7400FEBB91 /* GolferView.swift */; };
 		0222866B29E883DF00FEBB91 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222866A29E883DF00FEBB91 /* Menu.swift */; };
-		0222866D29E88E2300FEBB91 /* RoundUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222866C29E88E2300FEBB91 /* RoundUpdateView.swift */; };
+		0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222866C29E88E2300FEBB91 /* HotStreak.swift */; };
 		0222866F29E8921000FEBB91 /* HotOrColdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222866E29E8921000FEBB91 /* HotOrColdView.swift */; };
 		0222867229E893D700FEBB91 /* IsHot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867129E893D700FEBB91 /* IsHot.swift */; };
 		0222867429E8977500FEBB91 /* ThreeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867329E8977500FEBB91 /* ThreeState.swift */; };
 		0222867729E8C2FC00FEBB91 /* RoundViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867629E8C2FC00FEBB91 /* RoundViewList.swift */; };
 		0222867929E9A3DF00FEBB91 /* RoundInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867829E9A3DF00FEBB91 /* RoundInfo.swift */; };
+		0222867E29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */; };
+		0222868329EA72F600FEBB91 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868229EA72F600FEBB91 /* LoginScreen.swift */; };
+		0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868429EA76CD00FEBB91 /* AccountDetails.swift */; };
 		0260D1D829D7F25900EFAE79 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D729D7F25900EFAE79 /* ScorecardView.swift */; };
 		0260D1DA29D8D5E000EFAE79 /* HoleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */; };
 		0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */; };
@@ -97,12 +100,15 @@
 		0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
 		0222866829E87F7400FEBB91 /* GolferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolferView.swift; sourceTree = "<group>"; };
 		0222866A29E883DF00FEBB91 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		0222866C29E88E2300FEBB91 /* RoundUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUpdateView.swift; sourceTree = "<group>"; };
+		0222866C29E88E2300FEBB91 /* HotStreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotStreak.swift; sourceTree = "<group>"; };
 		0222866E29E8921000FEBB91 /* HotOrColdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotOrColdView.swift; sourceTree = "<group>"; };
 		0222867129E893D700FEBB91 /* IsHot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsHot.swift; sourceTree = "<group>"; };
 		0222867329E8977500FEBB91 /* ThreeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeState.swift; sourceTree = "<group>"; };
 		0222867629E8C2FC00FEBB91 /* RoundViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViewList.swift; sourceTree = "<group>"; };
 		0222867829E9A3DF00FEBB91 /* RoundInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundInfo.swift; sourceTree = "<group>"; };
+		0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeANewGolferPopUp.swift; sourceTree = "<group>"; };
+		0222868229EA72F600FEBB91 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		0222868429EA76CD00FEBB91 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
 		0260D1D729D7F25900EFAE79 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
 		0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
@@ -217,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				0222866829E87F7400FEBB91 /* GolferView.swift */,
-				0222866C29E88E2300FEBB91 /* RoundUpdateView.swift */,
+				0222866C29E88E2300FEBB91 /* HotStreak.swift */,
 				0222866A29E883DF00FEBB91 /* Menu.swift */,
 			);
 			path = GolferAtAGlance;
@@ -238,6 +244,14 @@
 				0222867829E9A3DF00FEBB91 /* RoundInfo.swift */,
 			);
 			path = RoundViewHelpers;
+			sourceTree = "<group>";
+		};
+		0222868129EA6C9000FEBB91 /* SettingsHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				0222868429EA76CD00FEBB91 /* AccountDetails.swift */,
+			);
+			path = SettingsHelpers;
 			sourceTree = "<group>";
 		};
 		0260D1DB29D8D73B00EFAE79 /* ScoreCardHelpers */ = {
@@ -356,11 +370,13 @@
 		02FACCB929C6DFDD00B55E6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */,
 				02FEA17A29CEC86100BCD7A4 /* UserView.swift */,
 				0222867029E8921A00FEBB91 /* ViewHelpers */,
 				02FEA18F29CECAFB00BCD7A4 /* TabViewChildren */,
 				02FEA18E29CECAAA00BCD7A4 /* TabViews */,
 				02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */,
+				0222868229EA72F600FEBB91 /* LoginScreen.swift */,
 				02FACCB029C6C61500B55E6D /* WelcomeScreenChildren */,
 			);
 			path = Views;
@@ -384,6 +400,7 @@
 				02FEA1C629D3372600BCD7A4 /* RoundEntry.swift */,
 				02FEA1CA29D3373B00BCD7A4 /* RoundEntryTools  */,
 				02FEA1C229D1518200BCD7A4 /* SettingsView.swift */,
+				0222868129EA6C9000FEBB91 /* SettingsHelpers */,
 				02FEA18A29CECA0A00BCD7A4 /* StatView.swift */,
 			);
 			path = TabViews;
@@ -581,6 +598,7 @@
 				0222867429E8977500FEBB91 /* ThreeState.swift in Sources */,
 				02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */,
 				02FEA1C729D3372600BCD7A4 /* RoundEntry.swift in Sources */,
+				0222868329EA72F600FEBB91 /* LoginScreen.swift in Sources */,
 				02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */,
 				0260D1DA29D8D5E000EFAE79 /* HoleButtons.swift in Sources */,
 				02FEA16629CCEBE600BCD7A4 /* SizeAnimation.swift in Sources */,
@@ -590,11 +608,13 @@
 				02FEA1D629D3D1F400BCD7A4 /* ShotElement.swift in Sources */,
 				0222867229E893D700FEBB91 /* IsHot.swift in Sources */,
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,
+				0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */,
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
-				0222866D29E88E2300FEBB91 /* RoundUpdateView.swift in Sources */,
+				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */,
+				0222867E29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,

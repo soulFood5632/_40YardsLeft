@@ -27,7 +27,7 @@ struct HomeView: View {
                 .frame(maxHeight: 200)
                     
                 GroupBox {
-                    RoundUpdateView(golfer: golfer)
+                    HotStreak(golfer: golfer)
                 } label: {
                     
                 }
