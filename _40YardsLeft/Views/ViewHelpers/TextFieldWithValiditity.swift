@@ -80,7 +80,6 @@ struct TextFieldWithValiditity: View {
     }
 }
 
-
 extension TextFieldWithValiditity {
     
     /// Gets the colour from the given current conditions of the text.

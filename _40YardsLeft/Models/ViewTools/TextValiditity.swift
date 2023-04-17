@@ -65,6 +65,26 @@ struct TextValiditity {
         return []
     }
     
+    
+    /// Combines a given set of text checkers using an AND operator
+    ///
+    /// - Note: There is no checking completed on the provided conditions. If they conflict and cover inverse areas of the solution space then it will result in a condition
+    ///
+    /// - Parameter conditions: The condtions you would like to combine
+    /// - Returns: A condition statement which which combines all provided entries provided such that it combines all outputs into one.
+    static func combine(conditions: [(String) -> [String]]) -> (String) -> [String] {
+        return { newString in
+            let stringList = conditions.map { $0(newString) }
+            return Array.combine(arrays: stringList)
+        }
+    }
+    
+    static func mustNotBeEqualTo(_ text: String) -> (String) -> [String] {
+        return { newString in
+            return newString == text ? ["Duplicate Text"] : []
+        }
+    }
+    
     static func betweenSizes(range: Range<Int>) -> (String) -> [String] {
         return { newValue in
             if newValue.count < range.lowerBound {

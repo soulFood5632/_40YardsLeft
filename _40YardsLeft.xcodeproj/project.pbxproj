@@ -35,6 +35,8 @@
 		0222867E29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */; };
 		0222868329EA72F600FEBB91 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868229EA72F600FEBB91 /* LoginScreen.swift */; };
 		0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868429EA76CD00FEBB91 /* AccountDetails.swift */; };
+		0222868729ED9B0B00FEBB91 /* ProfileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */; };
+		0222868929ED9B8700FEBB91 /* EditableStaticText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868829ED9B8700FEBB91 /* EditableStaticText.swift */; };
 		0260D1D829D7F25900EFAE79 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D729D7F25900EFAE79 /* ScorecardView.swift */; };
 		0260D1DA29D8D5E000EFAE79 /* HoleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */; };
 		0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */; };
@@ -109,6 +111,8 @@
 		0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeANewGolferPopUp.swift; sourceTree = "<group>"; };
 		0222868229EA72F600FEBB91 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		0222868429EA76CD00FEBB91 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
+		0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetails.swift; sourceTree = "<group>"; };
+		0222868829ED9B8700FEBB91 /* EditableStaticText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableStaticText.swift; sourceTree = "<group>"; };
 		0260D1D729D7F25900EFAE79 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
 		0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
@@ -196,10 +200,9 @@
 		0222862C29E0C2B900FEBB91 /* _40YardsLeftTests */ = {
 			isa = PBXGroup;
 			children = (
-				0222862D29E0C2B900FEBB91 /* DistanceTests.swift */,
-				0222865229E34BDD00FEBB91 /* PositionTests.swift */,
-				0222865729E4DDA900FEBB91 /* RoundTests.swift */,
-				0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */,
+				0222868C29EDABFB00FEBB91 /* DataAnalysisTests */,
+				0222868B29EDABDC00FEBB91 /* ExtensionsTests */,
+				0222868A29EDABBE00FEBB91 /* GolferObjectTests */,
 			);
 			path = _40YardsLeftTests;
 			sourceTree = "<group>";
@@ -233,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				0222866E29E8921000FEBB91 /* HotOrColdView.swift */,
+				0222868829ED9B8700FEBB91 /* EditableStaticText.swift */,
+				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
 			);
 			path = ViewHelpers;
 			sourceTree = "<group>";
@@ -250,8 +255,34 @@
 			isa = PBXGroup;
 			children = (
 				0222868429EA76CD00FEBB91 /* AccountDetails.swift */,
+				0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */,
 			);
 			path = SettingsHelpers;
+			sourceTree = "<group>";
+		};
+		0222868A29EDABBE00FEBB91 /* GolferObjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				0222865229E34BDD00FEBB91 /* PositionTests.swift */,
+				0222865729E4DDA900FEBB91 /* RoundTests.swift */,
+				0222862D29E0C2B900FEBB91 /* DistanceTests.swift */,
+			);
+			path = GolferObjectTests;
+			sourceTree = "<group>";
+		};
+		0222868B29EDABDC00FEBB91 /* ExtensionsTests */ = {
+			isa = PBXGroup;
+			children = (
+				0222865929E51D6500FEBB91 /* ArrayExtensionTests.swift */,
+			);
+			path = ExtensionsTests;
+			sourceTree = "<group>";
+		};
+		0222868C29EDABFB00FEBB91 /* DataAnalysisTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataAnalysisTests;
 			sourceTree = "<group>";
 		};
 		0260D1DB29D8D73B00EFAE79 /* ScoreCardHelpers */ = {
@@ -293,13 +324,6 @@
 				0260D1E329D8E74400EFAE79 /* BasicCourseInfo.swift */,
 			);
 			path = CreateCourse;
-			sourceTree = "<group>";
-		};
-		0260D1F329DC763D00EFAE79 /* AnalysisTools */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AnalysisTools;
 			sourceTree = "<group>";
 		};
 		02E9DB8E29C0FC2700AA15FA = {
@@ -347,7 +371,6 @@
 			isa = PBXGroup;
 			children = (
 				0222861F29DF92E000FEBB91 /* DataAnaylsis */,
-				0260D1F329DC763D00EFAE79 /* AnalysisTools */,
 				02FEA1B929CFB7E600BCD7A4 /* FirebaseTools */,
 				02FEA1CF29D33BCB00BCD7A4 /* ViewTools */,
 				02FEA19429CF757700BCD7A4 /* ObjectModels */,
@@ -362,7 +385,6 @@
 				02FEA16429CCEBCF00BCD7A4 /* WelcomeAnimationProperties */,
 				02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */,
 				02FACCB329C6D7D600B55E6D /* NewUserForm.swift */,
-				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
 			);
 			path = WelcomeScreenChildren;
 			sourceTree = "<group>";
@@ -631,11 +653,13 @@
 				0222866929E87F7400FEBB91 /* GolferView.swift in Sources */,
 				02FEA1A629CF7D4700BCD7A4 /* Course.swift in Sources */,
 				0222867729E8C2FC00FEBB91 /* RoundViewList.swift in Sources */,
+				0222868729ED9B0B00FEBB91 /* ProfileDetails.swift in Sources */,
 				0260D1EC29DA214400EFAE79 /* RoundSetupView.swift in Sources */,
 				02FEA1AE29CF9CEA00BCD7A4 /* Round.swift in Sources */,
 				02FEA19629CF785C00BCD7A4 /* Golfer.swift in Sources */,
 				0222867929E9A3DF00FEBB91 /* RoundInfo.swift in Sources */,
 				02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */,
+				0222868929ED9B8700FEBB91 /* EditableStaticText.swift in Sources */,
 				02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */,
 				0260D1E429D8E74400EFAE79 /* BasicCourseInfo.swift in Sources */,
 				0222866B29E883DF00FEBB91 /* Menu.swift in Sources */,
