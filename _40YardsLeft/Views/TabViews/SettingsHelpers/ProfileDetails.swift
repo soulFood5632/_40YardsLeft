@@ -31,7 +31,25 @@ struct ProfileDetails: View {
     
     var body: some View {
         VStack {
-            EditableStaticText(text: $profileBuffer.userName, isConfirmed: self.$isChangeComplete[0], originalText: profileBuffer.userName)
+            HStack {
+                Text("Username:")
+                    .bold()
+                    .padding(.trailing, 8)
+                EditableStaticText(text: $profileBuffer.userName, isConfirmed: self.$isChangeComplete[0], originalText: profileBuffer.userName)
+                    .textFieldStyle(.roundedBorder)
+            }
+            Divider()
+            if profileBuffer.homeCourse == nil {
+                NavigationLink {
+                    PickACourse(course: self.$profileBuffer.homeCourse)
+                        .padding()
+                } label: {
+                    Label("Add your home course", systemImage: "link.badge.plus")
+                }
+            } else {
+                
+            }
+
         }
     }
 }

@@ -40,6 +40,8 @@ struct AccountDetails: View {
             .disabled(!validityCheck[0])
             .buttonStyle(.bordered)
             
+            Divider()
+            
             TextFieldWithValiditity(condition: TextValiditity.passwordCheck, text: self.$firstPassword, prompt: "Password", isSecureField: true, isValid: self.$validityCheck[1])
                 .textContentType(.newPassword)
                 .textFieldStyle(.roundedBorder)

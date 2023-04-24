@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */; };
 		0222862129DF930700FEBB91 /* TendancyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */; };
 		0222862E29E0C2B900FEBB91 /* DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222862D29E0C2B900FEBB91 /* DistanceTests.swift */; };
 		0222863C29E337EF00FEBB91 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0222863B29E337EF00FEBB91 /* FirebaseAnalytics */; };
@@ -32,7 +33,6 @@
 		0222867429E8977500FEBB91 /* ThreeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867329E8977500FEBB91 /* ThreeState.swift */; };
 		0222867729E8C2FC00FEBB91 /* RoundViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867629E8C2FC00FEBB91 /* RoundViewList.swift */; };
 		0222867929E9A3DF00FEBB91 /* RoundInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867829E9A3DF00FEBB91 /* RoundInfo.swift */; };
-		0222867E29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */; };
 		0222868329EA72F600FEBB91 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868229EA72F600FEBB91 /* LoginScreen.swift */; };
 		0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868429EA76CD00FEBB91 /* AccountDetails.swift */; };
 		0222868729ED9B0B00FEBB91 /* ProfileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */; };
@@ -93,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendancyAnalyzer.swift; sourceTree = "<group>"; };
 		0222862B29E0C2B900FEBB91 /* _40YardsLeftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _40YardsLeftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0222862D29E0C2B900FEBB91 /* DistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		0222867329E8977500FEBB91 /* ThreeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeState.swift; sourceTree = "<group>"; };
 		0222867629E8C2FC00FEBB91 /* RoundViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViewList.swift; sourceTree = "<group>"; };
 		0222867829E9A3DF00FEBB91 /* RoundInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundInfo.swift; sourceTree = "<group>"; };
-		0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeANewGolferPopUp.swift; sourceTree = "<group>"; };
 		0222868229EA72F600FEBB91 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		0222868429EA76CD00FEBB91 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
 		0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetails.swift; sourceTree = "<group>"; };
@@ -238,6 +238,7 @@
 				0222866E29E8921000FEBB91 /* HotOrColdView.swift */,
 				0222868829ED9B8700FEBB91 /* EditableStaticText.swift */,
 				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
+				020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */,
 			);
 			path = ViewHelpers;
 			sourceTree = "<group>";
@@ -392,7 +393,6 @@
 		02FACCB929C6DFDD00B55E6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0222867D29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift */,
 				02FEA17A29CEC86100BCD7A4 /* UserView.swift */,
 				0222867029E8921A00FEBB91 /* ViewHelpers */,
 				02FEA18F29CECAFB00BCD7A4 /* TabViewChildren */,
@@ -636,7 +636,6 @@
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */,
-				0222867E29EA6BC000FEBB91 /* MakeANewGolferPopUp.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,
@@ -660,6 +659,7 @@
 				0222867929E9A3DF00FEBB91 /* RoundInfo.swift in Sources */,
 				02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */,
 				0222868929ED9B8700FEBB91 /* EditableStaticText.swift in Sources */,
+				020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */,
 				02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */,
 				0260D1E429D8E74400EFAE79 /* BasicCourseInfo.swift in Sources */,
 				0222866B29E883DF00FEBB91 /* Menu.swift in Sources */,

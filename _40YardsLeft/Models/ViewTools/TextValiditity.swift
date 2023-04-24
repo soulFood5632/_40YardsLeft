@@ -45,6 +45,8 @@ struct TextValiditity {
 
     }
     
+    
+    /// A text checker which ensures that the provided email address is valid
     static let emailChecker: (String) -> [String] = { entry in
         var errorList = [String]()
         
@@ -79,12 +81,23 @@ struct TextValiditity {
         }
     }
     
+    
+    /// A text checker which checks if the given text is identical to the provided parameter.
+    ///
+    /// - Parameter text: The text which you would like to ensure thew provided text is not equal to it.
+    /// - Returns: A condition statment which shows the element duplicate text if the text is the same as the provided parameter
     static func mustNotBeEqualTo(_ text: String) -> (String) -> [String] {
         return { newString in
             return newString == text ? ["Duplicate Text"] : []
         }
     }
     
+    
+    /// A text checker which ensures that the length of the string in within the provided range.
+    ///
+    /// The checker will only trigger errors if the value is the text length is outside the provided range.
+    /// - Parameter range: A range statment containg all allowable lengths of the text.
+    /// - Returns: A condition statement which identifies the the missed condition.
     static func betweenSizes(range: Range<Int>) -> (String) -> [String] {
         return { newValue in
             if newValue.count < range.lowerBound {
@@ -98,6 +111,10 @@ struct TextValiditity {
         }
     }
     
+    
+    /// A text checker used to confirm that a (Double) value is within the provided range
+    /// - Parameter range: <#range description#>
+    /// - Returns: <#description#>
     static func valueOfNumberWithin(range: Range<Double>) -> (String) -> [String] {
         return { newValue in
             if let numericalValue = Double(newValue) {

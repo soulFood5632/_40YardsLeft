@@ -16,6 +16,7 @@ struct newSettings {
 }
 
 struct SettingsView: View {
+    @Binding var golfer: Golfer
     
     
     var body: some View {
@@ -27,7 +28,18 @@ struct SettingsView: View {
                 Label("Account Settings", systemImage: "key")
                 //Not sure
             }
+            
+            Divider()
+            
+            GroupBox {
+                ProfileDetails(golfer: $golfer, profileBuffer: .init(golfer: golfer))
+            } label: {
+                Label("Profile Settings", systemImage: "person")
+            }
+            
+            
         }
+        .navigationTitle("Settings")
         .padding()
         .toolbar {
             ToolbarItem (placement: .destructiveAction) {
@@ -47,9 +59,10 @@ struct SettingsView: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
+    @State static private var golfer: Golfer = .golfer
     static var previews: some View {
         NavigationStack {
-            SettingsView()
+            SettingsView(golfer: self.$golfer)
         }
     }
 }

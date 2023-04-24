@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @Binding var golfer: Golfer
     
+    @State private var isAddRound = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -28,15 +30,19 @@ struct HomeView: View {
                     
                 GroupBox {
                     HotStreak(golfer: golfer)
+                    Button {
+                        isAddRound = true
+                    } label: {
+                        Text("Start Round")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .navigationDestination(isPresented: self.$isAddRound) {
+                        RoundEntry()
+                    }
                 } label: {
                     
                 }
-                //TODO: temporary link (remove it
-                NavigationLink {
-                    RoundEntry()
-                } label: {
-                    Text("add Round")
-                }
+                
             }
             .toolbar {
                 ToolbarItem (placement: .navigationBarLeading) {

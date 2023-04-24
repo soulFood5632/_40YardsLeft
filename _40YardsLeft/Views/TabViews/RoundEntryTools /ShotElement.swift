@@ -32,7 +32,7 @@ struct ShotElement: View {
                     Text(shotType.rawValue)
                     
                 }
-            } label: { }
+            } label: { } // empty label becuase it does not matter. 
                 .pickerStyle(.menu)
             
             
