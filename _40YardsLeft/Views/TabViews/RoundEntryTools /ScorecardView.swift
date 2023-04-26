@@ -41,6 +41,6 @@ struct ScorecardView_Previews: PreviewProvider {
     @State private static var currentHole = 10
     @State private static var showView = true
     static var previews: some View {
-        ScorecardView(round: .example1, currentHole: self.$currentHole, showView: self.$showView)
+        ScorecardView(round: .completeRoundExample1, currentHole: self.$currentHole, showView: self.$showView)
     }
 }

@@ -32,8 +32,42 @@ struct Position : Codable, Equatable {
         }
     }
     
+    
+    /// Two positions are equal if their lies and yardage are both equal to each other.
     static func == (lhs: Position, rhs: Position) -> Bool {
         return lhs.lie == rhs.lie && lhs.yardage == rhs.yardage
+    }
+}
+
+extension Position {
+    
+    /// Gets the expected shot type from this position
+    /// - Returns: A predicted shot type from the position. 
+    func expectedShotType() -> ShotType {
+        switch self.lie {
+        case .tee:
+            if yardage.yards > 200 {
+                return .drive
+            }
+            
+            return .approach
+        case .fairway, .bunker, .rough:
+            if yardage.yards > 50 {
+                if yardage.yards > 250 {
+                    return .other
+                }
+                return .approach
+            }
+            
+            return .chip_pitch
+        case .penalty:
+            return .penalty
+        case .recovery:
+            return .other
+        case .green:
+            return .putt
+        }
+    
     }
 }
 

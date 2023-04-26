@@ -34,6 +34,7 @@ struct Golfer: Codable {
     
     
     /// Creates a new instance of a golfer with the provided home course
+    ///
     /// - Parameters:
     ///   - firebaseID: <#firebaseID description#>
     ///   - gender: <#gender description#>
@@ -265,7 +266,7 @@ enum Gender : String, Codable, CaseIterable {
 extension Golfer {
     static var golfer: Golfer {
         var golfer = Golfer(firebaseID: "exampleID", gender: .man, name: "Logan")
-        golfer.addRound(Round.example1)
+        golfer.addRound(Round.emptyRoundExample1)
         
         return golfer
     }

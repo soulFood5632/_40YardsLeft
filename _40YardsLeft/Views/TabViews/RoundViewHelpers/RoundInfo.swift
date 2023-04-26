@@ -30,7 +30,7 @@ struct RoundInfo: View {
 struct RoundInfo_Previews: PreviewProvider {
     static var previews: some View {
         Menu {
-            RoundInfo(round: Round.example1)
+            RoundInfo(round: Round.emptyRoundExample1)
         } label: {
             Text("Click Me")
         }

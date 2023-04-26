@@ -46,6 +46,6 @@ struct IndividualButton: View {
 struct IndividualButton_Previews: PreviewProvider {
     @State private static var buttonNumber = 1
     static var previews: some View {
-        IndividualButton(buttonNumber: 1, activeHole: self.$buttonNumber, round: .example1)
+        IndividualButton(buttonNumber: 1, activeHole: self.$buttonNumber, round: .emptyRoundExample1)
     }
 }

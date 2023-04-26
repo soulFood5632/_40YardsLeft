@@ -9,35 +9,47 @@ import Foundation
 import SwiftUI
 
 //MARK: Hole Init
-struct Hole : Codable, Equatable {
+struct Hole: Codable, Equatable, Identifiable {
     
     //TODO: write RI's and AF.
     
     let holeData: HoleData
-    private(set) var shots: [Shot] {
+    let id: UUID
+    
+    /// A list containg the shots that this hole has.
+    ///
+    /// After change of the list, if the hole is complete then it will populate the simplified shot cache. If the hole is no longer complete then it will reset the cache to nil.
+    private var shots: [Shot] {
         didSet {
-            if isHoled() {
-                self.populateSimplifiedShot()
+            if isComplete {
+                self.simplifiedShotsCache = self.getCombinedShots()
+            } else {
+                self.simplifiedShotsCache = nil
             }
         }
     }
     
+    
+    /// Creates a new instance of hole with no shots.
+    ///
+    /// - Parameter holeData: A description of the hole.
     init(holeData: HoleData) {
+        self.id = UUID()
         self.holeData = holeData
         self.shots = [Shot]()
     }
     
+    /// A cache contaiing the shots which have been simplified to remove penalties.
+    ///
+    /// The cache will be defined if the hole is complete, false otherwise.
     private var simplifiedShotsCache: [Shot]? = nil
     
-//TODO: investigate thread safety of this mechanism, maybe encase things in nil. not sure
-    private mutating func populateSimplifiedShot() {
-        self.simplifiedShotsCache = self.getCombinedShots()
-    }
     
     
     /// Gets the simplified shot form that does not include penatlties
     ///
     /// - Requires: The shot list is complete (it is holed)
+    ///
     /// - Returns: A list containing a collection of all shots where all shots that end in a pentatly are joined with the next shot's end position.
     private func getCombinedShots() -> [Shot] {
         var shotList = [Shot]()
@@ -65,6 +77,8 @@ struct Hole : Codable, Equatable {
                 continue
             }
             
+            // else it is simple as adding the shot to the end and advancing one.
+            
             shotList.append(shots[index])
             index += 1
             
@@ -78,14 +92,49 @@ struct Hole : Codable, Equatable {
 
 //MARK: Shot Entry Helpers
 extension Hole {
-    mutating func addShot(_ shot: Shot) {
+    
+    @discardableResult
+    /// Adds the given shot to the hole.
+    ///
+    /// - Note: The shot to be added's start is the same position as the last shot. If there is no previous shot then there is no condition.
+    ///
+    /// - Parameter shot: The shot to be added (see preconditions)
+    /// - Returns: True if the shot was succsefully added, false if
+    mutating func addShot(_ shot: Shot) -> Bool {
+        if let lastPosition = self.shots.last?.endPosition {
+            if lastPosition != shot.startPosition {
+                return false
+            }
+            // return false if the start position does not equal the end position
+        }
         shots.append(shot)
+        return true
+        
     }
     
-    mutating func addShots(_ shots: [Shot]) {
-        self.shots.append(contentsOf: shots)
+    @discardableResult
+    /// Adds the given list of shots to the hole.
+    ///
+    /// - Important: The list must be ordered in sequence starting from the most first shot to the last shot.
+    /// - Important: Each shot's finish must be equal to next shots start.
+    /// - Important: The first shot in the list start must be equal to the last shot in this holes end position. If there is no shots in this hole then it doesn't matter the start.
+    ///
+    /// - Note: If one shot fails then the next shots will not be able to chain off of it. An early failure could cause all to fail.
+    ///
+    /// - Parameter shots: The list of shots to be added (see details in `Important` documentation)
+    /// - Returns: A list of booleans which map the success of each index of the shots added to their individual success.
+    mutating func addShots(_ shots: [Shot]) -> [Bool] {
+        var returnArray = [Bool]()
+        shots.forEach { shot in
+            returnArray.append(self.addShot(shot))
+        }
+        return returnArray
     }
     
+    
+    /// Removes all shots from the hole.
+    ///
+    /// - Important: There is no reset after calling this function
     mutating func resetShots() {
         shots.removeAll()
     }
@@ -94,7 +143,7 @@ extension Hole {
     /// Removes the given shot from the hole
     /// 
     /// - Parameter shot: The shot you would like to remove
-    /// - Returns: <#description#>
+    /// - Returns: True if the the shot was succsefully removed. False otherwise
     mutating func removeShot(_ shot: Shot) -> Bool {
         if shots.contains(shot) {
             shots.removeAll{ $0 == shot }
@@ -146,25 +195,6 @@ extension Hole {
     }
     
     
-    
-    
-    /// Gets a colour from the score to par.
-    ///
-    /// - Returns: blue for a par, red for under par, black for over par.
-    func getColourFromScore() -> Color {
-        if score == 0 {
-            return .blue
-        }
-        if score < 0 {
-            return .red
-        }
-        
-        return .black
-    }
-    
-
-    
-    
     /// Finds if the last shot has was holed
     ///
     /// - Requires: The shot list must not be empty
@@ -181,3 +211,5 @@ extension Hole {
 enum ShotGeneration: Error {
     case holeNotComplete
 }
+
+

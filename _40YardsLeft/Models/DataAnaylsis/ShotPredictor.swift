@@ -57,6 +57,10 @@ class ShotPredictor {
         }
     }
     
+    init() {
+        self.userDistanceValues = UserDistanceValues()
+    }
+    
     
 
 }

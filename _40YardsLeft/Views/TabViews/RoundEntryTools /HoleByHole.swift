@@ -10,6 +10,7 @@ import SwiftUI
 /// <#Description#>
 struct HoleByHole: View {
     @State var round: Round
+    private let shotPredictor = ShotPredictor()
     @State var holeNumber: Int {
         // a task to complete after the update of the holeNumber
         didSet {
@@ -79,10 +80,9 @@ struct HoleByHole: View {
                             .bold()
                             ForEach($shotList[self.holeNumber - 1]) { shot in
                                 ShotElement(shot: shot)
-                                    
-                                
                             }
                             .onDelete { indexSet in
+                                //FIXME: understand what the hell is happening after the deletion mechanism. It is readding the element after lcicking it 
                                 indexSet.forEach { index in
                                     shotList.remove(at: index)
                                 }
@@ -92,8 +92,13 @@ struct HoleByHole: View {
                             }
                             
                             Button {
-                                //TODO: make this a suggested value
-                                self.shotList[holeNumber - 1].append(ShotIntermediate(position: Position(lie: .fairway, yardage: Distance(yards: 100)), type: .approach))
+                                if let lastPosition = self.shotList[holeNumber - 1].last?.position {
+                                    let suggestedLocation = shotPredictor.predictedNextLocation(lastPosition, par: round.tee.holeData[holeNumber - 1].par)
+                                    
+                                    self.shotList[holeNumber - 1].append(ShotIntermediate(position: suggestedLocation, type: suggestedLocation.expectedShotType()))
+                                } else {
+                                    self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
+                                }
                             } label: {
                                 Label {
                                     Text("Add shot")
@@ -118,8 +123,7 @@ struct HoleByHole: View {
                         Label("Finish Round", systemImage: "checkmark")
                     }
                     .buttonStyle(.bordered)
-                    .disabled(
-                        !self.round.isComplete)
+                    .disabled(!self.round.isComplete)
                 
                     
                     
@@ -142,10 +146,12 @@ struct HoleByHole: View {
                     }
                     
                     Spacer()
-                    Button {
-                        self.holeNumber += 1
-                    } label: {
-                        Label("Next Hole", systemImage: "arrow.forward.circle")
+                    if holeNumber < 18 {
+                        Button {
+                            self.holeNumber += 1
+                        } label: {
+                            Label("Next Hole", systemImage: "arrow.forward.circle")
+                        }
                     }
                 }
                 
@@ -162,10 +168,13 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
             
             })
-            .navigationTitle("Score Entry")
+            .onChange(of: self.holeNumber, perform: { newValue in
+                self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
+            })
             .onAppear {
             
                 //TODO: Imploment the autofill function here
+                self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
                 
                 Task {
                     //adds this course to the database
@@ -208,7 +217,7 @@ extension HoleByHole {
 
 struct HoleByHole_Previews: PreviewProvider {
     @State static private var holeNumber = 1
-    @State private static var round = Round.example1
+    @State private static var round = Round.emptyRoundExample1
     static var previews: some View {
         HoleByHole(round: round, holeNumber: holeNumber)
     }
@@ -218,4 +227,11 @@ struct ShotIntermediate : Identifiable {
     let id: UUID = UUID()
     var position: Position
     var type: ShotType
+}
+
+extension Hole {
+    func getFirstShotPredictor() -> ShotIntermediate {
+        return .init(position: Position(lie: .tee, yardage: self.holeData.yardage),
+                     type: self.holeData.par == 3 ? .approach : .drive)
+    }
 }

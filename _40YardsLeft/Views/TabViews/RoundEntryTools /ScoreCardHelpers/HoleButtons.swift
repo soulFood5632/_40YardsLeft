@@ -39,6 +39,6 @@ struct HoleButtons_Previews: PreviewProvider {
     @State private static var hole = 10
     
     static var previews: some View {
-        HoleButtons(round: .example1, holeNumber: self.$hole)
+        HoleButtons(round: .emptyRoundExample1, holeNumber: self.$hole)
     }
 }

@@ -51,8 +51,25 @@ extension Round: Equatable {
 
 //MARK: Round Extension
 extension Round {
+    /// An example round that does not contain any shot entries.
+    static let emptyRoundExample1 = try! Round(course: .example1, tee: Course.example1.listOfTees[0], date: .now, roundType: .casual)
     
-    static let example1 = try! Round(course: .example1, tee: Course.example1.listOfTees[0], date: .now, roundType: .casual)
+    static let completeRoundExample1 = {
+        var round = try! Round(course: .example1, tee: Course.example1.listOfTees[0], roundType: .competative)
+        
+        let sampleShotList: [Shot] = [
+            .init(type: .drive, startPosition: Position(lie: .tee, yardage: .yards(430)), endPosition: Position(lie: .fairway, yardage:.yards(196))),
+            Shot(type: .approach, startPosition: .init(lie: .fairway, yardage: .yards(196)), endPosition: .init(lie: .green, yardage: .feet(35))),
+            Shot(type: .putt, startPosition: .init(lie: .green, yardage: .feet(35)), endPosition: .init(lie: .green, yardage: .feet(2))),
+            Shot(type: .putt, startPosition: .init(lie: .green, yardage: .feet(2)), endPosition: .holed)
+        ]
+        //note the use of a index iterator becuase of the immutability of structs.
+        for indexes in round.holes.indices {
+            round.holes[indexes].addShots(sampleShotList)
+        }
+        
+        return round
+    }()
     
     
     /// Finds if the provided hole has valid entries (could be submitted)
@@ -79,6 +96,15 @@ extension Round {
         frontNine.removeFirst(9)
         
         return frontNine
+    }
+    
+    /// The number of holes that have been entered succsefuly
+    ///
+    /// A succseful hole entry is defined as a hole which's last shot ends in the hole. As a conseqeunce that means each hole must have at least one shot.
+    ///
+    /// - Returns: The number of holes which have been succsefully entered
+    func numberOfHolesEntered() -> Int {
+        return self.holes.map { $0.isComplete }.filter { $0 == true }.count
     }
     
     
@@ -115,26 +141,27 @@ extension Round {
         }
     }
     
+    /// Is the round complete (do all holes have entries)
+    var isComplete: Bool { return numberOfHolesEntered() == self.numberOfHoles }
+    
     var totalPar: Int {
         return backNinePar + frontNinePar
     }
     
     var scoreToPar: Int {
-        return roundScore - totalPar
+        if isComplete {
+            return roundScore - totalPar
+        }
+        
+        return holes.filter { $0.isComplete }.reduce(0) { partialResult, hole in
+            return partialResult + hole.scoreToPar
+        }
     }
     
     
-    /// The number of holes that have been entered succsefuly
-    ///
-    /// A succseful hole entry is defined as a hole which's last shot ends in the hole. As a conseqeunce that means each hole must have at least one shot.
-    ///
-    /// - Returns: The number of holes which have been succsefully entered
-    func numberOfHolesEntered() -> Int {
-        return self.holes.map { $0.isComplete }.filter { $0 == true }.count
-    }
     
-    /// Is the round complete (do all holes have entries)
-    var isComplete: Bool { return numberOfHolesEntered() == self.numberOfHoles }
+    
+    
     
     
     /// A list of all simplified shots (do not contain penalties).
@@ -178,5 +205,5 @@ enum GolfErrors : Error {
 enum RoundType : String, CaseIterable, Codable {
     case tournament = "Tournament"
     case casual = "Casual"
-    case competative = "Competetive"
+    case competative = "Competative"
 }
