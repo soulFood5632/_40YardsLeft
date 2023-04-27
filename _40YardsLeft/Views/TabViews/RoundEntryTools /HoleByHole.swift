@@ -55,7 +55,6 @@ struct HoleByHole: View {
     
     var body: some View {
         NavigationStack {
-            let hole = round.tee.holeData[holeNumber - 1]
             VStack {
                 Text("Hole \(holeNumber)")
                     .bold()
@@ -112,7 +111,7 @@ struct HoleByHole: View {
                             Label("Shot Entry", systemImage: "figure.golf")
                         }
                         
-                        //TODO: make editable list in the style of the new item with a green plus. It should include the option for drag and drops, and the ability to slide to delete
+                        
                     }
                 }
                 
@@ -195,6 +194,11 @@ struct HoleByHole: View {
 extension HoleByHole {
     
     
+    /// Posts the shot intermediates for the given hole to the round.
+    ///
+    /// Calling this function will overwrite the current values in the shots for that particular hole in the round.
+    ///
+    /// - Parameter hole: <#hole description#>
     private func postShots(for hole: Int) async {
         let intermediatesList = self.shotList[hole - 1]
         var index = 0
@@ -210,7 +214,11 @@ extension HoleByHole {
             }
             index += 1
         }
-        
+        // adds the last shot that holes out the shot
+        if let intermediate = intermediatesList.last {
+            shotList.append(.init(type: intermediate.type, startPosition: intermediate.position, endPosition: .holed))
+        }
+        self.round.holes[hole - 1].resetShots()
         self.round.holes[hole - 1].addShots(shotList)
     }
 }

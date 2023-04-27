@@ -47,9 +47,9 @@ struct ScorecardImage: View {
             .padding(.bottom, 5)
             
             if round.isComplete {
-                VStack {
+                HStack {
                     Text("\(round.roundScore)")
-                        .font(.title)
+                        .font(.title3)
                         .bold()
                     Text("(\(round.scoreToPar))")
                         .font(.subheadline)

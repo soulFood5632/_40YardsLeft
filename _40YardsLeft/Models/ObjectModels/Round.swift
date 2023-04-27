@@ -83,6 +83,11 @@ extension Round {
         return holes[hole - 1].isComplete
     }
     
+    private func getHoles(in range: ClosedRange<Int>) -> [Hole] {
+        //TODO: Finish this method. 
+        return self.holes
+    }
+    
     
     private func getFrontNine() -> [Hole] {
         var frontNine = self.holes
@@ -107,6 +112,10 @@ extension Round {
         return self.holes.map { $0.isComplete }.filter { $0 == true }.count
     }
     
+    func subscore(_ range: ClosedRange<Int>) -> Int {
+        //TODO: Finish this method
+        return 0
+    }
     
     /// The score of the golfer on this front nine thus far
     var frontNineScore: Int {
@@ -126,6 +135,8 @@ extension Round {
     var roundScore: Int {
         return backNineScore + frontNineScore
     }
+    
+    
     
     var frontNinePar: Int {
         let frontNine = self.getFrontNine()
@@ -207,3 +218,5 @@ enum RoundType : String, CaseIterable, Codable {
     case casual = "Casual"
     case competative = "Competative"
 }
+
+

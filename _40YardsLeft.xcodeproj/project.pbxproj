@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */; };
 		020B0FAA29F9A2C9001E92E1 /* ShotPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */; };
+		020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */; };
 		0222862129DF930700FEBB91 /* TendancyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */; };
 		0222862E29E0C2B900FEBB91 /* DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222862D29E0C2B900FEBB91 /* DistanceTests.swift */; };
 		0222863C29E337EF00FEBB91 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0222863B29E337EF00FEBB91 /* FirebaseAnalytics */; };
@@ -49,6 +50,7 @@
 		0260D1EA29D92EDE00EFAE79 /* RoundPrepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1E929D92EDE00EFAE79 /* RoundPrepView.swift */; };
 		0260D1EC29DA214400EFAE79 /* RoundSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1EB29DA214400EFAE79 /* RoundSetupView.swift */; };
 		0260D1F029DA74A000EFAE79 /* ScorecardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1EF29DA74A000EFAE79 /* ScorecardImage.swift */; };
+		02C7A01529FAE64C00C6E403 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7A01429FAE64C00C6E403 /* NumberFormatters.swift */; };
 		02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */; };
 		02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */; };
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
@@ -96,6 +98,7 @@
 /* Begin PBXFileReference section */
 		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictorTests.swift; sourceTree = "<group>"; };
+		020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
 		0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendancyAnalyzer.swift; sourceTree = "<group>"; };
 		0222862B29E0C2B900FEBB91 /* _40YardsLeftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _40YardsLeftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0222862D29E0C2B900FEBB91 /* DistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		0260D1E929D92EDE00EFAE79 /* RoundPrepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPrepView.swift; sourceTree = "<group>"; };
 		0260D1EB29DA214400EFAE79 /* RoundSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSetupView.swift; sourceTree = "<group>"; };
 		0260D1EF29DA74A000EFAE79 /* ScorecardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardImage.swift; sourceTree = "<group>"; };
+		02C7A01429FAE64C00C6E403 /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
 		02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
 		02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _40YardsLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftApp.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 				0222868829ED9B8700FEBB91 /* EditableStaticText.swift */,
 				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
 				020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */,
+				02C7A01429FAE64C00C6E403 /* NumberFormatters.swift */,
 			);
 			path = ViewHelpers;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				0260D1E029D8E46900EFAE79 /* RoundEntry */,
 				02FEA1D529D3D1F400BCD7A4 /* ShotElement.swift */,
 				02FEA1CB29D3391C00BCD7A4 /* HoleByHole.swift */,
+				020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */,
 				0260D1D729D7F25900EFAE79 /* ScorecardView.swift */,
 				0260D1DB29D8D73B00EFAE79 /* ScoreCardHelpers */,
 			);
@@ -647,6 +653,7 @@
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
+				020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */,
 				0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */,
@@ -662,6 +669,7 @@
 				0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */,
 				0260D1E629D8EAC400EFAE79 /* CourseHoleByHole.swift in Sources */,
 				0222866929E87F7400FEBB91 /* GolferView.swift in Sources */,
+				02C7A01529FAE64C00C6E403 /* NumberFormatters.swift in Sources */,
 				02FEA1A629CF7D4700BCD7A4 /* Course.swift in Sources */,
 				0222867729E8C2FC00FEBB91 /* RoundViewList.swift in Sources */,
 				0222868729ED9B0B00FEBB91 /* ProfileDetails.swift in Sources */,

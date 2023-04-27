@@ -12,8 +12,9 @@ import SwiftUI
 struct Hole: Codable, Equatable, Identifiable {
     
     //TODO: write RI's and AF.
-    
+    /// Basic information about the given hole. 
     let holeData: HoleData
+    ///A Unique identifier for this hole.
     let id: UUID
     
     /// A list containg the shots that this hole has.
@@ -155,6 +156,56 @@ extension Hole {
 
 //MARK: Hole Stored Values
 extension Hole {
+    /// True if this hole was hit a green in regulation, false otherwise.
+    ///
+    /// A green in regulation is defined as being on the green for a birdie putt or better
+    var greenInReg: Bool {
+        
+        if self.shots.count <= getPuttShot() {
+            return true
+        }
+        
+        // we can start at 1 becuase the first shot is always a drive
+        for index in 1...self.getPuttShot() {
+            if self.shots[index].type == .putt {
+                return true
+            }
+        }
+        
+        
+        return false
+    }
+    
+    
+    /// True if the fairway was hit, false if not, nil if the hole is a par 3 or there are no entries
+    ///
+    /// A fairway is defined as a drive where there is no penatly and the next shot is taken from the fairway.
+    var fairway: Bool? {
+        if self.holeData.par == 3 { return nil }
+        // this means a hole out was present and it is a hit fairway
+        if shots.isEmpty {
+            return nil
+        }
+        
+        if shots[0].includesPenalty || shots[0].endPosition.lie != .fairway {
+            return false
+        }
+        
+        return true
+    }
+    
+    
+    /// Gets the shot index which a putt must be hit for a green in regulation 
+    /// - Returns: Gets the shot index where a putt must be hit for a green in regulation.
+    private func getPuttShot() -> Int {
+        let par = self.holeData.par
+        precondition(par >= 3 && par <= 5)
+        if par == 3 { return 1 }
+    
+        if par == 4 { return 2 }
+        
+        return 3
+    }
     
     /// Is the hole complete (has the last shot been holed)
     var isComplete: Bool {

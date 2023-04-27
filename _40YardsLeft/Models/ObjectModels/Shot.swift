@@ -10,7 +10,6 @@ import Foundation
 //MARK: Shot Init
 struct Shot : Codable, Equatable {
     
-    
     let type: ShotType
     let startPosition: Position
     let endPosition: Position
@@ -35,6 +34,13 @@ struct Shot : Codable, Equatable {
         }
     }
     
+    
+    /// Creates a new instance of a shot that does not include a penalty.
+    ///
+    /// - Parameters:
+    ///   - type: The shot type that this shot was taken
+    ///   - startPosition: The position in which this shot started at.
+    ///   - endPosition: The position in which this shot ended up at.
     init(type: ShotType, startPosition: Position, endPosition: Position) {
         self.type = type
         self.startPosition = startPosition
@@ -67,6 +73,8 @@ struct Shot : Codable, Equatable {
 
 //MARK: Shot computed values.
 extension Shot {
+    
+    /// The releative yardage that this shot was sent.
     var advancementYardage: Distance { endPosition.yardage - startPosition.yardage }
     /// The number of shots that this shot has counted for. 
     var numOfShots: Int {
@@ -76,6 +84,8 @@ extension Shot {
         return 1
     }
     
+    
+    /// A variable which is true if the last shot of this hole ends in a holed shot.
     var isHoled: Bool { return endPosition == .holed } 
     
     
