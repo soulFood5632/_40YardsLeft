@@ -12,28 +12,44 @@ struct RoundOverviewPage: View {
     let round: Round
     @State private var isRequestEdit = false
     @State private var isRoundDone = false
+    @State private var showStats = false
     var body: some View {
         VStack {
             GroupBox {
                 RoundDetailView(round: self.round)
-                    .padding(.top)
+                    .padding(.top, 3)
             } label: {
                 Label("Round Details", systemImage: "folder")
             }
             
             GroupBox {
                 ScorecardImage(round: round)
-                    .padding(.top)
+                    .padding(.top, 3)
             } label: {
                 Label("Scorecard", systemImage: "square.grid.3x2")
             }
             
             GroupBox {
+                
                 RoundStatOverview(round: self.round)
-                    .padding(.top)
+                        .padding(.top, 3)
+                        .onLongPressGesture {
+                            //TODO: fix bug here.
+                            self.showStats = true
+                        }
+                
             } label: {
-                Label("Stats", systemImage: "chart.bar")
+                HStack {
+                    Label("Stats", systemImage: "chart.bar")
+                    Spacer()
+                    Button {
+                        self.showStats = true
+                    } label: {
+                        Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+                    }
+                }
             }
+            
             
             Button {
                 Task {
@@ -41,7 +57,9 @@ struct RoundOverviewPage: View {
                 }
                 self.isRoundDone = true
             } label: {
+                
                 Label("Save Round", systemImage: "checkmark")
+ 
             }
             .buttonStyle(.borderedProminent)
             //TODO: make navigation destination the home view.
@@ -49,7 +67,15 @@ struct RoundOverviewPage: View {
             
             
         }
-        
+        .sheet(isPresented: self.$showStats, content: {
+            GroupBox {
+                RoundStatOverview(round: self.round)
+            } label: {
+                Label("Stats", systemImage: "chart.bar")
+            }
+            .padding()
+                
+        })
         .toolbar {
             ToolbarItem (placement: .primaryAction) {
                 Button {
@@ -59,7 +85,6 @@ struct RoundOverviewPage: View {
                 }
             }
         }
-        
         .navigationBarBackButtonHidden()
         .padding()
     }
@@ -79,62 +104,89 @@ struct RoundStatOverview : View {
     
     
     var body: some View {
-        VStack {
-            Grid {
-                GridRow {
-                    Text("Eagles+")
-                    Text("Birdies")
-                    Text("Pars")
-                    Text("Bogeys")
-                    Text("Doubles+")
-                }
-                
-                Divider()
-                
-                GridRow {
-                    Text(round.eaglesOrBetter, format: .number)
-                    Text(round.birdies, format: .number)
-                    Text(round.pars, format: .number)
-                    Text(round.bogeys, format: .number)
-                    Text(round.doubleBogeysOrWorse, format: .number)
-                }
-            }
-            HStack {
-                GroupBox {
-                    VStack {
-                        let greenPercentage = Double(round.getGreens().0) / Double(round.getGreens().1)
-                        Text("\(round.getGreens().0) | " + greenPercentage.roundToPercent())
-                            
-                        Text("Greens")
-                            .font(.headline)
-                    }
-                        
-                }
-                
-                
-                GroupBox {
-                    VStack {
-                        Text("\(round.putts())")
-                        
-                        Text("Putts")
-                            .font(.headline)
-                    }
-                }
-                GroupBox {
-                    let fairwayPercentage = Double(round.fairways().0) / Double(round.fairways().1)
-                    Text("\(round.fairways().0) | " + fairwayPercentage.roundToPercent())
-                    Text("Fairways")
+        
+        ScrollView {
+            VStack {
+                Grid {
+                    GridRow {
+                        Group {
+                            Text("Eagles+")
+                            Text("Birdies")
+                            Text("Pars")
+                            Text("Bogeys")
+                            Text("Doubles+")
+                        }
                         .font(.headline)
+                    }
+                    
+                    Divider()
+                    
+                    GridRow {
+                        Text(round.eaglesOrBetter, format: .number)
+                        Text(round.birdies, format: .number)
+                        Text(round.pars, format: .number)
+                        Text(round.bogeys, format: .number)
+                        Text(round.doubleBogeysOrWorse, format: .number)
+                    }
+                }
+                
+                HStack {
+                    GroupBox {
+                        VStack {
+                            let greenPercentage = Double(round.getGreens().0) / Double(round.getGreens().1)
+                            Text("\(round.getGreens().0) | " + greenPercentage.roundToPercent())
+                            
+                            Text("Greens")
+                                .font(.headline)
+                        }
+                        
+                    }
+                    
+                    
+                    GroupBox {
+                        VStack {
+                            Text("\(round.putts())")
+                            
+                            Text("Putts")
+                                .font(.headline)
+                        }
+                    }
+                    GroupBox {
+                        let fairwayPercentage = Double(round.fairways().0) / Double(round.fairways().1)
+                        Text("\(round.fairways().0) | " + fairwayPercentage.roundToPercent())
+                        Text("Fairways")
+                            .font(.headline)
+                        
+                    }
                     
                 }
                 
+                Grid {
+                    GridRow {
+                        Group {
+                            Text("Tee")
+                            Text("Approach")
+                            Text("Chip")
+                            Text("Putt")
+                        }
+                        .font(.headline)
+                    }
+                    
+                    Divider()
+                    
+                    GridRow {
+                        //TODO: complete trokes gained
+                        Text(0.01, format: .number)
+                        Text(-1.7, format: .number)
+                        Text(1.4, format: .number)
+                        Text(-2.9, format: .number)
+                        
+                    }
+                }
+                
+                //TODO: Complete more of these. 
             }
-            
-            
-            
-            
-            
-            
+
         }
         
     }
@@ -220,7 +272,8 @@ extension Round {
     
     
     /// Gets the number of fairways hit in this round
-    /// - Returns: <#description#>
+    /// 
+    /// - Returns: A tuple containg the number of fairways hit in the first entry and the number of oppurinties in the second one.
     func fairways() -> (Int, Int) {
         return self.holes.map{ $0.fairway }.filter { $0 != nil }.reduce((0, 0)) { partialResult, fairway in
             // we can force unwrap the fairway object becuase we have filtered out nils

@@ -43,29 +43,27 @@ extension Position {
     
     /// Gets the expected shot type from this position
     /// - Returns: A predicted shot type from the position. 
-    func expectedShotType() -> ShotType {
+    func expectedShotType() -> ShotIntermediate.ShotDeclaration {
         switch self.lie {
         case .tee:
-            if yardage.yards > 200 {
+            if yardage.yards > 250 {
                 return .drive
             }
             
-            return .approach
+            return .atHole
         case .fairway, .bunker, .rough:
-            if yardage.yards > 50 {
-                if yardage.yards > 250 {
-                    return .other
-                }
-                return .approach
-            }
             
-            return .chip_pitch
+            if yardage.yards > 250 {
+                return .other
+            }
+            return .atHole
+            
         case .penalty:
-            return .penalty
+            return .drop
         case .recovery:
             return .other
         case .green:
-            return .putt
+            return .atHole
         }
     
     }

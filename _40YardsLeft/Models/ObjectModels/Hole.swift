@@ -179,7 +179,7 @@ extension Hole {
     
     /// True if the fairway was hit, false if not, nil if the hole is a par 3 or there are no entries
     ///
-    /// A fairway is defined as a drive where there is no penatly and the next shot is taken from the fairway.
+    /// A fairway is defined as a drive where there is no penatly and the next shot is taken from the fairway or green.
     var fairway: Bool? {
         if self.holeData.par == 3 { return nil }
         // this means a hole out was present and it is a hit fairway
@@ -187,11 +187,11 @@ extension Hole {
             return nil
         }
         
-        if shots[0].includesPenalty || shots[0].endPosition.lie != .fairway {
-            return false
+        if !shots[0].includesPenalty && (shots[0].endPosition.lie == .fairway || shots[0].endPosition.lie == .green) {
+            return true
         }
         
-        return true
+        return false
     }
     
     

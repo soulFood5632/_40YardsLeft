@@ -15,9 +15,7 @@ struct HoleByHole: View {
         // a task to complete after the update of the holeNumber
         didSet {
             //TODO: Fix this mechanism beucase it is bugged
-            Task {
-                await self.postShots(for: oldValue)
-            }
+            
         }
     }
 
@@ -91,13 +89,7 @@ struct HoleByHole: View {
                             }
                             
                             Button {
-                                if let lastPosition = self.shotList[holeNumber - 1].last?.position {
-                                    let suggestedLocation = shotPredictor.predictedNextLocation(lastPosition, par: round.tee.holeData[holeNumber - 1].par)
-                                    
-                                    self.shotList[holeNumber - 1].append(ShotIntermediate(position: suggestedLocation, type: suggestedLocation.expectedShotType()))
-                                } else {
-                                    self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
-                                }
+                                self.addNextValueTo(holeNumber: self.holeNumber)
                             } label: {
                                 Label {
                                     Text("Add shot")
@@ -167,13 +159,18 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
             
             })
-            .onChange(of: self.holeNumber, perform: { newValue in
-                self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
+            .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
+                
+                
+                Task {
+                    await self.postShots(for: holeNumber)
+                }
+                
             })
             .onAppear {
             
                 //TODO: Imploment the autofill function here
-                self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
+                
                 
                 Task {
                     //adds this course to the database
@@ -192,6 +189,16 @@ struct HoleByHole: View {
 }
 
 extension HoleByHole {
+    
+    private func addNextValueTo(holeNumber: Int) {
+        if let lastPosition = self.shotList[holeNumber - 1].last?.position {
+            let suggestedLocation = shotPredictor.predictedNextLocation(lastPosition, par: round.tee.holeData[holeNumber - 1].par)
+            
+            self.shotList[holeNumber - 1].append(ShotIntermediate(position: suggestedLocation, declaration: suggestedLocation.expectedShotType()))
+        } else {
+            self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
+        }
+    }
     
     
     /// Posts the shot intermediates for the given hole to the round.
@@ -234,12 +241,51 @@ struct HoleByHole_Previews: PreviewProvider {
 struct ShotIntermediate : Identifiable {
     let id: UUID = UUID()
     var position: Position
-    var type: ShotType
+    var declaration: ShotDeclaration
+    
+    var type: ShotType {
+        switch declaration {
+        case .drive:
+            return .drive
+            
+        case .atHole:
+            switch position.lie {
+            case .fairway, .bunker, .rough, .recovery, .tee:
+                if position.yardage.yards > 50 {
+                    return .approach
+                }
+                return .chip_pitch
+                
+            case .green:
+                return .putt
+                
+            case .penalty:
+                fatalError("You cannot go towards the hole if you are in a penatly area")
+            }
+        case .drop:
+            return .penalty
+        case .other:
+            return .other
+        
+        }
+    }
+    
+    enum ShotDeclaration: String, CaseIterable, Identifiable {
+        
+        case drive = "Drive"
+        case atHole = "At Hole"
+        case other = "Other"
+        case drop = "Drop"
+        
+        var id: Self { self }
+    }
+    
 }
+
 
 extension Hole {
     func getFirstShotPredictor() -> ShotIntermediate {
         return .init(position: Position(lie: .tee, yardage: self.holeData.yardage),
-                     type: self.holeData.par == 3 ? .approach : .drive)
+                     declaration: self.holeData.par == 3 ? .atHole : .drive)
     }
 }

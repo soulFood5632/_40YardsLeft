@@ -103,7 +103,7 @@ extension ShotPredictor {
     }
     
     private func expectShotFromTeePar3(distance: Distance) -> Position {
-        return Position(lie: .fairway, yardage: userDistanceValues.averageProximity)
+        return Position(lie: .green, yardage: userDistanceValues.averageProximity)
     }
     
     
@@ -183,10 +183,9 @@ extension ShotPredictor {
     }
     
     private func expectShotFromGreen(distance: Distance) -> Position {
-        if distance.feet > 30 {
-            return Position(lie: .green, yardage: Self.SECOND_PUTT_DISTANCE)
-        }
-        return .holed
+        
+        return Position(lie: .green, yardage: Self.SECOND_PUTT_DISTANCE)
+        
     }
 }
 

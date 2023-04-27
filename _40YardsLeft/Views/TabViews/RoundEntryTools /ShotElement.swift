@@ -37,8 +37,8 @@ struct ShotElement: View {
             
             
             
-            Picker(selection: $shot.type) {
-                ForEach(ShotType.allCases, id: \.self) { shotType in
+            Picker(selection: $shot.declaration) {
+                ForEach(ShotIntermediate.ShotDeclaration.allCases, id: \.self) { shotType in
                     Text(shotType.rawValue)
                 }
             } label: {
@@ -55,7 +55,7 @@ struct ShotElement: View {
 }
 
 struct ShotElement_Previews: PreviewProvider {
-    @State private static var shot = ShotIntermediate(position: Position(lie: .fairway, yardage: Distance(yards: 150)),  type: .drive)
+    @State private static var shot = ShotIntermediate(position: Position(lie: .fairway, yardage: Distance(yards: 150)), declaration: .drive)
     static var previews: some View {
         ShotElement(shot: self.$shot)
     }
