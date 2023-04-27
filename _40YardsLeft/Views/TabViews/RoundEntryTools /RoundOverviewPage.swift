@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct RoundOverviewPage: View {
     let round: Round
+    @State private var isRequestEdit = false
+    @State private var isRoundDone = false
     var body: some View {
         VStack {
             GroupBox {
@@ -33,11 +36,15 @@ struct RoundOverviewPage: View {
             }
             
             Button {
-                //TODO: save round (post to database) and return to the home page
+                Task {
+                    //Update the golfer by adding the round.
+                }
+                self.isRoundDone = true
             } label: {
                 Label("Save Round", systemImage: "checkmark")
             }
             .buttonStyle(.borderedProminent)
+            //TODO: make navigation destination the home view.
             
             
             
@@ -46,12 +53,13 @@ struct RoundOverviewPage: View {
         .toolbar {
             ToolbarItem (placement: .primaryAction) {
                 Button {
-                    //TODO: edit the round
+                    // TODO: complete edits
                 } label: {
                     Label("Edit Round", systemImage: "pencil")
                 }
             }
         }
+        
         .navigationBarBackButtonHidden()
         .padding()
     }
