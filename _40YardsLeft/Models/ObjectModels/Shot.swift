@@ -9,11 +9,13 @@ import Foundation
 
 //MARK: Shot Init
 struct Shot : Codable, Equatable {
-    
+    /// The type of shot.
     let type: ShotType
+    /// where the shot originated from
     let startPosition: Position
+    /// where the shot ended up
     let endPosition: Position
-    //Does this shot include a penatly stroke.
+    ///Does this shot include a penatly stroke?
     let includesPenalty: Bool
     
     

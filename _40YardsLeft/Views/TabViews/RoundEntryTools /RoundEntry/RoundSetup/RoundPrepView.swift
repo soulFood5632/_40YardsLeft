@@ -37,6 +37,7 @@ struct RoundSetupBuffer {
 struct RoundPrepView: View {
     @Binding var round: Round?
     @Binding var course: Course
+    @Binding var golfer: Golfer
     
     @State private var buffer = RoundSetupBuffer()
     
@@ -116,7 +117,7 @@ struct RoundPrepView: View {
                     if self.isReady {
                         let round = self.buffer.createRound(course: self.course)
                         
-                        HoleByHole(round: round, holeNumber: 1)
+                        HoleByHole(golfer: self.$golfer, round: round, holeNumber: 1)
                     }
                     
                     
@@ -150,7 +151,8 @@ extension RoundPrepView {
 struct RoundPrepView_Previews: PreviewProvider {
     @State private static var course = Course.example1
     @State private static var round: Round?
+    @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        RoundPrepView(round: self.$round, course: self.$course)
+        RoundPrepView(round: self.$round, course: self.$course, golfer: self.$golfer)
     }
 }

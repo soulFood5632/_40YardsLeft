@@ -41,7 +41,7 @@ struct RoundViewList: View {
                             
                             
                             NavigationLink {
-                                HoleByHole(round: round, holeNumber: 1)
+                                HoleByHole(golfer: self.$golfer, round: round, holeNumber: 1)
                             } label: {
                                 Image(systemName: "pencil")
                             }

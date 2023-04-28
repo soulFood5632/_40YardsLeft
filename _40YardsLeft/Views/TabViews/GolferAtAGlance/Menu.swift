@@ -13,7 +13,7 @@ struct NavigationMenu: View {
         Menu {
             
             NavigationLink() {
-                RoundEntry()
+                RoundEntry(golfer: $golfer)
             } label: {
                 Label("Add Round", systemImage: "plus")
             }

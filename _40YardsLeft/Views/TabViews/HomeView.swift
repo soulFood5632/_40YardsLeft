@@ -37,7 +37,7 @@ struct HomeView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .navigationDestination(isPresented: self.$isAddRound) {
-                        RoundEntry()
+                        RoundEntry(golfer: self.$golfer)
                     }
                 } label: {
                     

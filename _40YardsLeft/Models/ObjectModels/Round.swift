@@ -9,16 +9,35 @@ import Foundation
 
 //MARK: Round Initilizers
 struct Round : Codable, Identifiable {
+    
+    /*
+     Rep Invariant:
+     self.course.tees.contains(self.tee)
+     for all self.holes.holeData is contained in self.course.tees.holeData
+     */
+    
     /// A stable identifier for the round
     let id: UUID
     
-    
+    /// The course where the round was played on.
     let course: Course
+    /// The tee in which this round takes place on
     let tee: Tee
+    /// A list of holes which contain the data of the round.
     var holes: [Hole]
+    /// The date in which this round takes place on
     var date: Date
+    /// The type of round that this is.
     var roundType: RoundType
     
+    /// Creates a new round with an explicit date from the given course, tee, and the provided round type
+    ///
+    /// - Throws: `GolfError.teeDoesNotExist` if the provided tee does not exist.
+    /// - Parameters:
+    ///   - course: The course where this round takes place
+    ///   - tee: The tee where this round is being played off of. If the tee is not a member of ht eprovided course an error will throw.
+    ///   - date: The time when this round was played.
+    ///   - roundType: The type of round which is being played.
     init(course: Course, tee: Tee, date: Date, roundType: RoundType) throws {
         if !course.hasTee(tee) {
             throw GolfErrors.teeDoesntExist
@@ -31,20 +50,33 @@ struct Round : Codable, Identifiable {
         self.roundType = roundType
     }
     
+    
+    /// Creates a new round with an implicit date which is set to now from the given course, tee, and the provided round type
+    ///
+    /// - Throws: `GolfError.teeDoesNotExist` if the provided tee does not exist.
+    /// - Parameters:
+    ///   - course: The course where this round takes place
+    ///   - tee: The tee where this round is being played off of. If the tee is not a member of ht eprovided course an error will throw.
+    ///   - roundType: The type of round which is being played.
     init(course: Course, tee: Tee, roundType: RoundType) throws {
         try self.init(course: course, tee: tee, date: .now, roundType: roundType)
     }
     
+    
+    /// Gets holes with no shot data.
+    ///
+    /// - Parameter tee: The tee which this skeleton data should be pulled from
+    /// - Returns: A list of holes which contains holes with hole data from the provided tee.
     private static func getSkeletonHoles(from tee: Tee) -> [Hole] {
         return tee.holeData.map { Hole(holeData: $0) }
     }
-    
+    /// An average slope value from RCGA, USGA
     private static let SLOPE_CONSTANT = 113
     
 }
 
 extension Round: Equatable {
-    static func ==(rhs: Round, lhs: Round) -> Bool {
+    static func == (rhs: Round, lhs: Round) -> Bool {
         return rhs.id == lhs.id
     }
 }
@@ -53,7 +85,7 @@ extension Round: Equatable {
 extension Round {
     /// An example round that does not contain any shot entries.
     static let emptyRoundExample1 = try! Round(course: .example1, tee: Course.example1.listOfTees[0], date: .now, roundType: .casual)
-    
+    /// An example round which contains the score 4 on every hole.
     static let completeRoundExample1 = {
         var round = try! Round(course: .example1, tee: Course.example1.listOfTees[0], roundType: .competative)
         
@@ -83,6 +115,17 @@ extension Round {
         return holes[hole - 1].isComplete
     }
     
+    /// Gets holes within the provided closed range
+    ///
+    ///
+    ///
+    
+    /// Gets holes within the provided closed range.
+    ///
+    /// - Important: The input range is of hole numbers not indexes.
+    ///
+    /// - Parameter range: The closed range of hole numbers that you would like to collect from.
+    /// - Returns: All of the holes within the provided range.
     private func getHoles(in range: ClosedRange<Int>) -> [Hole] {
         //TODO: Finish this method. 
         return self.holes
@@ -92,6 +135,7 @@ extension Round {
     private func getFrontNine() -> [Hole] {
         var frontNine = self.holes
         frontNine.removeLast(9)
+        //TODO: reimploment this area with the new getHoles in range.
         
         return frontNine
     }
@@ -112,6 +156,11 @@ extension Round {
         return self.holes.map { $0.isComplete }.filter { $0 == true }.count
     }
     
+    
+    /// Gets the score within a certain subrange.
+    ///
+    /// - Parameter range: A range of hole numbers
+    /// - Returns: The score of the provided range of hole numbers
     func subscore(_ range: ClosedRange<Int>) -> Int {
         //TODO: Finish this method
         return 0
@@ -132,11 +181,13 @@ extension Round {
         }
     }
     
+    
+    /// The total round score.
     var roundScore: Int {
         return backNineScore + frontNineScore
     }
     
-    
+    //TODO: fix up this area and improve the code to reduce the number of stored values.
     
     var frontNinePar: Int {
         let frontNine = self.getFrontNine()
@@ -152,13 +203,17 @@ extension Round {
         }
     }
     
-    /// Is the round complete (do all holes have entries)
+    /// Are all the holes complete
     var isComplete: Bool { return numberOfHolesEntered() == self.numberOfHoles }
     
     var totalPar: Int {
         return backNinePar + frontNinePar
     }
     
+    
+    /// The current score to par of the round
+    ///
+    /// - This variable can be called during the round (it need to not be complete).
     var scoreToPar: Int {
         if isComplete {
             return roundScore - totalPar
@@ -209,6 +264,8 @@ extension Round {
     
 }
 
+
+/// Errors related to round entry
 enum GolfErrors : Error {
     case teeDoesntExist
 }
@@ -216,7 +273,7 @@ enum GolfErrors : Error {
 enum RoundType : String, CaseIterable, Codable {
     case tournament = "Tournament"
     case casual = "Casual"
-    case competative = "Competative"
+    case competative = "Competetive"
 }
 
 

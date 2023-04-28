@@ -9,6 +9,7 @@ import SwiftUI
 
 /// <#Description#>
 struct HoleByHole: View {
+    @Binding var golfer: Golfer
     @State var round: Round
     private let shotPredictor = ShotPredictor()
     @State var holeNumber: Int {
@@ -109,7 +110,7 @@ struct HoleByHole: View {
                 
                 
                     Button {
-                        //TODO: complete this action to go to then round overview page
+                        RoundOverviewPage(golfer: self.$golfer, round: self.round)
                     } label: {
                         Label("Finish Round", systemImage: "checkmark")
                     }
@@ -233,8 +234,9 @@ extension HoleByHole {
 struct HoleByHole_Previews: PreviewProvider {
     @State static private var holeNumber = 1
     @State private static var round = Round.emptyRoundExample1
+    @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        HoleByHole(round: round, holeNumber: holeNumber)
+        HoleByHole(golfer: $golfer, round: round, holeNumber: holeNumber)
     }
 }
 

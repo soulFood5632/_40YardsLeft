@@ -11,6 +11,8 @@ import SwiftUI
 
 struct RoundEntry: View {
     
+    @Binding var golfer: Golfer
+    
     @State private var round: Round?
     
     @State private var course: Course?
@@ -63,7 +65,7 @@ struct RoundEntry: View {
                     self.course = newValue
                 }
                 
-                RoundSetupView(course: unwrappedBinding, round: self.$round)
+                RoundSetupView(course: unwrappedBinding, round: self.$round, golfer: self.$golfer)
             }
         }
         .onChange(of: self.course, perform: { newCourse in
@@ -81,7 +83,8 @@ struct RoundEntry: View {
 }
 
 struct RoundEntry_Previews: PreviewProvider {
+    @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        RoundEntry()
+        RoundEntry(golfer: self.$golfer)
     }
 }

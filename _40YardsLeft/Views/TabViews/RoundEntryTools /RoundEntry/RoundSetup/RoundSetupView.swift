@@ -11,6 +11,7 @@ struct RoundSetupView: View {
     
     @Binding var course: Course
     @Binding var round: Round?
+    @Binding var golfer: Golfer
     var body: some View {
         NavigationStack {
             Text(course.name)
@@ -25,7 +26,7 @@ struct RoundSetupView: View {
             Text("\(course.location.city), \(course.location.province.rawValue), \(course.location.country.rawValue)")
         
 
-            RoundPrepView(round: self.$round, course: self.$course)
+            RoundPrepView(round: self.$round, course: self.$course, golfer: self.$golfer)
             .padding()
             
         }
@@ -36,7 +37,8 @@ struct RoundSetupView: View {
 struct RoundSetupView_Previews: PreviewProvider {
     @State private static var round: Round?
     @State private static var course = Course.example1
+    @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        RoundSetupView(course: self.$course, round: self.$round)
+        RoundSetupView(course: self.$course, round: self.$round, golfer: self.$golfer)
     }
 }

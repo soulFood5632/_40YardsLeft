@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct RoundOverviewPage: View {
+    @Binding var golfer: Golfer
+    //TODO: investogate if binding is required here. 
     let round: Round
     @State private var isRequestEdit = false
     @State private var isRoundDone = false
@@ -79,21 +81,26 @@ struct RoundOverviewPage: View {
         .toolbar {
             ToolbarItem (placement: .primaryAction) {
                 Button {
-                    // TODO: complete edits
+                    self.isRequestEdit = true
                 } label: {
                     Label("Edit Round", systemImage: "pencil")
                 }
             }
         }
+        .navigationDestination(isPresented: self.$isRequestEdit, destination: {
+            HoleByHole(golfer: self.$golfer, round: self.round, holeNumber: 1)
+        })
         .navigationBarBackButtonHidden()
         .padding()
     }
 }
 
 struct RoundOverviewPage_Previews: PreviewProvider {
+    @State private static var golfer = Golfer.golfer
+    @State private static var round = Round.completeRoundExample1
     static var previews: some View {
         NavigationStack {
-            RoundOverviewPage(round: Round.completeRoundExample1)
+            RoundOverviewPage(golfer: $golfer, round: round)
         }
         
     }

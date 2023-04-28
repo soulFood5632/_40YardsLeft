@@ -8,6 +8,8 @@
 import Foundation
 
 extension Encodable {
+    
+
     var toDictionary: [String : Any]? {
         guard let data =  try? JSONEncoder().encode(self) else {
             return nil
