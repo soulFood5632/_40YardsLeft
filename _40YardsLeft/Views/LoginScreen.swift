@@ -39,7 +39,7 @@ struct LoginScreen: View {
                 
                 Button {
                     Task {
-                        self.user = try await Authenticator.logIn(emailAddress: "loganu@gmail.com", password: "Falcons1SB#51")
+                        self.user = try await Authenticator.logIn(emailAddress: "jjbean@gmail.com", password: "Falcons1SB51")
                     }
                 } label: {
                     Label("Admin", systemImage: "person.crop.circle.badge.plus")

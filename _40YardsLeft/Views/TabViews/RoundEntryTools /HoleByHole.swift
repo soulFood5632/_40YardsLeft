@@ -19,6 +19,8 @@ struct HoleByHole: View {
             
         }
     }
+    
+    @State private var refresh = true
 
     
     /// A state variable which holds a map to each shotIntermediate for each hole in the round
@@ -161,18 +163,17 @@ struct HoleByHole: View {
             
             })
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
-                
-                
+
                 Task {
                     await self.postShots(for: holeNumber)
+                    
+                    print(round.holes.map { $0.score })
                 }
                 
             })
             .onAppear {
             
-                //TODO: Imploment the autofill function here
-                
-                
+
                 Task {
                     //adds this course to the database
                     try await DatabaseCommunicator.addCourse(course: self.round.course)
@@ -217,7 +218,8 @@ extension HoleByHole {
             
             if index != 0 {
                 let pos1 = intermediatesList[index - 1]
-                let pos2 = intermediatesList[index]
+                
+                let pos2 =  intermediatesList[index]
                 shotList.append(Shot(type: pos1.type, startPosition: pos1.position, endPosition: pos2.position))
             }
             index += 1
@@ -226,8 +228,10 @@ extension HoleByHole {
         if let intermediate = intermediatesList.last {
             shotList.append(.init(type: intermediate.type, startPosition: intermediate.position, endPosition: .holed))
         }
-        self.round.holes[hole - 1].resetShots()
-        self.round.holes[hole - 1].addShots(shotList)
+        
+        let boolArray = self.round.updateHole(hole, with: shotList)
+        
+        print(boolArray)
     }
 }
 

@@ -11,6 +11,7 @@ struct HomeView: View {
     @Binding var golfer: Golfer
     
     @State private var isAddRound = false
+    @State private var isStatView = false
     
     var body: some View {
         NavigationStack {
@@ -18,32 +19,78 @@ struct HomeView: View {
                 
                 
                 GroupBox {
-                    GolferView(golfer: golfer)
-                        .navigationTitle("Home")
+                    VStack {
+                        GolferView(golfer: golfer)
+                        
+                        HotStreak(golfer: golfer)
+                    }
+                        
                 } label: {
                     Label("Welcome Back \(golfer.name)", systemImage: "hand.wave.fill")
                         .bold()
                         .font(.title)
-                }
-                .padding(.horizontal)
-                .frame(maxHeight: 200)
-                    
-                GroupBox {
-                    HotStreak(golfer: golfer)
-                    Button {
-                        isAddRound = true
-                    } label: {
-                        Text("Start Round")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .navigationDestination(isPresented: self.$isAddRound) {
-                        RoundEntry(golfer: self.$golfer)
-                    }
-                } label: {
                     
                 }
                 
+                HStack {
+                     
+                        
+                    
+                    
+                    
+                    NavigationLink {
+                        StatView()
+                    } label: {
+                        
+                        Label("Analyze", systemImage: "chart.bar")
+                            .bold()
+                            .font(.title)
+                        
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    
+                    
+                    NavigationLink {
+                        RoundView(golfer: self.$golfer)
+                    } label: {
+                        
+                        Label("History", systemImage: "book")
+                            .bold()
+                            .font(.title)
+                        
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    
+                    
+                    
+                }
+                
+                NavigationLink {
+                    RoundEntry(golfer: self.$golfer)
+                } label: {
+                    Spacer()
+                    Label("Play", systemImage: "figure.golf")
+                        .bold()
+                        .font(.title)
+                    Spacer()
+                }
+                .buttonStyle(.borderedProminent)
+
+                
+                    
+                
+                    
+                
+                
+                
+                
+                
             }
+            
+//            .navigationTitle("Home")
+            .padding()
             .toolbar {
                 ToolbarItem (placement: .navigationBarLeading) {
                     NavigationMenu(golfer:

@@ -15,21 +15,25 @@ struct DatabaseCommunicator {
     
     private static let database = Firestore.firestore()
     
-    private static let COURSE_COLLECTION_ID = "CourseList"
+    private static let COURSE_POSTING = "CoursesForReview"
     private static let GOLFER_LIST_ID = "GolferList"
     
     static func addGolfer(golfer: Golfer) async throws -> Bool {
         
-        try database.collection(Self.GOLFER_LIST_ID).document(golfer.firebaseID).setData(from: golfer)
+        try database
+            .collection(Self.GOLFER_LIST_ID)
+            .document(golfer.firebaseID)
+            .setData(from: golfer)
             
         return true
-        
-        
-        
     }
     
     static func addCourse(course: Course) async throws -> Bool {
-        try database.collection(Self.COURSE_COLLECTION_ID).document(course.name).setData(from: course)
+        //TODO: reassign additions to a review folder.
+        try database
+            .collection(course.location.province.databaseKey)
+            .document(course.name)
+            .setData(from: course)
         
         return true
     }
@@ -40,15 +44,21 @@ struct DatabaseCommunicator {
         return try await docReference.getDocument(as: Golfer.self)
     }
     
-    static func getCourses() async throws -> [Course] {
+    
+    
+    static func getCoursesFromFilter(country: Country, provinceState: Province) async throws -> [Course] {
+        let id = provinceState.databaseKey
+        
         return try await database
-            .collection(Self.COURSE_COLLECTION_ID)
+            .collection(id)
             .getDocuments()
             .documents
-            .map { document in
-                try document.data(as: Course.self)
-            }
+            .map { try $0.data(as: Course.self) }
         
+    }
+    
+    static func getCoursesFromFilter(_ filter: Filters) async throws -> [Course] {
+        return try await getCoursesFromFilter(country: filter.country, provinceState: filter.province)
     }
     
     //TODO: think about your data structures. Golfer makes sense but as for the courses i dont extacly but this as the best method.
@@ -58,5 +68,8 @@ struct DatabaseCommunicator {
 
 enum EncoderError : String, Error {
     case failedToConvertToDictonary = "Data was not storable"
-    
+}
+
+enum QueryError: Error {
+    case invalidCountryProvinceCombo
 }

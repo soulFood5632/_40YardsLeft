@@ -13,15 +13,13 @@ struct HotStreak: View {
     var body: some View {
         
         VStack {
-            HStack {
-                Text("\(numberOfRoundsPlayed) rounds in the last \(Self.DAYS_IN_PAST) days")
-                HotOrColdView(isHot: self.isRoundsPlayedHot)
-            }
-            //TODO: brainstorm some hot or cold things to show
-            HStack {
-                Text("5 birdies in the last days")
-                HotOrColdView(isHot: self.isRoundsPlayedHot)
-            }
+                HStack {
+                    Text("\(numberOfRoundsPlayed) rounds in the last \(Self.DAYS_IN_PAST) days")
+                    HotOrColdView(isHot: self.isRoundsPlayedHot)
+                }
+            
+            
+            
             
             
             

@@ -10,97 +10,38 @@ import FirebaseFirestore
 
 struct PickACourse: View {
     
-    @State private var filters = Filters()
-    
-    
-    @State private var queryResults = [Course]()
     
     @Binding var course: Course?
-    
     @State private var chosenCourse: Course?
+    
+    
+    //TODO: default to current location.
+    
     var body: some View {
         VStack {
             
-            GroupBox {
-                CourseFilter(filter: self.$filters)
-            } label: {
-                Label("Filters", systemImage: "rectangle.and.pencil.and.ellipsis")
-                
-
-            }
-            if self.chosenCourse != nil {
-                GroupBox {
-                    
-
-                    Picker(selection: self.unwrappedChosenCourseBinding) {
-                        ForEach(queryResults) { result in
-                            /*@START_MENU_TOKEN@*/Text(result.name)/*@END_MENU_TOKEN@*/
-                        }
-                    } label: {
-                        //empty label becuase it doesn't do anything
-                    }
-                    
-                    Button {
-                        withAnimation {
-                            self.course = self.chosenCourse
-                        }
-                    } label: {
-                        Label("Confirm", systemImage: "checkmark")
-                    }
-                    .buttonStyle(.bordered)
-                } label: {
-                    Label("Select Course", systemImage: "cursorarrow")
-                }
-                .animation(.easeInOut, value: self.chosenCourse)
-            }
             
-
-
-        }
-        .onAppear {
-            Task {
-                try await self.queryResults.append(contentsOf: DatabaseCommunicator.getCourses())
-                self.chosenCourse = queryResults.first
+                CourseFilter(chosenCourse: self.$chosenCourse)
+            
+            .padding()
+            
+            Button {
+                course = chosenCourse
+            } label: {
+                Label("Save", systemImage: "checkmark")
             }
+            .disabled(chosenCourse == nil)
         }
-        .onChange(of: self.queryResults) { newQuery in
-            if let chosenCourse = self.chosenCourse {
-                if !newQuery.contains(chosenCourse) {
-                    self.chosenCourse = queryResults.first
-                }
-            }
-        }
-        .onChange(of: chosenCourse) { newCourse in
-            if newCourse == nil {
-                self.chosenCourse = queryResults.first
-            }
-        }
+            
+            
+            
+            
         //TODO: Complete a set of drop down menus so you can choose from database
     }
     
 }
 
-extension PickACourse {
-    
-    /// A computed value which contains all of the courses which meet the provided criteria.
-    var filteredResults: [Course] {
-        self.queryResults.filter { course in
-            return course.location.country == filters.country
-        }
-    }
-    
-    private var unwrappedChosenCourseBinding: Binding<Course> {
-        Binding {
-            self.chosenCourse!
-        } set: { newCourse in
-            self.chosenCourse = newCourse
-        }
 
-    }
-    
-    
-    
-}
 
 struct PickACourse_Previews: PreviewProvider {
     @State private static var course: Course?

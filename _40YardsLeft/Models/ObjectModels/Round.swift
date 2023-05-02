@@ -264,6 +264,15 @@ extension Round {
     
 }
 
+extension Round {
+    mutating func updateHole(_ holeNumber: Int, with shots: [Shot]) -> [Bool] {
+        self.holes[holeNumber - 1].resetShots()
+        return self.holes[holeNumber - 1].addShots(shots)
+    }
+}
+
+
+
 
 /// Errors related to round entry
 enum GolfErrors : Error {

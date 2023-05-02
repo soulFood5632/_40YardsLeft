@@ -28,7 +28,7 @@ struct RoundEntry: View {
                     GroupBox {
                         PickACourse(course: self.$course)
                     } label: {
-                        Label("Pick From Previous", systemImage: "list.bullet.clipboard")
+                        Label("Choose Course", systemImage: "list.bullet.clipboard")
                     }
                     
                     HStack {

@@ -28,6 +28,7 @@ struct RoundView: View {
             }
             .padding(.horizontal)
             .navigationTitle("Rounds")
+            Spacer()
         }
     }
 }

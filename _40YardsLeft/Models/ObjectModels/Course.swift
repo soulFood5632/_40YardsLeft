@@ -109,13 +109,52 @@ enum Province: String, CaseIterable, Codable {
     //TODO: complete this list
 }
 
+extension Province: Identifiable {
+    var id: Self { self }
+}
+
+extension Province: StringRepresentable {
+    func toString() -> String {
+        return self.rawValue
+    }
+}
+
+extension Province {
+    var databaseKey: String {
+        return self.rawValue
+    }
+}
+
 enum Country: String, CaseIterable, Codable {
     case Canada = "Canada"
     case US = "United States"
 }
 
+
 extension Country: Identifiable {
     var id: Self { self }
+}
+
+extension Country {
+    //TODO: when making additions to province and country ensure backfilling 
+    func getPairedProvinces() -> [Province] {
+        switch self {
+        case .Canada:
+            return [
+                .BC, .AB
+            ]
+        case .US:
+            return []
+        }
+    }
+}
+
+extension Country: StringRepresentable {
+    func toString() -> String {
+        return self.rawValue
+    }
+    
+    
 }
 
 //MARK: Address extension
