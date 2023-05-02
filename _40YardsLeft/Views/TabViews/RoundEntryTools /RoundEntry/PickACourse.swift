@@ -21,15 +21,17 @@ struct PickACourse: View {
         VStack {
             
             
-                CourseFilter(chosenCourse: self.$chosenCourse)
+            CourseFilter(chosenCourse: self.$chosenCourse)
             
-            .padding()
+                .padding([.top, .horizontal])
+                .padding(.bottom, 6)
             
             Button {
                 course = chosenCourse
             } label: {
-                Label("Save", systemImage: "checkmark")
+                Label("Confirm", systemImage: "checkmark")
             }
+            .buttonStyle(.borderedProminent)
             .disabled(chosenCourse == nil)
         }
             

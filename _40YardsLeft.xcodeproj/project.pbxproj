@@ -54,6 +54,7 @@
 		02CFCACF2A0024CF00DA7D76 /* PickerAndLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCACE2A0024CF00DA7D76 /* PickerAndLabel.swift */; };
 		02CFCAD12A002E1D00DA7D76 /* StringRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD02A002E1D00DA7D76 /* StringRepresentable.swift */; };
 		02CFCAD32A006E4A00DA7D76 /* SpinningCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */; };
+		02CFCAD52A00950200DA7D76 /* CourseSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */; };
 		02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */; };
 		02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */; };
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
@@ -136,6 +137,7 @@
 		02CFCACE2A0024CF00DA7D76 /* PickerAndLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAndLabel.swift; sourceTree = "<group>"; };
 		02CFCAD02A002E1D00DA7D76 /* StringRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
 		02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningCircle.swift; sourceTree = "<group>"; };
+		02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearcher.swift; sourceTree = "<group>"; };
 		02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
 		02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _40YardsLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftApp.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				0222865529E34DB200FEBB91 /* CourseFilter.swift */,
+				02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */,
 			);
 			path = PickingCourseHelper;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				02FEA1A229CF7BB500BCD7A4 /* Shot.swift in Sources */,
 				0260D1D829D7F25900EFAE79 /* ScorecardView.swift in Sources */,
 				0260D1E229D8E48E00EFAE79 /* CreateCourse.swift in Sources */,
+				02CFCAD52A00950200DA7D76 /* CourseSearcher.swift in Sources */,
 				02FEA1D629D3D1F400BCD7A4 /* ShotElement.swift in Sources */,
 				0222867229E893D700FEBB91 /* IsHot.swift in Sources */,
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,

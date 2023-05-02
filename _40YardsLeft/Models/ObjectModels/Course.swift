@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: Course Struct
-struct Course : Codable, Equatable, Identifiable {
+struct Course : Codable, Identifiable {
     private(set) var listOfTees: [Tee]
     var location: Address
     var name: String
@@ -46,10 +46,14 @@ struct Course : Codable, Equatable, Identifiable {
     
 }
 
-extension Course: Hashable {
+extension Course: Hashable, Equatable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
         _ = hasher.finalize()
+    }
+    
+    static func == (lhs: Course, rhs: Course) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

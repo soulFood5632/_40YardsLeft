@@ -56,6 +56,7 @@ struct RoundEntry: View {
             // I think we want to reset the cours when this view is opened
             self.course = nil
         }
+        .navigationTitle("Course Selection")
         .navigationDestination(isPresented: self.$startRound) {
             if course != nil {
                 

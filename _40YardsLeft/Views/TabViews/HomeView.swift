@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//TODO: think about navigation stack advantages
+//TODO: navigation titles?
+
 struct HomeView: View {
     @Binding var golfer: Golfer
     
@@ -48,7 +51,7 @@ struct HomeView: View {
                         
                     }
                     .buttonStyle(.bordered)
-                    
+                    .navigationTitle("Home")
                     
                     
                     NavigationLink {
