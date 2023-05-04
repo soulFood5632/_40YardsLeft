@@ -54,7 +54,7 @@ struct RoundPrepView: View {
                                 Text("\(tee.name)")
                                     .bold()
                                 Divider()
-                                Text("\(tee.rating, format: .number) | \(tee.slope) | \(tee.yardage.yards) | \(tee.par)")
+                                Text("\(tee.rating, format: .number) | \(tee.slope) | \(tee.yardage.yards, format: .number) | \(tee.par)")
                                 
                                 if isHighlighted {
                                     Image(systemName: "checkmark")

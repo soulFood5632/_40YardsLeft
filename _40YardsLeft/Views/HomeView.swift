@@ -10,14 +10,14 @@ import SwiftUI
 //TODO: think about navigation stack advantages
 //TODO: navigation titles?
 
+
 struct HomeView: View {
     @Binding var golfer: Golfer
+    @State private var navStack = [String]()
     
-    @State private var isAddRound = false
-    @State private var isStatView = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: self.$navStack) {
             VStack {
                 
                 
@@ -26,73 +26,84 @@ struct HomeView: View {
                         GolferView(golfer: golfer)
                         
                         HotStreak(golfer: golfer)
+                            .font(.headline)
                     }
-                        
+                    
                 } label: {
                     Label("Welcome Back \(golfer.name)", systemImage: "hand.wave.fill")
                         .bold()
-                        .font(.title)
+                        .font(.largeTitle)
                     
                 }
                 
-                HStack {
-                     
-                        
-                    
-                    
-                    
-                    NavigationLink {
+                GroupBox {
+                    //TODO: stat dashboard
+                    NavigationLink() {
                         StatView()
                     } label: {
                         
                         Label("Analyze", systemImage: "chart.bar")
                             .bold()
-                            .font(.title)
+                            .font(.title2)
                         
                     }
                     .buttonStyle(.bordered)
-                    .navigationTitle("Home")
+                }
+                
+                GroupBox {
+                    //TODO: add things here
                     
+                    NavigationLink {
+                        RoundEntry(golfer: self.$golfer)
+                    } label: {
+                        
+                        Label("Play", systemImage: "figure.golf")
+                            .bold()
+                            .font(.title2)
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                
+                GroupBox {
                     
+                    ScrollView {
+                        RoundViewList(golfer: self.$golfer)
+                            .disabled(true)
+                    }
                     NavigationLink {
                         RoundView(golfer: self.$golfer)
                     } label: {
                         
-                        Label("History", systemImage: "book")
+                        Label("View History", systemImage: "book")
                             .bold()
-                            .font(.title)
+                            .font(.title2)
                         
                     }
                     .buttonStyle(.bordered)
-                    
-                    
+                }
+                GroupBox {
+                    HStack {
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
                     
                     
                 }
-                
-                NavigationLink {
-                    RoundEntry(golfer: self.$golfer)
-                } label: {
-                    Spacer()
-                    Label("Play", systemImage: "figure.golf")
-                        .bold()
-                        .font(.title)
-                    Spacer()
-                }
-                .buttonStyle(.borderedProminent)
+                .padding()
+
 
                 
-                    
-                
-                    
-                
-                
-                
-                
-                
             }
-            
-//            .navigationTitle("Home")
             .padding()
             .toolbar {
                 ToolbarItem (placement: .navigationBarLeading) {
@@ -104,10 +115,10 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem (placement: .navigationBarTrailing) {
-                    Text("Settings")
+                    //TODO: add settings here.
                 }
             }
-            .navigationBarBackButtonHidden()
+            
 
         }
         

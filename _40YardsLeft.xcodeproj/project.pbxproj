@@ -68,7 +68,7 @@
 		02FEA16629CCEBE600BCD7A4 /* SizeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA16529CCEBE600BCD7A4 /* SizeAnimation.swift */; };
 		02FEA16A29CD142700BCD7A4 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA16929CD142700BCD7A4 /* Authenticator.swift */; };
 		02FEA17729CE93DE00BCD7A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02FEA17629CE93DE00BCD7A4 /* GoogleService-Info.plist */; };
-		02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17A29CEC86100BCD7A4 /* UserView.swift */; };
+		02FEA17B29CEC86100BCD7A4 /* LoginErro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17A29CEC86100BCD7A4 /* LoginErro.swift */; };
 		02FEA17F29CEC89700BCD7A4 /* ViewScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */; };
 		02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18229CEC9F100BCD7A4 /* HomeView.swift */; };
 		02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18629CECA0000BCD7A4 /* RoundView.swift */; };
@@ -152,7 +152,7 @@
 		02FEA16529CCEBE600BCD7A4 /* SizeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAnimation.swift; sourceTree = "<group>"; };
 		02FEA16929CD142700BCD7A4 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		02FEA17629CE93DE00BCD7A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		02FEA17A29CEC86100BCD7A4 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		02FEA17A29CEC86100BCD7A4 /* LoginErro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginErro.swift; sourceTree = "<group>"; };
 		02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewScreens.swift; sourceTree = "<group>"; };
 		02FEA18229CEC9F100BCD7A4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		02FEA18629CECA0000BCD7A4 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -258,6 +258,7 @@
 		0222867029E8921A00FEBB91 /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				02FEA17A29CEC86100BCD7A4 /* LoginErro.swift */,
 				0222866E29E8921000FEBB91 /* HotOrColdView.swift */,
 				0222868829ED9B8700FEBB91 /* EditableStaticText.swift */,
 				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
@@ -354,6 +355,13 @@
 			path = CreateCourse;
 			sourceTree = "<group>";
 		};
+		02CFCAD62A037B0900DA7D76 /* StatViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StatViewHelpers;
+			sourceTree = "<group>";
+		};
 		02E9DB8E29C0FC2700AA15FA = {
 			isa = PBXGroup;
 			children = (
@@ -420,7 +428,7 @@
 		02FACCB929C6DFDD00B55E6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02FEA17A29CEC86100BCD7A4 /* UserView.swift */,
+				02FEA18229CEC9F100BCD7A4 /* HomeView.swift */,
 				0222867029E8921A00FEBB91 /* ViewHelpers */,
 				02FEA18F29CECAFB00BCD7A4 /* TabViewChildren */,
 				02FEA18E29CECAAA00BCD7A4 /* TabViews */,
@@ -442,7 +450,6 @@
 		02FEA18E29CECAAA00BCD7A4 /* TabViews */ = {
 			isa = PBXGroup;
 			children = (
-				02FEA18229CEC9F100BCD7A4 /* HomeView.swift */,
 				0222866729E87F5F00FEBB91 /* GolferAtAGlance */,
 				02FEA18629CECA0000BCD7A4 /* RoundView.swift */,
 				0222867529E8C2EE00FEBB91 /* RoundViewHelpers */,
@@ -451,6 +458,7 @@
 				02FEA1C229D1518200BCD7A4 /* SettingsView.swift */,
 				0222868129EA6C9000FEBB91 /* SettingsHelpers */,
 				02FEA18A29CECA0A00BCD7A4 /* StatView.swift */,
+				02CFCAD62A037B0900DA7D76 /* StatViewHelpers */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -650,7 +658,7 @@
 				0222866F29E8921000FEBB91 /* HotOrColdView.swift in Sources */,
 				02CFCACF2A0024CF00DA7D76 /* PickerAndLabel.swift in Sources */,
 				0222867429E8977500FEBB91 /* ThreeState.swift in Sources */,
-				02FEA17B29CEC86100BCD7A4 /* UserView.swift in Sources */,
+				02FEA17B29CEC86100BCD7A4 /* LoginErro.swift in Sources */,
 				02FEA1C729D3372600BCD7A4 /* RoundEntry.swift in Sources */,
 				0222868329EA72F600FEBB91 /* LoginScreen.swift in Sources */,
 				02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */,

@@ -20,8 +20,12 @@ struct GolferView: View {
                     VStack {
                         Text("Handicap")
                             .bold()
-                        
-                        Text("\(golfer.handicap, format: .number)")
+                        if let handicap = golfer.handicap {
+                            Text("\(handicap, format: .number)")
+                        } else {
+                            //TODO: maybe fix
+                            Text("No rounds")
+                        }
                     }
                 }
                 
@@ -39,8 +43,13 @@ struct GolferView: View {
                     VStack {
                         Text("Scoring")
                             .bold()
-                        //TODO: Implement average score and make only 1 digit
-                        Text("72.8")
+                        if let scoringAverage = self.golfer.scoringAverage {
+                            
+                            Text(scoringAverage.toDecimalPlaces(1))
+                        } else {
+                            //TODO: Look into this
+                            Text("No Rounds")
+                        }
                         
                     }
                 }
@@ -53,6 +62,8 @@ struct GolferView: View {
         
     }
 }
+
+
 
 struct GolferView_Previews: PreviewProvider {
     static var previews: some View {

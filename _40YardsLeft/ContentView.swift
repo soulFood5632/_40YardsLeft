@@ -29,7 +29,7 @@ struct ContentView: View {
                     self.golfer = newValue
                 }
                 
-                UserView(golfer: golferBinding)
+                HomeView(golfer: golferBinding)
 
             }
             

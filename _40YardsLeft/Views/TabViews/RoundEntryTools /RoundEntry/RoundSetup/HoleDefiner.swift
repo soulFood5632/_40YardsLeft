@@ -34,6 +34,7 @@ struct SingleHoleText: View {
                 .bold()
             
         TextField("Yardage", value: self.$holeData.yardage.yards, formatter: .wholeNumber)
+            .keyboardType(.numberPad)
             .onChange(of: self.holeData.yardage, perform: { yardage in
                 self.holeData.par = ShotPredictor.getParFromYardage(distance: yardage)
             })

@@ -40,7 +40,11 @@ struct CourseSearcher: View {
                     }
                     .foregroundColor(self.chosenCourse == course ? .primary : .secondary)
                     .onTapGesture {
-                        self.chosenCourse = course
+                        if isSelected {
+                            self.chosenCourse = nil
+                        } else {
+                            self.chosenCourse = course
+                        }
                     }
                 }
             }

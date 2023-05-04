@@ -143,8 +143,8 @@ extension Golfer {
     ///
     /// The handicap calculation follows the rules and regulations of RCGA, USGA, RGA. For more infromation please visit <\link>
     ///
-    /// 
-    var handicap: Double {
+    /// - Note: Nil in the case that the user has no valid handicap. 
+    var handicap: Double? {
         let lastRounds = self.getLastRounds(20)
         
         switch lastRounds.count {
@@ -155,6 +155,12 @@ extension Golfer {
         }
         
         //TODO: Imploment this function
+    }
+    
+    var scoringAverage: Double? {
+        return self.rounds
+            .map { $0.roundScore }
+            .average()
     }
     
     
@@ -170,10 +176,39 @@ extension Golfer {
     }
     
     
+}
+
+extension Array where Element: AdditiveArithmetic, Element: FloatingPoint {
     
+    /// Finds the average of a value of the provided array.
+    ///
+    /// - Note: Returns nil if the provided array is empty
+    /// - Returns: The average of the given array, nil if the array is empty.
+    func average() -> Element? {
+        if self.isEmpty {
+            return nil
+        }
+        let total = self.reduce(into: Element.zero) { partialResult, number in
+            partialResult += number
+        }
+        
+        return total / (self.count as! Element)
     
-    
-    
+    }
+}
+
+extension Array where Element == Int {
+    /// Finds the average of a value of the provided array.
+    ///
+    /// - Note: Returns nil if the provided array is empty
+    /// - Returns: The average of the given array, nil if the array is empty.
+    func average() -> Double? {
+        if self.isEmpty {
+            return nil
+        }
+        
+        return Double(self.reduce(into: 0) { partialResult, number in partialResult += number}) / Double(self.count)
+    }
 }
 
 extension Golfer {

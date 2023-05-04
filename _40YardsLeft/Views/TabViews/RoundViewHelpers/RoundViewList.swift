@@ -54,17 +54,19 @@ struct RoundViewList: View {
                                 self.roundToDelete = nil
                             }
                             
-                            Image(systemName: "trash")
-                                .onTapGesture {
-                                    self.roundToDelete = round
+                            Button (role: .destructive) {
+                                self.roundToDelete = round
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                            .confirmationDialog("Delete Round", isPresented: roundBinding) {
+                                Button("Delete Round") {
+                                    self.golfer.deleteRound(round)
                                 }
-                                .confirmationDialog("Delete Round", isPresented: roundBinding) {
-                                    Button("Delete Round") {
-                                        self.golfer.deleteRound(round)
-                                    }
-                                }
-                                .foregroundColor(.red)
+                            }
                             
+                            
+                                                            
                             //TODO: think of a better to explore more info
                             Menu {
                                 RoundInfo(round: round)
