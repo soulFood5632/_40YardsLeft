@@ -12,6 +12,11 @@ struct BasicCourseInfo: View {
     
     var body: some View {
         Grid(alignment: .leading) {
+            
+            GridRow {
+                LabelAndField(prompt: "Name", text: self.$buffer.name)
+            }
+        
             GridRow {
                 LabelAndField(prompt: "Address", text: self.$buffer.addressLine1)
                     
@@ -22,15 +27,19 @@ struct BasicCourseInfo: View {
                 
             }
             
-            
             GridRow {
-                //TODO: think of structure to add the province and country
+                PickerAndLabel(pickedElement: self.$buffer.country, choices: Country.allCases, title: "Country")
             }
             
             GridRow {
-                LabelAndField(prompt: "Name", text: self.$buffer.name)
+                
+                PickerAndLabel(pickedElement: self.$buffer.provice, choices: self.buffer.country.getPairedProvinces(), title: "Province/State")
             }
+
         }
+        //TODO: manage the choices to ensure that the possible provinces match up with the expected. 
+        
+        
     }
 }
 
@@ -40,6 +49,7 @@ struct LabelAndField: View {
     
     var body: some View {
         Text(prompt + ":")
+            .bold()
         TextField(prompt, text: self.$text)
             .textFieldStyle(.roundedBorder)
     }

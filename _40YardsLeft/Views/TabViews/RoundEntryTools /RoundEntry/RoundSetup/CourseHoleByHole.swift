@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TeeBuffer {
     var rating: Double = 70.3
-    var slope: Int = 125
+    var slope: Int = 124
     var name = ""
     var holeData = [HoleData]()
     
@@ -19,6 +19,8 @@ struct TeeBuffer {
     
     
 }
+
+
 
 
 
@@ -33,6 +35,8 @@ struct CourseHoleByHole: View {
     
     @State private var isAlert: (Bool, String?) = (false, nil)
     
+    
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -46,7 +50,6 @@ struct CourseHoleByHole: View {
                             .textFieldStyle(.roundedBorder)
                             .keyboardType(.numberPad)
                             
-                        
                         
                         TextField("Rating", value: self.$buffer.rating, formatter: .decimal(numOfDigits: 1))
                             .textFieldStyle(.roundedBorder)

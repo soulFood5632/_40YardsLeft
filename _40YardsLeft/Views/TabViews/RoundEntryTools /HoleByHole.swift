@@ -111,7 +111,7 @@ struct HoleByHole: View {
                 }
                 
                 
-                    Button {
+                    NavigationLink {
                         RoundOverviewPage(golfer: self.$golfer, round: self.round)
                     } label: {
                         Label("Finish Round", systemImage: "checkmark")
@@ -176,9 +176,9 @@ struct HoleByHole: View {
 
                 Task {
                     //adds this course to the database
-                    try await DatabaseCommunicator.addCourse(course: self.round.course)
+//                    try await DatabaseCommunicator.addCourse(course: self.round.course)
                 }
-                //TODO: move this task to the on disappear after the round is added(I think anyway)
+                //TODO: move this task to the previous view on disappear becuase we need to know if changes were made or whatever. 
             }
             
             

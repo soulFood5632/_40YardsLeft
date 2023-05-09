@@ -10,9 +10,15 @@ import SwiftUI
 struct CourseBuffer {
     var addressLine1 = ""
     var city = ""
-    var provice: Province = .BC
-    var country: Country = .Canada
+    var provice: Province
+    var country: Country
     var name = ""
+    
+    init() {
+        //TODO: make this based on current location
+        self.provice = .BC
+        self.country = .Canada
+    }
 }
 
 

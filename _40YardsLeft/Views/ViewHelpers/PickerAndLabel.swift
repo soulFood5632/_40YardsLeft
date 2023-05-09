@@ -16,18 +16,18 @@ struct PickerAndLabel<T: Hashable>: View where T: Identifiable, T: StringReprese
     let title: String
     
     var body: some View {
-        GridRow {
-            Text(title + ":")
-                .bold()
-            
-            Picker(selection: $pickedElement) {
-                ForEach(choices) { country in
-                    Text(country.toString())
-                }
-            } label: {
-                Text("Choose a Country")
+        
+        Text(title + ":")
+            .bold()
+        
+        Picker(selection: $pickedElement) {
+            ForEach(choices) { country in
+                Text(country.toString())
             }
+        } label: {
+            // empty label
         }
+        
     }
 }
 

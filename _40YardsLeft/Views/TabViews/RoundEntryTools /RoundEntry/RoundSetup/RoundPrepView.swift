@@ -102,8 +102,10 @@ struct RoundPrepView: View {
                         }
                         .datePickerStyle(.compact)
                         .frame(alignment: .center)
-                        
-                        //TODO: Add wheather details and round type
+                        HStack {
+                            
+                            PickerAndLabel(pickedElement: self.$buffer.roundType, choices: RoundType.allCases, title: "Round Type")
+                        }
                     }
                 } label: {
                     Label("Other Info", systemImage: "info.circle")

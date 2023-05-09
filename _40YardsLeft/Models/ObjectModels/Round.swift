@@ -25,6 +25,7 @@ struct Round : Codable, Identifiable {
     let tee: Tee
     /// A list of holes which contain the data of the round.
     var holes: [Hole]
+    
     /// The date in which this round takes place on
     var date: Date
     /// The type of round that this is.
@@ -283,6 +284,18 @@ enum RoundType : String, CaseIterable, Codable {
     case tournament = "Tournament"
     case casual = "Casual"
     case competative = "Competetive"
+}
+
+extension RoundType: Identifiable {
+    var id: Self { self }
+}
+
+extension RoundType: StringRepresentable {
+    func toString() -> String {
+        return self.rawValue
+    }
+    
+    
 }
 
 
