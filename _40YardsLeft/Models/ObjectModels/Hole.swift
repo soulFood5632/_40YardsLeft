@@ -154,7 +154,7 @@ extension Hole {
     }
 }
 
-//MARK: Hole Stored Values
+//MARK: Hole based stats
 extension Hole {
     /// True if this hole was hit a green in regulation, false otherwise.
     ///
@@ -195,17 +195,31 @@ extension Hole {
     }
     
     
-    /// Gets the shot index which a putt must be hit for a green in regulation 
+    /// Gets the shot index which a putt must be hit for a green in regulation
     /// - Returns: Gets the shot index where a putt must be hit for a green in regulation.
     private func getPuttShot() -> Int {
         let par = self.holeData.par
         precondition(par >= 3 && par <= 5)
         if par == 3 { return 1 }
-    
+        
         if par == 4 { return 2 }
         
         return 3
     }
+    
+    
+    /// The number of putts hit on this hole
+    var putts: Int {
+        return self.shots.filter { $0.type == .putt }.count
+    }
+    
+    
+    
+}
+
+//MARK: Hole Stored Values
+extension Hole {
+    
     
     /// Is the hole complete (has the last shot been holed)
     var isComplete: Bool {

@@ -20,7 +20,6 @@ struct HomeView: View {
         NavigationStack(path: self.$navStack) {
             VStack {
                 
-                
                 GroupBox {
                     VStack {
                         GolferView(golfer: golfer)
@@ -82,24 +81,7 @@ struct HomeView: View {
                     }
                     .buttonStyle(.bordered)
                 }
-                GroupBox {
-                    HStack {
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    }
-                    
-                    
-                }
-                .padding()
+                
 
 
                 
@@ -118,6 +100,7 @@ struct HomeView: View {
                     //TODO: add settings here.
                 }
             }
+            
             
 
         }
@@ -142,5 +125,6 @@ struct HomeView_Previews: PreviewProvider {
     @State static private var golfer = Golfer.golfer
     static var previews: some View {
         HomeView(golfer: Self.$golfer)
+            .preferredColorScheme(.dark)
     }
 }

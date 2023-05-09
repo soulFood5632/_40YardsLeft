@@ -55,6 +55,7 @@
 		02CFCAD12A002E1D00DA7D76 /* StringRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD02A002E1D00DA7D76 /* StringRepresentable.swift */; };
 		02CFCAD32A006E4A00DA7D76 /* SpinningCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */; };
 		02CFCAD52A00950200DA7D76 /* CourseSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */; };
+		02CFCAD82A09F76F00DA7D76 /* ShotAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD72A09F76F00DA7D76 /* ShotAnalyzer.swift */; };
 		02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */; };
 		02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */; };
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
@@ -138,6 +139,7 @@
 		02CFCAD02A002E1D00DA7D76 /* StringRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
 		02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningCircle.swift; sourceTree = "<group>"; };
 		02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearcher.swift; sourceTree = "<group>"; };
+		02CFCAD72A09F76F00DA7D76 /* ShotAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotAnalyzer.swift; sourceTree = "<group>"; };
 		02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
 		02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _40YardsLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftApp.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */,
 				02FEA1D029D3424500BCD7A4 /* ShotPredictor.swift */,
+				02CFCAD72A09F76F00DA7D76 /* ShotAnalyzer.swift */,
 			);
 			path = DataAnaylsis;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
+				02CFCAD82A09F76F00DA7D76 /* ShotAnalyzer.swift in Sources */,
 				020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */,
 				0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
