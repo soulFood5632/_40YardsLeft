@@ -12,13 +12,8 @@ struct HoleByHole: View {
     @Binding var golfer: Golfer
     @State var round: Round
     private let shotPredictor = ShotPredictor()
-    @State var holeNumber: Int {
-        // a task to complete after the update of the holeNumber
-        didSet {
-            //TODO: Fix this mechanism beucase it is bugged
-            
-        }
-    }
+    @State var holeNumber: Int
+    @State private var isHoleSaved: [Bool] = .init(repeating: false, count: 18)
     
     @State private var refresh = true
 
@@ -66,49 +61,86 @@ struct HoleByHole: View {
                 holeInfo
                     .frame(maxHeight: 50)
                 
-                VStack {
-                    List {
-                        Section {
-                            HStack {
-                                Text("Yardage")
-                                 Spacer()
-                                Text("Lie")
-                                Spacer()
-                                
-                                Text("Shot Type")
-                            }
-                            .bold()
-                            ForEach($shotList[self.holeNumber - 1]) { shot in
-                                ShotElement(shot: shot)
-                            }
-                            .onDelete { indexSet in
-                                //FIXME: understand what the hell is happening after the deletion mechanism. It is readding the element after lcicking it 
-                                indexSet.forEach { index in
-                                    shotList.remove(at: index)
+                
+                    GroupBox {
+                        VStack {
+                            Grid(alignment: . center) {
+                                GridRow {
+                                    Text("To Hole")
+                                    Text("Lie")
+                                    Text("Type")
                                 }
+                                .bold()
+                                Divider()
+                                
+                                    
+                                    ForEach($shotList[self.holeNumber - 1]) { shot in
+                                        GridRow {
+                                            ShotElement(shot: shot, isFinal: self.$isHoleSaved[holeNumber - 1])
+                                        }
+                                    }
+                                    .onDelete { indexSet in
+                                        
+                                        indexSet.forEach { index in
+                                            shotList[self.holeNumber - 1].remove(at: index)
+                                        }
+                                    }
+                                
                             }
-                            .onMove { indexSet, destination in
-                                shotList.move(fromOffsets: indexSet, toOffset: destination)
+                            Button {
+                                self.addNextValueTo(holeNumber: holeNumber)
+                            } label: {
+                                Spacer()
+                                Label("Add Shot", systemImage: "plus.circle")
+                                    .bold()
+                                Spacer()
+                            }
+                            .disabled(self.isHoleSaved[holeNumber - 1])
+                            .padding(.top, 1)
+                            
+                            
+                        }
+                        .padding(.bottom, 25)
+                        .padding(.top, 3)
+                        if
+                            !shotList[holeNumber - 1].isEmpty {
+                            if isHoleSaved[holeNumber - 1] {
+                                Button {
+                                    isHoleSaved[holeNumber - 1] = false
+                                } label: {
+                                    Image(systemName: "pencil")
+                                }
+                            } else {
+                                Button {
+                                    isHoleSaved[holeNumber - 1] = true
+                                } label: {
+                                    Image(systemName: "checkmark")
+                                }
+                                .disabled(shotList[holeNumber - 1].isEmpty)
                             }
                             
-                            Button {
-                                self.addNextValueTo(holeNumber: self.holeNumber)
+                            Button(role: .destructive) {
+                                self.shotList[holeNumber - 1].removeAll()
+                                self.isHoleSaved[holeNumber - 1] = false
                             } label: {
-                                Label {
-                                    Text("Add shot")
-                                } icon: {
-                                    Image(systemName: "plus.circle.fill")
-                                        .foregroundColor(.green)
-                                }
-                                
+                                Image(systemName: "arrow.counterclockwise")
                             }
-                        } header: {
-                            Label("Shot Entry", systemImage: "figure.golf")
+                            .disabled(shotList[holeNumber - 1].isEmpty)
+                            .padding(.top, 10)
                         }
-                        
-                        
+                    } label: {
+                        Label("Shot Entry", systemImage: "figure.golf")
                     }
-                }
+                    .padding()
+                    
+                
+                
+                
+                Spacer()
+                
+                
+
+                
                 
                 
                     NavigationLink {
@@ -123,6 +155,8 @@ struct HoleByHole: View {
                     
 
             }
+            .animation(.easeInOut, value: self.shotList[holeNumber - 1])
+            .animation(.easeInOut, value: self.isHoleSaved[holeNumber - 1])
             .toolbar {
                 
         
@@ -163,6 +197,11 @@ struct HoleByHole: View {
             
             })
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
+                
+                // if the shot list for the next hole is empty then add the deafult first shot.
+                if self.shotList[newValue - 1].isEmpty {
+                    addNextValueTo(holeNumber: newValue)
+                }
 
                 Task {
                     await self.postShots(for: holeNumber)
@@ -172,13 +211,10 @@ struct HoleByHole: View {
                 
             })
             .onAppear {
+                addNextValueTo(holeNumber: holeNumber)
             
 
-                Task {
-                    //adds this course to the database
-//                    try await DatabaseCommunicator.addCourse(course: self.round.course)
-                }
-                //TODO: move this task to the previous view on disappear becuase we need to know if changes were made or whatever. 
+                
             }
             
             
@@ -244,7 +280,7 @@ struct HoleByHole_Previews: PreviewProvider {
     }
 }
 
-struct ShotIntermediate : Identifiable {
+struct ShotIntermediate : Identifiable, Equatable {
     let id: UUID = UUID()
     var position: Position
     var declaration: ShotDeclaration

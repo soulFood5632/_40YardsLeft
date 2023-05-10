@@ -44,98 +44,107 @@ struct RoundPrepView: View {
     @State private var isCreateNewTee = false
 
     var body: some View {
-        NavigationStack {
-            VStack {
-                GroupBox {
-                    List {
-                        ForEach(course.listOfTees) { tee in
-                            let isHighlighted = self.buffer.tee == tee
-                            HStack {
-                                Text("\(tee.name)")
-                                    .bold()
-                                Divider()
-                                Text("\(tee.rating, format: .number) | \(tee.slope) | \(tee.yardage.yards, format: .number) | \(tee.par)")
-                                
-                                if isHighlighted {
-                                    Image(systemName: "checkmark")
-                                }
-                                
-                            }
-                            .onTapGesture {
-                                if isHighlighted {
-                                    self.buffer.tee = nil
-                                } else {
-                                    self.buffer.tee = tee
-                                }
-                            }
-                            .foregroundColor(isHighlighted ? .primary : .secondary)
-                            
-                            
-                            
-                        }
-                        
-                        Button {
-                            // signals the addition of a new tee via the sheet
-                            self.isCreateNewTee = true
-                        } label: {
-                            Label("Add Tee", systemImage: "plus")
-                        }
-                        
-                        
-                        
-                    }
-                } label: {
-                    Label("Choose Tee", systemImage: "dots.and.line.vertical.and.cursorarrow.rectangle")
-                }
-                    
-                    
-                    
-                    
-                    
-                GroupBox {
-
-                    
-                    Form {
-                        
-                        DatePicker(selection: self.$buffer.date) {
-                            Image(systemName: "calendar.badge.clock")
-                        }
-                        .datePickerStyle(.compact)
-                        .frame(alignment: .center)
+        
+        VStack {
+            GroupBox {
+                List {
+                    ForEach(course.listOfTees) { tee in
+                        let isHighlighted = self.buffer.tee == tee
                         HStack {
+                            Text("\(tee.name)")
+                                .bold()
+                            Divider()
+                            Text("\(tee.rating, format: .number) | \(tee.slope) | \(tee.yardage.yards, format: .number) | \(tee.par)")
                             
-                            PickerAndLabel(pickedElement: self.$buffer.roundType, choices: RoundType.allCases, title: "Round Type")
+                            if isHighlighted {
+                                Image(systemName: "checkmark")
+                            }
+                            
                         }
-                    }
-                } label: {
-                    Label("Other Info", systemImage: "info.circle")
-                }
-                
-                
-                
-                
-                NavigationLink {
-                    //Create the new round when this button is pressed.
-                    if self.isReady {
-                        let round = self.buffer.createRound(course: self.course)
+                        .onTapGesture {
+                            if isHighlighted {
+                                self.buffer.tee = nil
+                            } else {
+                                self.buffer.tee = tee
+                            }
+                        }
+                        .foregroundColor(isHighlighted ? .primary : .secondary)
                         
-                        HoleByHole(golfer: self.$golfer, round: round, holeNumber: 1)
+                        
+                        
+                    }
+                    
+                    Button {
+                        // signals the addition of a new tee via the sheet
+                        self.isCreateNewTee = true
+                    } label: {
+                        Label("Add Tee", systemImage: "plus")
                     }
                     
                     
-                } label: {
-                    Label("Start Round", systemImage: "figure.golf")
+                    
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(!self.isReady)
-                
+            } label: {
+                Label("Choose Tee", systemImage: "dots.and.line.vertical.and.cursorarrow.rectangle")
             }
-            .sheet(isPresented: self.$isCreateNewTee) {
-                CourseHoleByHole(course: self.$course, showView: self.$isCreateNewTee)
-                    .padding()
+            
+            
+            
+            
+            
+            GroupBox {
+                
+                
+                Form {
+                    
+                    DatePicker(selection: self.$buffer.date) {
+                        Image(systemName: "calendar.badge.clock")
+                    }
+                    .datePickerStyle(.compact)
+                    .frame(alignment: .center)
+                    HStack {
+                        
+                        PickerAndLabel(pickedElement: self.$buffer.roundType, choices: RoundType.allCases, title: "Round Type")
+                            .pickerStyle(.wheel)
+                    }
+                }
+            } label: {
+                Label("Other Info", systemImage: "info.circle")
+            }
+            
+            
+            
+            
+            NavigationLink {
+                //Create the new round when this button is pressed.
+                if self.isReady {
+                    let round = self.buffer.createRound(course: self.course)
+                    
+                    HoleByHole(golfer: self.$golfer, round: round, holeNumber: 1)
+                }
+                
+                
+            } label: {
+                Label("Start Round", systemImage: "figure.golf")
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(!self.isReady)
+            
+        }
+        .sheet(isPresented: self.$isCreateNewTee) {
+            CourseHoleByHole(course: self.$course, showView: self.$isCreateNewTee)
+                .padding()
+        }
+        .onDisappear {
+            //TODO: Think about how we can handle these errors in a better way.
+            
+            //TODO: note that this view will only dissapear when a round is started. Investigate whether a flag here would be a better idea. 
+            Task {
+                try await DatabaseCommunicator.addCourse(course: self.course)
             }
         }
     }
+    
 }
 
 //MARK: Round Prep Helpers

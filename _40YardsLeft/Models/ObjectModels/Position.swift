@@ -107,9 +107,21 @@ struct Distance : Codable {
     /// The distance value in yards
     var yards: Double
     ///The distance value in feet
-    var feet: Double { self.yards * Self.FEET_IN_A_YARD }
+    var feet: Double {
+        get {
+            self.yards * Self.FEET_IN_A_YARD
+        } set {
+            self.yards = newValue / Self.FEET_IN_A_YARD
+        }
+    }
     /// the distance value in meters
-    var meters: Double { self.yards * Self.METERS_IN_A_YARD }
+    var meters: Double {
+        get {
+            self.yards * Self.METERS_IN_A_YARD
+        } set {
+            self.yards = newValue / Self.METERS_IN_A_YARD
+        }
+    }
     
     private static let METERS_IN_A_YARD = 1.09361
     private static let FEET_IN_A_YARD: Double = 3
