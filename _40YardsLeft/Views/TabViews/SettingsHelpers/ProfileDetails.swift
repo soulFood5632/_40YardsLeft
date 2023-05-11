@@ -40,12 +40,12 @@ struct ProfileDetails: View {
             }
             Divider()
             if profileBuffer.homeCourse == nil {
-                NavigationLink {
-                    PickACourse(course: self.$profileBuffer.homeCourse)
-                        .padding()
-                } label: {
-                    Label("Add your home course", systemImage: "link.badge.plus")
-                }
+//                NavigationLink {
+//                    PickACourse(path: self.$profileBuffer.homeCourse)
+//                        .padding()
+//                } label: {
+//                    Label("Add your home course", systemImage: "link.badge.plus")
+//                }
             } else {
                 
             }

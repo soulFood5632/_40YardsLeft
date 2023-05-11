@@ -9,8 +9,11 @@ import SwiftUI
 
 struct RoundView: View {
     @Binding var golfer: Golfer
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack {
+        
+        VStack {
+        
             Group {
                 GroupBox {
                     GolferView(golfer: golfer)
@@ -19,24 +22,30 @@ struct RoundView: View {
                 }
                 .frame(maxHeight: 200)
                 GroupBox {
-                    RoundViewList(golfer: $golfer)
+                    RoundViewList(golfer: $golfer, path: self.$path)
                     
                 } label: {
                     Label("History", systemImage: "list.bullet")
                     Divider()
                 }
             }
-            .padding(.horizontal)
-            .navigationTitle("Rounds")
             Spacer()
+            
+            
         }
+        .padding(.horizontal)
+        .navigationTitle("Rounds")
+        .navigationBarBackButtonHidden()
+        
+        
     }
 }
 
 struct RoundView_Previews: PreviewProvider {
     
     @State private static var golfer = Golfer.golfer
+    @State private static var navStack = NavigationPath()
     static var previews: some View {
-        RoundView(golfer: $golfer)
+        RoundView(golfer: $golfer, path: $navStack)
     }
 }

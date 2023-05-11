@@ -56,6 +56,8 @@
 		02CFCAD32A006E4A00DA7D76 /* SpinningCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */; };
 		02CFCAD52A00950200DA7D76 /* CourseSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */; };
 		02CFCAD82A09F76F00DA7D76 /* ShotAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD72A09F76F00DA7D76 /* ShotAnalyzer.swift */; };
+		02CFCADA2A0C383800DA7D76 /* NavigationPopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCAD92A0C383800DA7D76 /* NavigationPopping.swift */; };
+		02CFCADC2A0C3C6E00DA7D76 /* GoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFCADB2A0C3C6E00DA7D76 /* GoHome.swift */; };
 		02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */; };
 		02E9DB9B29C0FC2700AA15FA /* _40YardsLeftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */; };
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
@@ -69,7 +71,7 @@
 		02FEA16629CCEBE600BCD7A4 /* SizeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA16529CCEBE600BCD7A4 /* SizeAnimation.swift */; };
 		02FEA16A29CD142700BCD7A4 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA16929CD142700BCD7A4 /* Authenticator.swift */; };
 		02FEA17729CE93DE00BCD7A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02FEA17629CE93DE00BCD7A4 /* GoogleService-Info.plist */; };
-		02FEA17B29CEC86100BCD7A4 /* LoginErro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17A29CEC86100BCD7A4 /* LoginErro.swift */; };
+		02FEA17B29CEC86100BCD7A4 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17A29CEC86100BCD7A4 /* LoginError.swift */; };
 		02FEA17F29CEC89700BCD7A4 /* ViewScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */; };
 		02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18229CEC9F100BCD7A4 /* HomeView.swift */; };
 		02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FEA18629CECA0000BCD7A4 /* RoundView.swift */; };
@@ -140,6 +142,8 @@
 		02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningCircle.swift; sourceTree = "<group>"; };
 		02CFCAD42A00950200DA7D76 /* CourseSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearcher.swift; sourceTree = "<group>"; };
 		02CFCAD72A09F76F00DA7D76 /* ShotAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotAnalyzer.swift; sourceTree = "<group>"; };
+		02CFCAD92A0C383800DA7D76 /* NavigationPopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPopping.swift; sourceTree = "<group>"; };
+		02CFCADB2A0C3C6E00DA7D76 /* GoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoHome.swift; sourceTree = "<group>"; };
 		02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
 		02E9DB9729C0FC2700AA15FA /* _40YardsLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _40YardsLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E9DB9A29C0FC2700AA15FA /* _40YardsLeftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _40YardsLeftApp.swift; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 		02FEA16529CCEBE600BCD7A4 /* SizeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAnimation.swift; sourceTree = "<group>"; };
 		02FEA16929CD142700BCD7A4 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		02FEA17629CE93DE00BCD7A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		02FEA17A29CEC86100BCD7A4 /* LoginErro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginErro.swift; sourceTree = "<group>"; };
+		02FEA17A29CEC86100BCD7A4 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		02FEA17E29CEC89700BCD7A4 /* ViewScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewScreens.swift; sourceTree = "<group>"; };
 		02FEA18229CEC9F100BCD7A4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		02FEA18629CECA0000BCD7A4 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -261,7 +265,8 @@
 		0222867029E8921A00FEBB91 /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				02FEA17A29CEC86100BCD7A4 /* LoginErro.swift */,
+				02FEA17A29CEC86100BCD7A4 /* LoginError.swift */,
+				02CFCADB2A0C3C6E00DA7D76 /* GoHome.swift */,
 				0222866E29E8921000FEBB91 /* HotOrColdView.swift */,
 				0222868829ED9B8700FEBB91 /* EditableStaticText.swift */,
 				02FACCB529C6D8FB00B55E6D /* TextFieldWithValiditity.swift */,
@@ -269,6 +274,7 @@
 				02C7A01429FAE64C00C6E403 /* NumberFormatters.swift */,
 				02CFCACE2A0024CF00DA7D76 /* PickerAndLabel.swift */,
 				02CFCAD22A006E4A00DA7D76 /* SpinningCircle.swift */,
+				02CFCAD92A0C383800DA7D76 /* NavigationPopping.swift */,
 			);
 			path = ViewHelpers;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */,
+				0222868229EA72F600FEBB91 /* LoginScreen.swift */,
 				02FEA16429CCEBCF00BCD7A4 /* WelcomeAnimationProperties */,
 				02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */,
 				02FACCB329C6D7D600B55E6D /* NewUserForm.swift */,
@@ -436,7 +443,6 @@
 				02FEA18F29CECAFB00BCD7A4 /* TabViewChildren */,
 				02FEA18E29CECAAA00BCD7A4 /* TabViews */,
 				02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */,
-				0222868229EA72F600FEBB91 /* LoginScreen.swift */,
 				02FACCB029C6C61500B55E6D /* WelcomeScreenChildren */,
 			);
 			path = Views;
@@ -661,7 +667,7 @@
 				0222866F29E8921000FEBB91 /* HotOrColdView.swift in Sources */,
 				02CFCACF2A0024CF00DA7D76 /* PickerAndLabel.swift in Sources */,
 				0222867429E8977500FEBB91 /* ThreeState.swift in Sources */,
-				02FEA17B29CEC86100BCD7A4 /* LoginErro.swift in Sources */,
+				02FEA17B29CEC86100BCD7A4 /* LoginError.swift in Sources */,
 				02FEA1C729D3372600BCD7A4 /* RoundEntry.swift in Sources */,
 				0222868329EA72F600FEBB91 /* LoginScreen.swift in Sources */,
 				02FEA18729CECA0000BCD7A4 /* RoundView.swift in Sources */,
@@ -678,6 +684,7 @@
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
+				02CFCADA2A0C383800DA7D76 /* NavigationPopping.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02CFCAD82A09F76F00DA7D76 /* ShotAnalyzer.swift in Sources */,
 				020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */,
@@ -691,6 +698,7 @@
 				02FEA1B629CFB7E000BCD7A4 /* DatabaseCommunicator.swift in Sources */,
 				02FEA19A29CF791600BCD7A4 /* Position.swift in Sources */,
 				02FACCB229C6C62E00B55E6D /* WelcomeAnimation.swift in Sources */,
+				02CFCADC2A0C3C6E00DA7D76 /* GoHome.swift in Sources */,
 				02FEA16A29CD142700BCD7A4 /* Authenticator.swift in Sources */,
 				02FEA1C329D1518200BCD7A4 /* SettingsView.swift in Sources */,
 				0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */,

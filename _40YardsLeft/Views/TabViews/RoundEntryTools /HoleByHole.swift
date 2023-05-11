@@ -11,11 +11,14 @@ import SwiftUI
 struct HoleByHole: View {
     @Binding var golfer: Golfer
     @State var round: Round
+    @Binding var path: NavigationPath
+    
     private let shotPredictor = ShotPredictor()
     @State var holeNumber: Int
     @State private var isHoleSaved: [Bool] = .init(repeating: false, count: 18)
     
-    @State private var refresh = true
+    @State private var isDeleteRound = false
+    @State private var isRoundSetup = false
 
     
     /// A state variable which holds a map to each shotIntermediate for each hole in the round
@@ -49,8 +52,9 @@ struct HoleByHole: View {
         }
     }
     
+    
     var body: some View {
-        NavigationStack {
+        
             VStack {
                 Text("Hole \(holeNumber)")
                     .bold()
@@ -133,23 +137,16 @@ struct HoleByHole: View {
                     }
                     .padding()
                     
-                
-                
-                
                 Spacer()
                 
+                NavigationLink(value: "Overview") {
+                    Label("Finish Round", systemImage: "checkmark")
+                }
+                .buttonStyle(.bordered)
+                .disabled(!self.round.isComplete)
                 
-
-                
-                
-                
-                    NavigationLink {
-                        RoundOverviewPage(golfer: self.$golfer, round: self.round)
-                    } label: {
-                        Label("Finish Round", systemImage: "checkmark")
-                    }
-                    .buttonStyle(.bordered)
-                    .disabled(!self.round.isComplete)
+                    
+                    
                 
                     
                     
@@ -158,6 +155,61 @@ struct HoleByHole: View {
             .animation(.easeInOut, value: self.shotList[holeNumber - 1])
             .animation(.easeInOut, value: self.isHoleSaved[holeNumber - 1])
             .toolbar {
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    
+                    
+                    Button(role: .destructive) {
+                        self.isDeleteRound = true
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    .confirmationDialog("Cancel Round", isPresented: self.$isDeleteRound, actions: {
+                        Button(role: .destructive) {
+                            self.path.keepFirst()
+                        } label: {
+                            Text("Confirm")
+                        }
+                        
+                        Button {
+                            //no action
+                        } label: {
+                            Text("Cancel")
+                        }
+                        
+     
+                    }, message: {
+                        Text("Your scores will be deleted")
+                    })
+                    
+                    
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(role: .cancel) {
+                        self.isRoundSetup = true
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    .confirmationDialog("", isPresented: self.$isRoundSetup, actions: {
+                        Button(role: .destructive) {
+                            self.path.removeLast()
+                        } label: {
+                            Text("Confirm")
+                        }
+                        
+                        Button {
+                            //no action
+                        } label: {
+                            Text("Cancel")
+                        }
+                        
+                        
+                    }, message: {
+                        Text("Your scores will be deleted")
+                    })
+                }
+                
                 
         
                 
@@ -196,6 +248,11 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
             
             })
+            .navigationDestination(for: String.self) { string in
+                RoundOverviewPage(golfer: self.$golfer,
+                                  path: self.$path,
+                                  round: self.round)
+            }
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
                 
                 // if the shot list for the next hole is empty then add the deafult first shot.
@@ -222,7 +279,7 @@ struct HoleByHole: View {
     
                 
             
-        }
+        
     }
 }
 
@@ -275,8 +332,9 @@ struct HoleByHole_Previews: PreviewProvider {
     @State static private var holeNumber = 1
     @State private static var round = Round.emptyRoundExample1
     @State private static var golfer = Golfer.golfer
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        HoleByHole(golfer: $golfer, round: round, holeNumber: holeNumber)
+        HoleByHole(golfer: $golfer, round: round, path: self.$path, holeNumber: holeNumber)
     }
 }
 

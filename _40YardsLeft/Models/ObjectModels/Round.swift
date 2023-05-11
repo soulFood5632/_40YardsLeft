@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: Round Initilizers
-struct Round : Codable, Identifiable {
+struct Round : Codable, Identifiable, Hashable {
     
     /*
      Rep Invariant:

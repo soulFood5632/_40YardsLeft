@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: Shot Init
-struct Shot : Codable, Equatable {
+struct Shot : Codable, Hashable {
     /// The type of shot.
     let type: ShotType
     /// where the shot originated from
@@ -94,7 +94,7 @@ extension Shot {
 }
 
 //MARK: ShotType Enum
-enum ShotType : String, Codable, CaseIterable {
+enum ShotType : String, Codable, CaseIterable, Hashable {
     case drive = "Drive"
     case approach = "Approach"
     case chip_pitch = "Chip/Pitch"

@@ -12,7 +12,7 @@ import Foundation
 /// A location on the golf course containing its distance to the hole and its lie.
 ///
 /// From this position you
-struct Position : Codable, Equatable {
+struct Position : Codable, Hashable {
     
     /// The lie of the position
     var lie: Lie
@@ -82,7 +82,7 @@ extension Position {
 
 //MARK: Lie Enum
 /// A set of values which house the valid lie types on a golf course
-enum Lie : String, Codable, Equatable, CaseIterable {
+enum Lie : String, Codable, Hashable, CaseIterable {
     
     case fairway = "Fairway"
     case rough = "Rough"
@@ -103,7 +103,7 @@ extension Lie : Identifiable {
 /// A distance which contains a unit independant distance value.
 ///
 /// You can instansiate a distance object by inputting the value in yards, meters, or feet.
-struct Distance : Codable {
+struct Distance : Codable, Hashable {
     /// The distance value in yards
     var yards: Double
     ///The distance value in feet

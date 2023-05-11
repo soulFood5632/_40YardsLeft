@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Golfer: Codable {
+struct Golfer: Codable, Hashable {
     private static let MINUMUM_SHOTS_FOR_ANALYSIS = 1000
     
     let firebaseID: String
@@ -294,7 +294,7 @@ extension Array {
 }
 
 //MARK: Gender Enum
-enum Gender : String, Codable, CaseIterable {
+enum Gender : String, Codable, CaseIterable, Hashable {
     case man = "Male", woman = "Female"
 }
 

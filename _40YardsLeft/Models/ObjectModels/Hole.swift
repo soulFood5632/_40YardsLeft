@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 //MARK: Hole Init
-struct Hole: Codable, Equatable, Identifiable {
+struct Hole: Codable, Identifiable, Hashable {
     
     //TODO: write RI's and AF.
     /// Basic information about the given hole. 

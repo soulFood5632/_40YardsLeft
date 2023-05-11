@@ -9,17 +9,18 @@ import SwiftUI
 
 struct NavigationMenu: View {
     @Binding var golfer: Golfer
+    @Binding var navStack: NavigationPath
     var body: some View {
         Menu {
             
             NavigationLink() {
-                RoundEntry(golfer: $golfer)
+                RoundEntry(golfer: $golfer, path: self.$navStack)
             } label: {
                 Label("Add Round", systemImage: "plus")
             }
             
             NavigationLink() {
-                RoundView(golfer: $golfer)
+                RoundView(golfer: $golfer, path: $navStack )
             } label: {
                 Label("Manage Rounds", systemImage: "pencil")
             }
@@ -40,7 +41,8 @@ struct NavigationMenu: View {
 
 struct Menu_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
+    @State private static var navStack =  NavigationPath()
     static var previews: some View {
-        NavigationMenu(golfer: self.$golfer)
+        NavigationMenu(golfer: self.$golfer, navStack: $navStack)
     }
 }

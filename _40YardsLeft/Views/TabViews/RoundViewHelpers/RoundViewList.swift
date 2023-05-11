@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoundViewList: View {
     @Binding var golfer: Golfer
+    @Binding var path: NavigationPath
     
     @State private var roundToDelete: Round?
     var body: some View {
@@ -18,8 +19,11 @@ struct RoundViewList: View {
                 Text("You haven't posted a round yet")
                     .bold()
                     .padding(.bottom, 1)
-                NavigationLink {
-                    // add link to new round
+                Button {
+                    withAnimation {
+                        path.keepFirst()
+                        path.append(ScreenState.play)
+                    }
                 } label: {
                     Text("Start Your First Round")
                 }
@@ -39,9 +43,9 @@ struct RoundViewList: View {
                             Spacer()
                             
                             
-                            
+                            //TODO: fix this link
                             NavigationLink {
-                                HoleByHole(golfer: self.$golfer, round: round, holeNumber: 1)
+                                HoleByHole(golfer: self.$golfer, round: round, path: self.$path, holeNumber: 1)
                             } label: {
                                 Image(systemName: "pencil")
                             }
@@ -87,15 +91,14 @@ struct RoundViewList: View {
     }
 }
 
-extension RoundViewList {
-    
-}
+
 
 struct RoundViewList_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
+    @State private static var path = NavigationPath()
     static var previews: some View {
         NavigationStack {
-            RoundViewList(golfer: self.$golfer)
+            RoundViewList(golfer: self.$golfer, path: $path)
         }
     }
 }

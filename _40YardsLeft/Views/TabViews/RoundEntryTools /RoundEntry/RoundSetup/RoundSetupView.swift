@@ -9,11 +9,12 @@ import SwiftUI
 
 struct RoundSetupView: View {
     
-    @Binding var course: Course
-    @Binding var round: Round?
+    @State var course: Course
+    
     @Binding var golfer: Golfer
+    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack {
+        VStack {
             Text(course.name)
                 .font(.title)
                 .bold()
@@ -24,12 +25,17 @@ struct RoundSetupView: View {
             Text(course.location.addressLine1)
             
             Text("\(course.location.city), \(course.location.province.rawValue), \(course.location.country.rawValue)")
-        
-
-            RoundPrepView(round: self.$round, course: self.$course, golfer: self.$golfer)
-            .padding()
             
+            
+            RoundPrepView(course: self.$course, golfer: self.$golfer, path: self.$path)
+                .padding()
         }
+        .navigationDestination(for: Round.self) { newRound in
+            HoleByHole(golfer: self.$golfer, round: newRound, path: self.$path, holeNumber: 1)
+        }
+        
+            
+        
         
     }
 }
@@ -38,7 +44,8 @@ struct RoundSetupView_Previews: PreviewProvider {
     @State private static var round: Round?
     @State private static var course = Course.example1
     @State private static var golfer = Golfer.golfer
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        RoundSetupView(course: self.$course, round: self.$round, golfer: self.$golfer)
+        RoundSetupView(course: self.course, golfer: self.$golfer, path: self.$path)
     }
 }

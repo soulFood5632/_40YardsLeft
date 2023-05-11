@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct WelcomeScreen : View {
     
-    @Binding var user: User?
+    @Binding var path: NavigationPath
     
     private static let END_RADIUS: CGFloat = 400
     private static let START_RADIUS: CGFloat = 100
@@ -25,7 +25,7 @@ struct WelcomeScreen : View {
             RadialGradient(colors: [.blue, .cyan, .green, .mint], center: .center, startRadius: Self.START_RADIUS, endRadius: self.endRadius)
                 .ignoresSafeArea()
             
-            WelcomeAnimation(user: self.$user)
+            WelcomeAnimation(path: self.$path)
             
         }
         .onAppear {

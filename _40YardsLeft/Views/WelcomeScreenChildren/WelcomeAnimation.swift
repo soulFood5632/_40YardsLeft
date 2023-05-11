@@ -18,102 +18,110 @@ struct WelcomeAnimation: View {
     @State private var newUserForm = false
     @State private var loginForm = false
     
-    @Binding var user: User?
+    @State private var user: User?
+    @Binding var path: NavigationPath
  
     
     var body: some View {
-
-            VStack {
+        
+        VStack {
+            
+            let welcomeUserSize = animationMode.getSize(triggerValue: 1)
+            
+            let getStartedSize = animationMode.getSize(triggerValue: 1)
+            
+            let loginSize: CGSize = animationMode.getSize(triggerValue: 1)
+            
+            Group {
+                Text("Welcome User")
+                    .foregroundColor(.white)
+                    .font(.system(size: 55))
+                    .bold()
+                    .scaleEffect(welcomeUserSize)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 10)
                 
-                let welcomeUserSize = animationMode.getSize(triggerValue: 1)
                 
-                let getStartedSize = animationMode.getSize(triggerValue: 1)
-                
-                let loginSize: CGSize = animationMode.getSize(triggerValue: 1)
                 Group {
-                    Text("Welcome User")
+                    Text("Get Started Below")
                         .foregroundColor(.white)
-                        .font(.system(size: 55))
+                        .font(.system(size: 25))
                         .bold()
-                        .scaleEffect(welcomeUserSize)
                         .multilineTextAlignment(.center)
-                        .padding(.bottom, 10)
                     
                     
-                    Group {
-                        Text("Get Started Below")
-                            .foregroundColor(.white)
-                            .font(.system(size: 25))
-                            .bold()
-                            .multilineTextAlignment(.center)
-                        
-                        
-                        Image(systemName: "arrow.down")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20))
-                        
-                    }
+                    Image(systemName: "arrow.down")
+                        .foregroundColor(.white)
+                        .font(.system(size: 20))
                     
-                    .scaleEffect(getStartedSize)
-                    
-                      
-                    Group {
-                        Button {
-                            self.loginForm = true
-                        } label: {
-                            Label("Log In", systemImage: "person.crop.circle")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding(.top, 40)
-                        
-                        
-                        Button {
-                            self.newUserForm = true
-                        } label: {
-                            Label("Create Account", systemImage: "person.crop.circle.badge.plus")
-                            
-                        }
-                        .buttonStyle(.borderedProminent)
-                        
-                        Button {
-                            Task {
-                                self.user = try await Authenticator.logIn(emailAddress: "loganu@gmail.com", password: "Falcons1SB#51")
-                            }
-                        } label: {
-                            Label("Admin", systemImage: "person.crop.circle.badge.plus")
-                            
-                        }
-                        .buttonStyle(.borderedProminent)
-                        
-                    }
-                    .font(.title2)
-                    .scaleEffect(loginSize)
                 }
-                .padding(.horizontal)
+                .scaleEffect(getStartedSize)
                 
+                
+                Group {
+                    Button {
+                        self.loginForm = true
+                    } label: {
+                        Label("Log In", systemImage: "person.crop.circle")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding(.top, 40)
+                    
+                    
+                    Button {
+                        self.newUserForm = true
+                    } label: {
+                        Label("Create Account", systemImage: "person.crop.circle.badge.plus")
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button {
+                        self.path.append(Golfer.golfer)
+                    } label: {
+                        Label("Admin", systemImage: "person.crop.circle.badge.plus")
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    
+                    
+                    
+                }
+                .font(.title2)
+                .scaleEffect(loginSize)
+            }
+            .padding(.horizontal)
+            
+            
+            
+        }
+        .onChange(of: user) { newUser in
+            if let newUser {
+                self.newUserForm = false
+                self.loginForm = false
+                
+                Task {
+                    
+                    let golfer = try await DatabaseCommunicator.getGolfer(id: newUser.uid)
+                    
+                    path.append(golfer)
+                }
+            }
+        }
+        .sheet(isPresented: self.$newUserForm, content: {
+            NewUserForm(user: self.$user)
+        })
+        .sheet(isPresented: self.$loginForm, content: {
+            OldUserWelcome(user: self.$user)
+        })
+        .onReceive(self.signaller) { _ in
+            
+            withAnimation (.spring(dampingFraction: 0.7)) {
+                self.animationMode.incrementAnimation()
+            }
 
-                    
-            }
-            .onChange(of: user, perform: { newValue in
-                if user != nil {
-                    self.newUserForm = false
-                    self.loginForm = false
-                }
-            })
-            .sheet(isPresented: self.$newUserForm, content: {
-                NewUserForm(user: self.$user)
-            })
-            .sheet(isPresented: self.$loginForm, content: {
-                OldUserWelcome(user: self.$user)
-            })
-            .onReceive(self.signaller) { _ in
-                
-                withAnimation (.spring(dampingFraction: 0.7)) {
-                    self.animationMode.incrementAnimation()
-                }
-                
-                
-            }
+        }
     }
 
 }
@@ -121,9 +129,9 @@ struct WelcomeAnimation: View {
 
 
 struct WelcomeAnimation_Previews: PreviewProvider {
-    @State static private var user: User?
+    @State static private var user = NavigationPath()
     static var previews: some View {
-        WelcomeAnimation(user: self.$user)
+        WelcomeAnimation(path: self.$user)
             .background(.black)
     }
 }

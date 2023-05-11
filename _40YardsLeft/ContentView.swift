@@ -17,32 +17,20 @@ struct ContentView: View {
     
     @State private var userIsLoggedOut = false
     
+    @State private var path = NavigationPath()
+    
     
 
     var body: some View {
-        ZStack {
-            //TODO: allow the user to enter their details here 
-            if let golfer = golfer {
-                let golferBinding = Binding {
-                    golfer
-                } set: { newValue in
-                    self.golfer = newValue
+        NavigationStack(path: $path) {
+            
+            WelcomeScreen(path: $path)
+                .navigationDestination(for: Golfer.self) { newGolfer in
+                    
+                    HomeView(golfer: newGolfer, path: self.$path)
+                    
                 }
-                
-                HomeView(golfer: golferBinding)
-
-            }
             
-            
-            WelcomeScreen(user: self.$user)
-                .opacity(user == nil ? 1 : 0)
-            
-        }
-        .navigationDestination(isPresented: self.$userIsLoggedOut, destination: {
-            LoginScreen(user: self.$user)
-        })
-        .onChange(of: Auth.auth().currentUser) { newUser in
-            self.fetchGolferFromUser(newUser: newUser)
         }
         
 

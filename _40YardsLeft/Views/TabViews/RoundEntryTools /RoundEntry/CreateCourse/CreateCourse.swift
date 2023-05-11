@@ -23,10 +23,10 @@ struct CourseBuffer {
 
 
 struct CreateCourse: View {
-    
-    @Binding var course: Course?
+
     
     @Binding var showView: Bool
+    @Binding var path: NavigationPath
     
     @State private var buffer = CourseBuffer()
     
@@ -49,9 +49,9 @@ struct CreateCourse: View {
                 
                 Button {
                     //TODO: add action to drop out of this view and populate bottom view with this new course
-                    
-                    self.course = createCourse()
                     self.showView = false
+                    path.append(createCourse())
+                    
                     
                 } label: {
                     Label("Save", systemImage: "square.and.arrow.down")
@@ -87,9 +87,9 @@ extension CreateCourse {
 }
 
 struct CreateCourse_Previews: PreviewProvider {
-    @State private static var course: Course?
+    @State private static var path = NavigationPath()
     @State private static var showView = true
     static var previews: some View {
-        CreateCourse(course: self.$course, showView: self.$showView)
+        CreateCourse(showView: self.$showView, path: self.$path)
     }
 }

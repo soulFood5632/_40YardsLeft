@@ -9,9 +9,8 @@ import SwiftUI
 import FirebaseFirestore
 
 struct PickACourse: View {
-    
-    
-    @Binding var course: Course?
+
+    @Binding var path: NavigationPath
     @State private var chosenCourse: Course?
     
     
@@ -27,7 +26,9 @@ struct PickACourse: View {
                 .padding(.bottom, 6)
             
             Button {
-                course = chosenCourse
+                if let chosenCourse {
+                    path.append(chosenCourse)
+                }
             } label: {
                 Label("Confirm", systemImage: "checkmark")
             }
@@ -36,9 +37,7 @@ struct PickACourse: View {
         }
             
             
-            
-            
-        //TODO: Complete a set of drop down menus so you can choose from database
+
     }
     
 }
@@ -46,8 +45,8 @@ struct PickACourse: View {
 
 
 struct PickACourse_Previews: PreviewProvider {
-    @State private static var course: Course?
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        PickACourse(course: self.$course)
+        PickACourse(path: self.$path)
     }
 }

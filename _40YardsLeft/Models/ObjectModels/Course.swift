@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: Course Struct
-struct Course : Codable, Identifiable {
+struct Course : Codable, Identifiable, Hashable {
     private(set) var listOfTees: [Tee]
     var location: Address
     var name: String
@@ -44,13 +44,15 @@ struct Course : Codable, Identifiable {
         return listOfTees.contains(tee)
     }
     
-}
-
-extension Course: Hashable, Equatable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
         _ = hasher.finalize()
     }
+    
+}
+
+extension Course: Equatable {
+    
     
     static func == (lhs: Course, rhs: Course) -> Bool {
         return lhs.id == rhs.id
@@ -296,7 +298,7 @@ enum TeeError : Error {
 
 
 //MARK: Hole Data Struct
-struct HoleData: Codable, Equatable, Identifiable {
+struct HoleData: Codable, Hashable, Identifiable {
     
     let id: UUID
     

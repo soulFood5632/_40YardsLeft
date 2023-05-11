@@ -9,14 +9,14 @@ import SwiftUI
 import FirebaseAuth
 
 struct LoginScreen: View {
-    @Binding var user: User?
+    @Binding var path: NavigationPath
+    @State private var user: User?
     @State private var loginForm = false
     @State private var newUserForm = false
     
     var body: some View {
         
-        
-        
+
         VStack {
             
             Group {
@@ -37,15 +37,6 @@ struct LoginScreen: View {
                 }
                 .buttonStyle(.borderedProminent)
                 
-                Button {
-                    Task {
-                        self.user = try await Authenticator.logIn(emailAddress: "jjbean@gmail.com", password: "Falcons1SB51")
-                    }
-                } label: {
-                    Label("Admin", systemImage: "person.crop.circle.badge.plus")
-                    
-                }
-                .buttonStyle(.borderedProminent)
                 
             }
             .font(.title2)
@@ -58,14 +49,21 @@ struct LoginScreen: View {
         .sheet(isPresented: self.$loginForm, content: {
             OldUserWelcome(user: self.$user)
         })
+        .onChange(of: self.user) { newUser in
+            if let newUser {
+                Task {
+                    try await DatabaseCommunicator.getGolfer(id: newUser.uid)
+                }
+            }
+        }
         
     }
     
 }
 
 struct LoginScreen_Previews: PreviewProvider {
-    @State private static var user: User?
+    @State private static var user = NavigationPath()
     static var previews: some View {
-        LoginScreen(user: $user)
+        LoginScreen(path: $user)
     }
 }

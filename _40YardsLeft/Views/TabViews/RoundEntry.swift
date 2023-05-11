@@ -12,21 +12,16 @@ import SwiftUI
 struct RoundEntry: View {
     
     @Binding var golfer: Golfer
-    
-    @State private var round: Round?
-    
-    @State private var course: Course?
-    
+    @Binding var path: NavigationPath
     @State private var newCourse = false
-    
-    @State private var startRound = false
+    @State private var isCancelledRound = false
     
     var body: some View {
-        NavigationStack {
+        
             VStack {
                 Group {
                     GroupBox {
-                        PickACourse(course: self.$course)
+                        PickACourse(path: $path)
                     } label: {
                         Label("Choose Course", systemImage: "list.bullet.clipboard")
                     }
@@ -50,42 +45,43 @@ struct RoundEntry: View {
                 }
                 .padding(.horizontal)
             }
-            
-        }
-        .onAppear {
-            // I think we want to reset the cours when this view is opened
-            self.course = nil
-        }
         .navigationTitle("Course Selection")
-        .navigationDestination(isPresented: self.$startRound) {
-            if course != nil {
-                
-                let unwrappedBinding = Binding<Course> {
-                    return self.course!
-                } set: { newValue in
-                    self.course = newValue
-                }
-                
-                RoundSetupView(course: unwrappedBinding, round: self.$round, golfer: self.$golfer)
-            }
+        .navigationDestination(for: Course.self) { newCourse in
+            RoundSetupView(course: newCourse, golfer: self.$golfer, path: self.$path)
         }
-        .onChange(of: self.course, perform: { newCourse in
-            if newCourse != nil {
-                self.startRound = true
-            }
-        })
-        .navigationTitle("Course Selection")
         .sheet(isPresented: self.$newCourse) {
-            CreateCourse(course: self.$course, showView: self.$newCourse)
-            
+            CreateCourse(showView: self.$newCourse, path: self.$path)
             
         }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem (placement: .navigationBarLeading) {
+                Button (role: .destructive) {
+                    self.isCancelledRound = true
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .confirmationDialog("Delete Round", isPresented: self.$isCancelledRound, actions: {
+                    Button (role: .destructive) {
+                        path.keepFirst()
+                    } label: {
+                        Text("Confirm")
+                    }
+                    
+                    
+                }, message: {
+                    Text("Delete Round")
+                })
+            }
+        }
+        
     }
 }
 
 struct RoundEntry_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        RoundEntry(golfer: self.$golfer)
+        RoundEntry(golfer: self.$golfer, path: self.$path)
     }
 }

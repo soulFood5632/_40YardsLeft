@@ -12,102 +12,126 @@ import SwiftUI
 
 
 struct HomeView: View {
-    @Binding var golfer: Golfer
-    @State private var navStack = [String]()
+    @State var golfer: Golfer
+    @Binding var path: NavigationPath
     
     
     var body: some View {
-        NavigationStack(path: self.$navStack) {
-            VStack {
-                
-                GroupBox {
-                    VStack {
-                        GolferView(golfer: golfer)
-                        
-                        HotStreak(golfer: golfer)
-                            .font(.headline)
-                    }
+        
+        VStack {
+            
+            GroupBox {
+                VStack {
+                    GolferView(golfer: golfer)
                     
-                } label: {
-                    Label("Welcome Back \(golfer.name)", systemImage: "hand.wave.fill")
+                    HotStreak(golfer: golfer)
+                        .font(.headline)
+                }
+                
+            } label: {
+                Label("Welcome Back \(golfer.name)", systemImage: "hand.wave.fill")
+                    .bold()
+                    .font(.largeTitle)
+                
+            }
+            
+            GroupBox {
+                //TODO: stat dashboard
+                
+                NavigationLink(value: ScreenState.stats) {
+                    
+                    Label("Analyze", systemImage: "chart.bar")
                         .bold()
-                        .font(.largeTitle)
+                        .font(.title2)
                     
                 }
-                
-                GroupBox {
-                    //TODO: stat dashboard
-                    NavigationLink() {
-                        StatView()
-                    } label: {
-                        
-                        Label("Analyze", systemImage: "chart.bar")
-                            .bold()
-                            .font(.title2)
-                        
-                    }
-                    .buttonStyle(.bordered)
-                }
-                
-                GroupBox {
-                    //TODO: add things here
-                    
-                    NavigationLink {
-                        RoundEntry(golfer: self.$golfer)
-                    } label: {
-                        
-                        Label("Play", systemImage: "figure.golf")
-                            .bold()
-                            .font(.title2)
-                        
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-                
-                GroupBox {
-                    
-                    ScrollView {
-                        RoundViewList(golfer: self.$golfer)
-                            .disabled(true)
-                    }
-                    NavigationLink {
-                        RoundView(golfer: self.$golfer)
-                    } label: {
-                        
-                        Label("View History", systemImage: "book")
-                            .bold()
-                            .font(.title2)
-                        
-                    }
-                    .buttonStyle(.bordered)
-                }
-                
-
-
-                
+                .buttonStyle(.bordered)
             }
-            .padding()
-            .toolbar {
-                ToolbarItem (placement: .navigationBarLeading) {
-                    NavigationMenu(golfer:
-                                    $golfer)
-
-                }
+            
+            GroupBox {
+                //TODO: add things here
                 
-            }
-            .toolbar {
-                ToolbarItem (placement: .navigationBarTrailing) {
-                    //TODO: add settings here.
+                NavigationLink(value: ScreenState.play) {
+                    
+                    Label("Play", systemImage: "figure.golf")
+                        .bold()
+                        .font(.title2)
+                    
                 }
+                .buttonStyle(.borderedProminent)
             }
             
             
-
+            GroupBox {
+                
+                ScrollView {
+                    RoundViewList(golfer: self.$golfer, path: self.$path)
+                        .disabled(true)
+                }
+                NavigationLink(value: ScreenState.history) {
+                    Label("View History", systemImage: "book")
+                        .bold()
+                        .font(.title2)
+                }
+                
+            }
+            
         }
+        .padding()
+        .toolbar {
+            ToolbarItem (placement: .navigationBarLeading) {
+                NavigationMenu(golfer:
+                                $golfer, navStack: $path)
+                
+            }
+            
+        }
+        
+        .navigationDestination(for: ScreenState.self) { newState in
+            
+            switch newState {
+                
+            case .history:
+                RoundView(golfer: self.$golfer, path: self.$path)
+                    .toolbar {
+                        ToolbarItem (placement: .navigationBarTrailing) {
+                            GoHome(path: $path)
+                        }
+                    }
+            case .play:
+                RoundEntry(golfer: self.$golfer, path: self.$path) 
+            case .stats:
+                StatView()
+                    .toolbar {
+                        ToolbarItem (placement: .navigationBarTrailing) {
+                            GoHome(path: $path)
+                        }
+                    }
+                
+                
+            }
+            
+            
+            
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem (placement: .navigationBarTrailing) {
+                //TODO: add settings here.
+            }
+        }
+        
+        
         
     }
     
     
+}
+
+enum ScreenState {
+    case play
+    case history
+    case stats
 }
 
 extension Date {
@@ -123,8 +147,11 @@ extension Date {
 
 struct HomeView_Previews: PreviewProvider {
     @State static private var golfer = Golfer.golfer
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        HomeView(golfer: Self.$golfer)
-            .preferredColorScheme(.dark)
+        NavigationStack (path: $path) {
+            HomeView(golfer: Self.golfer, path: self.$path)
+                .preferredColorScheme(.dark)
+        }
     }
 }

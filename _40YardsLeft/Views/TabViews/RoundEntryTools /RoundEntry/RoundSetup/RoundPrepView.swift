@@ -35,12 +35,14 @@ struct RoundSetupBuffer {
 
 //MARK: Round Prep View
 struct RoundPrepView: View {
-    @Binding var round: Round?
+    //TODO: think about a flag to identify if it is a new course or not.
+    
     @Binding var course: Course
     @Binding var golfer: Golfer
+    @Binding var path: NavigationPath
     
     @State private var buffer = RoundSetupBuffer()
-    
+    @State private var isCancelledRound = false
     @State private var isCreateNewTee = false
 
     var body: some View {
@@ -105,7 +107,7 @@ struct RoundPrepView: View {
                     HStack {
                         
                         PickerAndLabel(pickedElement: self.$buffer.roundType, choices: RoundType.allCases, title: "Round Type")
-                            .pickerStyle(.wheel)
+                            
                     }
                 }
             } label: {
@@ -114,23 +116,20 @@ struct RoundPrepView: View {
             
             
             
-            
-            NavigationLink {
-                //Create the new round when this button is pressed.
-                if self.isReady {
-                    let round = self.buffer.createRound(course: self.course)
-                    
-                    HoleByHole(golfer: self.$golfer, round: round, holeNumber: 1)
-                }
+            Button {
+                let round = self.buffer.createRound(course: self.course)
                 
-                
+                path.append(round)
             } label: {
                 Label("Start Round", systemImage: "figure.golf")
             }
             .buttonStyle(.borderedProminent)
             .disabled(!self.isReady)
             
+            
+            
         }
+        
         .sheet(isPresented: self.$isCreateNewTee) {
             CourseHoleByHole(course: self.$course, showView: self.$isCreateNewTee)
                 .padding()
@@ -141,6 +140,33 @@ struct RoundPrepView: View {
             //TODO: note that this view will only dissapear when a round is started. Investigate whether a flag here would be a better idea. 
             Task {
                 try await DatabaseCommunicator.addCourse(course: self.course)
+            }
+        }
+        .toolbar {
+            
+            ToolbarItem (placement: .navigationBarTrailing) {
+                Button (role: .destructive) {
+                    self.isCancelledRound = true
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .confirmationDialog("Delete Round", isPresented: self.$isCancelledRound, actions: {
+                    
+                    Button (role: .destructive) {
+                        path.keepFirst()
+                    } label: {
+                        Text("Confirm")
+                    }
+                    
+                
+                }, message: {
+                    VStack {
+                        Text("Delete Round")
+                            .font(.headline)
+                        Text("This action is irreversible")
+                            .font(.subheadline)
+                    }
+                })
             }
         }
     }
@@ -161,9 +187,11 @@ extension RoundPrepView {
 
 struct RoundPrepView_Previews: PreviewProvider {
     @State private static var course = Course.example1
-    @State private static var round: Round?
+    @State private static var round = NavigationPath()
     @State private static var golfer = Golfer.golfer
     static var previews: some View {
-        RoundPrepView(round: self.$round, course: self.$course, golfer: self.$golfer)
+        NavigationStack {
+            RoundPrepView(course: self.$course, golfer: self.$golfer, path: self.$round)
+        }
     }
 }

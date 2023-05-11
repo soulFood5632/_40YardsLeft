@@ -10,9 +10,9 @@ import FirebaseAuth
 
 struct RoundOverviewPage: View {
     @Binding var golfer: Golfer
+    @Binding var path: NavigationPath
     //TODO: investogate if binding is required here. 
     let round: Round
-    @State private var isRequestEdit = false
     @State private var isRoundDone = false
     @State private var showStats = false
     var body: some View {
@@ -55,7 +55,7 @@ struct RoundOverviewPage: View {
             
             Button {
                 Task {
-                    //Update the golfer by adding the round.
+                    //TODO: Update the golfer by adding the round.
                 }
                 self.isRoundDone = true
             } label: {
@@ -81,15 +81,13 @@ struct RoundOverviewPage: View {
         .toolbar {
             ToolbarItem (placement: .primaryAction) {
                 Button {
-                    self.isRequestEdit = true
+                    self.path.removeLast()
                 } label: {
-                    Label("Edit Round", systemImage: "pencil")
+                    Image(systemName: "pencil")
                 }
             }
+            //TODO: add a delete round
         }
-        .navigationDestination(isPresented: self.$isRequestEdit, destination: {
-            HoleByHole(golfer: self.$golfer, round: self.round, holeNumber: 1)
-        })
         .navigationBarBackButtonHidden()
         .padding()
     }
@@ -97,10 +95,11 @@ struct RoundOverviewPage: View {
 
 struct RoundOverviewPage_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
+    @State private static var path = NavigationPath()
     @State private static var round = Round.completeRoundExample1
     static var previews: some View {
         NavigationStack {
-            RoundOverviewPage(golfer: $golfer, round: round)
+            RoundOverviewPage(golfer: $golfer, path: self.$path, round: round)
         }
         
     }
