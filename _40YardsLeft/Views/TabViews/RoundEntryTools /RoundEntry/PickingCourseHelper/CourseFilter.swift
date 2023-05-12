@@ -25,6 +25,7 @@ struct Filters: Equatable {
 struct CourseFilter: View {
     
     @Binding var chosenCourse: Course?
+    @Binding var path: NavigationPath
     
     @State private var filter = Filters()
     @State private var isLoading = true
@@ -49,37 +50,31 @@ struct CourseFilter: View {
                 }
             }
             
-            if self.chosenCourse == nil {
-                NavigationLink {
-                    CourseSearcher(overallQuery: self.courseQuery, chosenCourse: self.$chosenCourse)
-                } label: {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-                .disabled(self.isLoading)
-            } else {
-                VStack {
-                    NavigationLink {
-                        CourseSearcher(overallQuery: self.courseQuery, chosenCourse: self.$chosenCourse)
-                    } label: {
-                        
-                        VStack {
-                            
-                            Text(chosenCourse!.name)
-                                .font(.headline)
-                            Text(chosenCourse!.location.city + ", " + chosenCourse!.location.province.rawValue)
-                                .font(.subheadline)
-                        }
-                    }
-                    .padding(.bottom, 2)
-                    
-                    Label("Edit", systemImage: "arrow.up")
-                        .font(.caption)
-                        
-
-                }
+            if let chosenCourse {
+                
+                
+                Text(chosenCourse.name)
+                    .font(.headline)
+                Text(chosenCourse.location.city + ", " + chosenCourse.location.province.rawValue)
+                    .font(.subheadline)
+                
             }
             
+            NavigationLink(value: self.courseQuery) {
+                    if self.chosenCourse == nil {
+                        Label("Search", systemImage: "magnifyingglass")
+                    } else {
+                        Label("Edit", systemImage: "pencil")
+                            .padding(.top, 3)
+                    }
+                }
+                .disabled(self.isLoading)
             
+            
+            
+        }
+        .navigationDestination(for: [Course].self) { courseList in
+            CourseSearcher(overallQuery: courseList, chosenCourse: self.$chosenCourse, path: self.$path)
         }
         .animation(.easeInOut, value: self.chosenCourse)
         .animation(.spring(dampingFraction: 0.6), value: self.isLoading)
@@ -140,7 +135,8 @@ struct CourseFilter_Previews:
 PreviewProvider {
     
     @State private static var course: Course?
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        CourseFilter(chosenCourse: $course)
+        CourseFilter(chosenCourse: $course, path: self.$path)
     }
 }

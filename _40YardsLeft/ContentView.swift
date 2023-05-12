@@ -12,11 +12,8 @@ import FirebaseAuth
 struct ContentView: View {
     
     @State private var user: User?
-    
     @State private var golfer: Golfer?
-    
     @State private var userIsLoggedOut = false
-    
     @State private var path = NavigationPath()
     
     
@@ -30,10 +27,12 @@ struct ContentView: View {
                     HomeView(golfer: newGolfer, path: self.$path)
                     
                 }
-            
+
+        }
+        .onChange(of: path) { newPath in
+            print(newPath.count)
         }
         
-
     }
     
     

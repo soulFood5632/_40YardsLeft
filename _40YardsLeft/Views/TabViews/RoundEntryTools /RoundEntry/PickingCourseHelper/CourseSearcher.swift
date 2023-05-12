@@ -13,13 +13,14 @@ struct CourseSearcher: View {
     
     @Binding var chosenCourse: Course?
     @State private var searchText = ""
+    @Binding var path: NavigationPath
     
     
     var body: some View {
-        ZStack {
+        VStack {
 
             List {
-                ForEach(filteredQuery) { course in
+                ForEach(filteredQuery, id: \.name) { course in
                     let isSelected = self.chosenCourse == course
                     HStack {
                         VStack (alignment: .leading) {
@@ -61,9 +62,25 @@ struct CourseSearcher: View {
                         .backgroundStyle(.red)
                 }
                 
+                Button {
+                    path.removeLast()
+                } label: {
+                    Text("New Search")
+                }
+                
+            } else {
+                Button {
+                    path.removeLast()
+                } label: {
+                    Text("Confirm")
+                }
+                .disabled(chosenCourse == nil)
             }
             
+            
+            
         }
+        .navigationBarBackButtonHidden()
         .navigationTitle("Search")
         .animation(.easeInOut, value: self.chosenCourse)
         .animation(.easeInOut, value: self.filteredQuery)
@@ -89,10 +106,11 @@ struct CourseSearcher: View {
 struct CourseSearcher_Previews: PreviewProvider {
     @State private static var chosenOne: Course?
     @State private static var showScreen = true
+    @State private static var path = NavigationPath()
     
     static var previews: some View {
         NavigationStack {
-            CourseSearcher(overallQuery: [Course.example1], chosenCourse: self.$chosenOne)
+            CourseSearcher(overallQuery: [Course.example1], chosenCourse: self.$chosenOne, path: self.$path)
         }
     }
 }

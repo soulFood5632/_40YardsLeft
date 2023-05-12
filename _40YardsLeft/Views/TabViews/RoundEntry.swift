@@ -47,10 +47,14 @@ struct RoundEntry: View {
             }
         .navigationTitle("Course Selection")
         .navigationDestination(for: Course.self) { newCourse in
-            RoundSetupView(course: newCourse, golfer: self.$golfer, path: self.$path)
+            RoundSetupView(course: newCourse,
+                           golfer: self.$golfer,
+                           path: self.$path)
+                
         }
         .sheet(isPresented: self.$newCourse) {
-            CreateCourse(showView: self.$newCourse, path: self.$path)
+            CreateCourse(showView: self.$newCourse,
+                         path: self.$path)
             
         }
         .navigationBarBackButtonHidden()
@@ -82,6 +86,7 @@ struct RoundEntry_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
     @State private static var path = NavigationPath()
     static var previews: some View {
-        RoundEntry(golfer: self.$golfer, path: self.$path)
+        RoundEntry(golfer: self.$golfer,
+                   path: self.$path)
     }
 }

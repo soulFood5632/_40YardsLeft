@@ -20,15 +20,15 @@ struct PickACourse: View {
         VStack {
             
             
-            CourseFilter(chosenCourse: self.$chosenCourse)
+            CourseFilter(chosenCourse: self.$chosenCourse, path: self.$path)
             
                 .padding([.top, .horizontal])
                 .padding(.bottom, 6)
             
             Button {
-                if let chosenCourse {
-                    path.append(chosenCourse)
-                }
+                
+                path.append(chosenCourse!)
+
             } label: {
                 Label("Confirm", systemImage: "checkmark")
             }

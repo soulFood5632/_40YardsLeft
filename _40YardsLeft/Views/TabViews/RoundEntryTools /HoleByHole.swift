@@ -43,7 +43,7 @@ struct HoleByHole: View {
             
             
             
-            Text("\(hole.yardage.yards, specifier: "%.0f") Yards")
+            Text("\(hole.yardage.yards, format: .number) Yards")
             //TODO: fix this to a dependency on the settings if this application.
             
             Divider()
@@ -104,52 +104,55 @@ struct HoleByHole: View {
                             
                             
                         }
-                        .padding(.bottom, 25)
-                        .padding(.top, 3)
-                        if
-                            !shotList[holeNumber - 1].isEmpty {
-                            if isHoleSaved[holeNumber - 1] {
-                                Button {
-                                    isHoleSaved[holeNumber - 1] = false
-                                } label: {
-                                    Image(systemName: "pencil")
-                                }
-                            } else {
-                                Button {
-                                    isHoleSaved[holeNumber - 1] = true
-                                } label: {
-                                    Image(systemName: "checkmark")
-                                }
-                                .disabled(shotList[holeNumber - 1].isEmpty)
-                            }
-                            
-                            Button(role: .destructive) {
-                                self.shotList[holeNumber - 1].removeAll()
-                                self.isHoleSaved[holeNumber - 1] = false
-                            } label: {
-                                Image(systemName: "arrow.counterclockwise")
-                            }
-                            .disabled(shotList[holeNumber - 1].isEmpty)
-                            .padding(.top, 10)
-                        }
+                        .padding(.vertical, 3)
+                        
                     } label: {
-                        Label("Shot Entry", systemImage: "figure.golf")
+                        HStack {
+                            Label("Shot Entry", systemImage: "figure.golf")
+                            
+                            Spacer()
+                            
+                            if
+                                !shotList[holeNumber - 1].isEmpty {
+                                if isHoleSaved[holeNumber - 1] {
+                                    Button {
+                                        isHoleSaved[holeNumber - 1] = false
+                                    } label: {
+                                        Image(systemName: "pencil")
+                                    }
+                                } else {
+                                    Button {
+                                        isHoleSaved[holeNumber - 1] = true
+                                    } label: {
+                                        Image(systemName: "checkmark")
+                                    }
+                                    .disabled(shotList[holeNumber - 1].isEmpty)
+                                }
+                                
+                                Button(role: .destructive) {
+                                    self.shotList[holeNumber - 1].removeAll()
+                                    self.isHoleSaved[holeNumber - 1] = false
+                                } label: {
+                                    Image(systemName: "arrow.counterclockwise")
+                                }
+                                .padding(.leading, 7)
+                                .disabled(shotList[holeNumber - 1].isEmpty)
+                                
+                            }
+                        }
                     }
                     .padding()
                     
                 Spacer()
                 
-                NavigationLink(value: "Overview") {
+                Button {
+                    path.append("Finished")
+                } label: {
                     Label("Finish Round", systemImage: "checkmark")
                 }
                 .buttonStyle(.bordered)
                 .disabled(!self.round.isComplete)
-                
-                    
-                    
-                
-                    
-                    
+                 
 
             }
             .animation(.easeInOut, value: self.shotList[holeNumber - 1])
@@ -185,11 +188,11 @@ struct HoleByHole: View {
                     
                 }
                 
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigation) {
                     Button(role: .cancel) {
                         self.isRoundSetup = true
                     } label: {
-                        Image(systemName: "trash")
+                        Text("Change Tee")
                     }
                     .confirmationDialog("", isPresented: self.$isRoundSetup, actions: {
                         Button(role: .destructive) {
@@ -226,6 +229,10 @@ struct HoleByHole: View {
                     }
                     
                     Spacer()
+                    
+                    
+                    
+                    Spacer()
                     if holeNumber < 18 {
                         Button {
                             self.holeNumber += 1
@@ -236,7 +243,7 @@ struct HoleByHole: View {
                 }
                 
                 
-                ToolbarItem (placement: .primaryAction) {
+                ToolbarItem (placement: .navigationBarTrailing) {
                     Button {
                         self.showScorecard = true
                     } label: {
@@ -248,11 +255,12 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
             
             })
-            .navigationDestination(for: String.self) { string in
+            .navigationDestination(for: String.self) { _ in
                 RoundOverviewPage(golfer: self.$golfer,
                                   path: self.$path,
                                   round: self.round)
             }
+            .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
                 
                 // if the shot list for the next hole is empty then add the deafult first shot.
@@ -263,15 +271,12 @@ struct HoleByHole: View {
                 Task {
                     await self.postShots(for: holeNumber)
                     
-                    print(round.holes.map { $0.score })
                 }
                 
             })
             .onAppear {
+                // automatically fills the current hole with the additions of prefill
                 addNextValueTo(holeNumber: holeNumber)
-            
-
-                
             }
             
             
@@ -328,13 +333,16 @@ extension HoleByHole {
     }
 }
 
+//MARK: Preciew
 struct HoleByHole_Previews: PreviewProvider {
     @State static private var holeNumber = 1
     @State private static var round = Round.emptyRoundExample1
     @State private static var golfer = Golfer.golfer
     @State private static var path = NavigationPath()
     static var previews: some View {
-        HoleByHole(golfer: $golfer, round: round, path: self.$path, holeNumber: holeNumber)
+        NavigationStack {
+            HoleByHole(golfer: $golfer, round: round, path: self.$path, holeNumber: holeNumber)
+        }
     }
 }
 

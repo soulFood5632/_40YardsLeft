@@ -40,20 +40,20 @@ struct Course : Codable, Identifiable, Hashable {
     }
     
     
+    /// Checks if this course contains the provided tee.
+    ///
+    /// - Parameter tee: The tee you would like to check.
+    /// - Returns: True if the course contains the provided tee, false otherwise.
     func hasTee(_ tee: Tee) -> Bool {
         return listOfTees.contains(tee)
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
-        _ = hasher.finalize()
-    }
     
 }
 
+//MARK: Course Equatable
 extension Course: Equatable {
-    
-    
+
     static func == (lhs: Course, rhs: Course) -> Bool {
         return lhs.id == rhs.id
     }
@@ -99,7 +99,7 @@ extension Course {
 
 
 //MARK: Address Struct
-struct Address : Codable, Equatable {
+struct Address : Codable, Equatable, Hashable {
     let addressLine1: String
     let city: String
     let province: Province
@@ -109,7 +109,7 @@ struct Address : Codable, Equatable {
     
 }
 
-enum Province: String, CaseIterable, Codable {
+enum Province: String, CaseIterable, Codable, Hashable {
     case BC = "British Columbia"
     case AB = "Alberta"
     //TODO: complete this list
@@ -120,18 +120,24 @@ extension Province: Identifiable {
 }
 
 extension Province: StringRepresentable {
+    
+    /// Gets a string representation of the the province.
+    ///
+    /// - Returns: A string represnting this object.
     func toString() -> String {
         return self.rawValue
     }
 }
 
 extension Province {
+    
+    /// A key that relates the province to its database key.
     var databaseKey: String {
         return self.rawValue
     }
 }
 
-enum Country: String, CaseIterable, Codable {
+enum Country: String, CaseIterable, Codable, Hashable {
     case Canada = "Canada"
     case US = "United States"
 }

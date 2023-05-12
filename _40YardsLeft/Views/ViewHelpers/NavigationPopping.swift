@@ -30,4 +30,5 @@ extension NavigationPath {
     mutating func keepFirst() {
         self.keepFirst(1)
     }
+
 }

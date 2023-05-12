@@ -9,10 +9,12 @@ import SwiftUI
 
 struct RoundSetupView: View {
     
+    
     @State var course: Course
     
     @Binding var golfer: Golfer
     @Binding var path: NavigationPath
+    
     var body: some View {
         VStack {
             Text(course.name)
@@ -31,8 +33,11 @@ struct RoundSetupView: View {
                 .padding()
         }
         .navigationDestination(for: Round.self) { newRound in
+            
             HoleByHole(golfer: self.$golfer, round: newRound, path: self.$path, holeNumber: 1)
+                
         }
+        
         
             
         

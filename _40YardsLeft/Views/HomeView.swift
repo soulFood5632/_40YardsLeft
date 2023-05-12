@@ -51,7 +51,9 @@ struct HomeView: View {
             GroupBox {
                 //TODO: add things here
                 
-                NavigationLink(value: ScreenState.play) {
+                Button {
+                    self.path.append(ScreenState.play)
+                } label: {
                     
                     Label("Play", systemImage: "figure.golf")
                         .bold()
@@ -68,6 +70,7 @@ struct HomeView: View {
                     RoundViewList(golfer: self.$golfer, path: self.$path)
                         .disabled(true)
                 }
+                
                 NavigationLink(value: ScreenState.history) {
                     Label("View History", systemImage: "book")
                         .bold()
