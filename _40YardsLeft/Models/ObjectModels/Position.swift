@@ -23,47 +23,111 @@ struct Position : Codable, Hashable {
     
     //MARK: Best Fit Model Coeffecents
     
+    //TODO: think about the bounds here.
+    
     
     /// A dictionary containing a lie to polynomial coeffeincents
     ///
     /// The polynomial coeffeicents are stroed as follows. Each index refers to the multiplicty of the input variable to multiplied by the provided value.
     ///
-    /// The bounds for the curves are listed below:
-    /// Fairway | .10
-    /// Rough   | .10
+    /// The bounds for the curves are listed
     private static let POLYNOMIAL_COEF: [Lie: [Double]] = [
-        .fairway: [],
-        .rough: [],
-        .recovery: [],
-        .green: [],
-        .bunker: [],
-        .tee: [],
+        .fairway: [1.96230225, 2.68710064 * pow(10, -2.0),
+                   -3.44863299 * pow(10, -4.0),
+                   1.88990234 * pow(10, -6.0),
+                   -1.33867879 * pow(10, -9.0),
+                   -2.63718048 * pow(10, -11.0),
+                   1.16912702 * pow(10, -13.0),
+                   -2.21876716 * pow(10, -16.0),
+                   2.05009648 * pow(10, -19.0),
+                   -7.54163032 * pow(10, -23.0)],
+//        .rough: [-2.30555100 * pow(10, -20.0),
+//                  6.82301116 * pow(10, -17.0),
+//                  -8.37048179 * pow(10, -14.0),
+//                  5.49444277 * pow(10, -11.0),
+//                  -2.07592593 * pow(10, -8.0),
+//                  4.51396604 * pow(10, -6.0),
+//                  -5.31788250 * pow(10, -4.0),
+//                  3.35009075 * pow(10, -2.0),
+//                  2.06875521].reversed(),
+//        .recovery: [1.85148615 * pow(10, -29.0),
+//                    -7.89763132 * pow(10, -26.0),
+//                    1.48410958 * pow(10, -22.0),
+//                    -1.61553778 * pow(10, -19.0),
+//                    1.12662901 * pow(10, -16.0),
+//                    -5.25535540 * pow(10, -14.0),
+//                    1.66183732 * pow(10, -11.0),
+//                    -3.53231470 * pow(10, -9.0),
+//                    4.89003330 * pow(10, -7.0),
+//                    -4.12307734 * pow(10, -5.0),
+//                    1.83821301 * pow(10, -3.0),
+//                    -2.85516123 * pow(10, -2.0),
+//                    3.59132793].reversed(),
+//        .green: [1.0], //TODO: later
+//        .bunker: [4.18966970 * pow(10, -24.0),
+//                  -1.35433526 * pow(10, -20.0),
+//                  1.87643888 * pow(10, -17.0),
+//                  -1.45351465 * pow(10, -14.0),
+//                  6.88157540 * pow(10, -12.0),
+//                  -2.04294784 * pow(10, -9.0),
+//                  3.74606781 * pow(10, -7.0),
+//                  -3.99887378 * pow(10, -5.0),
+//                  2.17007360 * pow(10, -3.0),
+//                  -3.75607642 * pow(10, -2.0),
+//                  2.64362841].reversed(),
+//        .tee: [-3.75282818 * pow(10, -22.0),
+//                1.27985157 * pow(10, -18.0),
+//                -1.84388419 * pow(10, -15.0),
+//                1.46018139 * pow(10, -12.0),
+//                -6.93158896 * pow(10, -10.0),
+//                2.02079110 * pow(10, -7.0),
+//                -3.57254342 * pow(10, -5.0),
+//                3.66178146 * pow(10, -3.0),
+//                -1.94968196 * pow(10, -1.0),
+//                6.96395117].reversed(),
         
     ]
     
     
     
-    
-    
+
     /// Two positions are equal if their lies and yardage are both equal to each other.
     static func == (lhs: Position, rhs: Position) -> Bool {
         return lhs.lie == rhs.lie && lhs.yardage == rhs.yardage
     }
 }
 
+
+
 //MARK: Expected strokes to hole out swift.
 extension Position {
     /// Gets the expected strokes to hole out from this position.
     ///
-    /// This value is determined using a model which takes in pga tour data for the expected strokes to hole out from the given location. Each lie type will have a different set calculation.
+    /// This value is determined using a model which takes in pga tour data for the expected strokes to hole out from the given location. Each lie type will have a different calculation.
     ///
-    ///
+    /// - Note: If the given shot is from the tee but less than 100 yards, the approach formula will be used.
     ///
     /// - Throws: `ExpectedStrokes.noDataForLie` if the given lie does not have a valid strokes gained value.
     ///
     /// - Returns: A double representing the expected strokes to hole out from this position.
     func getExpectedStrokes() throws -> Double {
-        return 0
+        
+        // if the tee shot is less than 100 then we will use fairway
+        var lie = self.lie
+        if lie == .tee && yardage < .yards(100) {
+            lie = .fairway
+        }
+        guard let coeffecients = Self.POLYNOMIAL_COEF[lie] else {
+            throw ExpectedStrokes.noDataForLie
+        }
+        
+
+        var value = Double(0)
+        for index in coeffecients.indices {
+            value += pow(self.yardage.yards, Double(index)) * coeffecients[index]
+        }
+        return value
+        
     }
     
     
