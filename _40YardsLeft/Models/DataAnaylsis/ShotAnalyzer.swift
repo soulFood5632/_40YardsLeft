@@ -45,6 +45,10 @@ extension Array where Element == Shot {
         
     }
     
+    
+    /// Gets the make percentage from the provided range of values.
+    /// - Parameter range: <#range description#>
+    /// - Returns: <#description#>
     func makePercentageFrom(range: Range<Distance>) -> Double? {
         let value = self.filter { $0.type == .putt }
             .filter { range.contains($0.startPosition.yardage) }

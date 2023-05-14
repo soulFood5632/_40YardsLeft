@@ -50,7 +50,7 @@ struct ShotElement: View {
                 
                 
                 Picker(selection: $shot.declaration) {
-                    ForEach(ShotIntermediate.ShotDeclaration.allCases, id: \.self) { shotType in
+                    ForEach(ShotIntermediate.ShotDeclaration.allCases) { shotType in
                         Text(shotType.rawValue)
                         
                     }

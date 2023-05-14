@@ -16,6 +16,8 @@ struct RoundSetupView: View {
     @Binding var path: NavigationPath
     
     var body: some View {
+        let _ = Self._printChanges()
+        
         VStack {
             Text(course.name)
                 .font(.title)

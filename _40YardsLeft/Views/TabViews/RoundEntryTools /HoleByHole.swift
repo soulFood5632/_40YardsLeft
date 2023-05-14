@@ -22,14 +22,7 @@ struct HoleByHole: View {
 
     
     /// A state variable which holds a map to each shotIntermediate for each hole in the round
-    @State private var shotList: [[ShotIntermediate]] = {
-        //TODO: fix this so it matches the number of holes which are being played.
-        var map = [[ShotIntermediate]]()
-        for _ in 1...18 {
-            map.append([ShotIntermediate]())
-        }
-        return map
-    }()
+    @State private var shotList: [[ShotIntermediate]] = .init(repeating: [], count: 18)
     
     @State private var showScorecard = false
     
@@ -55,6 +48,8 @@ struct HoleByHole: View {
     
     var body: some View {
         
+        let _ = Self._printChanges()
+        
             VStack {
                 Text("Hole \(holeNumber)")
                     .bold()
@@ -76,20 +71,20 @@ struct HoleByHole: View {
                                 }
                                 .bold()
                                 Divider()
-                                
-                                    
+
+
                                     ForEach($shotList[self.holeNumber - 1]) { shot in
                                         GridRow {
                                             ShotElement(shot: shot, isFinal: self.$isHoleSaved[holeNumber - 1])
                                         }
                                     }
                                     .onDelete { indexSet in
-                                        
+
                                         indexSet.forEach { index in
                                             shotList[self.holeNumber - 1].remove(at: index)
                                         }
                                     }
-                                
+
                             }
                             Button {
                                 self.addNextValueTo(holeNumber: holeNumber)
@@ -101,17 +96,17 @@ struct HoleByHole: View {
                             }
                             .disabled(self.isHoleSaved[holeNumber - 1])
                             .padding(.top, 1)
-                            
-                            
+
+
                         }
                         .padding(.vertical, 3)
                         
                     } label: {
                         HStack {
                             Label("Shot Entry", systemImage: "figure.golf")
-                            
+
                             Spacer()
-                            
+
                             if
                                 !shotList[holeNumber - 1].isEmpty {
                                 if isHoleSaved[holeNumber - 1] {
@@ -128,7 +123,7 @@ struct HoleByHole: View {
                                     }
                                     .disabled(shotList[holeNumber - 1].isEmpty)
                                 }
-                                
+
                                 Button(role: .destructive) {
                                     self.shotList[holeNumber - 1].removeAll()
                                     self.isHoleSaved[holeNumber - 1] = false
@@ -137,7 +132,7 @@ struct HoleByHole: View {
                                 }
                                 .padding(.leading, 7)
                                 .disabled(shotList[holeNumber - 1].isEmpty)
-                                
+
                             }
                         }
                     }
@@ -160,8 +155,8 @@ struct HoleByHole: View {
             .toolbar {
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    
-                    
+
+
                     Button(role: .destructive) {
                         self.isDeleteRound = true
                     } label: {
@@ -173,19 +168,19 @@ struct HoleByHole: View {
                         } label: {
                             Text("Confirm")
                         }
-                        
+
                         Button {
                             //no action
                         } label: {
                             Text("Cancel")
                         }
-                        
-     
+
+
                     }, message: {
                         Text("Your scores will be deleted")
                     })
-                    
-                    
+
+
                 }
                 
                 ToolbarItem(placement: .navigation) {
@@ -200,14 +195,14 @@ struct HoleByHole: View {
                         } label: {
                             Text("Confirm")
                         }
-                        
+
                         Button {
                             //no action
                         } label: {
                             Text("Cancel")
                         }
-                        
-                        
+
+
                     }, message: {
                         Text("Your scores will be deleted")
                     })
@@ -217,21 +212,21 @@ struct HoleByHole: View {
         
                 
                 ToolbarItemGroup(placement: .bottomBar) {
-                    
+
                     if holeNumber > 1 {
                         Button {
                             self.holeNumber -= 1
-                            
+
                         } label: {
                             Label("Last Hole", systemImage: "arrow.backward.circle")
                         }
-                        
+
                     }
-                    
+
                     Spacer()
-                    
-                    
-                    
+
+
+
                     Spacer()
                     if holeNumber < 18 {
                         Button {
@@ -253,37 +248,29 @@ struct HoleByHole: View {
             }
             .sheet(isPresented: self.$showScorecard, content: {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
-            
+
             })
-            .navigationDestination(for: String.self) { _ in
-                RoundOverviewPage(golfer: self.$golfer,
-                                  path: self.$path,
-                                  round: self.round)
-            }
+//            .navigationDestination(for: String.self) { _ in
+//                RoundOverviewPage(golfer: self.$golfer,
+//                                  path: self.$path,
+//                                  round: self.round)
+//            }
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
                 
-                // if the shot list for the next hole is empty then add the deafult first shot.
-                if self.shotList[newValue - 1].isEmpty {
-                    addNextValueTo(holeNumber: newValue)
-                }
-
                 Task {
                     await self.postShots(for: holeNumber)
-                    
+
                 }
                 
             })
             .onAppear {
-                // automatically fills the current hole with the additions of prefill
-                addNextValueTo(holeNumber: holeNumber)
+               
+                for index in self.shotList.indices {
+                    self.shotList[index].append(getNextValue(holeNumber: index + 1))
+                }
             }
-            
-            
 
-    
-                
-            
         
     }
 }
@@ -291,13 +278,20 @@ struct HoleByHole: View {
 extension HoleByHole {
     
     private func addNextValueTo(holeNumber: Int) {
+        
+        self.shotList[holeNumber - 1].append(getNextValue(holeNumber: holeNumber))
+        
+    }
+    
+    private func getNextValue(holeNumber: Int) -> ShotIntermediate {
         if let lastPosition = self.shotList[holeNumber - 1].last?.position {
-            let suggestedLocation = shotPredictor.predictedNextLocation(lastPosition, par: round.tee.holeData[holeNumber - 1].par)
             
-            self.shotList[holeNumber - 1].append(ShotIntermediate(position: suggestedLocation, declaration: suggestedLocation.expectedShotType()))
-        } else {
-            self.shotList[holeNumber - 1].append(round.holes[holeNumber - 1].getFirstShotPredictor())
+            let suggestedPosition = shotPredictor.predictedNextLocation(lastPosition, par: round.tee.holeData[holeNumber - 1].par)
+            
+            return .init(position: suggestedPosition, declaration: suggestedPosition.expectedShotType())
         }
+        
+        return round.holes[holeNumber - 1].getFirstShotPredictor()
     }
     
     

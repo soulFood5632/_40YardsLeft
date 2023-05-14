@@ -90,7 +90,6 @@ extension Shot {
     /// A variable which is true if the last shot of this hole ends in a holed shot.
     var isHoled: Bool { return endPosition == .holed } 
     
-    
 }
 
 //MARK: ShotType Enum

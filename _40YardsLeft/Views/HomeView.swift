@@ -58,10 +58,12 @@ struct HomeView: View {
                     Label("Play", systemImage: "figure.golf")
                         .bold()
                         .font(.title2)
-                    
                 }
                 .buttonStyle(.borderedProminent)
+                
+
             }
+            
             
             
             GroupBox {
@@ -89,7 +91,6 @@ struct HomeView: View {
             }
             
         }
-        
         .navigationDestination(for: ScreenState.self) { newState in
             
             switch newState {
