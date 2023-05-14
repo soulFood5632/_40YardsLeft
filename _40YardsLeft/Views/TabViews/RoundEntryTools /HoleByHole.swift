@@ -47,8 +47,7 @@ struct HoleByHole: View {
     
     
     var body: some View {
-        
-        let _ = Self._printChanges()
+    
         
             VStack {
                 Text("Hole \(holeNumber)")
@@ -141,7 +140,9 @@ struct HoleByHole: View {
                 Spacer()
                 
                 Button {
-                    path.append("Finished")
+                    //TODO: finish the round and send the user to the overview page.
+                    
+                    // Do note the bug where this view cannot house and navigation destinations. 
                 } label: {
                     Label("Finish Round", systemImage: "checkmark")
                 }
@@ -250,11 +251,6 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
 
             })
-//            .navigationDestination(for: String.self) { _ in
-//                RoundOverviewPage(golfer: self.$golfer,
-//                                  path: self.$path,
-//                                  round: self.round)
-//            }
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
                 
@@ -323,7 +319,7 @@ extension HoleByHole {
         
         let boolArray = self.round.updateHole(hole, with: shotList)
         
-        print(boolArray)
+        
     }
 }
 
@@ -391,3 +387,16 @@ extension Hole {
                      declaration: self.holeData.par == 3 ? .atHole : .drive)
     }
 }
+
+struct NavigationStackRound: Hashable {
+    let isFinal: Bool
+    var round: Round
+    
+    init(round: Round) {
+        self.isFinal = true
+        self.round = round
+    }
+
+}
+
+

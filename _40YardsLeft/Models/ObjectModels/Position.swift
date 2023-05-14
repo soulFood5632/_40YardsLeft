@@ -14,23 +14,35 @@ import Foundation
 /// From this position you
 struct Position : Codable, Hashable {
     
+    
+    
     /// The lie of the position
     var lie: Lie
     /// The yardage of this position from the ball to the hole.
     var yardage: Distance
     
+    //MARK: Best Fit Model Coeffecents
     
-    /// Gets the expected strokes to hole out from this position.
+    
+    /// A dictionary containing a lie to polynomial coeffeincents
     ///
-    /// - Returns: A double representing the expected strokes to hole out from this position.
-    func getExpectedStrokes() throws -> Double {
-        switch self.lie {
-        case .penalty:
-            throw ExpectedStrokes.noDataForLie
-        default:
-            return 1.0
-        }
-    }
+    /// The polynomial coeffeicents are stroed as follows. Each index refers to the multiplicty of the input variable to multiplied by the provided value.
+    ///
+    /// The bounds for the curves are listed below:
+    /// Fairway | .10
+    /// Rough   | .10
+    private static let POLYNOMIAL_COEF: [Lie: [Double]] = [
+        .fairway: [],
+        .rough: [],
+        .recovery: [],
+        .green: [],
+        .bunker: [],
+        .tee: [],
+        
+    ]
+    
+    
+    
     
     
     /// Two positions are equal if their lies and yardage are both equal to each other.
@@ -39,6 +51,25 @@ struct Position : Codable, Hashable {
     }
 }
 
+//MARK: Expected strokes to hole out swift.
+extension Position {
+    /// Gets the expected strokes to hole out from this position.
+    ///
+    /// This value is determined using a model which takes in pga tour data for the expected strokes to hole out from the given location. Each lie type will have a different set calculation.
+    ///
+    ///
+    ///
+    /// - Throws: `ExpectedStrokes.noDataForLie` if the given lie does not have a valid strokes gained value.
+    ///
+    /// - Returns: A double representing the expected strokes to hole out from this position.
+    func getExpectedStrokes() throws -> Double {
+        return 0
+    }
+    
+    
+}
+
+//MARK: Expected shot type
 extension Position {
     
     /// Gets the expected shot type from this position
@@ -53,7 +84,7 @@ extension Position {
             return .atHole
         case .fairway, .bunker, .rough:
             
-            if yardage.yards > 250 {
+            if yardage.yards >= 250 {
                 return .other
             }
             return .atHole
@@ -74,10 +105,12 @@ enum ExpectedStrokes : Error {
     case noDataForLie
 }
 
+//MARK: Static stored positions
 extension Position {
     
     /// The ball is holed out.
     static let holed = Position(lie: .green, yardage: .zero)
+    
 }
 
 //MARK: Lie Enum

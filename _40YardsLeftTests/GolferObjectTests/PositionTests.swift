@@ -23,11 +23,11 @@ final class PositionTests: XCTestCase {
     }
     
     func testExpectedShotType() {
-        XCTAssertEqual(Position(lie: .green, yardage: .feet(67)).expectedShotType(), .putt)
+        XCTAssertEqual(Position(lie: .green, yardage: .feet(67)).expectedShotType(), .atHole)
     }
     
     func testExpectedShotType2() {
-        XCTAssertEqual(Position(lie: .green, yardage: .feet(67)).expectedShotType(), .putt)
+        XCTAssertEqual(Position(lie: .green, yardage: .feet(67)).expectedShotType(), .atHole)
     }
     
     

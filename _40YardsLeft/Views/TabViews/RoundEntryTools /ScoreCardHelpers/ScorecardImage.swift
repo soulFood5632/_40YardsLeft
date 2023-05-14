@@ -92,9 +92,10 @@ struct ScoreAndParGridElements: View {
     var body: some View {
         // The grid row containing the par
         GridRow {
-            ForEach(holes.map { $0.holeData.par }) { par in
-                Text("\(par)")
+            ForEach(holes) { hole in
+                Text("\(hole.holeData.par)")
             }
+            
             
             Text("\(par)")
             
@@ -105,10 +106,11 @@ struct ScoreAndParGridElements: View {
                 EmptyIfZeroText(value: hole.score)
                     .padding(.horizontal, 5)
                     .background {
+                        
                         if hole.scoreToPar > 0 {
                             CenteredSquare()
                                 .stroke(lineWidth: 0.5)
-                        } else if hole.scoreToPar < 0 {
+                        } else if hole.scoreToPar < 0 && hole.score != 0 {
                             Circle()
                                 .stroke(lineWidth: 0.5)
                         }
