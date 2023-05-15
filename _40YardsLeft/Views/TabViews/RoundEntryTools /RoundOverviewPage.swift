@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 import FirebaseAuth
 
 struct RoundOverviewPage: View {
@@ -105,6 +106,7 @@ struct RoundOverviewPage_Previews: PreviewProvider {
     }
 }
 
+//MARK: Round Stat Overview page.
 struct RoundStatOverview : View {
     let round: Round
     
@@ -113,90 +115,31 @@ struct RoundStatOverview : View {
         
         ScrollView {
             VStack {
-                Grid {
-                    GridRow {
-                        Group {
-                            Text("Eagles+")
-                            Text("Birdies")
-                            Text("Pars")
-                            Text("Bogeys")
-                            Text("Doubles+")
-                        }
-                        .font(.headline)
-                    }
-                    
-                    Divider()
-                    
-                    GridRow {
-                        Text(round.eaglesOrBetter, format: .number)
-                        Text(round.birdies, format: .number)
-                        Text(round.pars, format: .number)
-                        Text(round.bogeys, format: .number)
-                        Text(round.doubleBogeysOrWorse, format: .number)
-                    }
-                }
                 
-                HStack {
-                    GroupBox {
-                        VStack {
-                            let greenPercentage = Double(round.getGreens().0) / Double(round.getGreens().1)
-                            Text("\(round.getGreens().0) | " + greenPercentage.roundToPercent())
-                            
-                            Text("Greens")
-                                .font(.headline)
-                        }
-                        
-                    }
-                    
-                    
-                    GroupBox {
-                        VStack {
-                            Text("\(round.putts())")
-                            
-                            Text("Putts")
-                                .font(.headline)
-                        }
-                    }
-                    GroupBox {
-                        let fairwayPercentage = Double(round.fairways().0) / Double(round.fairways().1)
-                        Text("\(round.fairways().0) | " + fairwayPercentage.roundToPercent())
-                        Text("Fairways")
-                            .font(.headline)
-                        
-                    }
-                    
-                }
+                ScoreTypes(round: self.round)
                 
-                Grid {
-                    GridRow {
-                        Group {
-                            Text("Tee")
-                            Text("Approach")
-                            Text("Chip")
-                            Text("Putt")
-                        }
-                        .font(.headline)
-                    }
-                    
-                    Divider()
-                    
-                    GridRow {
-                        //TODO: complete trokes gained
-                        Text(0.01, format: .number)
-                        Text(-1.7, format: .number)
-                        Text(1.4, format: .number)
-                        Text(-2.9, format: .number)
-                        
-                    }
-                }
+                GreensFairwaysPutts(round: self.round)
                 
-                //TODO: Complete more of these. 
+                
+                // never optional becuase and round on this page must be complete. 
+                StrokesGainedGraph(
+                    shots: round
+                    .holes
+                    .map { try! $0.getSimplifiedShots() }
+                    .flatten()
+                )
+                    .padding()
+                
+                 
             }
+            
 
         }
         
     }
 }
+
+
 
 struct RoundDetailView: View {
     let round: Round

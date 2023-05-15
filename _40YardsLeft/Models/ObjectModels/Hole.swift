@@ -195,6 +195,43 @@ extension Hole {
     }
     
     
+    /// Gets a list containing the number of up and downs.
+    ///
+    /// An up and down is defined as any that results in a putt which is made or is a chip that has been holed out.
+    ///
+    /// - As a conseqeunce of this definition is that there is a maximum of one up and down per hole but can be infinite failed up and downs.
+    ///
+    /// - E.g. If the golfer hits a chip on the green to 5 feet and makes the putt then return `[true]`
+    /// - E.g. If the golfer hits a chip on the green to 5 feet and misses the putt then return `[false]`
+    /// - E.g. If the golfer hits a chip to the rough then chips one to 5 feet and makes the putt then return `[false, true]`
+    /// - E.g. If the golfer hits a chip to the rough then chips one to 5 feet and misees the putt then return `[false, false]`
+    var upAndDowns: [Bool] {
+        var index = 0
+        var upAndDownList = [Bool]()
+        while index < self.shots.count {
+            if self.shots[index].type == .chip_pitch {
+                // first we see if there was a hole out. If there was then that means the up and down was succseseful.
+                if index + 1 == self.shots.count {
+                    upAndDownList.append(true)
+                    return upAndDownList
+                }
+                // then we check to see if the green was hit on the chip. If it was not then we must add a false and continue our search for more up and downs.
+                if self.shots[index].endPosition.lie == .green {
+                    if self.shots.count == index + 2 {
+                        upAndDownList.append(true)
+                        return upAndDownList
+                    }
+                }
+                
+                upAndDownList.append(false)
+            }
+            index += 1
+        }
+        
+        return upAndDownList
+    }
+    
+    
     /// Gets the shot index which a putt must be hit for a green in regulation
     /// - Returns: Gets the shot index where a putt must be hit for a green in regulation.
     private func getPuttShot() -> Int {

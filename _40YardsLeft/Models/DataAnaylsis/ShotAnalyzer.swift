@@ -8,7 +8,21 @@
 import Foundation
 
 
+// This array extension will be responsible for all statistics which are shot independant. All stats that have depencency on the shots around it, the holedata, must be calcuated elsewhere
 extension Array where Element == Shot {
+    
+    
+    /// Gets the average proximity using the provided filter.
+    ///
+    /// - Parameter filter: A filter which informs which shots to include in this calculation
+    /// - Returns: A optional distance value which houses the average prxomity of the shots. Nil if the filter outputted no valid values
+    func proximityFrom(_ filter: @escaping (Shot) -> Bool) -> Distance? {
+        self.filter(filter)
+            .map { $0.endPosition.yardage }
+            .average()
+    }
+    
+
     
     /// Gets the average proximity of an approach with the given filters.
     ///
@@ -17,7 +31,7 @@ extension Array where Element == Shot {
     ///   - lie: A list of lies which contains at least one entry and is only rough or fairway.
     ///
     /// - Returns: The average distance of shot from the given filters. Nil if no shots are present at such a distance.
-    func proximityFrom(range: Range<Distance>, lie: [Lie]) -> Distance? {
+    func approachProximityFrom(range: Range<Distance>, lie: [Lie]) -> Distance? {
         self.filter { $0.type == .approach }
             .filter { lie.contains($0.startPosition.lie) && range.contains($0.startPosition.yardage) }
             .map { $0.endPosition.yardage }
@@ -63,11 +77,21 @@ extension Array where Element == Shot {
         return value
     }
     
-    func averageProximityFrom(range: Range<Distance>) -> Distance? {
+    
+    func puttProximityFrom(range: Range<Distance>) -> Distance? {
         return self.filter { $0.type == .putt }
             .filter { range.contains($0.startPosition.yardage) }
             .map { $0.endPosition.yardage }
             .average()
+    }
+    
+    
+    
+    func strokesGained(_ filter: @escaping (Shot) -> Bool) -> Double {
+        //Note that the optional value should never be reached for any complete round.
+        self.filter(filter)
+            .map { $0.strokesGained ?? 0 }
+            .sum()
     }
     
     
@@ -93,5 +117,17 @@ extension Array where Element == Distance {
         
         
         
+    }
+}
+
+extension Array where Element == Double {
+    
+    /// Gets a sum of all the elements in this array.
+    ///
+    /// - Returns: A double value containing a sum of all elements in this
+    func sum() -> Double {
+        self.reduce(0.0) { partialResult, newValue in
+            return partialResult + newValue
+        }
     }
 }

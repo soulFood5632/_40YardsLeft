@@ -116,10 +116,7 @@ extension Round {
         return holes[hole - 1].isComplete
     }
     
-    /// Gets holes within the provided closed range
-    ///
-    ///
-    ///
+
     
     /// Gets holes within the provided closed range.
     ///
@@ -158,14 +155,6 @@ extension Round {
     }
     
     
-    /// Gets the score within a certain subrange.
-    ///
-    /// - Parameter range: A range of hole numbers
-    /// - Returns: The score of the provided range of hole numbers
-    func subscore(_ range: ClosedRange<Int>) -> Int {
-        //TODO: Finish this method
-        return 0
-    }
     
     /// The score of the golfer on this front nine thus far
     var frontNineScore: Int {
@@ -263,6 +252,78 @@ extension Round {
         return (Double(self.roundScore) - self.tee.rating) * Double(self.tee.slope) / Double(Self.SLOPE_CONSTANT)
     }
     
+    
+    /// Gets the total strokes gained on the round approach.
+    ///
+    /// - Requires: The round be complete.
+    ///
+    /// - Returns: A double value contaning the strokes gained on approach during this round.
+    func strokesGainedApproach() -> Double {
+        do {
+            return try self.holes
+                .map { try $0.getSimplifiedShots() }
+                .flatten()
+                .strokesGained(ShotFilters.allApproach)
+        } catch {
+            
+            preconditionFailure("all holes should be complete prior to the calling of this method.")
+        }
+    }
+    
+    func strokesGainedShortGame() -> Double {
+        do {
+            return try self.holes
+                .map { try $0.getSimplifiedShots() }
+                .flatten()
+                .strokesGained(ShotFilters.allShortGame)
+        } catch {
+            
+            preconditionFailure("all holes should be complete prior to the calling of this method.")
+        }
+    }
+    
+    func strokesGainedTee() -> Double {
+        do {
+            return try self.holes
+                .map { try $0.getSimplifiedShots() }
+                .flatten()
+                .strokesGained(ShotFilters.allTeeShots)
+        } catch {
+            
+            preconditionFailure("all holes should be complete prior to the calling of this method.")
+        }
+    }
+    
+    func strokesGainedPutting() -> Double {
+        do {
+            return try self.holes
+                .map { try $0.getSimplifiedShots() }
+                .flatten()
+                .strokesGained(ShotFilters.allPutts)
+        } catch {
+            
+            preconditionFailure("all holes should be complete prior to the calling of this method.")
+        }
+    }
+    
+    func strokesGainedOther() -> Double {
+        do {
+            return try self.holes
+                .map { try $0.getSimplifiedShots() }
+                .flatten()
+                .strokesGained(ShotFilters.allOther)
+        } catch {
+            
+            preconditionFailure("all holes should be complete prior to the calling of this method.")
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 
 extension Round {
@@ -297,7 +358,14 @@ extension RoundType: StringRepresentable {
         return self.rawValue
     }
     
-    
 }
+
+extension Array where Element: Sequence {
+    func flatten() -> [Element.Element] {
+        return self.flatMap { $0 }
+    }
+}
+
+
 
 
