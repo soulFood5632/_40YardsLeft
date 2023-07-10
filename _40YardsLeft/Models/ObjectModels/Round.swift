@@ -327,6 +327,16 @@ extension Round {
 }
 
 extension Round {
+    
+    @discardableResult
+    /// Updates the provided hole with the new data.
+    ///
+    /// - Important: The shots in the given hole will be overridden.
+    ///
+    /// - Parameters:
+    ///   - holeNumber: The hole number you would like to update.
+    ///   - shots: The list of shots you would like to put into the hole
+    /// - Returns: A list of booleans which represent whether each shot addition was succseful.
     mutating func updateHole(_ holeNumber: Int, with shots: [Shot]) -> [Bool] {
         self.holes[holeNumber - 1].resetShots()
         let value = self.holes[holeNumber - 1].addShots(shots)

@@ -77,7 +77,7 @@ struct Shot : Codable, Hashable {
 extension Shot {
     
     /// The releative yardage that this shot was sent.
-    var advancementYardage: Distance { endPosition.yardage - startPosition.yardage }
+    var advancementYardage: Distance { startPosition.yardage - endPosition.yardage }
     /// The number of shots that this shot has counted for. 
     var numOfShots: Int {
         if includesPenalty {

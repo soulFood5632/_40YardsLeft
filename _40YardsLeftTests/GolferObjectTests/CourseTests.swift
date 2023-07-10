@@ -12,18 +12,16 @@ final class CourseTests: XCTestCase {
 
     private static func getCourse1() -> Course {
         var course = Course(location: Address(addressLine1: "Morning Street", city: "Victoria", province: .BC, country: .Canada), name: "Northern Slopes Golf and Country Club")
-        do {
-            course.addTee(try getTee1())
-            course.addTee(try getTee2())
-        } catch {
-            fatalError("irreversible error")
-        }
+        
+        course.addTee(getTee1)
+        course.addTee(getTee2)
+        
         
         return course
     }
     
-    private static func getTee1() throws -> Tee {
-        return try Tee(rating: 71.8, slope: 125, holeData: [
+    private static let getTee1: Tee = {
+        return try! Tee(rating: 71.8, slope: 125, holeData: [
             // front nine
             .init(yardage: .yards(456), handicap: 3, par: 4),
             .init(yardage: .yards(431), handicap: 7, par: 4),
@@ -45,11 +43,11 @@ final class CourseTests: XCTestCase {
             .init(yardage: .yards(192), handicap: 8, par: 5),
             .init(yardage: .yards(452), handicap: 2, par: 3),
         ], name: "Black")
-    }
+    }()
     
-    private static func getTee2() throws -> Tee {
+    private static let getTee2: Tee = {
         
-        return try Tee(rating: 69.4, slope: 120, holeData: [
+        return try! Tee(rating: 69.4, slope: 120, holeData: [
             // front nine
             .init(yardage: .yards(435), handicap: 3, par: 4),
             .init(yardage: .yards(429), handicap: 7, par: 4),
@@ -72,11 +70,11 @@ final class CourseTests: XCTestCase {
             .init(yardage: .yards(432), handicap: 2, par: 3),
         ], name: "Blue")
         
-    }
+    }()
     
-    private static func getTee3() throws -> Tee {
+    private static let getTee3: Tee = {
         
-        return try Tee(rating: 66.4, slope: 120, holeData: [
+        return try! Tee(rating: 66.4, slope: 120, holeData: [
             // front nine
             .init(yardage: .yards(389), handicap: 3, par: 4),
             .init(yardage: .yards(378), handicap: 7, par: 4),
@@ -99,28 +97,28 @@ final class CourseTests: XCTestCase {
             .init(yardage: .yards(378), handicap: 2, par: 3),
         ], name: "White")
         
-    }
+    }()
     
     
     
     func testIsTee() throws {
         var round = Self.getCourse1()
         
-        XCTAssertTrue(round.hasTee(try Self.getTee1()))
+        XCTAssertTrue(round.hasTee(try Self.getTee1))
         
     }
     
     func testIsTee2() throws {
         var round = Self.getCourse1()
         
-        XCTAssertTrue(round.hasTee(try Self.getTee2()))
+        XCTAssertTrue(round.hasTee(try Self.getTee2))
         
     }
     
     func testIsTee3() throws {
         var round = Self.getCourse1()
         
-        XCTAssertTrue(round.hasTee(try Self.getTee3()))
+        XCTAssertFalse(round.hasTee(try Self.getTee3))
         
     }
     

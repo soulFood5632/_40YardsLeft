@@ -177,7 +177,7 @@ extension Address {
 
 
 //MARK: Tee Struct
-struct Tee : Codable, Equatable, Hashable, Identifiable {
+struct Tee : Codable, Identifiable {
     var rating: Double
     var slope: Int
     var holeData: [HoleData]
@@ -258,12 +258,16 @@ struct Tee : Codable, Equatable, Hashable, Identifiable {
         return true
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
-        _ = hasher.finalize()
+    
+    
+    
+}
+
+//MARK: Hashable Extesnion
+extension Tee: Hashable {
+    static func ==(lhs: Tee, rhs: Tee) -> Bool {
+        return lhs.id == rhs.id
     }
-    
-    
 }
 
 extension Tee {

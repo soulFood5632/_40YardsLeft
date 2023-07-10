@@ -68,6 +68,7 @@
 		02F7318B2A11984900CC5925 /* ShotFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318A2A11984900CC5925 /* ShotFilters.swift */; };
 		02F7318D2A11A45A00CC5925 /* StrokesGainedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */; };
 		02F731902A11B4D600CC5925 /* RoundBasedStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */; };
+		02F731922A11BA7900CC5925 /* ShotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F731912A11BA7900CC5925 /* ShotTests.swift */; };
 		02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */; };
 		02FACCB229C6C62E00B55E6D /* WelcomeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */; };
 		02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FACCB329C6D7D600B55E6D /* NewUserForm.swift */; };
@@ -160,6 +161,7 @@
 		02F7318A2A11984900CC5925 /* ShotFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotFilters.swift; sourceTree = "<group>"; };
 		02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesGainedGraph.swift; sourceTree = "<group>"; };
 		02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBasedStats.swift; sourceTree = "<group>"; };
+		02F731912A11BA7900CC5925 /* ShotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotTests.swift; sourceTree = "<group>"; };
 		02FACCAE29C6C5A500B55E6D /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAnimation.swift; sourceTree = "<group>"; };
 		02FACCB329C6D7D600B55E6D /* NewUserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserForm.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			children = (
 				020B0FA829F9A283001E92E1 /* ShotPredictorTests */,
 				0222865229E34BDD00FEBB91 /* PositionTests.swift */,
+				02F731912A11BA7900CC5925 /* ShotTests.swift */,
 				02CFCADF2A10917100DA7D76 /* CourseTests.swift */,
 				0222865729E4DDA900FEBB91 /* RoundTests.swift */,
 				0222862D29E0C2B900FEBB91 /* DistanceTests.swift */,
@@ -674,6 +677,7 @@
 				02CFCAE02A10917100DA7D76 /* CourseTests.swift in Sources */,
 				020B0FAA29F9A2C9001E92E1 /* ShotPredictorTests.swift in Sources */,
 				0222865829E4DDA900FEBB91 /* RoundTests.swift in Sources */,
+				02F731922A11BA7900CC5925 /* ShotTests.swift in Sources */,
 				0222865329E34BDD00FEBB91 /* PositionTests.swift in Sources */,
 				0222862E29E0C2B900FEBB91 /* DistanceTests.swift in Sources */,
 				02CFCADE2A0F524B00DA7D76 /* ShotAnalyserTests.swift in Sources */,
