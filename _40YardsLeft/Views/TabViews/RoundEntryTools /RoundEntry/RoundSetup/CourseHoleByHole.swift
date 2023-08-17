@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct TeeBuffer {
-    var rating: Double = 70.3
-    var slope: Int = 124
+    var rating: Double?
+    var slope: Int?
     var name = ""
     var holeData = [HoleData]()
     
+    
+    /// Creates a tee from the provided buffer.
+    /// - Parameter buffer: The Buffer which contains the tee information.
+    /// - Returns: A Tee containing information from the tee buffer.
     static func formulateTee(from buffer: TeeBuffer) throws -> Tee {
-        return try Tee(rating: buffer.rating, slope: buffer.slope, holeData: buffer.holeData, name: buffer.name)
+        return try Tee(rating: buffer.rating!, slope: buffer.slope!, holeData: buffer.holeData, name: buffer.name)
+    }
+    
+    
+    mutating func fillHandicaps(with tee: Tee) {
+        let handicapList = tee.holeData.map { $0.handicap }
+        
+        for index in handicapList.indices {
+            holeData[index].handicap = handicapList[index]
+        }
     }
     
     
@@ -29,9 +42,12 @@ struct CourseHoleByHole: View {
     @Binding var course: Course
     @Binding var showView: Bool
     
+    let teeTemplate: Tee?
+    
     @State private var numberOfHoles = 18
     
-    private let holeOptions = [9, 18]
+    // TODO: add nine hole functionaility.
+    private let holeOptions = [18]
     
     @State private var isAlert: (Bool, String?) = (false, nil)
     
@@ -45,6 +61,7 @@ struct CourseHoleByHole: View {
                         
                         TextField("Tee Name", text: self.$buffer.name)
                             .textFieldStyle(.roundedBorder)
+                            .autocorrectionDisabled()
                         
                         TextField("Slope", value: self.$buffer.slope, formatter: .wholeNumber)
                             .textFieldStyle(.roundedBorder)
@@ -121,6 +138,11 @@ struct CourseHoleByHole: View {
                 //TODO: add more descriptive errors so the user can actually understand what is wrong
             }
         }
+        .onAppear {
+            if let teeTemplate {
+                self.buffer.fillHandicaps(with: teeTemplate)
+            }
+        }
 
     }
 }
@@ -155,6 +177,6 @@ struct CourseHoleByHole_Previews: PreviewProvider {
     @State private static var course = Course.example1
     @State private static var showView = true
     static var previews: some View {
-        CourseHoleByHole(course: $course, showView: self.$showView)
+        CourseHoleByHole(course: $course, showView: self.$showView, teeTemplate: nil)
     }
 }

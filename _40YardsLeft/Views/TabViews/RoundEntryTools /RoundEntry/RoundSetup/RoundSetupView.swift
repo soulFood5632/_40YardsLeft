@@ -17,7 +17,6 @@ struct RoundSetupView: View {
     @Binding var path: NavigationPath
     
     var body: some View {
-        let _ = Self._printChanges()
         
         VStack {
             Text(course.name)
@@ -32,12 +31,20 @@ struct RoundSetupView: View {
             Text("\(course.location.city), \(course.location.province.rawValue), \(course.location.country.rawValue)")
             
             
-            RoundPrepView(course: self.$course, golfer: self.$golfer, path: self.$path)
+            RoundPrepView(course: self.$course, golfer: self.$golfer, round: self.$round, path: self.$path)
                 .padding()
         }
-        .navigationDestination(for: Round.self) { newRound in
+        .navigationDestination(for: String.self) { _ in
         
-            HoleByHole(golfer: self.$golfer, round: newRound, path: self.$path, holeNumber: 1)
+            HoleByHole(golfer: self.$golfer, round: self.round!, path: self.$path, holeNumber: 1)
+        }
+        .navigationDestination(for: Round.self) { finishedRound in
+            RoundOverviewPage(golfer: self.$golfer, path: self.$path, round: finishedRound)
+        }
+        .onChange(of: self.round) { newRound in
+            if newRound != nil {
+                self.path.append("Start round")
+            }
         }
         
         

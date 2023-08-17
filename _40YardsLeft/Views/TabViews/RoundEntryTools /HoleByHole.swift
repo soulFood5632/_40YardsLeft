@@ -78,13 +78,18 @@ struct HoleByHole: View {
                                         GridRow {
                                             ShotElement(shot: shot, isFinal: self.$isHoleSaved[holeNumber - 1])
                                         }
-                                    }
-                                    .onDelete { indexSet in
-
-                                        indexSet.forEach { index in
-                                            shotList[self.holeNumber - 1].remove(at: index)
+                                        .onLongPressGesture {
+                                            shotList[self.holeNumber - 1].removeAll { shotInList in
+                                                return shotInList == shot.wrappedValue
+                                            }
                                         }
                                     }
+                                    
+//                                    .onDelete { indexSet in
+//                                        indexSet.forEach { index in
+//                                            shotList[self.holeNumber - 1].remove(at: index)
+//                                        }
+//                                    }
 
                             }
                             Button {
@@ -143,6 +148,7 @@ struct HoleByHole: View {
                 
                 Button {
                     //TODO: finish the round and send the user to the overview page.
+                    self.path.append(self.round)
                     
                     // Do note the bug where this view cannot house and navigation destinations. 
                 } label: {
@@ -153,6 +159,7 @@ struct HoleByHole: View {
                  
 
             }
+            
             .animation(.easeInOut, value: self.shotList[holeNumber - 1])
             .animation(.easeInOut, value: self.isHoleSaved[holeNumber - 1])
             .toolbar {
@@ -237,6 +244,14 @@ struct HoleByHole: View {
                         } label: {
                             Label("Next Hole", systemImage: "arrow.forward.circle")
                         }
+                    } else {
+                        Button {
+                            Task {
+                                await self.postShots(for: holeNumber)
+                            }
+                        } label: {
+                            Text("Save")
+                        }
                     }
                 }
                 
@@ -253,18 +268,24 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
 
             })
+            
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
-                Task {
-                    await self.postShots(for: holeNumber)
-                }
+//                Task {
+//                    await self.postShots(for: holeNumber)
+//                }
+                self.round = .completeRoundExample1
             })
             .onAppear {
+                
+                
+                // got rid of the initial autopopulate becuase it seemed ugly.
                
-                for index in self.shotList.indices {
-                    self.shotList[index].append(getNextValue(holeNumber: index + 1))
-                }
+//                for index in self.shotList.indices {
+//                    self.shotList[index].append(getNextValue(holeNumber: index + 1))
+//                }
             }
+            
 
     }
 }
@@ -315,28 +336,17 @@ extension HoleByHole {
             shotList.append(.init(type: intermediate.type, startPosition: intermediate.position, endPosition: .holed))
         }
         
-        print("adding to hole: \(hole) \(shotList.count) shots")
+        self.round.updateHole(hole, with: shotList)
         
         
 
-        
-        let boolArray = self.round.updateHole(hole, with: shotList)
-        
-//        if hole == 1 {
-//            
-//            self.round = .completeRoundExample1
-//        } else if hole == 2 {
-//            self.round = .emptyRoundExample1
-//        }
-        
-
-        
-        print("Hole Num: \(hole), num of shots: \(round.holes[hole - 1].score), bool array: \(boolArray.debugDescription)")
     }
     
     
         
 }
+
+
 
 //MARK: Preciew
 struct HoleByHole_Previews: PreviewProvider {
@@ -353,7 +363,7 @@ struct HoleByHole_Previews: PreviewProvider {
 
 struct ShotIntermediate : Identifiable, Equatable {
     let id: UUID = UUID()
-    var position: Position
+    var position: Position 
     var declaration: ShotDeclaration
     
     var type: ShotType {

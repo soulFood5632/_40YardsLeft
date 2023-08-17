@@ -22,13 +22,14 @@ struct ScorecardView: View {
                 Label("Scorecard", systemImage: "square.grid.3x2")
             }
             .padding(.horizontal)
+            .padding(.top, 10)
             
             GroupBox {
                 HoleButtons(round: round, holeNumber: self.$currentHole)
             } label: {
                 Label("Navigation", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
             }
-            .padding()
+            .padding(.horizontal)
         }
         .onChange(of: self.currentHole) { _ in
             self.showView = false

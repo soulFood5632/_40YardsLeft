@@ -75,6 +75,18 @@ extension Golfer {
         return true
     }
     
+    
+    /// Adds the given round to the list of rounds to this golfer.
+    /// 
+    /// - Parameter round: The round you would like to add
+    mutating func replaceRound(_ round : Round) {
+        self.rounds.removeAll { roundInList in
+            roundInList == round
+        }
+        
+        self.rounds.append(round)
+    }
+    
     @discardableResult
     /// Deletes the provided round from this golfer
     ///

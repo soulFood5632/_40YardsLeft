@@ -39,6 +39,7 @@ struct RoundPrepView: View {
     
     @Binding var course: Course
     @Binding var golfer: Golfer
+    @Binding var round: Round?
     @Binding var path: NavigationPath
     
     @State private var buffer = RoundSetupBuffer()
@@ -119,7 +120,7 @@ struct RoundPrepView: View {
             Button {
                 let round = self.buffer.createRound(course: self.course)
                 
-                path.append(round)
+                self.round = round
             } label: {
                 Label("Start Round", systemImage: "figure.golf")
             }
@@ -131,7 +132,7 @@ struct RoundPrepView: View {
         }
         
         .sheet(isPresented: self.$isCreateNewTee) {
-            CourseHoleByHole(course: self.$course, showView: self.$isCreateNewTee)
+            CourseHoleByHole(course: self.$course, showView: self.$isCreateNewTee, teeTemplate: self.course.listOfTees.first)
                 .padding()
         }
         .onDisappear {
@@ -187,11 +188,12 @@ extension RoundPrepView {
 
 struct RoundPrepView_Previews: PreviewProvider {
     @State private static var course = Course.example1
-    @State private static var round = NavigationPath()
+    @State private static var path = NavigationPath()
     @State private static var golfer = Golfer.golfer
+    @State private static var round: Round? = nil
     static var previews: some View {
         NavigationStack {
-            RoundPrepView(course: self.$course, golfer: self.$golfer, path: self.$round)
+            RoundPrepView(course: self.$course, golfer: self.$golfer, round: $round, path: self.$path)
         }
     }
 }

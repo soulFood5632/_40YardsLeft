@@ -12,6 +12,8 @@ struct ShotElement: View {
     
     @Binding var isFinal: Bool
     
+    @State var hasChangedDecleration = false
+    
     var body: some View {
         
         Group {
@@ -57,6 +59,10 @@ struct ShotElement: View {
                 } label: {
                     //empty label block
                 }
+                .onTapGesture{
+                    self.hasChangedDecleration = true;
+                }
+            
                 .pickerStyle(.menu)
 
             } else {
@@ -79,9 +85,49 @@ struct ShotElement: View {
             }
             
         }
+        .onChange(of: self.shot.position.lie) { newLie in
+            if !hasChangedDecleration {
+                setDeclarationFrom(lie: newLie)
+            }
+        }
         
         
         
+        
+    }
+}
+
+extension ShotElement {
+    func setDeclarationFrom(lie: Lie) {
+        let yardage = self.shot.position.yardage
+        switch lie {
+        case .tee:
+            self.shot.declaration = .drive
+        case .fairway:
+            if yardage > .yards(300) {
+                self.shot.declaration = .other
+            } else {
+                self.shot.declaration = .atHole
+            }
+        case .rough:
+            if yardage > .yards(275) {
+                self.shot.declaration = .other
+            } else {
+                self.shot.declaration = .atHole
+            }
+        case .recovery:
+            self.shot.declaration = .other
+        case .bunker:
+            if yardage > .yards(190) {
+                self.shot.declaration = .other
+            } else {
+                self.shot.declaration = .atHole
+            }
+        case .penalty:
+            self.shot.declaration = .drop
+        case .green:
+            self.shot.declaration = .atHole
+        }
     }
 }
 

@@ -36,10 +36,6 @@ struct RoundOverviewPage: View {
                 
                 RoundStatOverview(round: self.round)
                         .padding(.top, 3)
-                        .onLongPressGesture {
-                            //TODO: fix bug here.
-                            self.showStats = true
-                        }
                 
             } label: {
                 HStack {
@@ -56,7 +52,7 @@ struct RoundOverviewPage: View {
             
             Button {
                 Task {
-                    //TODO: Update the golfer by adding the round.
+                    golfer.addRound(self.round)
                 }
                 self.isRoundDone = true
             } label: {
@@ -65,7 +61,6 @@ struct RoundOverviewPage: View {
  
             }
             .buttonStyle(.borderedProminent)
-            //TODO: make navigation destination the home view.
             
             
             
@@ -80,15 +75,22 @@ struct RoundOverviewPage: View {
                 
         })
         .toolbar {
+            // TODO: rethink this structure to make editing possible.
             ToolbarItem (placement: .primaryAction) {
                 Button {
                     self.path.removeLast()
+                    
                 } label: {
                     Image(systemName: "pencil")
                 }
             }
-            //TODO: add a delete round
+            
         }
+        .onChange(of: self.isRoundDone, perform: { roundDone in
+            if roundDone {
+                self.path.keepFirst()
+            }
+        })
         .navigationBarBackButtonHidden()
         .padding()
     }

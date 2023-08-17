@@ -15,7 +15,7 @@ struct IndividualButton: View {
     var body: some View {
         
         ZStack {
-            CenteredSquare()
+            RoundedRectangle(cornerRadius: 10)
                 .fill(getFillColour())
                 
             

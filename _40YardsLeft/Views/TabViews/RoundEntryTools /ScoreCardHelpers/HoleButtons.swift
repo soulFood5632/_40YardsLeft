@@ -12,24 +12,31 @@ struct HoleButtons: View {
     @Binding var holeNumber: Int
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 ForEach(1..<7) { index in
                     IndividualButton(buttonNumber: index, activeHole: self.$holeNumber, round: round)
                         .padding(.horizontal, 3)
                 }
             }
+            .padding(.vertical, 3)
             HStack {
                 ForEach(7..<13) { index in
                     IndividualButton(buttonNumber: index, activeHole: self.$holeNumber, round: round)
+                        .padding(.horizontal, 3)
                 }
             }
+            .padding(.vertical, 3)
             HStack {
                 ForEach(13..<19) { index in
                     IndividualButton(buttonNumber: index, activeHole: self.$holeNumber, round: round)
+                        .padding(.horizontal, 3)
                 }
             }
+            .padding(.vertical, 3)
+            Spacer()
         }
-        .padding(.horizontal)
+        
     }
 }
 

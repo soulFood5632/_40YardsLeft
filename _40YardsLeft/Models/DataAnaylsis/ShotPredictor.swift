@@ -13,20 +13,18 @@ struct UserDistanceValues {
     ///
     /// - Note: This is a predicative measure which is not critical to app functionality
     let minimumApproachDistance: Distance = .yards(80)
-    
     /// The maximum distance the user will attempt to approach the green on.
     ///
     /// - Note: This is a predicative measure which is not critical to app functionality
     let maximumApproachDistance: Distance = .yards(240)
-    
     /// The usual drive distance of this user.
     ///
     /// - Note: This is a predicative measure which is not critical to app functionality
     let driveDistance: Distance = .yards(240)
-    
-    
     /// The average proximity of a shot when attempting the green in feet.
     let averageProximity: Distance = .feet(26)
+
+    let chipProximity: Distance = .feet(10)
     
     
     /// The average distance your recovery distance travels
@@ -113,6 +111,7 @@ extension ShotPredictor {
     /// - Parameter distance: The distance from which you would like to predict the nest shot to go to.
     /// - Returns: A position where the most likely point for the shot to be located.
     private func expectShotFromTee(distance: Distance) -> Position {
+        
         if distance < userDistanceValues.maximumApproachDistance {
             return Position(lie: .green, yardage: userDistanceValues.averageProximity)
         }
@@ -128,6 +127,11 @@ extension ShotPredictor {
     
     ///Gets the predicted location of the next shot from the fairway.
     private func expectShotFromFairway(distance: Distance) -> Position {
+        // handles chip shots.
+        if distance < userDistanceValues.minimumApproachDistance {
+            return Position.init(lie: .green, yardage: userDistanceValues.chipProximity.scaleBy(Self.FAIRWAY_PROX_BOOST))
+        }
+        
         if distance < userDistanceValues.maximumApproachDistance {
             return Position(lie: .green, yardage:  userDistanceValues.averageProximity.scaleBy(Self.FAIRWAY_PROX_BOOST))
         }
@@ -142,6 +146,9 @@ extension ShotPredictor {
     }
     
     private func expectShotFromRough(distance: Distance) -> Position {
+        if distance < userDistanceValues.minimumApproachDistance {
+            return Position.init(lie: .green, yardage: userDistanceValues.chipProximity)
+        }
         if distance < userDistanceValues.maximumApproachDistance {
             return Position(lie: .green, yardage: userDistanceValues.averageProximity)
         }
@@ -156,6 +163,9 @@ extension ShotPredictor {
     }
     
     private func expectShotFromBunker(distance: Distance) -> Position {
+        if distance < userDistanceValues.minimumApproachDistance {
+            return Position.init(lie: .green, yardage: userDistanceValues.chipProximity.scaleBy(Self.BUNKER_PROX_BOOST))
+        }
         if distance < userDistanceValues.maximumApproachDistance.scaleBy(Self.BUNKER_DISTANCE_PENALTY) {
             return Position(lie: .green, yardage:  userDistanceValues.averageProximity.scaleBy(Self.BUNKER_PROX_BOOST))
         }

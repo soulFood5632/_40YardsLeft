@@ -109,10 +109,10 @@ struct ScoreAndParGridElements: View {
                         
                         if hole.scoreToPar > 0 {
                             CenteredSquare()
-                                .stroke(lineWidth: 0.5)
+                                .stroke(lineWidth: 1.2)
                         } else if hole.scoreToPar < 0 && hole.score != 0 {
                             Circle()
-                                .stroke(lineWidth: 0.5)
+                                .stroke(lineWidth: 1.2)
                         }
                         
                     }
