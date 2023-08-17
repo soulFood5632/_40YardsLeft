@@ -11,6 +11,7 @@ struct RoundSetupView: View {
     
     
     @State var course: Course
+    @State var round: Round?
     
     @Binding var golfer: Golfer
     @Binding var path: NavigationPath
@@ -35,9 +36,8 @@ struct RoundSetupView: View {
                 .padding()
         }
         .navigationDestination(for: Round.self) { newRound in
-            
+        
             HoleByHole(golfer: self.$golfer, round: newRound, path: self.$path, holeNumber: 1)
-                
         }
         
         

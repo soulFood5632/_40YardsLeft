@@ -78,7 +78,7 @@ struct Round : Codable, Identifiable, Hashable {
 
 extension Round: Equatable {
     static func == (rhs: Round, lhs: Round) -> Bool {
-        return rhs.id == lhs.id
+        return rhs.id == lhs.id && rhs.course == lhs.course && rhs.holes == lhs.holes && rhs.tee == lhs.tee 
     }
 }
 
@@ -317,13 +317,7 @@ extension Round {
             preconditionFailure("all holes should be complete prior to the calling of this method.")
         }
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
 
 extension Round {
@@ -338,9 +332,10 @@ extension Round {
     ///   - shots: The list of shots you would like to put into the hole
     /// - Returns: A list of booleans which represent whether each shot addition was succseful.
     mutating func updateHole(_ holeNumber: Int, with shots: [Shot]) -> [Bool] {
+        
         self.holes[holeNumber - 1].resetShots()
         let value = self.holes[holeNumber - 1].addShots(shots)
-        
+
         return value
     }
 }

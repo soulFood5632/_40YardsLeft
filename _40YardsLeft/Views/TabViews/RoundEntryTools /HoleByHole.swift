@@ -47,6 +47,8 @@ struct HoleByHole: View {
     
     
     var body: some View {
+        
+        let _ = Self._printChanges()
     
         
             VStack {
@@ -253,12 +255,9 @@ struct HoleByHole: View {
             })
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
-                
                 Task {
                     await self.postShots(for: holeNumber)
-
                 }
-                
             })
             .onAppear {
                
@@ -267,7 +266,6 @@ struct HoleByHole: View {
                 }
             }
 
-        
     }
 }
 
@@ -295,7 +293,7 @@ extension HoleByHole {
     ///
     /// Calling this function will overwrite the current values in the shots for that particular hole in the round.
     ///
-    /// - Parameter hole: <#hole description#>
+    /// - Parameter hole: The hole number we are posting shots for. 
     private func postShots(for hole: Int) async {
         let intermediatesList = self.shotList[hole - 1]
         var index = 0
@@ -317,10 +315,27 @@ extension HoleByHole {
             shotList.append(.init(type: intermediate.type, startPosition: intermediate.position, endPosition: .holed))
         }
         
+        print("adding to hole: \(hole) \(shotList.count) shots")
+        
+        
+
+        
         let boolArray = self.round.updateHole(hole, with: shotList)
         
+//        if hole == 1 {
+//            
+//            self.round = .completeRoundExample1
+//        } else if hole == 2 {
+//            self.round = .emptyRoundExample1
+//        }
         
+
+        
+        print("Hole Num: \(hole), num of shots: \(round.holes[hole - 1].score), bool array: \(boolArray.debugDescription)")
     }
+    
+    
+        
 }
 
 //MARK: Preciew

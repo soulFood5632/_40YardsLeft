@@ -60,15 +60,31 @@ struct CourseFilter: View {
                 
             }
             
-            NavigationLink(value: self.courseQuery) {
-                    if self.chosenCourse == nil {
-                        Label("Search", systemImage: "magnifyingglass")
-                    } else {
-                        Label("Edit", systemImage: "pencil")
-                            .padding(.top, 3)
-                    }
+//            NavigationLink(value: self.courseQuery) {
+//                if self.chosenCourse == nil {
+//                    Label("Search", systemImage: "magnifyingglass")
+//
+//                } else {
+//                    Label("Edit", systemImage: "pencil")
+//                        .padding(.top, 3)
+//                }
+//            }
+                
+            
+            Button {
+                path.append(self.courseQuery)
+            } label: {
+                if self.chosenCourse == nil {
+                    Label("Search", systemImage: "magnifyingglass")
+                    
+                } else {
+                    Label("Edit", systemImage: "pencil")
+                        .padding(.top, 3)
                 }
-                .disabled(self.isLoading)
+            }
+            .buttonStyle(.borderless)
+            .padding(.top, 2)
+            .disabled(self.isLoading)
             
             
             

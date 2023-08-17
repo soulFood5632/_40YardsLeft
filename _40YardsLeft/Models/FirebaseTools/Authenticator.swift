@@ -19,15 +19,9 @@ struct Authenticator {
     ///   - password: The password of the new user
     /// - Returns: The newly created `User`
     static func createUser(emailAddress: String, password: String) async throws -> User {
-       
-        
         let result = try await Auth.auth().createUser(withEmail: emailAddress, password: password)
         
         return result.user
-        
-        
-        
-        
     }
     
     

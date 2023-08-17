@@ -146,7 +146,7 @@ final class RoundTests: XCTestCase {
         do {
             try  Round(course: Self.getCourse1(), tee: try Self.getTee2(), roundType: .tournament)
         } catch {
-            XCTFail("Round init should not throw error becuase it is given a valid tee. ")
+            XCTFail("Round init should not throw error becuase it is given a valid tee.")
         }
         
     }
@@ -168,9 +168,54 @@ final class RoundTests: XCTestCase {
     func testStartScores2() throws {
         XCTAssertEqual(Self.getRound1().roundScore, 0)
     }
-
     
-
+    func testUpdateHoles1() {
+        var exampleRound = Self.getRound1()
+        
+        exampleRound.updateHole(1, with: [
+            Shot(type: .drive, startPosition: .init(lie: .tee, yardage: .yards(432)), endPosition: .init(lie: .fairway, yardage: .yards(165))),
+            Shot(type: .approach, startPosition: .init(lie: .fairway, yardage: .yards(165)), endPosition: .init(lie: .green, yardage: .feet(32))),
+            Shot(type: .putt, startPosition: .init(lie: .green, yardage: .feet(32)), endPosition: .holed)
+        ])
+        
+        
+        
+        XCTAssertEqual(exampleRound.roundScore, 3)
+    }
     
+    func testUpdateHoles2() {
+        var exampleRound = Self.getRound1()
+        
+        let shotArray = [
+            Shot(type: .drive, startPosition: .init(lie: .tee, yardage: .yards(432)), endPosition: .init(lie: .fairway, yardage: .yards(165))),
+            Shot(type: .approach, startPosition: .init(lie: .fairway, yardage: .yards(165)), endPosition: .init(lie: .green, yardage: .feet(32))),
+            Shot(type: .putt, startPosition: .init(lie: .green, yardage: .feet(32)), endPosition: .holed)
+        ]
+        
+        exampleRound.updateHole(1, with: shotArray)
+        exampleRound.updateHole(2, with: shotArray)
+        
+        
+        
+        XCTAssertEqual(exampleRound.roundScore, 6)
+    }
+    
+    func testUpdateHoles3() {
+        var exampleRound = Self.getRound1()
+        
+        let shotArray = [
+            Shot(type: .drive, startPosition: .init(lie: .tee, yardage: .yards(432)), endPosition: .init(lie: .fairway, yardage: .yards(165))),
+            Shot(type: .approach, startPosition: .init(lie: .fairway, yardage: .yards(165)), endPosition: .init(lie: .green, yardage: .feet(32))),
+            Shot(type: .putt, startPosition: .init(lie: .green, yardage: .feet(32)), endPosition: .holed)
+        ]
+        
+        exampleRound.updateHole(1, with: shotArray)
+        exampleRound.updateHole(2, with: shotArray)
+        exampleRound.updateHole(2, with: [])
+        
+        
+        
+        XCTAssertEqual(exampleRound.roundScore, 3)
+    }
 
 }
