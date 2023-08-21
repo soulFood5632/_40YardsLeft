@@ -227,7 +227,9 @@ extension Lie : Identifiable {
 /// A distance which contains a unit independant distance value.
 ///
 /// You can instansiate a distance object by inputting the value in yards, meters, or feet.
-struct Distance : Codable, Hashable {
+struct Distance: Codable, Hashable, Identifiable {
+    
+    var id: Int { return Int(yards) }
     
     static let MAX_DISTANCE: Distance = .init(yards: 10000)
     /// The distance value in yards

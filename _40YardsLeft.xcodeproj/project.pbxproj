@@ -10,6 +10,8 @@
 		020441992A8EC1EF00B3FB33 /* StatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441982A8EC1EF00B3FB33 /* StatTable.swift */; };
 		0204419B2A8EC7A100B3FB33 /* FocusedAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */; };
 		0204419F2A900BA800B3FB33 /* ApproachAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */; };
+		020441A12A93FA6D00B3FB33 /* ChippingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A02A93FA6D00B3FB33 /* ChippingAnalysisView.swift */; };
+		020441A32A940E0E00B3FB33 /* PuttingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A22A940E0E00B3FB33 /* PuttingDetailView.swift */; };
 		020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */; };
 		020B0FAA29F9A2C9001E92E1 /* ShotPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */; };
 		020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */; };
@@ -115,6 +117,8 @@
 		020441982A8EC1EF00B3FB33 /* StatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTable.swift; sourceTree = "<group>"; };
 		0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedAnalysis.swift; sourceTree = "<group>"; };
 		0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachAnalysis.swift; sourceTree = "<group>"; };
+		020441A02A93FA6D00B3FB33 /* ChippingAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChippingAnalysisView.swift; sourceTree = "<group>"; };
+		020441A22A940E0E00B3FB33 /* PuttingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingDetailView.swift; sourceTree = "<group>"; };
 		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictorTests.swift; sourceTree = "<group>"; };
 		020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */,
+				020441A02A93FA6D00B3FB33 /* ChippingAnalysisView.swift */,
+				020441A22A940E0E00B3FB33 /* PuttingDetailView.swift */,
 			);
 			path = ShotTypeAnaylsis;
 			sourceTree = "<group>";
@@ -729,9 +735,11 @@
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */,
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
+				020441A12A93FA6D00B3FB33 /* ChippingAnalysisView.swift in Sources */,
 				0204419F2A900BA800B3FB33 /* ApproachAnalysis.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
+				020441A32A940E0E00B3FB33 /* PuttingDetailView.swift in Sources */,
 				02F7318D2A11A45A00CC5925 /* StrokesGainedGraph.swift in Sources */,
 				02CFCADA2A0C383800DA7D76 /* NavigationPopping.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,

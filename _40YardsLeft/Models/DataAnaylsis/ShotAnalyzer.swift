@@ -31,8 +31,8 @@ extension Array where Element == Shot {
     ///   - lie: A list of lies which contains at least one entry and is only rough or fairway.
     ///
     /// - Returns: The average distance of shot from the given filters. Nil if no shots are present at such a distance.
-    func approachProximityFrom(range: Range<Distance>, lie: [Lie]) -> Distance? {
-        self.filter { $0.type == .approach }
+    func approachProximityFrom(range: Range<Distance>, lie: [Lie], shotType: ShotType) -> Distance? {
+        self.filter { $0.type == shotType }
             .filter { lie.contains($0.startPosition.lie) && range.contains($0.startPosition.yardage) }
             .map { $0.endPosition.yardage }
             .average()
@@ -44,8 +44,8 @@ extension Array where Element == Shot {
     /// - Parameter range: The range of yardages in which this report should be calculated from.
     ///
     /// - Returns: A double where 1 = 100% success and 0 = 0% success. Nil is returned if no approach shots are present.
-    func greenPercentageFrom(range: Range<Distance>, lie: [Lie]) -> Double? {
-        let value = self.filter { $0.type == .approach }
+    func greenPercentageFrom(range: Range<Distance>, lie: [Lie], shotType: ShotType) -> Double? {
+        let value = self.filter { $0.type == shotType }
             .filter { lie.contains($0.startPosition.lie) && range.contains($0.startPosition.yardage) }
             .map { $0.endPosition.lie }
             .map { lie in
@@ -54,6 +54,29 @@ extension Array where Element == Shot {
                 }
                 return 0
             }
+        
+        
+        return value.average()
+        
+    }
+    
+    func percentageInsideProx(maxDistance: Distance, range: Range<Distance>, lie: [Lie], shotType: ShotType) -> Double? {
+        let value = self
+            .filter { $0.type == shotType }
+            .filter { lie.contains($0.startPosition.lie) }
+            .filter { range.contains($0.startPosition.yardage) }
+            .map { $0.endPosition.yardage }
+            .map { return $0 <= maxDistance ? 1 : 0 }
+        
+        return value.average()
+        
+    }
+    
+    func percentageInsideProx(maxDistance: Distance, shotType: ShotType) -> Double? {
+        let value = self
+            .filter { $0.type == shotType }
+            .map { $0.endPosition.yardage }
+            .map { return $0 <= maxDistance ? 1 : 0 }
         
         return value.average()
         
@@ -80,12 +103,6 @@ extension Array where Element == Shot {
     }
     
     
-    func puttProximityFrom(range: Range<Distance>) -> Distance? {
-        return self.filter { $0.type == .putt }
-            .filter { range.contains($0.startPosition.yardage) }
-            .map { $0.endPosition.yardage }
-            .average()
-    }
     
     
     
