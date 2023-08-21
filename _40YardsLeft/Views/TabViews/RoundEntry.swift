@@ -68,6 +68,7 @@ struct RoundEntry: View {
                 .confirmationDialog("Delete Round", isPresented: self.$isCancelledRound, actions: {
                     Button (role: .destructive) {
                         path.keepFirst()
+                        
                     } label: {
                         Text("Confirm")
                     }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TeeBuffer {
-    var rating: Double?
-    var slope: Int?
+    var rating: Double? = 70.4
+    var slope: Int? = 126
     var name = ""
     var holeData = [HoleData]()
     
@@ -23,6 +23,7 @@ struct TeeBuffer {
     
     
     mutating func fillHandicaps(with tee: Tee) {
+
         let handicapList = tee.holeData.map { $0.handicap }
         
         for index in handicapList.indices {
@@ -138,11 +139,7 @@ struct CourseHoleByHole: View {
                 //TODO: add more descriptive errors so the user can actually understand what is wrong
             }
         }
-        .onAppear {
-            if let teeTemplate {
-                self.buffer.fillHandicaps(with: teeTemplate)
-            }
-        }
+        
 
     }
 }
@@ -164,8 +161,11 @@ extension CourseHoleByHole {
         for _ in 1...number {
             self.buffer.holeData.append(.averageHole)
         }
+        if let teeTemplate {
+            self.buffer.fillHandicaps(with: teeTemplate)
+        }
         
-        print(self.buffer.holeData)
+
     }
 }
 

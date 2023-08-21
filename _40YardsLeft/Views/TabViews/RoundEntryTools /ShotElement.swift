@@ -11,28 +11,42 @@ struct ShotElement: View {
     @Binding var shot: ShotIntermediate
     
     @Binding var isFinal: Bool
-    
     @State var hasChangedDecleration = false
+    @FocusState var textFocus: Bool
     
     var body: some View {
         
         Group {
             if !isFinal {
                 
+             
+                    
+                    
+                    
                 let isOnGreen = shot.position.lie == .green
                 VStack {
                     TextField("To Hole",
-                              value: isOnGreen ?  $shot.position.yardage.feet : $shot.position.yardage.yards,
-                              formatter: .wholeNumber)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 50, alignment: .center)
-                    .keyboardType(.numberPad)
-                    .textContentType(.none)
-                    .font(.system(size: 15))
-                    
+                                value: isOnGreen ?  $shot.position.yardage.feet : $shot.position.yardage.yards,
+                                formatter: .wholeNumber)
+                        .focused($textFocus)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 50, alignment: .center)
+                        .keyboardType(.asciiCapableNumberPad)
+                        .textContentType(.none)
+                        .backgroundStyle(textFocus ? .gray : .green)
+                        .onTapGesture(perform: {
+                            textFocus = false
+                        })
+                        .font(.system(size: 15))
+                        
                     Text(isOnGreen ? "Feet" : "Yards")
-                        .font(.caption2)
+                            .font(.caption2)
+                        
+                        
                 }
+                
+                
+                
                 
                 
                 
@@ -46,6 +60,9 @@ struct ShotElement: View {
                     }
                 } label: { } // empty label becuase it does not matter.
                     .pickerStyle(.menu)
+                    .onTapGesture(perform: {
+                        textFocus = false
+                    })
                 
                 
                 
@@ -61,7 +78,9 @@ struct ShotElement: View {
                 }
                 .onTapGesture{
                     self.hasChangedDecleration = true;
+                    textFocus = false
                 }
+                
             
                 .pickerStyle(.menu)
 
@@ -85,11 +104,13 @@ struct ShotElement: View {
             }
             
         }
-        .onChange(of: self.shot.position.lie) { newLie in
+        .onChange(of: self.shot.position) { position in
             if !hasChangedDecleration {
-                setDeclarationFrom(lie: newLie)
+                setDeclarationFrom(lie: position.lie)
             }
         }
+       
+        .animation(.easeInOut, value: self.textFocus)
         
         
         

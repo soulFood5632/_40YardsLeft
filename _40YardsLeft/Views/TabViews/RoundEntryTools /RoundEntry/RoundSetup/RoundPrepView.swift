@@ -120,7 +120,7 @@ struct RoundPrepView: View {
             Button {
                 let round = self.buffer.createRound(course: self.course)
                 
-                self.round = round
+                self.path.append(round)
             } label: {
                 Label("Start Round", systemImage: "figure.golf")
             }

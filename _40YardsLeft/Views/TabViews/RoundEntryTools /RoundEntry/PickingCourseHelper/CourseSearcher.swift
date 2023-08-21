@@ -14,6 +14,7 @@ struct CourseSearcher: View {
     @Binding var chosenCourse: Course?
     @State private var searchText = ""
     @Binding var path: NavigationPath
+    @Binding var showView: Bool
     
     
     var body: some View {
@@ -63,18 +64,22 @@ struct CourseSearcher: View {
                 }
                 
                 Button {
-                    path.removeLast()
+//                    path.removeLast()
+                    showView = false
                 } label: {
                     Text("New Search")
                 }
                 
             } else {
                 Button {
-                    path.removeLast()
+//                    path.removeLast()
+                    showView = false
                 } label: {
                     Text("Confirm")
                 }
                 .disabled(chosenCourse == nil)
+                .buttonStyle(.borderedProminent)
+                .padding()
             }
             
             
@@ -107,10 +112,11 @@ struct CourseSearcher_Previews: PreviewProvider {
     @State private static var chosenOne: Course?
     @State private static var showScreen = true
     @State private static var path = NavigationPath()
+    @State private static var view = true
     
     static var previews: some View {
         NavigationStack {
-            CourseSearcher(overallQuery: [Course.example1], chosenCourse: self.$chosenOne, path: self.$path)
+            CourseSearcher(overallQuery: [Course.example1], chosenCourse: self.$chosenOne, path: self.$path, showView: $view)
         }
     }
 }

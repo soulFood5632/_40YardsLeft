@@ -12,6 +12,8 @@ struct HoleByHole: View {
     @Binding var golfer: Golfer
     @State var round: Round
     @Binding var path: NavigationPath
+    @State var showRoundFinished: Bool = false
+    
     
     private let shotPredictor = ShotPredictor()
     @State var holeNumber: Int
@@ -78,18 +80,9 @@ struct HoleByHole: View {
                                         GridRow {
                                             ShotElement(shot: shot, isFinal: self.$isHoleSaved[holeNumber - 1])
                                         }
-                                        .onLongPressGesture {
-                                            shotList[self.holeNumber - 1].removeAll { shotInList in
-                                                return shotInList == shot.wrappedValue
-                                            }
-                                        }
+
                                     }
                                     
-//                                    .onDelete { indexSet in
-//                                        indexSet.forEach { index in
-//                                            shotList[self.holeNumber - 1].remove(at: index)
-//                                        }
-//                                    }
 
                             }
                             Button {
@@ -101,7 +94,7 @@ struct HoleByHole: View {
                                 Spacer()
                             }
                             .disabled(self.isHoleSaved[holeNumber - 1])
-                            .padding(.top, 1)
+                            .padding(.top, 3)
 
 
                         }
@@ -147,10 +140,9 @@ struct HoleByHole: View {
                 Spacer()
                 
                 Button {
-                    //TODO: finish the round and send the user to the overview page.
-                    self.path.append(self.round)
                     
-                    // Do note the bug where this view cannot house and navigation destinations. 
+                    self.showRoundFinished = true
+ 
                 } label: {
                     Label("Finish Round", systemImage: "checkmark")
                 }
@@ -159,6 +151,9 @@ struct HoleByHole: View {
                  
 
             }
+            .sheet(isPresented: self.$showRoundFinished, content: {
+                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showRoundFinished, round: self.round)
+            })
             
             .animation(.easeInOut, value: self.shotList[holeNumber - 1])
             .animation(.easeInOut, value: self.isHoleSaved[holeNumber - 1])
@@ -230,6 +225,7 @@ struct HoleByHole: View {
                         } label: {
                             Label("Last Hole", systemImage: "arrow.backward.circle")
                         }
+                        .font(.system(size: 25))
 
                     }
 
@@ -244,15 +240,8 @@ struct HoleByHole: View {
                         } label: {
                             Label("Next Hole", systemImage: "arrow.forward.circle")
                         }
-                    } else {
-                        Button {
-                            Task {
-                                await self.postShots(for: holeNumber)
-                            }
-                        } label: {
-                            Text("Save")
-                        }
-                    }
+                        .font(.system(size: 25))
+                    } 
                 }
                 
                 
@@ -268,13 +257,12 @@ struct HoleByHole: View {
                 ScorecardView(round: self.round, currentHole: self.$holeNumber, showView: self.$showScorecard)
 
             })
-            
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
-//                Task {
-//                    await self.postShots(for: holeNumber)
-//                }
-                self.round = .completeRoundExample1
+                Task {
+                    await self.postShots(for: holeNumber)
+                }
+
             })
             .onAppear {
                 
@@ -284,6 +272,24 @@ struct HoleByHole: View {
 //                for index in self.shotList.indices {
 //                    self.shotList[index].append(getNextValue(holeNumber: index + 1))
 //                }
+            }
+            .onChange(of: shotList) { newShotList in
+                
+                
+                
+                if newShotList[holeNumber - 1].last?.position.lie == .penalty {
+                    print("penalty found")
+                    
+                } else {
+                    
+                    Task {
+                        await postShots(for: self.holeNumber)
+                    }
+                }
+                
+                
+            
+                
             }
             
 

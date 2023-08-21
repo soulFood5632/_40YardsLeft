@@ -10,6 +10,8 @@ import SwiftUI
 struct RoundViewList: View {
     @Binding var golfer: Golfer
     @Binding var path: NavigationPath
+    @State var showSpecificRoundView: Bool = false
+    @State var highlightedRound: Round?
     
     @State private var roundToDelete: Round?
     var body: some View {
@@ -43,12 +45,20 @@ struct RoundViewList: View {
                             Spacer()
                             
                             
-                            //TODO: fix this link
-                            NavigationLink {
-                                HoleByHole(golfer: self.$golfer, round: round, path: self.$path, holeNumber: 1)
+                            
+                            Button {
+                                path.keepFirst()
+                                path.append(ScreenState.play)
+                                path.append(round.course)
+                                path.append(round)
+                                
+                                
+                                
+                                // TODO: rethink the structure so that this link will actually be able to edit the given data.
                             } label: {
                                 Image(systemName: "pencil")
                             }
+                            
                             
                             
                             
@@ -66,17 +76,36 @@ struct RoundViewList: View {
                             .confirmationDialog("Delete Round", isPresented: roundBinding) {
                                 Button("Delete Round") {
                                     self.golfer.deleteRound(round)
+                                    Task {
+                                        try await self.golfer.postToDatabase()
+                                    }
                                 }
+                            }
+                            
+                            Button {
+                                path.keepFirst()
+                                path.append(ScreenState.play)
+                                path.append(round.course)
+                                path.append(round)
+                                
+                                self.highlightedRound = round
+                                
+                                self.showSpecificRoundView = true
+                                
+                                
+                                // TODO: rethink the structure so that this link will actually be able to edit the given data.
+                            } label: {
+                                Image(systemName: "info.circle")
                             }
                             
                             
                                                             
                             //TODO: think of a better to explore more info
-                            Menu {
-                                RoundInfo(round: round)
-                            } label: {
-                                Image(systemName: "info.circle")
-                            }
+//                            Menu {
+//                                RoundInfo(round: round)
+//                            } label: {
+//                                Image(systemName: "info.circle")
+//                            }
                             
                             
                             
@@ -85,6 +114,9 @@ struct RoundViewList: View {
                     }
                 }
             }
+            .sheet(isPresented: self.$showSpecificRoundView, content: {
+                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showSpecificRoundView, round: self.highlightedRound!)
+            })
             .animation(.easeInOut, value: self.golfer.rounds)
             
         }

@@ -13,21 +13,17 @@ struct NavigationMenu: View {
     var body: some View {
         Menu {
             
-            NavigationLink() {
-                RoundEntry(golfer: $golfer, path: self.$navStack)
-            } label: {
+            
+            
+            NavigationLink(value: ScreenState.play) {
                 Label("Add Round", systemImage: "plus")
             }
             
-            NavigationLink() {
-                RoundView(golfer: $golfer, path: $navStack )
-            } label: {
+            NavigationLink(value: ScreenState.history) {
                 Label("Manage Rounds", systemImage: "pencil")
             }
             
-            NavigationLink() {
-                StatView()
-            } label: {
+            NavigationLink(value: ScreenState.stats) {
                 Label("Analyze Rounds", systemImage: "chart.dots.scatter")
             }
             

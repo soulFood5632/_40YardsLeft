@@ -105,6 +105,12 @@ extension Golfer {
 }
 
 extension Golfer {
+    func postToDatabase() async throws -> Bool {
+        return try await DatabaseCommunicator.addGolfer(golfer: self)
+    }
+}
+
+extension Golfer {
     /// A number of rounds played per day since the first round of the golfer.
     ///
     /// The number of days since the last round will use the defintion provided by `date.daysToNow()`

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020441992A8EC1EF00B3FB33 /* StatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441982A8EC1EF00B3FB33 /* StatTable.swift */; };
+		0204419B2A8EC7A100B3FB33 /* FocusedAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */; };
+		0204419F2A900BA800B3FB33 /* ApproachAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */; };
 		020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */; };
 		020B0FAA29F9A2C9001E92E1 /* ShotPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */; };
 		020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */; };
@@ -109,6 +112,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020441982A8EC1EF00B3FB33 /* StatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTable.swift; sourceTree = "<group>"; };
+		0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedAnalysis.swift; sourceTree = "<group>"; };
+		0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachAnalysis.swift; sourceTree = "<group>"; };
 		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictorTests.swift; sourceTree = "<group>"; };
 		020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
@@ -220,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0204419C2A900B5800B3FB33 /* ShotTypeAnaylsis */ = {
+			isa = PBXGroup;
+			children = (
+				0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */,
+			);
+			path = ShotTypeAnaylsis;
+			sourceTree = "<group>";
+		};
 		020B0FA829F9A283001E92E1 /* ShotPredictorTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +398,9 @@
 			isa = PBXGroup;
 			children = (
 				02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */,
+				020441982A8EC1EF00B3FB33 /* StatTable.swift */,
+				0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */,
+				0204419C2A900B5800B3FB33 /* ShotTypeAnaylsis */,
 			);
 			path = StatViewHelpers;
 			sourceTree = "<group>";
@@ -691,6 +708,7 @@
 			files = (
 				0222862129DF930700FEBB91 /* TendancyAnalyzer.swift in Sources */,
 				0260D1F029DA74A000EFAE79 /* ScorecardImage.swift in Sources */,
+				020441992A8EC1EF00B3FB33 /* StatTable.swift in Sources */,
 				0260D1DF29D8E38200EFAE79 /* PickACourse.swift in Sources */,
 				02CFCAD12A002E1D00DA7D76 /* StringRepresentable.swift in Sources */,
 				0222866F29E8921000FEBB91 /* HotOrColdView.swift in Sources */,
@@ -711,6 +729,7 @@
 				02FEA18329CEC9F100BCD7A4 /* HomeView.swift in Sources */,
 				0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */,
 				02FACCB629C6D8FB00B55E6D /* TextFieldWithValiditity.swift in Sources */,
+				0204419F2A900BA800B3FB33 /* ApproachAnalysis.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				02F7318D2A11A45A00CC5925 /* StrokesGainedGraph.swift in Sources */,
@@ -741,6 +760,7 @@
 				0260D1EC29DA214400EFAE79 /* RoundSetupView.swift in Sources */,
 				02F731902A11B4D600CC5925 /* RoundBasedStats.swift in Sources */,
 				02FEA1AE29CF9CEA00BCD7A4 /* Round.swift in Sources */,
+				0204419B2A8EC7A100B3FB33 /* FocusedAnalysis.swift in Sources */,
 				02FEA19629CF785C00BCD7A4 /* Golfer.swift in Sources */,
 				0222867929E9A3DF00FEBB91 /* RoundInfo.swift in Sources */,
 				02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */,

@@ -38,6 +38,8 @@ struct DatabaseCommunicator {
         return true
     }
     
+
+    
     static func getGolfer(id: String) async throws -> Golfer {
         let docReference = database.collection(Self.GOLFER_LIST_ID).document(id)
         

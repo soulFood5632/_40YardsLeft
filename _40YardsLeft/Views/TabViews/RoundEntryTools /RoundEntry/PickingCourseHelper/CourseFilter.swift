@@ -30,6 +30,7 @@ struct CourseFilter: View {
     @State private var filter = Filters()
     @State private var isLoading = true
     @State private var courseQuery = [Course]()
+    @State private var isQueryReady = false
     @State private var databaseError: (Bool, String?) = (false, nil)
     
     
@@ -72,7 +73,9 @@ struct CourseFilter: View {
                 
             
             Button {
-                path.append(self.courseQuery)
+//                print("adding \(courseQuery.debugDescription)")
+//                path.append(self.courseQuery)
+                self.isQueryReady = true
             } label: {
                 if self.chosenCourse == nil {
                     Label("Search", systemImage: "magnifyingglass")
@@ -86,12 +89,16 @@ struct CourseFilter: View {
             .padding(.top, 2)
             .disabled(self.isLoading)
             
-            
-            
         }
-        .navigationDestination(for: [Course].self) { courseList in
-            CourseSearcher(overallQuery: courseList, chosenCourse: self.$chosenCourse, path: self.$path)
-        }
+        
+        .sheet(isPresented: self.$isQueryReady, onDismiss: {
+            self.courseQuery = []
+        }, content: {
+            CourseSearcher(overallQuery: self.courseQuery, chosenCourse: self.$chosenCourse, path: self.$path, showView: self.$isQueryReady)
+        })
+//        .navigationDestination(for: [Course].self) { courseList in
+//            CourseSearcher(overallQuery: courseList, chosenCourse: self.$chosenCourse, path: self.$path)
+//        }
         .animation(.easeInOut, value: self.chosenCourse)
         .animation(.spring(dampingFraction: 0.6), value: self.isLoading)
         .onAppear {
@@ -110,6 +117,9 @@ struct CourseFilter: View {
             
             self.chosenCourse = nil
         }
+//        .onChange(of: self.courseQuery) { query in
+//            self.isQueryReady = !query.isEmpty
+//        }
         
         
         

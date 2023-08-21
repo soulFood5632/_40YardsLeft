@@ -72,6 +72,34 @@ struct Shot : Codable, Hashable {
     
 }
 
+// MARK: Example shot list of various sizes
+extension Shot {
+
+    
+    static let exampleShotList: [Shot] = {
+        var shotList = [Shot]()
+        
+        for index in 0..<1000 {
+            let randomValue = Int.random(in: 0..<100)
+            
+            if randomValue < 20 {
+                shotList.append(Shot(type: .drive, startPosition: .init(lie: .tee, yardage: .init(yards: Int.random(in: 350..<450))), endPosition: .init(lie: [.fairway, .rough].randomElement()!, yardage: .init(yards: Int.random(in: 100..<175)))))
+            } else if randomValue < 50 {
+                shotList.append(Shot(type: .approach, startPosition: .init(lie: [.fairway, .rough].randomElement()!, yardage: .init(yards: Int.random(in: 50..<250))), endPosition: .init(lie: [.green, .rough, .bunker].randomElement()!, yardage: .init(feet: Int.random(in: 1..<120)))))
+            } else if randomValue < 70 {
+                shotList.append(Shot(type: .chip_pitch, startPosition: .init(lie: [.fairway, .rough, .bunker].randomElement()!, yardage: .init(yards: Int.random(in: 10..<50))), endPosition: .init(lie: .green, yardage: .init(feet: Int.random(in: 1..<50)))))
+            } else if randomValue < 75 {
+                shotList.append(Shot(type: .other, startPosition: .init(lie: [.fairway, .rough].randomElement()!, yardage: .init(yards: Int.random(in: 50..<400))), endPosition: .init(lie: [.fairway, .rough].randomElement()!, yardage: .init(yards: Int.random(in: 25..<200)))))
+            } else {
+                shotList.append(Shot(type: .putt, startPosition: .init(lie: .green, yardage: .init(feet: Int.random(in: 1..<90))), endPosition: [.holed, .init(lie: .green, yardage: .init(feet: Int.random(in: 1..<9)))].randomElement()!))
+            }
+
+        }
+        
+        return shotList
+    }()
+}
+
 
 //MARK: Shot computed values.
 extension Shot {
@@ -100,4 +128,14 @@ enum ShotType : String, Codable, CaseIterable, Hashable {
     case putt = "Putt"
     case penalty = "Penalty"
     case other = "Other"
+}
+
+enum AnalysisFocus: String, CaseIterable, Hashable, Identifiable {
+    var id: Self { self }
+    
+    case approach = "Approach"
+    case chipping = "Chipping"
+    case other = "Other"
+    case putting = "Putting"
+    case tee = "Tee"
 }

@@ -43,7 +43,7 @@ extension Array where Element == Shot {
     ///
     /// - Parameter range: The range of yardages in which this report should be calculated from.
     ///
-    /// - Returns: A double where 1 = 100% success and 0 = 0% success
+    /// - Returns: A double where 1 = 100% success and 0 = 0% success. Nil is returned if no approach shots are present.
     func greenPercentageFrom(range: Range<Distance>, lie: [Lie]) -> Double? {
         let value = self.filter { $0.type == .approach }
             .filter { lie.contains($0.startPosition.lie) && range.contains($0.startPosition.yardage) }
@@ -58,6 +58,8 @@ extension Array where Element == Shot {
         return value.average()
         
     }
+    
+
     
     
     /// Gets the make percentage from the provided range of values.
@@ -131,3 +133,5 @@ extension Array where Element == Double {
         }
     }
 }
+
+

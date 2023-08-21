@@ -44,7 +44,7 @@ struct Position : Codable, Hashable {
                    -7.54163032 * pow(10, -23.0)],
         .rough: Self.ROUGH_POLY,
         .recovery: RECOVERY_POLY,
-        .green: [1.0], //TODO: later
+        .green: GREEN_POLY, //TODO: later
         .bunker: BUNKER_POLY,
         .tee: TEE_POLY,
         
@@ -98,6 +98,13 @@ struct Position : Codable, Hashable {
                                               -1.94968196 * pow(10, -1.0),
                                               6.96395117].reversed()
     
+    private static let GREEN_POLY: [Double] = [ 2.63055841 * pow(10, -9.0),
+                                                -7.68313369 * pow(10,-7.0),
+                                                8.45965928 * pow(10,-5.0),
+                                                -4.37536242 * pow(10, -3.0),
+                                                1.13300009 * pow(10,-1.0),
+                                                8.08154812 * pow(10, -1.0)].reversed()
+    
     
     
 
@@ -124,6 +131,10 @@ extension Position {
     /// - Returns: A double representing the expected strokes to hole out from this position.
     func getExpectedStrokes() throws -> Double {
         
+        if self == .holed {
+            return 0
+        }
+        
         // if the tee shot is less than 100 then we will use fairway
         var lie = self.lie
         if lie == .tee && yardage < .yards(100) {
@@ -136,7 +147,11 @@ extension Position {
 
         var value = Double(0)
         for index in coeffecients.indices {
-            value += pow(self.yardage.yards, Double(index)) * coeffecients[index]
+            if lie == .green {
+                value += pow(self.yardage.feet, Double(index)) * coeffecients[index]
+            } else {
+                value += pow(self.yardage.yards, Double(index)) * coeffecients[index]
+            }
         }
         return value
         
@@ -213,6 +228,8 @@ extension Lie : Identifiable {
 ///
 /// You can instansiate a distance object by inputting the value in yards, meters, or feet.
 struct Distance : Codable, Hashable {
+    
+    static let MAX_DISTANCE: Distance = .init(yards: 10000)
     /// The distance value in yards
     var yards: Double
     ///The distance value in feet

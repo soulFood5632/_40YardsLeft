@@ -12,7 +12,7 @@ import FirebaseAuth
 struct RoundOverviewPage: View {
     @Binding var golfer: Golfer
     @Binding var path: NavigationPath
-    //TODO: investogate if binding is required here. 
+    @Binding var showView: Bool
     let round: Round
     @State private var isRoundDone = false
     @State private var showStats = false
@@ -53,6 +53,7 @@ struct RoundOverviewPage: View {
             Button {
                 Task {
                     golfer.addRound(self.round)
+                    print(try await DatabaseCommunicator.addGolfer(golfer: golfer))
                 }
                 self.isRoundDone = true
             } label: {
@@ -78,7 +79,7 @@ struct RoundOverviewPage: View {
             // TODO: rethink this structure to make editing possible.
             ToolbarItem (placement: .primaryAction) {
                 Button {
-                    self.path.removeLast()
+                    self.showView = false
                     
                 } label: {
                     Image(systemName: "pencil")
@@ -87,9 +88,12 @@ struct RoundOverviewPage: View {
             
         }
         .onChange(of: self.isRoundDone, perform: { roundDone in
+            // this section sends you back to the home page.
             if roundDone {
                 self.path.keepFirst()
+                self.showView = false
             }
+            
         })
         .navigationBarBackButtonHidden()
         .padding()
@@ -100,9 +104,10 @@ struct RoundOverviewPage_Previews: PreviewProvider {
     @State private static var golfer = Golfer.golfer
     @State private static var path = NavigationPath()
     @State private static var round = Round.completeRoundExample1
+    @State private static var showView = true
     static var previews: some View {
         NavigationStack {
-            RoundOverviewPage(golfer: $golfer, path: self.$path, round: round)
+            RoundOverviewPage(golfer: $golfer, path: self.$path, showView: self.$showView, round: round)
         }
         
     }
@@ -111,6 +116,14 @@ struct RoundOverviewPage_Previews: PreviewProvider {
 //MARK: Round Stat Overview page.
 struct RoundStatOverview : View {
     let round: Round
+    @State var statFocus: AnalysisFocus = .approach
+    
+    var shotList: [Shot] {
+        round
+            .holes
+            .map { try! $0.getSimplifiedShots() }
+            .flatten()
+    }
     
     
     var body: some View {
@@ -123,14 +136,26 @@ struct RoundStatOverview : View {
                 GreensFairwaysPutts(round: self.round)
                 
                 
+                Picker(selection: $statFocus) {
+                    ForEach(AnalysisFocus.allCases) { focus in
+                        Text(focus.rawValue)
+                    }
+                } label: {
+                    // labels do nothing I do not get it.
+                }
+                .pickerStyle(.segmented)
+
                 // never optional becuase and round on this page must be complete. 
                 StrokesGainedGraph(
-                    shots: round
+                    strokesGainedData: StrokesGainedData(shots: round
                     .holes
                     .map { try! $0.getSimplifiedShots() }
-                    .flatten()
+                        .flatten()),
+                    focus: self.$statFocus
                 )
                     .padding()
+                
+                FocusedAnalysis(shots: self.shotList, focus: self.statFocus)
                 
                  
             }
