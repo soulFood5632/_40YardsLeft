@@ -102,6 +102,18 @@ extension Array where Element == Shot {
         return value
     }
     
+    func percentageEndingIn(lies: [Lie], shotType: ShotType) -> Double? {
+        self.filter { $0.type == shotType }
+            .map { lies.contains($0.endPosition.lie) && !$0.includesPenalty ? 1 : 0}
+            .average()
+    }
+    
+    func percentageLostBall(shotType: ShotType) -> Double? {
+        self.filter { $0.type == shotType }
+            .map { $0.includesPenalty ? 1 : 0 }
+            .average()
+    }
+    
     
     
     

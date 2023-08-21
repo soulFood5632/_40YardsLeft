@@ -69,6 +69,8 @@ struct ChippingAnalysisView: View {
             Text("\(self.strokesGained.1) shots")
             
             Divider()
+                .padding(.horizontal)
+                .padding(.vertical, 3)
             
             
             HStack {
@@ -114,7 +116,8 @@ struct ChippingAnalysisView: View {
             }
             
             Divider()
-                .padding()
+                .padding(.horizontal)
+                .padding(.vertical, 3)
             
             
             
@@ -172,18 +175,7 @@ struct ChippingAnalysisView: View {
                 }
             }
             
-            Button {
-                // get rid of text boxes
 
-            } label: {
-                Label {
-                    Text("Save")
-                } icon: {
-                    Image(systemName: "checkmark")
-                }
-
-            }
-            .buttonStyle(.borderedProminent)
             
             
             

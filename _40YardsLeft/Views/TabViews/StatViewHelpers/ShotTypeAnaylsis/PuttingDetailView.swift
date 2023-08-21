@@ -27,6 +27,8 @@ struct PuttingDetailView: View {
             Text("\(self.strokesGained.1) shots")
             
             Divider()
+                .padding(.horizontal)
+                .padding(.vertical, 4)
             
             
             HStack {
@@ -55,7 +57,8 @@ struct PuttingDetailView: View {
             
             
             Divider()
-                .padding()
+                .padding(.horizontal)
+                .padding(.vertical, 4)
             
             
             
@@ -117,21 +120,11 @@ struct PuttingDetailView: View {
                                         .font(.caption)
                                 }
                             }
-                            
-                            
-                            
                         }
                     }
-                    
-                    
-                    
                 }
             }
-            
-            
-            
         }
-        
     }
 }
 

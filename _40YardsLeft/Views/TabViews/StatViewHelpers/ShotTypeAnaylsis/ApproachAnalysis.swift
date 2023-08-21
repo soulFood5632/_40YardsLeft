@@ -67,6 +67,8 @@ struct ApproachAnalysis: View {
                 Text("\(self.strokesGained.1) shots")
                 
                 Divider()
+                    .padding(.horizontal)
+                    .padding(.vertical, 3)
                 
                 
                 HStack {
@@ -107,7 +109,8 @@ struct ApproachAnalysis: View {
                 }
                 
                 Divider()
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.vertical, 3)
                 
                         
 //                        Text("Filters")

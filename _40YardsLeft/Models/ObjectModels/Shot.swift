@@ -135,7 +135,6 @@ enum AnalysisFocus: String, CaseIterable, Hashable, Identifiable {
     
     case approach = "Approach"
     case chipping = "Chipping"
-    case other = "Other"
     case putting = "Putting"
     case tee = "Tee"
 }

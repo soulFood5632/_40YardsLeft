@@ -16,12 +16,10 @@ struct FocusedAnalysis: View {
             ApproachAnalysis(shots: shots)
         case .chipping:
             ChippingAnalysisView(shots: shots)
-        case .other:
-            Text("hello world")
         case .putting:
-            Text("hello world")
+            PuttingDetailView(shots: shots)
         case .tee:
-            Text("hello world")
+            DrivingDetailView(shots: shots)
         }
     }
     
