@@ -36,7 +36,6 @@ struct Authenticator {
     static func logIn(emailAddress: String, password: String) async throws -> User {
         let result = try await Auth.auth().signIn(withEmail: emailAddress, password: password)
 
-
         return result.user
     }
         

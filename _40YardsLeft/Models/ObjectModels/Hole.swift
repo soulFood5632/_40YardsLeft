@@ -31,6 +31,7 @@ struct Hole: Codable, Identifiable, Hashable {
     }
     
     
+    
     /// Creates a new instance of hole with no shots.
     ///
     /// - Parameter holeData: A description of the hole.
@@ -288,6 +289,7 @@ extension Hole {
         
         throw ShotGeneration.holeNotComplete
     }
+    
     
     /// Gets the staring position of this hole.
     ///

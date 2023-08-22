@@ -8,13 +8,50 @@
 import SwiftUI
 
 struct StatView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @State private var startDate: Date = .now.jumpDaysAhead(by: -150)
+    @State private var endDate: Date = .now
+
+    @State private var roundTypes: [RoundType] = RoundType.allCases
+    @Binding var path: NavigationPath
+    let golfer: Golfer
+    
+    @State private var ratingBound: Range<Double> = 67.0..<75.0
+    var rounds: [Round] {
+        return golfer.rounds.filter { round in
+            return round.date > startDate && round.date < endDate && roundTypes.contains(round.roundType)
+                
+            
+        }
     }
+    
+    var body: some View {
+        VStack {
+            RoundFilterView(startDate: self.$startDate, endDate: self.$endDate, roundType: $roundTypes, ratingBound: $ratingBound)
+            
+            Button {
+                path.append(rounds)
+            } label: {
+                Label("Compile Report", systemImage: "chart.dots.scatter")
+            }
+            .disabled(rounds.isEmpty)
+            
+            
+            
+            
+        }
+        .animation(.easeInOut, value: self.roundTypes)
+        .animation(.easeInOut, value: self.ratingBound)
+        .animation(.easeInOut, value: self.startDate)
+        .animation(.easeInOut, value: self.endDate)
+        .padding()
+        .navigationBarBackButtonHidden()
+    }
+    
 }
 
 struct StatView_Previews: PreviewProvider {
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        StatView()
+        StatView(path: $path, golfer: Golfer.golfer)
     }
 }

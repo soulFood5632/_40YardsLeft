@@ -34,7 +34,7 @@ struct RoundOverviewPage: View {
             
             GroupBox {
                 
-                RoundStatOverview(round: self.round)
+                RoundStatOverview(round: self.round, isSnapshot: true)
                         .padding(.top, 3)
                 
             } label: {
@@ -53,7 +53,7 @@ struct RoundOverviewPage: View {
             Button {
                 Task {
                     golfer.addRound(self.round)
-                    print(try await DatabaseCommunicator.addGolfer(golfer: golfer))
+                    try await golfer.postToDatabase()
                 }
                 self.isRoundDone = true
             } label: {
@@ -68,7 +68,7 @@ struct RoundOverviewPage: View {
         }
         .sheet(isPresented: self.$showStats, content: {
             GroupBox {
-                RoundStatOverview(round: self.round)
+                RoundStatOverview(round: self.round, isSnapshot: false)
             } label: {
                 Label("Stats", systemImage: "chart.bar")
             }
@@ -118,6 +118,8 @@ struct RoundStatOverview : View {
     let round: Round
     @State var statFocus: AnalysisFocus = .approach
     
+    let isSnapshot: Bool
+    
     var shotList: [Shot] {
         round
             .holes
@@ -131,31 +133,35 @@ struct RoundStatOverview : View {
         ScrollView {
             VStack {
                 
-                ScoreTypes(round: self.round)
-                
-                GreensFairwaysPutts(round: self.round)
-                
-                
-                Picker(selection: $statFocus) {
-                    ForEach(AnalysisFocus.allCases) { focus in
-                        Text(focus.rawValue)
+                if (isSnapshot) {
+                    
+                    ScoreTypes(round: self.round)
+                    
+                    GreensFairwaysPutts(round: self.round)
+                } else {
+                    
+                    
+                    Picker(selection: $statFocus) {
+                        ForEach(AnalysisFocus.allCases) { focus in
+                            Text(focus.rawValue)
+                        }
+                    } label: {
+                        // labels do nothing I do not get it.
                     }
-                } label: {
-                    // labels do nothing I do not get it.
-                }
-                .pickerStyle(.segmented)
-
-                // never optional becuase and round on this page must be complete. 
-                StrokesGainedGraph(
-                    strokesGainedData: StrokesGainedData(shots: round
-                    .holes
-                    .map { try! $0.getSimplifiedShots() }
-                        .flatten()),
-                    focus: self.$statFocus
-                )
+                    .pickerStyle(.segmented)
+                    
+                    // never optional becuase and round on this page must be complete.
+                    StrokesGainedGraph(
+                        strokesGainedData: StrokesGainedData(shots: round
+                            .holes
+                            .map { try! $0.getSimplifiedShots() }
+                            .flatten()),
+                        focus: self.$statFocus
+                    )
                     .padding()
-                
-                FocusedAnalysis(shots: self.shotList, focus: self.statFocus)
+                    
+                    FocusedAnalysis(shots: self.shotList, focus: self.statFocus)
+                }
                 
                  
             }
@@ -243,7 +249,9 @@ extension Round {
     ///
     /// - Returns: The number of putts in the given round.
     func putts() -> Int {
-        return self.getShots().filter { $0.type == .putt }.count
+        return self.getShots().filter(ShotFilters.allPutts).count
+        
+        //TODO: this is bugged.
     }
     
     

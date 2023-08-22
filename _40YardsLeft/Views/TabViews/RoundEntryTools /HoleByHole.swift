@@ -265,28 +265,19 @@ struct HoleByHole: View {
 
             })
             .onAppear {
-                
-                
-                // got rid of the initial autopopulate becuase it seemed ugly.
                
-//                for index in self.shotList.indices {
-//                    self.shotList[index].append(getNextValue(holeNumber: index + 1))
-//                }
             }
             .onChange(of: shotList) { newShotList in
                 
-                
-                
                 if newShotList[holeNumber - 1].last?.position.lie == .penalty {
                     print("penalty found")
-                    
+
                 } else {
-                    
+
                     Task {
                         await postShots(for: self.holeNumber)
                     }
                 }
-                
                 
             
                 
@@ -297,6 +288,8 @@ struct HoleByHole: View {
 }
 
 extension HoleByHole {
+    
+    
     
     private func addNextValueTo(holeNumber: Int) {
         
@@ -398,6 +391,8 @@ struct ShotIntermediate : Identifiable, Equatable {
         
         }
     }
+    
+    
     
     enum ShotDeclaration: String, CaseIterable, Identifiable {
         

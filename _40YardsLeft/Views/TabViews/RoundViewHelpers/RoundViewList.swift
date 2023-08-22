@@ -45,23 +45,6 @@ struct RoundViewList: View {
                             Spacer()
                             
                             
-                            
-                            Button {
-                                path.keepFirst()
-                                path.append(ScreenState.play)
-                                path.append(round.course)
-                                path.append(round)
-                                
-                                
-                                
-                                // TODO: rethink the structure so that this link will actually be able to edit the given data.
-                            } label: {
-                                Image(systemName: "pencil")
-                            }
-                            
-                            
-                            
-                            
                             let roundBinding = Binding {
                                 self.roundToDelete != nil
                             } set: { valueBinding in
@@ -83,35 +66,18 @@ struct RoundViewList: View {
                             }
                             
                             Button {
-                                path.keepFirst()
-                                path.append(ScreenState.play)
-                                path.append(round.course)
-                                path.append(round)
-                                
                                 self.highlightedRound = round
                                 
                                 self.showSpecificRoundView = true
-                                
-                                
-                                // TODO: rethink the structure so that this link will actually be able to edit the given data.
+                            
                             } label: {
                                 Image(systemName: "info.circle")
                             }
-                            
-                            
-                                                            
-                            //TODO: think of a better to explore more info
-//                            Menu {
-//                                RoundInfo(round: round)
-//                            } label: {
-//                                Image(systemName: "info.circle")
-//                            }
-                            
-                            
-                            
+
                         }
                         
                     }
+                    .padding(.top, 1)
                 }
             }
             .sheet(isPresented: self.$showSpecificRoundView, content: {

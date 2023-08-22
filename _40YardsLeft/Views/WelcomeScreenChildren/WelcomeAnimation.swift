@@ -77,7 +77,18 @@ struct WelcomeAnimation: View {
                     .buttonStyle(.borderedProminent)
                     
                     Button {
-                        self.path.append(Golfer.golfer)
+                        Task {
+                            let tempUser = try await Authenticator.logIn(emailAddress: "loganu@shaw.ca", password: "Magenta^2")
+                            
+                
+                            
+                        
+                            
+                            withAnimation(.easeInOut(duration: 1)) {
+                                self.user = tempUser
+                            }
+                        }
+                        
                     } label: {
                         Label("Admin", systemImage: "person.crop.circle.badge.plus")
                         

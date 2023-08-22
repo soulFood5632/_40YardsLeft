@@ -105,7 +105,7 @@ struct HomeView: View {
             case .play:
                 RoundEntry(golfer: self.$golfer, path: self.$path) 
             case .stats:
-                StatView()
+                StatView(path: self.$path, golfer: self.golfer)
                     .toolbar {
                         ToolbarItem (placement: .navigationBarTrailing) {
                             GoHome(path: $path)
@@ -122,6 +122,9 @@ struct HomeView: View {
             ToolbarItem (placement: .navigationBarTrailing) {
                 //TODO: add settings here.
             }
+        }
+        .navigationDestination(for: [Round].self) { roundList in
+            StatAnalysisView(rounds: roundList)
         }
         
         
@@ -142,6 +145,8 @@ extension Date {
         return getYearFromDate(.now)
         //TODO: Imploment this method
     }
+    
+    
     
     static func getYearFromDate(_ date: Date) -> Int {
         return 2023

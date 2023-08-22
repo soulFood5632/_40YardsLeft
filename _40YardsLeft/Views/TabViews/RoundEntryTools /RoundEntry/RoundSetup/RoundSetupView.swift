@@ -35,8 +35,9 @@ struct RoundSetupView: View {
                 .padding()
         }
         .navigationDestination(for: Round.self) { newRound in
-        
-            HoleByHole(golfer: self.$golfer, round: newRound, path: self.$path, holeNumber: 1)
+            
+                HoleByHole(golfer: self.$golfer, round: newRound, path: self.$path, holeNumber: 1)
+            
         }
 //        .navigationDestination(for: Round.self) { finishedRound in
 //            RoundOverviewPage(golfer: self.$golfer, path: self.$path, round: finishedRound)

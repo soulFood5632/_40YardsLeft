@@ -351,7 +351,7 @@ enum GolfErrors : Error {
 enum RoundType : String, CaseIterable, Codable {
     case tournament = "Tournament"
     case casual = "Casual"
-    case competative = "Competetive"
+    case competative = "Competative"
 }
 
 extension RoundType: Identifiable {
@@ -362,6 +362,7 @@ extension RoundType: StringRepresentable {
     func toString() -> String {
         return self.rawValue
     }
+    
     
 }
 

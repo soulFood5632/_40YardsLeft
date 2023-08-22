@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020441992A8EC1EF00B3FB33 /* StatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441982A8EC1EF00B3FB33 /* StatTable.swift */; };
 		0204419B2A8EC7A100B3FB33 /* FocusedAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */; };
 		0204419F2A900BA800B3FB33 /* ApproachAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */; };
 		020441A12A93FA6D00B3FB33 /* ChippingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A02A93FA6D00B3FB33 /* ChippingAnalysisView.swift */; };
 		020441A32A940E0E00B3FB33 /* PuttingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A22A940E0E00B3FB33 /* PuttingDetailView.swift */; };
 		020441A52A941A0F00B3FB33 /* DrivingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A42A941A0F00B3FB33 /* DrivingDetailView.swift */; };
+		020441A72A9437BD00B3FB33 /* RoundFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A62A9437BD00B3FB33 /* RoundFilterView.swift */; };
+		020441A92A94423100B3FB33 /* StatAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441A82A94423100B3FB33 /* StatAnalysisView.swift */; };
+		020441AC2A9444CA00B3FB33 /* GeneralStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441AB2A9444CA00B3FB33 /* GeneralStatView.swift */; };
+		020441AE2A9444E100B3FB33 /* DrivingStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441AD2A9444E100B3FB33 /* DrivingStatView.swift */; };
+		020441B02A9444EB00B3FB33 /* ApproachStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441AF2A9444EB00B3FB33 /* ApproachStatView.swift */; };
+		020441B22A9444FB00B3FB33 /* PuttingStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B12A9444FB00B3FB33 /* PuttingStatView.swift */; };
+		020441B42A94450800B3FB33 /* ShortGameStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B32A94450800B3FB33 /* ShortGameStatView.swift */; };
+		020441B62A94742600B3FB33 /* StatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B52A94742600B3FB33 /* StatTable.swift */; };
 		020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */; };
 		020B0FAA29F9A2C9001E92E1 /* ShotPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */; };
 		020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */; };
@@ -115,12 +122,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		020441982A8EC1EF00B3FB33 /* StatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTable.swift; sourceTree = "<group>"; };
 		0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedAnalysis.swift; sourceTree = "<group>"; };
 		0204419E2A900BA800B3FB33 /* ApproachAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachAnalysis.swift; sourceTree = "<group>"; };
 		020441A02A93FA6D00B3FB33 /* ChippingAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChippingAnalysisView.swift; sourceTree = "<group>"; };
 		020441A22A940E0E00B3FB33 /* PuttingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingDetailView.swift; sourceTree = "<group>"; };
 		020441A42A941A0F00B3FB33 /* DrivingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDetailView.swift; sourceTree = "<group>"; };
+		020441A62A9437BD00B3FB33 /* RoundFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundFilterView.swift; sourceTree = "<group>"; };
+		020441A82A94423100B3FB33 /* StatAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatAnalysisView.swift; sourceTree = "<group>"; };
+		020441AB2A9444CA00B3FB33 /* GeneralStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralStatView.swift; sourceTree = "<group>"; };
+		020441AD2A9444E100B3FB33 /* DrivingStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingStatView.swift; sourceTree = "<group>"; };
+		020441AF2A9444EB00B3FB33 /* ApproachStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachStatView.swift; sourceTree = "<group>"; };
+		020441B12A9444FB00B3FB33 /* PuttingStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingStatView.swift; sourceTree = "<group>"; };
+		020441B32A94450800B3FB33 /* ShortGameStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortGameStatView.swift; sourceTree = "<group>"; };
+		020441B52A94742600B3FB33 /* StatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTable.swift; sourceTree = "<group>"; };
 		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictorTests.swift; sourceTree = "<group>"; };
 		020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
@@ -241,6 +255,18 @@
 				020441A42A941A0F00B3FB33 /* DrivingDetailView.swift */,
 			);
 			path = ShotTypeAnaylsis;
+			sourceTree = "<group>";
+		};
+		020441AA2A94434D00B3FB33 /* SpecificAnalysisViews */ = {
+			isa = PBXGroup;
+			children = (
+				020441AB2A9444CA00B3FB33 /* GeneralStatView.swift */,
+				020441AD2A9444E100B3FB33 /* DrivingStatView.swift */,
+				020441AF2A9444EB00B3FB33 /* ApproachStatView.swift */,
+				020441B12A9444FB00B3FB33 /* PuttingStatView.swift */,
+				020441B32A94450800B3FB33 /* ShortGameStatView.swift */,
+			);
+			path = SpecificAnalysisViews;
 			sourceTree = "<group>";
 		};
 		020B0FA829F9A283001E92E1 /* ShotPredictorTests */ = {
@@ -407,7 +433,10 @@
 			isa = PBXGroup;
 			children = (
 				02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */,
-				020441982A8EC1EF00B3FB33 /* StatTable.swift */,
+				020441A82A94423100B3FB33 /* StatAnalysisView.swift */,
+				020441AA2A94434D00B3FB33 /* SpecificAnalysisViews */,
+				020441A62A9437BD00B3FB33 /* RoundFilterView.swift */,
+				020441B52A94742600B3FB33 /* StatTable.swift */,
 				0204419A2A8EC7A100B3FB33 /* FocusedAnalysis.swift */,
 				0204419C2A900B5800B3FB33 /* ShotTypeAnaylsis */,
 			);
@@ -717,7 +746,7 @@
 			files = (
 				0222862129DF930700FEBB91 /* TendancyAnalyzer.swift in Sources */,
 				0260D1F029DA74A000EFAE79 /* ScorecardImage.swift in Sources */,
-				020441992A8EC1EF00B3FB33 /* StatTable.swift in Sources */,
+				020441B02A9444EB00B3FB33 /* ApproachStatView.swift in Sources */,
 				0260D1DF29D8E38200EFAE79 /* PickACourse.swift in Sources */,
 				02CFCAD12A002E1D00DA7D76 /* StringRepresentable.swift in Sources */,
 				0222866F29E8921000FEBB91 /* HotOrColdView.swift in Sources */,
@@ -745,6 +774,7 @@
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				020441A32A940E0E00B3FB33 /* PuttingDetailView.swift in Sources */,
 				02F7318D2A11A45A00CC5925 /* StrokesGainedGraph.swift in Sources */,
+				020441B62A94742600B3FB33 /* StatTable.swift in Sources */,
 				02CFCADA2A0C383800DA7D76 /* NavigationPopping.swift in Sources */,
 				02FEA1D129D3424500BCD7A4 /* ShotPredictor.swift in Sources */,
 				02CFCAD82A09F76F00DA7D76 /* ShotAnalyzer.swift in Sources */,
@@ -752,8 +782,10 @@
 				0222865629E34DB200FEBB91 /* CourseFilter.swift in Sources */,
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */,
+				020441AE2A9444E100B3FB33 /* DrivingStatView.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,
 				02FEA1CC29D3391C00BCD7A4 /* HoleByHole.swift in Sources */,
+				020441A92A94423100B3FB33 /* StatAnalysisView.swift in Sources */,
 				02FEA19129CECB0E00BCD7A4 /* ImageIcon.swift in Sources */,
 				02D3B9C329C7F2B700541A0E /* OldUserWelcome.swift in Sources */,
 				02FEA1B629CFB7E000BCD7A4 /* DatabaseCommunicator.swift in Sources */,
@@ -763,11 +795,14 @@
 				02FEA16A29CD142700BCD7A4 /* Authenticator.swift in Sources */,
 				02FEA1C329D1518200BCD7A4 /* SettingsView.swift in Sources */,
 				0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */,
+				020441B42A94450800B3FB33 /* ShortGameStatView.swift in Sources */,
+				020441AC2A9444CA00B3FB33 /* GeneralStatView.swift in Sources */,
 				0260D1E629D8EAC400EFAE79 /* CourseHoleByHole.swift in Sources */,
 				0222866929E87F7400FEBB91 /* GolferView.swift in Sources */,
 				02C7A01529FAE64C00C6E403 /* NumberFormatters.swift in Sources */,
 				02FEA1A629CF7D4700BCD7A4 /* Course.swift in Sources */,
 				0222867729E8C2FC00FEBB91 /* RoundViewList.swift in Sources */,
+				020441B22A9444FB00B3FB33 /* PuttingStatView.swift in Sources */,
 				0222868729ED9B0B00FEBB91 /* ProfileDetails.swift in Sources */,
 				0260D1EC29DA214400EFAE79 /* RoundSetupView.swift in Sources */,
 				02F731902A11B4D600CC5925 /* RoundBasedStats.swift in Sources */,
@@ -779,6 +814,7 @@
 				0222868929ED9B8700FEBB91 /* EditableStaticText.swift in Sources */,
 				02F7318B2A11984900CC5925 /* ShotFilters.swift in Sources */,
 				020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */,
+				020441A72A9437BD00B3FB33 /* RoundFilterView.swift in Sources */,
 				02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */,
 				0260D1E429D8E74400EFAE79 /* BasicCourseInfo.swift in Sources */,
 				0222866B29E883DF00FEBB91 /* Menu.swift in Sources */,
