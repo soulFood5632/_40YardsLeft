@@ -233,6 +233,8 @@ extension Hole {
     }
     
     
+    
+    
     /// Gets the shot index which a putt must be hit for a green in regulation
     /// - Returns: Gets the shot index where a putt must be hit for a green in regulation.
     private func getPuttShot() -> Int {

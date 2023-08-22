@@ -50,7 +50,7 @@ struct StatAnalysisView: View {
             }
             
             GroupBox {
-                ShortGameStatView()
+                ShortGameStatView(rounds: self.rounds)
             } label: {
                 Text("Short Game")
             }
@@ -62,7 +62,7 @@ struct StatAnalysisView: View {
         .sheet(item: self.$statFocus) { focus in
             switch focus {
             case .shortGame:
-                ShortGameStatView()
+                ShortGameStatView(rounds: self.rounds)
             case .general:
                 GeneralStatView(rounds: self.rounds)
             case .driving:

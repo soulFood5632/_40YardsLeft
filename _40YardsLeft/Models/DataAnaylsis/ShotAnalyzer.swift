@@ -373,6 +373,86 @@ extension Array where Element == Round {
         }
     }
     
+    func saves(filter: @escaping (Shot) -> Bool) -> (Int, Int) {
+        do {
+            let holeShots = try self.map { $0.holes }
+                .flatten()
+                .map { try $0.getSimplifiedShots() }
+            
+            var sandSaveList = [Bool]()
+            
+            holeShots.forEach { shots in
+                var index = 0
+                
+                while index < shots.count {
+                    if filter(shots[index]) {
+                        // first we see if there was a hole out. If there was then that means the up and down was succseseful.
+                        if index + 1 == shots.count {
+                            sandSaveList.append(true)
+                            break
+                        }
+                        // then we check to see if the green was hit on the chip. If it was not then we must add a false and continue our search for more up and downs.
+                        if shots[index].endPosition.lie == .green {
+                            if shots.count == index + 2 {
+                                sandSaveList.append(true)
+                                break
+                            }
+                        }
+                        
+                        sandSaveList.append(false)
+                    }
+                    index += 1
+                }
+            }
+            
+            return (sandSaveList.filter { $0 }.count, sandSaveList.count)
+            
+            
+        } catch {
+            fatalError()
+        }
+    }
+    
+    func saves(for lies: [Lie]) -> (Int, Int) {
+        do {
+            let holeShots = try self.map { $0.holes }
+                .flatten()
+                .map { try $0.getSimplifiedShots() }
+            
+            var sandSaveList = [Bool]()
+            
+            holeShots.forEach { shots in
+                var index = 0
+                
+                while index < shots.count {
+                    if shots[index].type == .chip_pitch && lies.contains(shots[index].startPosition.lie) {
+                        // first we see if there was a hole out. If there was then that means the up and down was succseseful.
+                        if index + 1 == shots.count {
+                            sandSaveList.append(true)
+                            break
+                        }
+                        // then we check to see if the green was hit on the chip. If it was not then we must add a false and continue our search for more up and downs.
+                        if shots[index].endPosition.lie == .green {
+                            if shots.count == index + 2 {
+                                sandSaveList.append(true)
+                                break
+                            }
+                        }
+                        
+                        sandSaveList.append(false)
+                    }
+                    index += 1
+                }
+            }
+            
+            return (sandSaveList.filter { $0 }.count, sandSaveList.count)
+            
+            
+        } catch {
+            fatalError()
+        }
+    }
+    
     
     
     

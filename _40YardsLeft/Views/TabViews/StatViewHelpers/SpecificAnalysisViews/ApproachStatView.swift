@@ -44,11 +44,24 @@ struct ApproachStatView: View {
     }
     
     var specificApproachStats: [DisplayStat<Double, Int>] {
-        [
+        
+        let strokesGained = shots.strokesGained { self.distanceBounds.contains($0.startPosition.yardage) && self.lies.contains($0.startPosition.lie) && $0.type == .approach }
+        let totalShots = shots.filter {self.distanceBounds.contains($0.startPosition.yardage) && self.lies.contains($0.startPosition.lie) && $0.type == .approach }.count
+        
+        if totalShots == 0 {
+            return [
+                DisplayStat(name: "Strokes Gained", value: 0, numOfSamples: totalShots, formatter: "%.2f"),
+            DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach)?.feet ?? 0, numOfSamples: totalShots, formatter: "%.1f"),
+            DisplayStat(name: "Success Rate", value: (shots.greenPercentageFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach) ?? 0) * 100, numOfSamples: totalShots, formatter: "%.1f", isPercent: true),
+                ]
+        }
+        return [
             
-            //TODO: fix this up as needed
-            DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach)?.feet ?? 0, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f"),
-            DisplayStat(name: "Success Rate", value: (shots.greenPercentageFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach) ?? 0) * 100, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f", isPercent: true),
+
+            DisplayStat(name: "Strokes Gained", value: Double(strokesGained) / Double(totalShots), numOfSamples: totalShots, formatter: "%.2f"),
+            DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach)?.feet ?? 0, numOfSamples: totalShots, formatter: "%.1f"),
+            DisplayStat(name: "Success Rate", value: (shots.greenPercentageFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach) ?? 0) * 100, numOfSamples: totalShots, formatter: "%.1f", isPercent: true),
+            
         ]
     }
     var body: some View {
@@ -91,9 +104,6 @@ struct ApproachStatView: View {
                 
                 
             }
-                
-                
-            
         }
         .animation(.easeInOut, value: self.distanceBounds)
         .animation(.easeInOut, value: self.lies)
