@@ -75,6 +75,7 @@ struct ShortGameStatView: View {
         if totalShots == 0 {
             return [
                 DisplayStat(name: "Strokes Gained", value: 0, numOfSamples: totalShots, formatter: "%.2f"),
+                DisplayStat(name: "Strokes To Hole Out", value: rounds.strokesToHoleOut(self.shotFilter).0 ?? 0, numOfSamples: rounds.strokesToHoleOut(self.shotFilter).1, formatter: "%.2f"),
                 DisplayStat(name: "Save %", value: 0, numOfSamples: rounds.saves(filter: self.shotFilter).1, formatter: "%.1f", isPercent: true),
 
                 DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .chip_pitch)?.feet ?? 0, numOfSamples: totalShots, formatter: "%.1f"),
@@ -84,7 +85,9 @@ struct ShortGameStatView: View {
         return [
             
             
-            DisplayStat(name: "Strokes Gained", value: 0, numOfSamples: totalShots, formatter: "%.2f"),
+            DisplayStat(name: "Strokes Gained", value: Double(strokesGained) / Double(totalShots), numOfSamples: totalShots, formatter: "%.2f"),
+            
+            DisplayStat(name: "Strokes To Hole Out", value: rounds.strokesToHoleOut(self.shotFilter).0 ?? 0, numOfSamples: rounds.strokesToHoleOut(self.shotFilter).1, formatter: "%.2f"),
             DisplayStat(name: "Save %", value: Double(rounds.saves(filter: self.shotFilter).0) / Double(rounds.saves(filter: self.shotFilter).1) * 100, numOfSamples: rounds.saves(filter: self.shotFilter).1, formatter: "%.1f", isPercent: true),
             
             DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .chip_pitch)?.feet ?? 0, numOfSamples: totalShots, formatter: "%.1f"),

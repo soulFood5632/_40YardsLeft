@@ -454,6 +454,45 @@ extension Array where Element == Round {
     }
     
     
+    func strokesToHoleOut(_ filter: (Shot) -> Bool) -> (Double?, Int) {
+        do {
+            var totalStrokes = [Int]()
+            try self.map { $0.holes }
+                .flatten()
+                .map { try $0.getSimplifiedShots() }
+                .forEach { shots in
+                    if let index = shots.firstIndex(where: { filter($0) }) {
+                        totalStrokes.append(shots.count - index)
+                        
+                    }
+                }
+            
+            return (totalStrokes.average(), totalStrokes.count)
+        } catch {
+            fatalError()
+        }
+    }
+    
+    func threePuttOccurance(_ filter: (Shot) -> Bool) -> (Int, Int) {
+        do {
+            var totalStrokes = [Int]()
+            try self.map { $0.holes }
+                .flatten()
+                .map { try $0.getSimplifiedShots() }
+                .forEach { shots in
+                    if let index = shots.firstIndex(where: { filter($0) }) {
+                        totalStrokes.append(shots.count - index)
+                        
+                    }
+                }
+            
+            return (totalStrokes.filter { $0 >= 3 }.count, totalStrokes.count)
+        } catch {
+            fatalError()
+        }
+    }
+    
+    
     
     
 }

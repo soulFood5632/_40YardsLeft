@@ -23,7 +23,7 @@ struct StatAnalysisView: View {
             }
             
             GroupBox {
-                DrivingStatView(rounds: self.rounds)
+                
             } label: {
                 Text("Driving")
             }
@@ -32,7 +32,7 @@ struct StatAnalysisView: View {
             }
             
             GroupBox {
-                ApproachStatView(rounds: self.rounds)
+                
             } label: {
                 Text("Approach")
             }
@@ -41,7 +41,7 @@ struct StatAnalysisView: View {
             }
             
             GroupBox {
-                PuttingStatView()
+                
             } label: {
                 Text("Putting")
             }
@@ -50,7 +50,7 @@ struct StatAnalysisView: View {
             }
             
             GroupBox {
-                ShortGameStatView(rounds: self.rounds)
+                
             } label: {
                 Text("Short Game")
             }
@@ -68,7 +68,7 @@ struct StatAnalysisView: View {
             case .driving:
                 DrivingStatView(rounds: self.rounds)
             case .putting:
-                PuttingStatView()
+                PuttingStatView(rounds: self.rounds)
             case .approach:
                 ApproachStatView(rounds: self.rounds)
             }

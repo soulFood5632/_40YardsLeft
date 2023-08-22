@@ -48,6 +48,7 @@ struct DistanceAndLieFilter: View {
                         .foregroundColor(self.lies.contains(lie) ? .accentColor : .primary)
                 } icon: {
                     Image(systemName: self.lies.contains(lie) ? "checkmark.circle" : "circle")
+                        .foregroundColor(self.lies.contains(lie) ? .accentColor : .primary)
                     
                 }
                 .bold(self.lies.contains(lie))

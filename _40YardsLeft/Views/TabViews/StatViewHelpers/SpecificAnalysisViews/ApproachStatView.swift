@@ -40,6 +40,7 @@ struct ApproachStatView: View {
             DisplayStat(name: "Greens", value: Double(rounds.greensInReg().0) / Double(rounds.greensInReg().1) * 100, numOfSamples: rounds.greensInReg().1, formatter: "%.1f", isPercent: true),
             DisplayStat(name: "Proximity", value: shots.proximityFrom(ShotFilters.allApproach)?.feet ?? 0, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f"),
             DisplayStat(name: "Success Rate", value: (shots.percentageEndingIn(lies: [.green], shotType: .approach) ?? 0) * 100, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f", isPercent: true),
+            DisplayStat(name: "Strokes To Hole Out", value: rounds.strokesToHoleOut(ShotFilters.allApproach).0 ?? 0, numOfSamples: rounds.strokesToHoleOut(ShotFilters.allApproach).1, formatter: "%.2f"),
         ]
     }
     
@@ -48,11 +49,14 @@ struct ApproachStatView: View {
         let strokesGained = shots.strokesGained { self.distanceBounds.contains($0.startPosition.yardage) && self.lies.contains($0.startPosition.lie) && $0.type == .approach }
         let totalShots = shots.filter {self.distanceBounds.contains($0.startPosition.yardage) && self.lies.contains($0.startPosition.lie) && $0.type == .approach }.count
         
+        let filter: (Shot) -> Bool = { self.distanceBounds.contains($0.startPosition.yardage) && self.lies.contains($0.startPosition.lie) && $0.type == .approach }
+        
         if totalShots == 0 {
             return [
                 DisplayStat(name: "Strokes Gained", value: 0, numOfSamples: totalShots, formatter: "%.2f"),
             DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach)?.feet ?? 0, numOfSamples: totalShots, formatter: "%.1f"),
             DisplayStat(name: "Success Rate", value: (shots.greenPercentageFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach) ?? 0) * 100, numOfSamples: totalShots, formatter: "%.1f", isPercent: true),
+                DisplayStat(name: "Strokes To Hole Out", value: rounds.strokesToHoleOut(filter).0 ?? 0, numOfSamples: rounds.strokesToHoleOut(filter).1, formatter: "%.2f"),
                 ]
         }
         return [
@@ -61,6 +65,7 @@ struct ApproachStatView: View {
             DisplayStat(name: "Strokes Gained", value: Double(strokesGained) / Double(totalShots), numOfSamples: totalShots, formatter: "%.2f"),
             DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach)?.feet ?? 0, numOfSamples: totalShots, formatter: "%.1f"),
             DisplayStat(name: "Success Rate", value: (shots.greenPercentageFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach) ?? 0) * 100, numOfSamples: totalShots, formatter: "%.1f", isPercent: true),
+            DisplayStat(name: "Strokes To Hole Out", value: rounds.strokesToHoleOut(filter).0 ?? 0, numOfSamples: rounds.strokesToHoleOut(filter).1, formatter: "%.2f"),
             
         ]
     }
