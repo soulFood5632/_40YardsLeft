@@ -208,7 +208,7 @@ extension Position {
 /// A set of values which house the valid lie types on a golf course
 enum Lie : String, Codable, Hashable, CaseIterable {
     
-    case fairway = "Fairway"
+    case fairway = "Fwy"
     case rough = "Rough"
     case tee = "Tee"
     case bunker = "Sand"

@@ -11,42 +11,92 @@ import Charts
 struct ApproachStatView: View {
     let rounds: [Round]
     
-    var drivingStats: [DisplayStat<Double, Int>] {
+    @State private var distanceBounds: Range<Distance> = Distance(yards: 50)..<Distance(yards: 250)
+    @State private var lies: [Lie] = [.fairway]
+    
+    var strokesGained: [DisplayStat<Double, Int>] {
         [
             DisplayStat(name: "Strokes Gained Per Shot", value: rounds.strokesGained(for: .approach).0 / Double(rounds.strokesGained(for: .approach).1), numOfSamples: rounds.strokesGained(for: .approach).1, formatter: "%.2f"),
             DisplayStat(name: "Strokes Gained Per Round", value: rounds.strokesGained(for: .approach ).0 / Double(rounds.strokesGained(for: .approach).2), numOfSamples: rounds.count, formatter: "%.2f"),
-            DisplayStat(name: "Driving Distance", value: rounds.averageDrivingDistance().0?.yards ?? 0, numOfSamples: rounds.averageDrivingDistance().1, formatter: "%.1f"),
+        ]
+    }
+    
+    var shots: [Shot] {
+        do {
+            return try self.rounds
+                .map { $0.holes }
+                .flatten()
+                .map { try $0.getSimplifiedShots() }
+                .flatten()
+        } catch {
+            preconditionFailure("Line should never be reached")
             
+        }
+    }
+    
+    var approachStats: [DisplayStat<Double, Int>] {
+        [
             
-            DisplayStat(name: "Fairway", value: Double(rounds.fairways().0) / Double(rounds.fairways().1) * 100, numOfSamples: rounds.fairways().1, formatter: "%.1f", isPercent: true),
-            DisplayStat(name: "Open Shot", value: Double(rounds.openShotPercentage().0) / Double(rounds.openShotPercentage().1) * 100, numOfSamples: rounds.openShotPercentage().1, formatter: "%.1f", isPercent: true),
-            DisplayStat(name: "Penalty", value: Double(rounds.penaltyPercentage().0 ?? 0) * 100 , numOfSamples: rounds.penaltyPercentage().1, formatter: "%.1f", isPercent: true),
-            DisplayStat(name: "Trees", value: Double(rounds.treePercentage().0 ?? 0) * 100 , numOfSamples: rounds.treePercentage().1, formatter: "%.1f", isPercent: true),
+            DisplayStat(name: "Greens", value: Double(rounds.greensInReg().0) / Double(rounds.greensInReg().1) * 100, numOfSamples: rounds.greensInReg().1, formatter: "%.1f", isPercent: true),
+            DisplayStat(name: "Proximity", value: shots.proximityFrom(ShotFilters.allApproach)?.feet ?? 0, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f"),
+            DisplayStat(name: "Success Rate", value: (shots.percentageEndingIn(lies: [.green], shotType: .approach) ?? 0) * 100, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f", isPercent: true),
+        ]
+    }
+    
+    var specificApproachStats: [DisplayStat<Double, Int>] {
+        [
             
+            //TODO: fix this up as needed
+            DisplayStat(name: "Proximity", value: shots.approachProximityFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach)?.feet ?? 0, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f"),
+            DisplayStat(name: "Success Rate", value: (shots.greenPercentageFrom(range: self.distanceBounds, lie: self.lies, shotType: .approach) ?? 0) * 100, numOfSamples: shots.filter(ShotFilters.allApproach).count, formatter: "%.1f", isPercent: true),
         ]
     }
     var body: some View {
         VStack {
-            Chart(rounds) {
-                PointMark(
-                    x: .value("Date", $0.date),
-                    y: .value("Strokes Gained", $0.strokesGainedApproach())
-                )
-                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
-                
-                RuleMark(y: .value("Tour Average", 0))
-                    .foregroundStyle(.primary)
-            }
-            .padding()
             
-            List {
-                Section {
-                    StatTable(titleValuePairs: self.drivingStats)
-                } header: {
-                    Text("Accuracy")
+                Chart(rounds) {
+                    PointMark(
+                        x: .value("Date", $0.date),
+                        y: .value("Strokes Gained", $0.strokesGainedApproach())
+                    )
+                    .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+                    
+                    RuleMark(y: .value("Tour Average", 0))
+                        .foregroundStyle(.primary)
                 }
+                .padding()
+                
+            List {
+                
+                Section {
+                    StatTable(titleValuePairs: self.strokesGained)
+                } header: {
+                    Text("Strokes Gained")
+                }
+                Section {
+                    StatTable(titleValuePairs: self.approachStats)
+                } header: {
+                    Text("Overall")
+                }
+                
+                
+                Section {
+                    
+                    DistanceAndLieFilter(distanceBounds: self.$distanceBounds, lies: $lies)
+                    
+                    StatTable(titleValuePairs: self.specificApproachStats)
+                } header: {
+                    Text("Filtered")
+                }
+                
+                
             }
+                
+                
+            
         }
+        .animation(.easeInOut, value: self.distanceBounds)
+        .animation(.easeInOut, value: self.lies)
     }
 }
 

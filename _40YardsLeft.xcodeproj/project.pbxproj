@@ -20,6 +20,7 @@
 		020441B22A9444FB00B3FB33 /* PuttingStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B12A9444FB00B3FB33 /* PuttingStatView.swift */; };
 		020441B42A94450800B3FB33 /* ShortGameStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B32A94450800B3FB33 /* ShortGameStatView.swift */; };
 		020441B62A94742600B3FB33 /* StatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B52A94742600B3FB33 /* StatTable.swift */; };
+		020441B82A949CAC00B3FB33 /* DistanceAndLieFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020441B72A949CAC00B3FB33 /* DistanceAndLieFilter.swift */; };
 		020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */; };
 		020B0FAA29F9A2C9001E92E1 /* ShotPredictorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */; };
 		020B0FAC29F9A5C0001E92E1 /* RoundOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */; };
@@ -135,6 +136,7 @@
 		020441B12A9444FB00B3FB33 /* PuttingStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingStatView.swift; sourceTree = "<group>"; };
 		020441B32A94450800B3FB33 /* ShortGameStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortGameStatView.swift; sourceTree = "<group>"; };
 		020441B52A94742600B3FB33 /* StatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTable.swift; sourceTree = "<group>"; };
+		020441B72A949CAC00B3FB33 /* DistanceAndLieFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceAndLieFilter.swift; sourceTree = "<group>"; };
 		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictorTests.swift; sourceTree = "<group>"; };
 		020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				020441AF2A9444EB00B3FB33 /* ApproachStatView.swift */,
 				020441B12A9444FB00B3FB33 /* PuttingStatView.swift */,
 				020441B32A94450800B3FB33 /* ShortGameStatView.swift */,
+				020441B72A949CAC00B3FB33 /* DistanceAndLieFilter.swift */,
 			);
 			path = SpecificAnalysisViews;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				0204419B2A8EC7A100B3FB33 /* FocusedAnalysis.swift in Sources */,
 				02FEA19629CF785C00BCD7A4 /* Golfer.swift in Sources */,
 				0222867929E9A3DF00FEBB91 /* RoundInfo.swift in Sources */,
+				020441B82A949CAC00B3FB33 /* DistanceAndLieFilter.swift in Sources */,
 				02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */,
 				0222868929ED9B8700FEBB91 /* EditableStaticText.swift in Sources */,
 				02F7318B2A11984900CC5925 /* ShotFilters.swift in Sources */,

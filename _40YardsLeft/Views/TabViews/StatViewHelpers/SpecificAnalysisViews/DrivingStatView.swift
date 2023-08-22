@@ -11,10 +11,18 @@ import Charts
 struct DrivingStatView: View {
     let rounds: [Round]
     
-    var drivingStats: [DisplayStat<Double, Int>] {
+    
+    var strokesGained: [DisplayStat<Double, Int>] {
         [
             DisplayStat(name: "Strokes Gained Per Shot", value: rounds.strokesGained(for: .drive ).0 / Double(rounds.strokesGained(for: .drive).1), numOfSamples: rounds.strokesGained(for: .drive).1, formatter: "%.2f"),
             DisplayStat(name: "Strokes Gained Per Round", value: rounds.strokesGained(for: .drive ).0 / Double(rounds.strokesGained(for: .drive).2), numOfSamples: rounds.count, formatter: "%.2f"),
+        ]
+        
+    }
+    
+    var drivingStats: [DisplayStat<Double, Int>] {
+        [
+            
             DisplayStat(name: "Driving Distance", value: rounds.averageDrivingDistance().0?.yards ?? 0, numOfSamples: rounds.averageDrivingDistance().1, formatter: "%.1f"),
             
             
@@ -37,10 +45,17 @@ struct DrivingStatView: View {
             .padding()
             
             List {
+                
+                Section {
+                    StatTable(titleValuePairs: self.strokesGained)
+                } header: {
+                    Text("Strokes Gained")
+                }
+                
                 Section {
                     StatTable(titleValuePairs: self.drivingStats)
                 } header: {
-                    Text("Accuracy")
+                    Text("Traditional")
                 }
             }
         }
