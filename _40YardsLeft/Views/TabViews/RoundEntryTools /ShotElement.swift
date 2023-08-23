@@ -123,7 +123,9 @@ extension ShotElement {
         let yardage = self.shot.position.yardage
         switch lie {
         case .tee:
-            self.shot.declaration = .drive
+            break
+            // had to remove this section becuase it changed par 3's to drives whomp whomp
+//            self.shot.declaration = .drive
         case .fairway:
             if yardage > .yards(300) {
                 self.shot.declaration = .other

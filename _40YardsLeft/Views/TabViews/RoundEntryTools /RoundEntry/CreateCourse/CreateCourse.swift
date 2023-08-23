@@ -48,7 +48,7 @@ struct CreateCourse: View {
             HStack {
                 
                 Button {
-                    //TODO: add action to drop out of this view and populate bottom view with this new course
+                    
                     self.showView = false
                     path.append(createCourse())
                     

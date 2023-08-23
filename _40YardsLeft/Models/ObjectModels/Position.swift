@@ -157,7 +157,6 @@ extension Position {
         if value < 1 {
             return 1
         }
-        
         return value
         
     }

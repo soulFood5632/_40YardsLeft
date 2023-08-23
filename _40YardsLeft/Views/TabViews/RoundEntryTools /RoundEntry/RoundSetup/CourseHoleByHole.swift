@@ -22,13 +22,12 @@ struct TeeBuffer {
     }
     
     
-    mutating func fillHandicaps(with tee: Tee) {
-
-        let handicapList = tee.holeData.map { $0.handicap }
-        
-        for index in handicapList.indices {
-            holeData[index].handicap = handicapList[index]
+    mutating func fillBuffer(with tee: Tee) {
+        for index in tee.holeData.indices {
+            holeData.append(tee.holeData[index])
         }
+        
+        print(holeData.debugDescription)
     }
     
     
@@ -158,12 +157,16 @@ extension CourseHoleByHole {
 
     
     private func addHoles(_ number: Int) {
-        for _ in 1...number {
-            self.buffer.holeData.append(.averageHole)
-        }
+        
         if let teeTemplate {
-            self.buffer.fillHandicaps(with: teeTemplate)
+            self.buffer.fillBuffer(with: teeTemplate)
+        } else {
+            
+            for _ in 1...number {
+                self.buffer.holeData.append(.averageHole)
+            }
         }
+        
         
 
     }

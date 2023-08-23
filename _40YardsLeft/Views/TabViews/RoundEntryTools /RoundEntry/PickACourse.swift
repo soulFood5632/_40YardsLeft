@@ -26,9 +26,7 @@ struct PickACourse: View {
                 .padding(.bottom, 6)
             
             Button {
-                
                 path.append(chosenCourse!)
-
             } label: {
                 Label("Confirm", systemImage: "checkmark")
             }

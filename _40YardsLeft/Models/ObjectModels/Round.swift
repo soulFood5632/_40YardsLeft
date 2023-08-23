@@ -187,8 +187,8 @@ extension Round {
     }
     
     var backNinePar: Int {
-        let frontNine = self.getFrontNine()
-        return frontNine.map { $0.holeData.par }.reduce(0) { partialResult, par in
+        let backNine = self.getBackNine()
+        return backNine.map { $0.holeData.par }.reduce(0) { partialResult, par in
             return partialResult + par
         }
     }
@@ -206,6 +206,7 @@ extension Round {
     /// - This variable can be called during the round (it need to not be complete).
     var scoreToPar: Int {
         if isComplete {
+            
             return roundScore - totalPar
         }
         

@@ -51,13 +51,16 @@ struct RoundPrepView: View {
         VStack {
             GroupBox {
                 List {
+                    
                     ForEach(course.listOfTees) { tee in
                         let isHighlighted = self.buffer.tee == tee
                         HStack {
                             Text("\(tee.name)")
                                 .bold()
+                                
                             Divider()
-                            Text("\(tee.rating, format: .number) | \(tee.slope) | \(tee.yardage.yards, format: .number) | \(tee.par)")
+                            Text("\(tee.rating, format: .number), \(tee.slope), \(tee.yardage.yards, format: .number), \(tee.par)")
+                                .fontWeight(.light)
                             
                             if isHighlighted {
                                 Image(systemName: "checkmark")
@@ -72,9 +75,7 @@ struct RoundPrepView: View {
                             }
                         }
                         .foregroundColor(isHighlighted ? .primary : .secondary)
-                        
-                        
-                        
+
                     }
                     
                     Button {
@@ -92,12 +93,7 @@ struct RoundPrepView: View {
             }
             
             
-            
-            
-            
             GroupBox {
-                
-                
                 Form {
                     
                     DatePicker(selection: self.$buffer.date) {
@@ -124,6 +120,9 @@ struct RoundPrepView: View {
             } label: {
                 Label("Start Round", systemImage: "figure.golf")
             }
+            .onChange(of: self.course.listOfTees, perform: { newValue in
+                print(newValue.debugDescription)
+            })
             .buttonStyle(.borderedProminent)
             .disabled(!self.isReady)
             

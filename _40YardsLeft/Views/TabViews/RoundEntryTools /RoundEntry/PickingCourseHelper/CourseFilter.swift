@@ -61,20 +61,11 @@ struct CourseFilter: View {
                 
             }
             
-//            NavigationLink(value: self.courseQuery) {
-//                if self.chosenCourse == nil {
-//                    Label("Search", systemImage: "magnifyingglass")
-//
-//                } else {
-//                    Label("Edit", systemImage: "pencil")
-//                        .padding(.top, 3)
-//                }
-//            }
+
                 
             
             Button {
-//                print("adding \(courseQuery.debugDescription)")
-//                path.append(self.courseQuery)
+
                 self.isQueryReady = true
             } label: {
                 if self.chosenCourse == nil {
@@ -92,13 +83,10 @@ struct CourseFilter: View {
         }
         
         .sheet(isPresented: self.$isQueryReady, onDismiss: {
-            self.courseQuery = []
+            
         }, content: {
             CourseSearcher(overallQuery: self.courseQuery, chosenCourse: self.$chosenCourse, path: self.$path, showView: self.$isQueryReady)
         })
-//        .navigationDestination(for: [Course].self) { courseList in
-//            CourseSearcher(overallQuery: courseList, chosenCourse: self.$chosenCourse, path: self.$path)
-//        }
         .animation(.easeInOut, value: self.chosenCourse)
         .animation(.spring(dampingFraction: 0.6), value: self.isLoading)
         .onAppear {
@@ -117,9 +105,7 @@ struct CourseFilter: View {
             
             self.chosenCourse = nil
         }
-//        .onChange(of: self.courseQuery) { query in
-//            self.isQueryReady = !query.isEmpty
-//        }
+
         
         
         
