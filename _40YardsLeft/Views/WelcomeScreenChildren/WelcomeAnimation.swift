@@ -115,6 +115,7 @@ struct WelcomeAnimation: View {
                 Task {
                     
                     let golfer = try await DatabaseCommunicator.getGolfer(id: newUser.uid)
+                
                     
                     path.append(golfer)
                 }

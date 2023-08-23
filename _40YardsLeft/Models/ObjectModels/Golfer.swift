@@ -56,7 +56,7 @@ struct Golfer: Codable, Hashable {
 
 extension Golfer: Equatable {
     static func == (lhs: Golfer, rhs: Golfer) -> Bool {
-        lhs.firebaseID == rhs.firebaseID
+        lhs.firebaseID == rhs.firebaseID && lhs.rounds == rhs.rounds
     }
 }
 

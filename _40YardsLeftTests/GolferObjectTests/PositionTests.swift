@@ -65,6 +65,26 @@ final class PositionTests: XCTestCase {
         XCTAssertEqual(try Position.holed.getExpectedStrokes(), 0, accuracy: 0.25)
     }
     
+    func testExpectedShotValue8() throws {
+        
+        XCTAssertEqual(try Position.init(lie: .green, yardage: .feet(1)).getExpectedStrokes(), 1, accuracy: 0.1)
+        
+    }
+    
+    func testExpectedShotValue9() throws {
+        
+        XCTAssertEqual(try Position.init(lie: .green, yardage: .feet(2)).getExpectedStrokes(), 1, accuracy: 0.1)
+        print(try Position.init(lie: .green, yardage: .feet(2)).getExpectedStrokes())
+    }
+    
+    func testExpectedShotValue10() throws {
+        
+        XCTAssertEqual(try Position.init(lie: .green, yardage: .feet(3)).getExpectedStrokes(), 1.1, accuracy: 0.1)
+        print(try Position.init(lie: .green, yardage: .feet(3)).getExpectedStrokes())
+    }
+    
+   
+    
     
 
     

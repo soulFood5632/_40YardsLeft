@@ -57,6 +57,8 @@ struct ShortGameStatView: View {
         
         let sandSave = Double(rounds.saves(for: [.bunker]).0) / Double(rounds.saves(for: [.bunker]).1) * 100
         
+        let twoChips = Double(rounds.twoChipOccurances().0) / Double(rounds.twoChipOccurances().1)
+        
         return [
             DisplayStat(name: "Up and Downs", value: upAndDowns.isNaN ? 0 : upAndDowns, numOfSamples: rounds.upAndDowns().1, formatter: "%.1f", isPercent: true),
             DisplayStat(name: "Fairway Save", value: fairwaySave.isNaN ? 0 : fairwaySave, numOfSamples: rounds.saves(for: [.fairway]).1, formatter: "%.1f", isPercent: true),
@@ -64,6 +66,8 @@ struct ShortGameStatView: View {
             DisplayStat(name: "Sand Save", value: sandSave.isNaN ? 0 : sandSave, numOfSamples: rounds.saves(for: [.bunker]).1, formatter: "%.1f", isPercent: true),
             DisplayStat(name: "Proximity", value: shots.proximityFrom(ShotFilters.allShortGame)?.feet ?? 0, numOfSamples: shots.filter(ShotFilters.allShortGame).count, formatter: "%.1f"),
             DisplayStat(name: "Inside \(insideProxValue.feet) Feet", value: (shots.percentageInsideProx(maxDistance: self.insideProxValue, shotType: .chip_pitch) ?? 0) * 100, numOfSamples: shots.filter(ShotFilters.allShortGame).count, formatter: "%.1f", isPercent: true),
+            
+            DisplayStat(name: "Two Chip %", value: twoChips.isNaN ? 0 : twoChips, numOfSamples: rounds.twoChipOccurances().1, formatter: "%.1f", isPercent: true),
         ]
     }
     
@@ -97,83 +101,95 @@ struct ShortGameStatView: View {
         ]
     }
     var body: some View {
-        VStack {
-            
-            Chart(rounds) {
-                PointMark(
-                    x: .value("Date", $0.date),
-                    y: .value("Strokes Gained", $0.strokesGainedShortGame())
-                )
-                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+        GroupBox {
+            VStack {
                 
-                RuleMark(y: .value("Tour Average", 0))
-                    .foregroundStyle(.primary)
-            }
-            .padding()
-            
-            let distanceBinding = Binding<Double> {
-                self.insideProxValue.feet
-            } set: { newValue in
-                if newValue > 100 {
-                    self.insideProxValue = .feet(100)
-                } else if newValue < 0 {
-                    self.insideProxValue = .zero
-                } else {
-                    self.insideProxValue = .feet(newValue)
-                }
-            }
-            
-            GroupBox {
-                
-                Slider(value: distanceBinding, in: 0...30, step: 1) {
-                    Text("Inside Distance Slider")
-                } minimumValueLabel: {
-                    Text("0")
-                        .fontWeight(.thin)
-                } maximumValueLabel: {
-                    Text("30")
-                        .fontWeight(.thin)
-                }
-            } label: {
-                HStack {
-                    Text("Distance Slider")
-                        .font(.headline)
+                List {
                     
-                    Text("\(self.insideProxValue.feet, specifier: "%.0f")")
-                        .font(.subheadline)
-                }
-            }
-            .padding(.horizontal)
+                    Chart(rounds) {
+                        PointMark(
+                            x: .value("Date", $0.date),
+                            y: .value("Strokes Gained", $0.strokesGainedShortGame())
+                        )
+                        .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+                        
+                        RuleMark(y: .value("Tour Average", 0))
+                            .foregroundStyle(.primary)
+                    }
+                    .padding()
+                    
+                    let distanceBinding = Binding<Double> {
+                        self.insideProxValue.feet
+                    } set: { newValue in
+                        if newValue > 100 {
+                            self.insideProxValue = .feet(100)
+                        } else if newValue < 0 {
+                            self.insideProxValue = .zero
+                        } else {
+                            self.insideProxValue = .feet(newValue)
+                        }
+                    }
 
-            
-            List {
-                
-                Section {
-                    StatTable(titleValuePairs: self.strokesGained)
-                } header: {
-                    Text("Strokes Gained")
-                }
-                Section {
-                    StatTable(titleValuePairs: self.chipStats)
-                } header: {
-                    Text("Overall")
-                }
-                
-                
-                Section {
+                    Section {
+                        StatTable(titleValuePairs: self.strokesGained)
+                    } header: {
+                        Text("Strokes Gained")
+                            .font(.headline)
+                    }
                     
-                    DistanceAndLieFilter(distanceBounds: self.$distanceBounds, lies: $lies)
+                    Section {
+                        GroupBox {
+                            
+                            Slider(value: distanceBinding, in: 0...30, step: 1) {
+                                Text("Inside Distance Slider")
+                            } minimumValueLabel: {
+                                Text("0")
+                                    .fontWeight(.thin)
+                            } maximumValueLabel: {
+                                Text("30")
+                                    .fontWeight(.thin)
+                            }
+                        } label: {
+                            HStack {
+                                Text("Distance Slider")
+                                    .font(.headline)
+                                
+                                Text("\(self.insideProxValue.feet, specifier: "%.0f")")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
                     
-                    StatTable(titleValuePairs: self.specificChipStats)
-                } header: {
-                    Text("Filtered")
+                    Section {
+                        StatTable(titleValuePairs: self.chipStats)
+                    } header: {
+                        Text("Overall")
+                            .font(.headline)
+                    }
+                    
+                    
+                    Section {
+                        
+                        DistanceAndLieFilter(distanceBounds: self.$distanceBounds, lies: $lies)
+                        
+                        StatTable(titleValuePairs: self.specificChipStats)
+                    } header: {
+                        Text("Filtered")
+                            .font(.headline)
+                    }
+                    
+                    
                 }
-                
-                
             }
+            .animation(.easeInOut, value: self.distanceBounds)
+            .animation(.easeInOut, value: self.lies)
+        } label: {
+            Text("Short Game")
+                .font(.title)
+                .bold()
         }
-        .animation(.easeInOut, value: self.distanceBounds)
-        .animation(.easeInOut, value: self.lies)
+        .padding()
+        
     }
 }
 

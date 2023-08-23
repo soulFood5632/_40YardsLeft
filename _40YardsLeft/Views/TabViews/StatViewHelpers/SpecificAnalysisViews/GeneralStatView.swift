@@ -45,26 +45,34 @@ struct GeneralStatView: View {
     
     
     var body: some View {
-        VStack {
-            List {
-                Section {
-                    StatTable(titleValuePairs: self.holeData)
-                } header: {
-                    Text("Hole-By-Hole")
-                        .font(.headline)
+        GroupBox {
+            VStack {
+                List {
+                    Section {
+                        StatTable(titleValuePairs: self.holeData)
+                    } header: {
+                        Text("Hole-By-Hole")
+                            .font(.headline)
                         
+                    }
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.fullRoundScoring)
+                    } header: {
+                        Text("Full Round")
+                            .font(.headline)
+                        
+                    }
                 }
                 
-                Section {
-                    StatTable(titleValuePairs: self.fullRoundScoring)
-                } header: {
-                    Text("Full Round")
-                        .font(.headline)
-                        
-                }
+                
             }
-            
+        } label: {
+            Text("General")
+                .font(.title)
+                .bold()
         }
+        .padding()
     }
 }
 

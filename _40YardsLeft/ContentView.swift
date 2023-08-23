@@ -19,6 +19,8 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             
+            let _ = Self._printChanges()
+            
             WelcomeScreen(path: $path)
                 .navigationDestination(for: Golfer.self) { newGolfer in
                     

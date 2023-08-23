@@ -183,22 +183,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "624E56A2-F8F6-4989-ABE8-3B71E59561CE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "_40YardsLeft/Models/ObjectModels/Round.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "getShots()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "24234EDA-CB0D-45BE-8920-85ED5FA97BA5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -494,8 +478,8 @@
             filePath = "_40YardsLeft/Views/HomeView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -510,8 +494,8 @@
             filePath = "_40YardsLeft/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -605,8 +589,8 @@
             filePath = "_40YardsLeft/Models/ObjectModels/Round.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "updateHole(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -621,10 +605,10 @@
             filePath = "_40YardsLeft/Models/ObjectModels/Round.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "updateHole(_:with:)"
-            landmarkType = "7">
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "Round"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -845,6 +829,227 @@
             endingLineNumber = "112"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - 75caf0ee1b7c4b36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - e94af51f65906f0c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - c12fad8ec7568f34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - fb5e3f3f15a2513b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6E64C26D-D75F-4C84-8202-FD1D97335C37"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD94EF21-0294-48FF-BD39-7391A984689B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "getGolfer(id:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - b3105cd0cff63edd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "316">
+               </Location>
+               <Location
+                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - d4eb99c8daa1dc6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - 968c868f360f62df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - e8b2d2602d3b04de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86C725EA-6651-42E0-B683-2E658C357E71"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getGolfer(id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6"
+            shouldBeEnabled = "Yes"
+            condition = "range.lowerBound == .zero"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "strokesGainedStats"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36E13DA3-9348-4B7D-8646-D0DBE1E383D4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "_40YardsLeft/Models/ObjectModels/Position.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "getExpectedStrokes()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

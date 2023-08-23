@@ -18,12 +18,11 @@ struct GolferView: View {
                 
                 GroupBox {
                     VStack {
-                        Text("Handicap")
+                        Text("Low Round")
                             .bold()
-                        if let handicap = golfer.handicap {
-                            Text("\(handicap, format: .number)")
+                        if let minScore = golfer.rounds.map { $0.roundScore }.min() {
+                            Text("\(minScore, format: .number)")
                         } else {
-                            //TODO: maybe fix
                             Text("No rounds")
                         }
                     }
@@ -31,8 +30,8 @@ struct GolferView: View {
                 
                 GroupBox {
                     VStack {
-                        //TODO: make year format
-                        Text("Rounds") //TODO: imploment the correct filter
+                        
+                        Text("Rounds")
                             .bold()
                         Text("\(golfer.rounds.filter{ $0 == $0 }.count)")
                     }
@@ -43,11 +42,10 @@ struct GolferView: View {
                     VStack {
                         Text("Scoring")
                             .bold()
-                        if let scoringAverage = self.golfer.scoringAverage {
+                        if let scoringAverage = self.golfer.rounds.scoringAverage() {
                             
                             Text(scoringAverage.toDecimalPlaces(1))
                         } else {
-                            //TODO: Look into this
                             Text("No Rounds")
                         }
                         

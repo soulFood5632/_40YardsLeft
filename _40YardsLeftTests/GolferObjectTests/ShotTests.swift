@@ -87,7 +87,7 @@ final class ShotTests: XCTestCase {
         let shot = Shot(
             type: .drive,
             startPosition: .init(lie: .tee, yardage: .yards(156)),
-            endPosition: .init(lie: .green, yardage: .yards(6))
+            endPosition: .init(lie: .green, yardage: .feet(18))
         )
         
         XCTAssertEqual(shot.strokesGained!, 0.15, accuracy: 0.1)
@@ -101,6 +101,26 @@ final class ShotTests: XCTestCase {
         )
         
         XCTAssertEqual(shot.strokesGained!, 2, accuracy: 0.25)
+    }
+    
+    func testStrokesGained3() throws {
+        let shot = Shot(
+            type: .putt,
+            startPosition: .init(lie: .green, yardage: .feet(1)),
+            endPosition: .holed
+        )
+        
+        XCTAssertEqual(shot.strokesGained!, 0, accuracy: 0.1)
+    }
+    
+    func testStrokesGained4() throws {
+        let shot = Shot(
+            type: .putt,
+            startPosition: .init(lie: .green, yardage: .feet(2)),
+            endPosition: .holed
+        )
+        
+        XCTAssertEqual(shot.strokesGained!, 0, accuracy: 0.1)
     }
     
     

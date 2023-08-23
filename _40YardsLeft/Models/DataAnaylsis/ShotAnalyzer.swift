@@ -120,7 +120,15 @@ extension Array where Element == Shot {
     
     func strokesGained(_ filter: @escaping (Shot) -> Bool) -> Double {
         //Note that the optional value should never be reached for any complete round.
+        
         self.filter(filter)
+            .forEach { shot in
+                if shot.type == .putt {
+                    print("\(shot.startPosition.yardage.feet)  -> \(shot.endPosition.yardage.feet), SG: \(shot.strokesGained)")
+                }
+            }
+        
+        return self.filter(filter)
             .map { $0.strokesGained ?? 0 }
             .sum()
     }

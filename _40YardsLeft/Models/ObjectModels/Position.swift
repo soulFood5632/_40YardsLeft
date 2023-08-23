@@ -44,7 +44,7 @@ struct Position : Codable, Hashable {
                    -7.54163032 * pow(10, -23.0)],
         .rough: Self.ROUGH_POLY,
         .recovery: RECOVERY_POLY,
-        .green: GREEN_POLY, //TODO: later
+        .green: GREEN_POLY,
         .bunker: BUNKER_POLY,
         .tee: TEE_POLY,
         
@@ -153,6 +153,11 @@ extension Position {
                 value += pow(self.yardage.yards, Double(index)) * coeffecients[index]
             }
         }
+        
+        if value < 1 {
+            return 1
+        }
+        
         return value
         
     }

@@ -70,48 +70,60 @@ struct ApproachStatView: View {
         ]
     }
     var body: some View {
-        VStack {
-            
-                Chart(rounds) {
-                    PointMark(
-                        x: .value("Date", $0.date),
-                        y: .value("Strokes Gained", $0.strokesGainedApproach())
-                    )
-                    .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+        GroupBox {
+            VStack {
+                
+                List {
                     
-                    RuleMark(y: .value("Tour Average", 0))
-                        .foregroundStyle(.primary)
-                }
-                .padding()
-                
-            List {
-                
-                Section {
-                    StatTable(titleValuePairs: self.strokesGained)
-                } header: {
-                    Text("Strokes Gained")
-                }
-                Section {
-                    StatTable(titleValuePairs: self.approachStats)
-                } header: {
-                    Text("Overall")
-                }
-                
-                
-                Section {
+                    Chart(rounds) {
+                        PointMark(
+                            x: .value("Date", $0.date),
+                            y: .value("Strokes Gained", $0.strokesGainedApproach())
+                        )
+                        .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+                        
+                        RuleMark(y: .value("Tour Average", 0))
+                            .foregroundStyle(.primary)
+                    }
+                    .padding()
                     
-                    DistanceAndLieFilter(distanceBounds: self.$distanceBounds, lies: $lies)
                     
-                    StatTable(titleValuePairs: self.specificApproachStats)
-                } header: {
-                    Text("Filtered")
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.strokesGained)
+                    } header: {
+                        Text("Strokes Gained")
+                            .font(.headline)
+                    }
+                    Section {
+                        StatTable(titleValuePairs: self.approachStats)
+                    } header: {
+                        Text("Overall")
+                            .font(.headline)
+                    }
+                    
+                    
+                    Section {
+                        
+                        DistanceAndLieFilter(distanceBounds: self.$distanceBounds, lies: $lies)
+                        
+                        StatTable(titleValuePairs: self.specificApproachStats)
+                    } header: {
+                        Text("Filtered")
+                            .font(.headline)
+                    }
+                    
+                    
                 }
-                
-                
             }
+            .animation(.easeInOut, value: self.distanceBounds)
+            .animation(.easeInOut, value: self.lies)
+        } label: {
+            Text("Approach")
+                .font(.title)
+                .bold()
         }
-        .animation(.easeInOut, value: self.distanceBounds)
-        .animation(.easeInOut, value: self.lies)
+        .padding()
     }
 }
 

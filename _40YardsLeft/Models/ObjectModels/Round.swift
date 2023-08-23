@@ -227,11 +227,8 @@ extension Round {
     /// This method may throw a precondition error if it is called when the round is not complete.
     func getShots() -> [Shot] {
         do {
-            return try self.holes.map { try $0.getSimplifiedShots() }.reduce([Shot]()) { partialresult, newShotList in
-                var tempArr = partialresult
-                tempArr.append(contentsOf: newShotList)
-                return partialresult
-            }
+            return try self.holes.map { try $0.getSimplifiedShots() }.flatten()
+            
         } catch {
             preconditionFailure("The method gets shots was called before all of the holes were finished")
         }

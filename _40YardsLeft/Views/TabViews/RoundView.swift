@@ -16,15 +16,31 @@ struct RoundView: View {
         
             Group {
                 GroupBox {
-            
-                    
                     GolferView(golfer: golfer)
                 } label: {
                     Label("Overview", systemImage: "globe")
                 }
                 .frame(maxHeight: 200)
+                
                 GroupBox {
-                    RoundViewList(golfer: $golfer, path: self.$path)
+                    if golfer.rounds.isEmpty {
+                        VStack {
+                            Text("You haven't posted a round yet")
+                                .bold()
+                                .padding(.bottom, 1)
+                            Button {
+                                withAnimation {
+                                    path.keepFirst()
+                                    path.append(ScreenState.play)
+                                }
+                            } label: {
+                                Text("Start Your First Round")
+                            }
+                        }
+                        .animation(.easeInOut, value: self.golfer.rounds)
+                    } else {
+                        RoundViewList(golfer: $golfer, path: self.$path)
+                    }
                     
                 } label: {
                     Label("History", systemImage: "list.bullet")

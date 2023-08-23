@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 //TODO: think about navigation stack advantages
 //TODO: navigation titles?
@@ -14,9 +15,12 @@ import SwiftUI
 struct HomeView: View {
     @State var golfer: Golfer
     @Binding var path: NavigationPath
+
     
     
     var body: some View {
+        
+        let _ = Self._printChanges()
         
         VStack {
             
@@ -26,6 +30,16 @@ struct HomeView: View {
                     
                     HotStreak(golfer: golfer)
                         .font(.headline)
+                    
+                    Button {
+                        self.path.append(ScreenState.play)
+                    } label: {
+                        
+                        Label("Play Golf", systemImage: "figure.golf")
+                            .bold()
+                            .font(.title2)
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
                 
             } label: {
@@ -36,7 +50,8 @@ struct HomeView: View {
             }
             
             GroupBox {
-                //TODO: stat dashboard
+                
+                
                 
                 NavigationLink(value: ScreenState.stats) {
                     
@@ -46,38 +61,22 @@ struct HomeView: View {
                     
                 }
                 .buttonStyle(.bordered)
+                .disabled(self.golfer.rounds.isEmpty)
             }
-            
-            GroupBox {
-                //TODO: add things here
-                
-                Button {
-                    self.path.append(ScreenState.play)
-                } label: {
-                    
-                    Label("Play", systemImage: "figure.golf")
-                        .bold()
-                        .font(.title2)
-                }
-                .buttonStyle(.borderedProminent)
-                
-
-            }
-            
             
             
             GroupBox {
                 
-                ScrollView {
-                    RoundViewList(golfer: self.$golfer, path: self.$path)
-                        .disabled(true)
-                }
+                
+                RoundViewList(golfer: self.$golfer, path: self.$path)
+                
                 
                 NavigationLink(value: ScreenState.history) {
                     Label("View History", systemImage: "book")
                         .bold()
                         .font(.title2)
                 }
+                .disabled(self.golfer.rounds.isEmpty)
                 
             }
             
@@ -117,6 +116,7 @@ struct HomeView: View {
             
  
         }
+//        .animation(.easeInOut, value: self.randomNumber)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem (placement: .navigationBarTrailing) {
@@ -126,13 +126,81 @@ struct HomeView: View {
         .navigationDestination(for: [Round].self) { roundList in
             StatAnalysisView(rounds: roundList)
         }
-        
-        
-        
+//        .onReceive(self.timer) { _ in
+//            self.isReady = true
+//        }
     }
     
-    
 }
+
+struct StatDashboard: View {
+    let randomNumber: Int
+    let golfer: Golfer
+    
+    var body: some View {
+        
+        let _ = Self._printChanges()
+        
+        if randomNumber < 20 && self.golfer.rounds.count >= 2 {
+            Chart (self.golfer.rounds) {
+                PointMark(
+                    x: .value("Date", $0.date),
+                    y: .value("Score", $0.roundScore)
+                )
+                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+
+            }
+            .chartXAxisLabel("Date")
+            .chartYAxisLabel("Score")
+
+        } else if randomNumber < 40 {
+            Chart (self.golfer.rounds) {
+                PointMark(
+                    x: .value("Date", $0.date),
+                    y: .value("Tee Shot Strokes Gained", $0.strokesGainedTee())
+                )
+                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+            }
+
+            .chartXAxisLabel("Date")
+            .chartYAxisLabel("Tee Shot Strokes Gained")
+
+        } else if randomNumber < 60 {
+            Chart (self.golfer.rounds) {
+                PointMark(
+                    x: .value("Date", $0.date),
+                    y: .value("Putting Strokes Gained", $0.strokesGainedPutting())
+                )
+                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+            }
+            .chartXAxisLabel("Date")
+            .chartYAxisLabel("Putting Strokes Gained")
+
+        } else if randomNumber < 80 {
+            Chart (self.golfer.rounds) {
+                PointMark(
+                    x: .value("Date", $0.date),
+                    y: .value("Short Game Strokes Gained", $0.strokesGainedShortGame())
+                )
+                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+            }
+            .chartXAxisLabel("Date")
+            .chartYAxisLabel("Short Game Gained")
+        } else {
+            Chart (self.golfer.rounds) {
+                PointMark(
+                    x: .value("Date", $0.date),
+                    y: .value("Approach Strokes Gained", $0.strokesGainedApproach())
+                )
+                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+            }
+            .chartXAxisLabel("Date")
+            .chartYAxisLabel("Approach Strokes Gained")
+        }
+    }
+}
+
+
 
 enum ScreenState {
     case play

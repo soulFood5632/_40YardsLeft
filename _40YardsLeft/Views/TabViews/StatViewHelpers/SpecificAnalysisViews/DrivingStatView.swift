@@ -34,32 +34,46 @@ struct DrivingStatView: View {
         ]
     }
     var body: some View {
-        VStack {
-            Chart(rounds) {
-                PointMark(
-                    x: .value("Date", $0.date),
-                    y: .value("Strokes Gained", $0.strokesGainedTee())
-                )
-                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
-            }
-            .padding()
-            
-            List {
-                
-                Section {
-                    StatTable(titleValuePairs: self.strokesGained)
-                } header: {
-                    Text("Strokes Gained")
+        GroupBox {
+            VStack {
+                List {
+                    
+                    Chart(rounds) {
+                        PointMark(
+                            x: .value("Date", $0.date),
+                            y: .value("Strokes Gained", $0.strokesGainedTee())
+                        )
+                        
+                        .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+                    }
+                    .padding()
+                        
+                    
+                    
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.strokesGained)
+                    } header: {
+                        Text("Strokes Gained")
+                            .font(.headline)
+                    }
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.drivingStats)
+                    } header: {
+                        Text("Traditional")
+                            .font(.headline)
+                    }
                 }
-                
-                Section {
-                    StatTable(titleValuePairs: self.drivingStats)
-                } header: {
-                    Text("Traditional")
-                }
             }
+        } label: {
+            Text("Driving")
+                .font(.title)
+                .bold()
         }
+        .padding()
     }
+        
 }
 
 struct DrivingStatView_Previews: PreviewProvider {

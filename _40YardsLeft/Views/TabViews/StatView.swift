@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StatView: View {
-    @State private var startDate: Date = .now.jumpDaysAhead(by: -150)
+    @State private var startDate: Date = .now.jumpDaysAhead(by: -100)
     @State private var endDate: Date = .now
 
     @State private var roundTypes: [RoundType] = RoundType.allCases
@@ -24,9 +24,12 @@ struct StatView: View {
         }
     }
     
+    
     var body: some View {
         VStack {
             RoundFilterView(startDate: self.$startDate, endDate: self.$endDate, roundType: $roundTypes, ratingBound: $ratingBound)
+            
+            Spacer()
             
             Button {
                 path.append(rounds)
@@ -35,6 +38,24 @@ struct StatView: View {
             }
             .disabled(rounds.isEmpty)
             
+            
+            List(rounds) { round in
+                HStack {
+                    
+                    
+                    Text(round.course.name)
+                           
+                        
+                    Text(round.date.formatted(date: .abbreviated, time: .omitted))
+                        .fontWeight(.light)
+                    
+                    Spacer()
+                    Text(String(round.roundScore))
+                        .fontWeight(.semibold)
+                    
+                    
+                }
+            }
             
             
             

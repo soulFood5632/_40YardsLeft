@@ -11,81 +11,94 @@ struct RoundViewList: View {
     @Binding var golfer: Golfer
     @Binding var path: NavigationPath
     @State var showSpecificRoundView: Bool = false
-    @State var highlightedRound: Round?
+    @State private var highlightedRound: Round = Round.completeRoundExample1
     
-    @State private var roundToDelete: Round?
+    @State private var selectedRounds = [Round]()
+    @State private var showStats = false
+    
+    
     var body: some View {
         
-        if golfer.rounds.isEmpty {
-            VStack {
-                Text("You haven't posted a round yet")
-                    .bold()
-                    .padding(.bottom, 1)
-                Button {
-                    withAnimation {
-                        path.keepFirst()
-                        path.append(ScreenState.play)
-                    }
-                } label: {
-                    Text("Start Your First Round")
-                }
-            }
+        
+        
+        VStack {
             
-        } else {
-            
-            Grid {
-                ForEach(golfer.rounds) { round in
-                    GridRow {
-                        HStack {
-                            Text(String(round.roundScore))
-                                .bold()
-                            
+            List (golfer.roundsSortedByDate) { round in
+                
+                HStack {
+                    
+                    Group {
+                        Text(String(round.roundScore))
+                            .font(.system(size: 15))
+                            .bold()
+                        
+                        VStack (alignment: .leading) {
                             Text("\(round.course.name)")
-                            
-                            Spacer()
-                            
-                            
-                            let roundBinding = Binding {
-                                self.roundToDelete != nil
-                            } set: { valueBinding in
-                                self.roundToDelete = nil
+                                .font(.system(size: 13))
+                            Text(round.date.formatted(date: .abbreviated, time: .omitted))
+                                .font(.system(size: 8))
+                                .fontWeight(.light)
+                        }
+                    }
+                    .onTapGesture {
+                        if selectedRounds.contains(round) {
+                            selectedRounds.removeAll(where: { $0 == round })
+                        } else {
+                            selectedRounds.append(round)
+                        }
+                    }
+                    .foregroundColor(selectedRounds.contains(round) ? .accentColor : .primary)
+                    .bold(selectedRounds.contains(round))
+                    
+                    Spacer()
+                    
+                    Menu {
+                        
+                        
+                        Button (role: .destructive) {
+                            self.golfer.deleteRound(round)
+                            Task {
+                                try await self.golfer.postToDatabase()
                             }
-                            
-                            Button (role: .destructive) {
-                                self.roundToDelete = round
-                            } label: {
-                                Image(systemName: "trash")
-                            }
-                            .confirmationDialog("Delete Round", isPresented: roundBinding) {
-                                Button("Delete Round") {
-                                    self.golfer.deleteRound(round)
-                                    Task {
-                                        try await self.golfer.postToDatabase()
-                                    }
-                                }
-                            }
-                            
-                            Button {
-                                self.highlightedRound = round
-                                
-                                self.showSpecificRoundView = true
-                            
-                            } label: {
-                                Image(systemName: "info.circle")
-                            }
-
+                        } label: {
+                            Label("Delete", systemImage: "trash")
                         }
                         
+                        Button {
+                            self.highlightedRound = round
+                            
+                            print(round.id)
+                        } label: {
+                            Label("Info", systemImage: "info.circle")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
                     }
-                    .padding(.top, 1)
+                    
+                }
+                
+            }
+            .onChange(of: self.highlightedRound, perform: { _ in
+                showSpecificRoundView = true
+            })
+            .sheet(isPresented: self.$showSpecificRoundView, content: {
+                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showSpecificRoundView, round: self.highlightedRound)
+            })
+            
+            if !selectedRounds.isEmpty {
+                Button {
+                    showStats = true
+                } label: {
+                    Label("Analyze Rounds", systemImage: "chart.bar")
                 }
             }
-            .sheet(isPresented: self.$showSpecificRoundView, content: {
-                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showSpecificRoundView, round: self.highlightedRound!)
-            })
-            .animation(.easeInOut, value: self.golfer.rounds)
-            
         }
+        .sheet(isPresented: self.$showStats, content: {
+            StatAnalysisView(rounds: self.selectedRounds)
+        })
+        .animation(.easeInOut, value: self.golfer.rounds)
+        .animation(.easeInOut, value: self.selectedRounds)
+
     }
 }
 

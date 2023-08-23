@@ -167,63 +167,67 @@ struct PuttingStatView: View {
     
     
     var body: some View {
-        VStack {
-            
-            Chart(rounds) {
-                PointMark(
-                    x: .value("Date", $0.date),
-                    y: .value("Strokes Gained", $0.strokesGainedShortGame())
-                )
-                .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
-                
-                RuleMark(y: .value("Tour Average", 0))
-                    .foregroundStyle(.primary)
+        GroupBox {
+            VStack {
+                List {
+                    
+                    Chart(rounds) {
+                        PointMark(
+                            x: .value("Date", $0.date),
+                            y: .value("Strokes Gained", $0.strokesGainedPutting())
+                        )
+                        .foregroundStyle(by: .value("Round Type", $0.roundType.rawValue))
+                        
+                        RuleMark(y: .value("Tour Average", 0))
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding()
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.strokesGained)
+                    } header: {
+                        Text("Overall")
+                            .font(.headline)
+                    }
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.makeStats)
+                    } header: {
+                        Text("Make Percentages")
+                            .font(.headline)
+                    }
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.avgStrokesToHoleOut)
+                    } header: {
+                        Text("Strokes to Hole out")
+                            .font(.headline)
+                    }
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.threePuttOdds)
+                    } header: {
+                        Text("3 Putts Avoidance")
+                            .font(.headline)
+                    }
+                    
+                    Section {
+                        StatTable(titleValuePairs: self.strokesGainedStats)
+                    } header: {
+                        Text("Strokes Gained")
+                            .font(.headline)
+                    }
+                    
+                    
+                }
             }
-            .padding()
-            
-            
-            
-            
-            
-            
-            List {
-                
-                Section {
-                    StatTable(titleValuePairs: self.strokesGained)
-                } header: {
-                    Text("Overall")
-                }
-                
-                
-                
-                Section {
-                    StatTable(titleValuePairs: self.makeStats)
-                } header: {
-                    Text("Make")
-                }
-                
-                Section {
-                    StatTable(titleValuePairs: self.avgStrokesToHoleOut)
-                } header: {
-                    Text("Strokes")
-                }
-                
-                Section {
-                    StatTable(titleValuePairs: self.threePuttOdds)
-                } header: {
-                    Text("3 Putts")
-                }
-                
-                Section {
-                    StatTable(titleValuePairs: self.strokesGainedStats)
-                } header: {
-                    Text("Strokes Gained")
-                }
-                
-                
-            }
+            .animation(.easeInOut, value: self.distanceBounds)
+        } label: {
+            Text("Putting")
+                .font(.title)
+                .bold()
         }
-        .animation(.easeInOut, value: self.distanceBounds)
+        .padding()
 
     }
 }
