@@ -80,6 +80,7 @@
 		02E9DB9D29C0FC2700AA15FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9DB9C29C0FC2700AA15FA /* ContentView.swift */; };
 		02E9DB9F29C0FC2800AA15FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E9DB9E29C0FC2800AA15FA /* Assets.xcassets */; };
 		02E9DBA229C0FC2800AA15FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E9DBA129C0FC2800AA15FA /* Preview Assets.xcassets */; };
+		02F662E32AA1623500FAE679 /* ShotByShotAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F662E22AA1623500FAE679 /* ShotByShotAnalysis.swift */; };
 		02F7318B2A11984900CC5925 /* ShotFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318A2A11984900CC5925 /* ShotFilters.swift */; };
 		02F7318D2A11A45A00CC5925 /* StrokesGainedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */; };
 		02F731902A11B4D600CC5925 /* RoundBasedStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */; };
@@ -188,6 +189,7 @@
 		02E9DB9C29C0FC2700AA15FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		02E9DB9E29C0FC2800AA15FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02E9DBA129C0FC2800AA15FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		02F662E22AA1623500FAE679 /* ShotByShotAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotByShotAnalysis.swift; sourceTree = "<group>"; };
 		02F7318A2A11984900CC5925 /* ShotFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotFilters.swift; sourceTree = "<group>"; };
 		02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesGainedGraph.swift; sourceTree = "<group>"; };
 		02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBasedStats.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 			isa = PBXGroup;
 			children = (
 				02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */,
+				02F662E22AA1623500FAE679 /* ShotByShotAnalysis.swift */,
 			);
 			path = RoundOverviewHelpers;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				020441A12A93FA6D00B3FB33 /* ChippingAnalysisView.swift in Sources */,
 				020441A52A941A0F00B3FB33 /* DrivingDetailView.swift in Sources */,
 				0204419F2A900BA800B3FB33 /* ApproachAnalysis.swift in Sources */,
+				02F662E32AA1623500FAE679 /* ShotByShotAnalysis.swift in Sources */,
 				02FACCAF29C6C5A500B55E6D /* WelcomeScreen.swift in Sources */,
 				0222866D29E88E2300FEBB91 /* HotStreak.swift in Sources */,
 				020441A32A940E0E00B3FB33 /* PuttingDetailView.swift in Sources */,

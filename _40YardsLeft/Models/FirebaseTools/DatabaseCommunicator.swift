@@ -42,10 +42,13 @@ struct DatabaseCommunicator {
     
     static func getGolfer(id: String) async throws -> Golfer {
         let docReference = database.collection(Self.GOLFER_LIST_ID).document(id)
+        
         do {
             return try await docReference.getDocument(as: Golfer.self)
         } catch {
-            fatalError(error.localizedDescription.debugDescription)
+            debugPrint(error)
+            fatalError()
+            
         }
     }
     

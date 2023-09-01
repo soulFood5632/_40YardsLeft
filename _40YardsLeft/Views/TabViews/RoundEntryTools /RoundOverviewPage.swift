@@ -160,7 +160,7 @@ struct RoundStatOverview : View {
                     )
                     .padding()
                     
-                    FocusedAnalysis(shots: self.shotList, focus: self.statFocus)
+                    FocusedAnalysis(round: self.round, focus: self.statFocus)
                 }
                 
                  

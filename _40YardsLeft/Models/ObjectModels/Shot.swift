@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: Shot Init
-struct Shot : Codable, Hashable {
+struct Shot : Codable, Hashable, Identifiable {
     /// The type of shot.
     let type: ShotType
     /// where the shot originated from
@@ -18,6 +18,7 @@ struct Shot : Codable, Hashable {
     ///Does this shot include a penatly stroke?
     let includesPenalty: Bool
     
+    let id: UUID
     
     /// The strokes gained of this shot if it is calculatable.
     ///
@@ -29,6 +30,7 @@ struct Shot : Codable, Hashable {
         self.startPosition = startPosition
         self.endPosition = endPosition
         self.includesPenalty = includesPenalty
+        self.id = UUID()
         do {
             self.strokesGained = try Self.getStrokesGained(start: startPosition, end: endPosition, includesPenalty: includesPenalty)
         } catch {
@@ -48,6 +50,7 @@ struct Shot : Codable, Hashable {
         self.startPosition = startPosition
         self.endPosition = endPosition
         self.includesPenalty = false
+        self.id = UUID()
         do {
             self.strokesGained = try Self.getStrokesGained(start: startPosition, end: endPosition, includesPenalty: false)
         } catch {
@@ -106,7 +109,7 @@ extension Shot {
     
     /// The releative yardage that this shot was sent.
     var advancementYardage: Distance { startPosition.yardage - endPosition.yardage }
-    /// The number of shots that this shot has counted for. 
+    /// The number of shots that this shot has counted for.
     var numOfShots: Int {
         if includesPenalty {
             return 2
@@ -114,9 +117,12 @@ extension Shot {
         return 1
     }
     
-    
     /// A variable which is true if the last shot of this hole ends in a holed shot.
-    var isHoled: Bool { return endPosition == .holed } 
+    var isHoled: Bool { return endPosition == .holed }
+    
+    func toString() -> String {
+        return self.startPosition.toString() + " -> " + self.endPosition.toString()
+    }
     
 }
 
@@ -132,9 +138,13 @@ enum ShotType : String, Codable, CaseIterable, Hashable {
 
 enum AnalysisFocus: String, CaseIterable, Hashable, Identifiable {
     var id: Self { self }
-    
+
     case approach = "Approach"
     case chipping = "Chipping"
     case putting = "Putting"
     case tee = "Tee"
+    
+    
 }
+
+

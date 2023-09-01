@@ -161,6 +161,23 @@ extension Position {
         
     }
     
+    func toString() -> String {
+        var builder = ""
+        
+        if self == .holed {
+            return "holed"
+        }
+        if self.lie == .green {
+            builder.append("\(self.yardage.feet) feet")
+        } else {
+            builder.append("\(self.yardage.yards) yards")
+        }
+        builder.append(", ")
+        builder.append(self.lie.rawValue)
+        
+        return builder
+    }
+    
     
 }
 
