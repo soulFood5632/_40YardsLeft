@@ -16,6 +16,7 @@ struct Golfer: Codable, Hashable {
     var gender : Gender
     var name : String
     var homeCourse : Course?
+    var userDistanceSettings: UserDistanceValues
     
     
     /// Creates a new instance of a golfer with no home course
@@ -29,23 +30,24 @@ struct Golfer: Codable, Hashable {
         self.rounds = [Round]()
         self.gender = gender
         self.name = name
-        
+        self.userDistanceSettings = UserDistanceValues()
     }
     
     
     /// Creates a new instance of a golfer with the provided home course
     ///
     /// - Parameters:
-    ///   - firebaseID: <#firebaseID description#>
-    ///   - gender: <#gender description#>
-    ///   - name: <#name description#>
-    ///   - homeCourse: <#homeCourse description#>
+    ///   - firebaseID: The firebase ID related to this golfer
+    ///   - gender: The gender
+    ///   - name: Name of the golfer
+    ///   - homeCourse: the homecourse of the golfer.
     init(firebaseID: String, gender: Gender, name: String, homeCourse: Course) {
         self.firebaseID = firebaseID
         self.rounds = [Round]()
         self.gender = gender
         self.name = name
         self.homeCourse = homeCourse
+        self.userDistanceSettings = UserDistanceValues()
         
     }
     
@@ -73,6 +75,10 @@ extension Golfer {
         
         self.rounds.append(round)
         return true
+    }
+    
+    mutating func updateUserDistanceSettings(newUserDistanceValues: UserDistanceValues) {
+        self.userDistanceSettings = newUserDistanceValues
     }
     
     
@@ -163,16 +169,48 @@ extension Golfer {
     ///
     /// - Note: Nil in the case that the user has no valid handicap. 
     var handicap: Double? {
-        let lastRounds = self.getLastRounds(20)
+        var lastRounds = self.getLastRounds(20)
+        
+        
         
         switch lastRounds.count {
-        case 1:
-            return 0
+        case 0, 1, 2:
+            return nil
+        case 3:
+            return handicapCalculation(lastRounds: lastRounds, counting: 1, adjustment: 2)
+        case 4:
+            return handicapCalculation(lastRounds: lastRounds, counting: 1, adjustment: 1)
+        case 5:
+            return handicapCalculation(lastRounds: lastRounds, counting: 1, adjustment: 0)
+        case 6:
+            return handicapCalculation(lastRounds: lastRounds, counting: 2, adjustment: 1)
+        case 7, 8:
+            return handicapCalculation(lastRounds: lastRounds, counting: 2, adjustment: 0)
+        case 9, 10, 11:
+            return handicapCalculation(lastRounds: lastRounds, counting: 3, adjustment: 0)
+        case 12, 13, 14:
+            return handicapCalculation(lastRounds: lastRounds, counting: 4, adjustment: 0)
+        case 15, 16:
+            return handicapCalculation(lastRounds: lastRounds, counting: 5, adjustment: 0)
+        case 17, 18:
+            return handicapCalculation(lastRounds: lastRounds, counting: 6, adjustment: 0)
+        case 19:
+            return handicapCalculation(lastRounds: lastRounds, counting: 7, adjustment: 0)
+        case 20:
+            return handicapCalculation(lastRounds: lastRounds, counting: 8, adjustment: 0)
         default:
-            return 0
+            fatalError("Method is bugged")
         }
         
-        //TODO: Imploment this function
+        
+    }
+    
+    private func handicapCalculation(lastRounds: [Round], counting: Int, adjustment: Double) -> Double? {
+        let lowDifferential: (Round, Round) -> Bool = { $0.differential < $1.differential }
+        if let average = lastRounds.sorted(by: lowDifferential).keepFirst(counting).compactMap({ $0.differential }).average() {
+            return average - adjustment
+        }
+        return nil
     }
     
     var scoringAverage: Double? {
@@ -215,6 +253,8 @@ extension Array where Element: AdditiveArithmetic, Element: FloatingPoint {
     }
 }
 
+
+
 extension Array where Element == Int {
     /// Finds the average of a value of the provided array.
     ///
@@ -230,24 +270,24 @@ extension Array where Element == Int {
 }
 
 extension Golfer {
-    func getShotPredictor() async -> UserDistanceValues {
-        let shots = self.getShots()
-        let userValues = UserDistanceValues()
-        if shots.count < Self.MINUMUM_SHOTS_FOR_ANALYSIS {
-            return userValues
-        }
+    func getShotPredictor() -> UserDistanceValues {
+//        let shots = self.getShots()
+//        let userValues = UserDistanceValues()
+//        if shots.count < Self.MINUMUM_SHOTS_FOR_ANALYSIS {
+//            return userValues
+//        }
         
-        let shotAnalyzer = TendancyAnalyzer(shots: shots)
+//        let shotAnalyzer = TendancyAnalyzer(shots: shots)
         
-        //TODO: finish this method.
-        async let driveDistance = shotAnalyzer.getDriveDistance()
-        async let minApproachDistance = shotAnalyzer.getMinimumApproachAndMaxApproach().0
-        async let maxApproachDistance = shotAnalyzer.getMinimumApproachAndMaxApproach().1
+        
+//        async let driveDistance = shotAnalyzer.getDriveDistance()
+//        async let minApproachDistance = shotAnalyzer.getMinimumApproachAndMaxApproach().0
+//        async let maxApproachDistance = shotAnalyzer.getMinimumApproachAndMaxApproach().1
         
         
         
         //TODO: finish implementing this method.
-        return UserDistanceValues()
+        return self.userDistanceSettings
         
         
     }
@@ -312,8 +352,9 @@ extension Array {
 }
 
 //MARK: Gender Enum
-enum Gender : String, Codable, CaseIterable, Hashable {
+enum Gender : String, Codable, CaseIterable, Hashable, Identifiable {
     case man = "Male", woman = "Female"
+    var id: Self { self }
 }
 
 extension Golfer {

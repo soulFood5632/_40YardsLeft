@@ -25,7 +25,6 @@ struct Filters: Equatable {
 struct CourseFilter: View {
     
     @Binding var chosenCourse: Course?
-    @Binding var path: NavigationPath
     
     @State private var filter = Filters()
     @State private var isLoading = true
@@ -85,7 +84,7 @@ struct CourseFilter: View {
         .sheet(isPresented: self.$isQueryReady, onDismiss: {
             
         }, content: {
-            CourseSearcher(overallQuery: self.courseQuery, chosenCourse: self.$chosenCourse, path: self.$path, showView: self.$isQueryReady)
+            CourseSearcher(overallQuery: self.courseQuery, chosenCourse: self.$chosenCourse, showView: self.$isQueryReady)
         })
         .animation(.easeInOut, value: self.chosenCourse)
         .animation(.spring(dampingFraction: 0.6), value: self.isLoading)
@@ -149,6 +148,6 @@ PreviewProvider {
     @State private static var course: Course?
     @State private static var path = NavigationPath()
     static var previews: some View {
-        CourseFilter(chosenCourse: $course, path: self.$path)
+        CourseFilter(chosenCourse: $course)
     }
 }

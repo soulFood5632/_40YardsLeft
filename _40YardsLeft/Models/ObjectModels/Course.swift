@@ -112,7 +112,15 @@ struct Address : Codable, Equatable, Hashable {
 enum Province: String, CaseIterable, Codable, Hashable {
     case BC = "British Columbia"
     case AB = "Alberta"
-    //TODO: complete this list
+    case SK = "Saskatchewan"
+    case MB = "Manitoba"
+    case ON = "Ontario"
+    case QC = "Quebec"
+    case NB = "New Brunswick"
+    case NS = "Nova Scotia"
+    case PEI = "Prince Edward Island"
+    case NL = "Newfoundland and Labrador"
+    
 }
 
 extension Province: Identifiable {
@@ -139,7 +147,7 @@ extension Province {
 
 enum Country: String, CaseIterable, Codable, Hashable {
     case Canada = "Canada"
-    case US = "United States"
+//    case US = "United States"
 }
 
 
@@ -153,10 +161,10 @@ extension Country {
         switch self {
         case .Canada:
             return [
-                .BC, .AB
+                .BC, .AB, .MB, .NB, .NL, .NS, .ON, .PEI, .QC, .SK
             ]
-        case .US:
-            return []
+//        case .US:
+//            return []
         }
     }
 }

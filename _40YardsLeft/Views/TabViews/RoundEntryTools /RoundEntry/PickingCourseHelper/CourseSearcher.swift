@@ -13,7 +13,7 @@ struct CourseSearcher: View {
     
     @Binding var chosenCourse: Course?
     @State private var searchText = ""
-    @Binding var path: NavigationPath
+//    @Binding var path: NavigationPath
     @Binding var showView: Bool
     
     
@@ -116,7 +116,7 @@ struct CourseSearcher_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationStack {
-            CourseSearcher(overallQuery: [Course.example1], chosenCourse: self.$chosenOne, path: self.$path, showView: $view)
+            CourseSearcher(overallQuery: [Course.example1], chosenCourse: self.$chosenOne, showView: $view)
         }
     }
 }

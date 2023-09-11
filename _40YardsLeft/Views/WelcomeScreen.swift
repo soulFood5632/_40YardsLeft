@@ -22,8 +22,9 @@ struct WelcomeScreen : View {
     var body: some View {
         
         ZStack {
-            RadialGradient(colors: [.blue, .cyan, .green, .mint], center: .center, startRadius: Self.START_RADIUS, endRadius: self.endRadius)
+            RadialGradient(colors: [.blue, .green], center: .center, startRadius: Self.START_RADIUS, endRadius: self.endRadius)
                 .ignoresSafeArea()
+                .opacity(0.4)
             
             WelcomeAnimation(path: self.$path)
             

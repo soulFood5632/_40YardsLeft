@@ -7,28 +7,32 @@
 
 import Foundation
 
-struct UserDistanceValues {
+struct UserDistanceValues: Codable, Hashable {
     
     /// The mininum distance that the user will lay up to
     ///
     /// - Note: This is a predicative measure which is not critical to app functionality
-    let minimumApproachDistance: Distance = .yards(80)
+    var minimumApproachDistance: Distance = .yards(80)
     /// The maximum distance the user will attempt to approach the green on.
     ///
     /// - Note: This is a predicative measure which is not critical to app functionality
-    let maximumApproachDistance: Distance = .yards(240)
+    var maximumApproachDistance: Distance = .yards(240)
     /// The usual drive distance of this user.
     ///
     /// - Note: This is a predicative measure which is not critical to app functionality
-    let driveDistance: Distance = .yards(240)
+    var driveDistance: Distance = .yards(240)
     /// The average proximity of a shot when attempting the green in feet.
-    let averageProximity: Distance = .feet(26)
+    var averageProximity: Distance = .feet(26)
 
-    let chipProximity: Distance = .feet(10)
-    
+    var chipProximity: Distance = .feet(10)
     
     /// The average distance your recovery distance travels
-    let averageRecoveryDistance: Distance = .yards(75)
+    var averageRecoveryDistance: Distance = .yards(75)
+    
+    
+    
+    
+    
 }
 
 //MARK: Shot Predictor Class
@@ -49,10 +53,8 @@ class ShotPredictor {
     
     
     init(golfer: Golfer) {
-        self.userDistanceValues = UserDistanceValues()
-        Task {
-            self.userDistanceValues = await golfer.getShotPredictor()
-        }
+        self.userDistanceValues = golfer.getShotPredictor()
+        
     }
     
     init() {

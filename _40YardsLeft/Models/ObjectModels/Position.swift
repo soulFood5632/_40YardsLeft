@@ -168,9 +168,9 @@ extension Position {
             return "holed"
         }
         if self.lie == .green {
-            builder.append("\(self.yardage.feet) feet")
+            builder.append(String(format: "%.0f feet", self.yardage.feet))
         } else {
-            builder.append("\(self.yardage.yards) yards")
+            builder.append(String(format: "%.0f yards", self.yardage.yards))
         }
         builder.append(", ")
         builder.append(self.lie.rawValue)

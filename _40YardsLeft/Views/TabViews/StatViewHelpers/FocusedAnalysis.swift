@@ -46,27 +46,33 @@ struct FocusedAnalysis: View {
                 DrivingDetailView(shots: shots)
             }
             
-            GroupBox {
-                VStack {
-                    ForEach(shotsWithHole, id: \.0) { shot in
-                        ShotByShotAnalysis(shot: shot)
-                            .padding(5)
-                            .background {
-                                Rectangle()
-                                    .stroke(lineWidth: 2)
-                            }
+            
+            if !shotsWithHole.isEmpty {
+                GroupBox {
+                    VStack {
                         
-                            .padding(.horizontal, 1)
+                        ForEach(shotsWithHole, id: \.0) { shot in
+                            ShotByShotAnalysis(shot: shot)
+                                .padding(5)
+                                .background {
+                                    Rectangle()
+                                        .stroke(lineWidth: 2)
+                                }
+                            
+                                .padding(.horizontal, 1)
+                        }
+                        
                         
                     }
+                } label: {
+                    Text("Shot by Shot")
+                        .font(.title2)
+                        .bold()
                 }
-            } label: {
-                Text("Shot by Shot")
-                    .font(.title2)
-                    .bold()
+                .padding(.top, 10)
+                .padding([.horizontal, .bottom], 4)
             }
-            .padding(.top, 10)
-            .padding([.horizontal, .bottom], 4)
+            
             
             
         }

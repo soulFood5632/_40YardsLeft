@@ -52,6 +52,7 @@ struct RoundPrepView: View {
             GroupBox {
                 List {
                     
+                    
                     ForEach(course.listOfTees) { tee in
                         let isHighlighted = self.buffer.tee == tee
                         HStack {
@@ -62,9 +63,9 @@ struct RoundPrepView: View {
                             Text("\(tee.rating, format: .number), \(tee.slope), \(tee.yardage.yards, format: .number), \(tee.par)")
                                 .fontWeight(.light)
                             
-                            if isHighlighted {
-                                Image(systemName: "checkmark")
-                            }
+//                            if isHighlighted {
+//                                Image(systemName: "checkmark")
+//                            }
                             
                         }
                         .onTapGesture {
@@ -84,10 +85,9 @@ struct RoundPrepView: View {
                     } label: {
                         Label("Add Tee", systemImage: "plus")
                     }
-                    
-                    
-                    
+
                 }
+                
             } label: {
                 Label("Choose Tee", systemImage: "dots.and.line.vertical.and.cursorarrow.rectangle")
             }

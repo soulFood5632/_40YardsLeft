@@ -20,7 +20,7 @@ struct PickACourse: View {
         VStack {
             
             
-            CourseFilter(chosenCourse: self.$chosenCourse, path: self.$path)
+            CourseFilter(chosenCourse: self.$chosenCourse)
             
                 .padding([.top, .horizontal])
                 .padding(.bottom, 6)

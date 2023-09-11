@@ -21,7 +21,7 @@ struct HotOrColdView: View {
         case .mild:
             EmptyView()
         case .cold:
-            Image(systemName: "snowflake")
+            Image(systemName: "thermometer.snowflake")
                 .foregroundColor(.blue)
         }
         

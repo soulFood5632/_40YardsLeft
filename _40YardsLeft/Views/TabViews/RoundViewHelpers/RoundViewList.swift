@@ -82,7 +82,10 @@ struct RoundViewList: View {
                 showSpecificRoundView = true
             })
             .sheet(isPresented: self.$showSpecificRoundView, content: {
+                
                 RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showSpecificRoundView, round: self.highlightedRound)
+                
+                    
             })
             
             if !selectedRounds.isEmpty {

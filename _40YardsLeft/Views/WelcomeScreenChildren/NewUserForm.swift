@@ -79,7 +79,7 @@ struct NewUserForm: View {
                     Image(systemName: "figure.dress.line.vertical.figure")
                     Spacer()
                     Picker(selection: self.$gender) {
-                        ForEach(Gender.allCases, id: \.self) { gender in
+                        ForEach(Gender.allCases) { gender in
                             Text(gender.rawValue)
                         }
                     } label: {

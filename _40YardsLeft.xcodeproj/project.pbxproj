@@ -81,6 +81,7 @@
 		02E9DB9F29C0FC2800AA15FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E9DB9E29C0FC2800AA15FA /* Assets.xcassets */; };
 		02E9DBA229C0FC2800AA15FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E9DBA129C0FC2800AA15FA /* Preview Assets.xcassets */; };
 		02F662E32AA1623500FAE679 /* ShotByShotAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F662E22AA1623500FAE679 /* ShotByShotAnalysis.swift */; };
+		02F662E52AA2565900FAE679 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F662E42AA2565900FAE679 /* ProfileView.swift */; };
 		02F7318B2A11984900CC5925 /* ShotFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318A2A11984900CC5925 /* ShotFilters.swift */; };
 		02F7318D2A11A45A00CC5925 /* StrokesGainedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */; };
 		02F731902A11B4D600CC5925 /* RoundBasedStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */; };
@@ -190,6 +191,7 @@
 		02E9DB9E29C0FC2800AA15FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02E9DBA129C0FC2800AA15FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		02F662E22AA1623500FAE679 /* ShotByShotAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotByShotAnalysis.swift; sourceTree = "<group>"; };
+		02F662E42AA2565900FAE679 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		02F7318A2A11984900CC5925 /* ShotFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotFilters.swift; sourceTree = "<group>"; };
 		02F7318C2A11A45A00CC5925 /* StrokesGainedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesGainedGraph.swift; sourceTree = "<group>"; };
 		02F7318F2A11B4D600CC5925 /* RoundBasedStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBasedStats.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				0222868129EA6C9000FEBB91 /* SettingsHelpers */,
 				02FEA18A29CECA0A00BCD7A4 /* StatView.swift */,
 				02CFCAD62A037B0900DA7D76 /* StatViewHelpers */,
+				02F662E42AA2565900FAE679 /* ProfileView.swift */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				02FEA1BB29D0F5F500BCD7A4 /* Encodable.swift in Sources */,
 				020441BA2A956D1100B3FB33 /* LoadingAnimation.swift in Sources */,
 				0260D1E829D8FD3300EFAE79 /* HoleDefiner.swift in Sources */,
+				02F662E52AA2565900FAE679 /* ProfileView.swift in Sources */,
 				020441AE2A9444E100B3FB33 /* DrivingStatView.swift in Sources */,
 				02FEA1AA29CF9BE600BCD7A4 /* Hole.swift in Sources */,
 				02FEA1CC29D3391C00BCD7A4 /* HoleByHole.swift in Sources */,
