@@ -54,6 +54,7 @@
 		0222868529EA76CD00FEBB91 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868429EA76CD00FEBB91 /* AccountDetails.swift */; };
 		0222868729ED9B0B00FEBB91 /* ProfileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */; };
 		0222868929ED9B8700FEBB91 /* EditableStaticText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0222868829ED9B8700FEBB91 /* EditableStaticText.swift */; };
+		023A74F92AB242E700C63FBB /* RadialBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A74F82AB242E700C63FBB /* RadialBackground.swift */; };
 		0260D1D829D7F25900EFAE79 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D729D7F25900EFAE79 /* ScorecardView.swift */; };
 		0260D1DA29D8D5E000EFAE79 /* HoleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */; };
 		0260D1DD29D8D74E00EFAE79 /* IndividualButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */; };
@@ -163,6 +164,7 @@
 		0222868429EA76CD00FEBB91 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
 		0222868629ED9B0B00FEBB91 /* ProfileDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetails.swift; sourceTree = "<group>"; };
 		0222868829ED9B8700FEBB91 /* EditableStaticText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableStaticText.swift; sourceTree = "<group>"; };
+		023A74F82AB242E700C63FBB /* RadialBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialBackground.swift; sourceTree = "<group>"; };
 		0260D1D729D7F25900EFAE79 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0260D1D929D8D5E000EFAE79 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
 		0260D1DC29D8D74E00EFAE79 /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				02FACCB129C6C62E00B55E6D /* WelcomeAnimation.swift */,
+				023A74F82AB242E700C63FBB /* RadialBackground.swift */,
 				0222868229EA72F600FEBB91 /* LoginScreen.swift */,
 				02FEA16429CCEBCF00BCD7A4 /* WelcomeAnimationProperties */,
 				02D3B9C229C7F2B700541A0E /* OldUserWelcome.swift */,
@@ -832,6 +835,7 @@
 				020B0FA729F6FCC1001E92E1 /* CenteredSquare.swift in Sources */,
 				020441A72A9437BD00B3FB33 /* RoundFilterView.swift in Sources */,
 				02FACCB429C6D7D600B55E6D /* NewUserForm.swift in Sources */,
+				023A74F92AB242E700C63FBB /* RadialBackground.swift in Sources */,
 				0260D1E429D8E74400EFAE79 /* BasicCourseInfo.swift in Sources */,
 				0222866B29E883DF00FEBB91 /* Menu.swift in Sources */,
 				02FACCB829C6DF9500B55E6D /* TextValiditity.swift in Sources */,
@@ -1023,8 +1027,9 @@
 		02E9DBC229C0FC2800AA15FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = _40YardsLeft/_40YardsLeft.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1034,6 +1039,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1054,8 +1062,9 @@
 		02E9DBC329C0FC2800AA15FA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = _40YardsLeft/_40YardsLeft.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1065,6 +1074,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

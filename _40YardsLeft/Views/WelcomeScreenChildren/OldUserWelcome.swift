@@ -13,6 +13,8 @@ struct OldUserWelcome: View {
     @State private var emailAddress = ""
     @State private var password = ""
     @FocusState private var focuser: FocusedFeild?
+    @State private var rememberMe = UserDefaults.standard.string(forKey: "RememberMe") != nil
+    @Binding var showView: Bool
 
     @State private var showAlert: (Bool, String?) = (false, nil)
     
@@ -22,7 +24,7 @@ struct OldUserWelcome: View {
             Image(systemName: "person.crop.circle")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: 140)
+                .frame(maxHeight: 50)
                 .padding()
             
             
@@ -43,11 +45,23 @@ struct OldUserWelcome: View {
             }
             .textFieldStyle(.roundedBorder)
             
+            Toggle(isOn: self.$rememberMe) {
+                Text("Remember Me")
+            }
+            .font(.caption)
+            .toggleStyle(.switch)
+            
             Button {
                 Task {
                     do {
                         
                         let tempUser = try await Authenticator.logIn(emailAddress: emailAddress, password: self.password)
+                        
+                        if self.rememberMe {
+                            UserDefaults.standard.set(tempUser.uid, forKey: "RememberMe")
+                        } else {
+                            UserDefaults.standard.removeObject(forKey: "RememberMe")
+                        }
                         
                         withAnimation(.easeInOut(duration: 1)) {
                             self.user = tempUser
@@ -71,7 +85,15 @@ struct OldUserWelcome: View {
             
             
         } label: {
-            Label("Welcome Back", systemImage: "hand.wave.fill")
+            HStack {
+                Label("Welcome Back", systemImage: "hand.wave.fill")
+                Spacer()
+                Button(role: .destructive) {
+                    self.showView = false
+                } label: {
+                    Image(systemName: "x.circle")
+                }
+            }
         }
         .alert("Login Error", isPresented: self.$showAlert.0, actions: {
             Button {
@@ -101,7 +123,8 @@ extension OldUserWelcome {
 
 struct OldUserWelcome_Previews: PreviewProvider {
     @State static private var user: User?
+    @State private static var showView = true
     static var previews: some View {
-        OldUserWelcome(user: $user)
+        OldUserWelcome(user: $user, showView: self.$showView)
     }
 }

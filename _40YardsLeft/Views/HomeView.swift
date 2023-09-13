@@ -22,9 +22,7 @@ struct HomeView: View {
         
         ZStack {
             
-            RadialGradient(colors: [.blue, .green], center: .center, startRadius: 100, endRadius: 300)
-                .ignoresSafeArea()
-                .opacity(0.4)
+            RadialBackground()
             
             VStack {
                 
@@ -115,7 +113,7 @@ struct HomeView: View {
                             }
                         }
                 case .profile:
-                    ProfileView(golfer: self.golfer)
+                    ProfileView(golfer: self.golfer, path: self.$path)
                         .toolbar {
                             ToolbarItem (placement: .navigationBarTrailing) {
                                 GoHome(path: $path)

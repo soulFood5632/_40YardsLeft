@@ -16,6 +16,8 @@ struct NewUserForm: View {
     @State private var gender = Gender.man
     //TODO: Add home course
     @FocusState private var focuser: FocusedFeild?
+    @State private var remeberMe = true
+    @Binding var showView: Bool
     
     @Binding var user: User?
     @State private var showAlert: (Bool, String?) = (false, nil)
@@ -28,7 +30,7 @@ struct NewUserForm: View {
             Image(systemName: "person.crop.circle")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: 140)
+                .frame(maxHeight: 50)
                 .padding()
             
             Group {
@@ -87,6 +89,13 @@ struct NewUserForm: View {
                     }
                 }
                 
+                Toggle(isOn: self.$remeberMe) {
+                    Text("Remember Me")
+                }
+                .font(.caption)
+                .toggleStyle(.switch)
+                
+                
                 
                     
             }
@@ -105,6 +114,14 @@ struct NewUserForm: View {
                     do {
                         
                         tempUser = try await Authenticator.createUser(emailAddress: email, password: self.password)
+                        
+                        //TODO: deal with errors in creating users
+                        
+                        if self.remeberMe {
+                            UserDefaults.standard.set(tempUser!.uid, forKey: "RememberMe")
+                        } else {
+                            UserDefaults.standard.removeObject(forKey: "RememberMe")
+                        }
                         
                         withAnimation (.easeInOut(duration: 1)) {
                             self.user = tempUser!
@@ -144,7 +161,17 @@ struct NewUserForm: View {
            
             
         } label: {
-            Label("Hello User", systemImage: "hand.wave.fill")
+            HStack {
+                Label("Hello User", systemImage: "hand.wave.fill")
+                
+                Spacer()
+                
+                Button(role: .destructive) {
+                    self.showView = false
+                } label: {
+                    Image(systemName: "x.circle")
+                }
+            }
         }
         .alert("Account Creation Error", isPresented: self.$showAlert.0, actions: {
             Button {
@@ -185,8 +212,9 @@ extension NewUserForm {
 
 struct NewUserForm_Previews: PreviewProvider {
     @State static private var user: User?
+    @State static private var showView = true
   
     static var previews: some View {
-        NewUserForm(user: self.$user)
+        NewUserForm(showView: self.$showView, user: self.$user)
     }
 }

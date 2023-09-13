@@ -11,6 +11,7 @@ struct ProfileView: View {
     @State var golfer: Golfer
     @State private var newCourseView = false
     @State private var newCourseBuffer: Course?
+    @Binding var path: NavigationPath
 
     
     
@@ -120,8 +121,16 @@ struct ProfileView: View {
                     .bold()
             }
             
+            Button(role: .destructive) {
+                self.path.keepFirst(0)
+            } label: {
+                Text("Log Out")
+            }
+            .buttonStyle(.borderedProminent)
+            
             
         }
+        .navigationBarBackButtonHidden()
         .padding()
         
        
@@ -169,7 +178,8 @@ extension ProfileView {
 }
 
 struct ProfileView_Previews: PreviewProvider {
+    @State private static var path = NavigationPath()
     static var previews: some View {
-        ProfileView(golfer: Golfer.golfer)
+        ProfileView(golfer: Golfer.golfer, path: self.$path)
     }
 }
