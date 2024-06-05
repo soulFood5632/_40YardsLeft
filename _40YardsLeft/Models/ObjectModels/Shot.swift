@@ -121,6 +121,9 @@ extension Shot {
     var isHoled: Bool { return endPosition == .holed }
     
     func toString() -> String {
+        if self.includesPenalty {
+            return self.startPosition.toString() + " -> PENALTY -> " + self.endPosition.toString() 
+        }
         return self.startPosition.toString() + " -> " + self.endPosition.toString()
     }
     
