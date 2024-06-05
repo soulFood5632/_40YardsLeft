@@ -152,7 +152,7 @@ struct HoleByHole: View {
 
             }
             .sheet(isPresented: self.$showRoundFinished, content: {
-                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showRoundFinished, round: self.round)
+                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showRoundFinished, round: self.round, isStat: true)
             })
             
             .animation(.easeInOut, value: self.shotList[holeNumber - 1])
@@ -325,8 +325,14 @@ extension HoleByHole {
             if index != 0 {
                 let pos1 = intermediatesList[index - 1]
                 
-                let pos2 =  intermediatesList[index]
-                shotList.append(Shot(type: pos1.type, startPosition: pos1.position, endPosition: pos2.position))
+                var pos2 =  intermediatesList[index]
+                if pos2.declaration == .drop {
+                    index += 1
+                    pos2 = intermediatesList[index]
+                    shotList.append(Shot(type: pos1.type, startPosition: pos1.position, endPosition: pos2.position, includesPenalty: true))
+                } else {
+                    shotList.append(Shot(type: pos1.type, startPosition: pos1.position, endPosition: pos2.position))
+                }
             }
             index += 1
         }
@@ -336,13 +342,7 @@ extension HoleByHole {
         }
         
         self.round.updateHole(hole, with: shotList)
-        
-        
-
     }
-    
-    
-        
 }
 
 

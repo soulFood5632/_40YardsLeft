@@ -14,6 +14,7 @@ struct RoundOverviewPage: View {
     @Binding var path: NavigationPath
     @Binding var showView: Bool
     let round: Round
+    let isStat: Bool
     @State private var isRoundDone = false
     @State private var showStats = false
     var body: some View {
@@ -49,19 +50,20 @@ struct RoundOverviewPage: View {
                 }
             }
             
-            
-            Button {
-                Task {
-                    golfer.addRound(self.round)
-                    try await golfer.postToDatabase()
+            if !isStat {
+                Button {
+                    Task {
+                        golfer.addRound(self.round)
+                        try await golfer.postToDatabase()
+                    }
+                    self.isRoundDone = true
+                } label: {
+                    
+                    Label("Save Round", systemImage: "checkmark")
+                    
                 }
-                self.isRoundDone = true
-            } label: {
-                
-                Label("Save Round", systemImage: "checkmark")
- 
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
             
             
             
@@ -107,7 +109,7 @@ struct RoundOverviewPage_Previews: PreviewProvider {
     @State private static var showView = true
     static var previews: some View {
         NavigationStack {
-            RoundOverviewPage(golfer: $golfer, path: self.$path, showView: self.$showView, round: round)
+            RoundOverviewPage(golfer: $golfer, path: self.$path, showView: self.$showView, round: round, isStat: true)
         }
         
     }

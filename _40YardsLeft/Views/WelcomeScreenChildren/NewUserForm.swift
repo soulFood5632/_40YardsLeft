@@ -26,12 +26,8 @@ struct NewUserForm: View {
     
     //MARK: New User form body
     var body: some View {
-        GroupBox {
-            Image(systemName: "person.crop.circle")
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: 50)
-                .padding()
+        VStack {
+            
             
             Group {
                 
@@ -89,11 +85,15 @@ struct NewUserForm: View {
                     }
                 }
                 
-                Toggle(isOn: self.$remeberMe) {
-                    Text("Remember Me")
+                HStack {
+                    Text("Save Login")
+                        .bold()
+                    Toggle("", isOn: self.$remeberMe)
+                        .labelsHidden()
+                        .toggleStyle(.switch)
                 }
-                .font(.caption)
-                .toggleStyle(.switch)
+                .padding(.bottom, 7)
+                .padding(.vertical, 2)
                 
                 
                 
@@ -152,26 +152,21 @@ struct NewUserForm: View {
                 
             } label: {
                 Text("Make Account")
-                
-                
             }
             .disabled(!isValidEntry())
             .buttonStyle(.borderedProminent)
             
+            
+            
            
             
-        } label: {
-            HStack {
-                Label("Hello User", systemImage: "hand.wave.fill")
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(.white)
+                .opacity(0.95)
                 
-                Spacer()
-                
-                Button(role: .destructive) {
-                    self.showView = false
-                } label: {
-                    Image(systemName: "x.circle")
-                }
-            }
         }
         .alert("Account Creation Error", isPresented: self.$showAlert.0, actions: {
             Button {
@@ -215,6 +210,10 @@ struct NewUserForm_Previews: PreviewProvider {
     @State static private var showView = true
   
     static var previews: some View {
-        NewUserForm(showView: self.$showView, user: self.$user)
+        
+        ZStack {
+            RadialBackground()
+            NewUserForm(showView: self.$showView, user: self.$user)
+        }
     }
 }

@@ -15,6 +15,8 @@ struct RoundViewList: View {
     
     @State private var selectedRounds = [Round]()
     @State private var showStats = false
+    @State private var isDeleteRoundBool = false
+    
     
     
     var body: some View {
@@ -56,13 +58,31 @@ struct RoundViewList: View {
                         
                         
                         Button (role: .destructive) {
-                            self.golfer.deleteRound(round)
-                            Task {
-                                try await self.golfer.postToDatabase()
-                            }
+                            self.isDeleteRoundBool = true
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
+                        .confirmationDialog("Cancel Round", isPresented: self.$isDeleteRoundBool, actions: {
+                            Button(role: .destructive) {
+                                self.golfer.deleteRound(round)
+                                Task {
+                                    try await self.golfer.postToDatabase()
+                                }
+                            } label: {
+                                Text("Confirm")
+                            }
+                            
+                            Button {
+                                // do I need this
+                                self.isDeleteRoundBool = false
+                            } label: {
+                                Text("Cancel")
+                            }
+                            
+                            
+                        }, message: {
+                            Text("This round will be deleted")
+                        })
                         
                         Button {
                             self.highlightedRound = round
@@ -82,9 +102,7 @@ struct RoundViewList: View {
                 showSpecificRoundView = true
             })
             .sheet(isPresented: self.$showSpecificRoundView, content: {
-                
-                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showSpecificRoundView, round: self.highlightedRound)
-                
+                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showSpecificRoundView, round: self.highlightedRound, isStat: true)
                     
             })
             

@@ -16,8 +16,6 @@ struct WelcomeScreen : View {
     private static let END_RADIUS: CGFloat = 400
     private static let START_RADIUS: CGFloat = 100
     
-    
- 
     var body: some View {
         
         ZStack {

@@ -17,7 +17,7 @@ struct RadialBackground: View {
             RadialGradient(colors: [Color("softBlue"), Color("softGreen")], center: .center, startRadius: Self.START_RADIUS, endRadius: Self.END_RADIUS)
                 .ignoresSafeArea()
             
-            LinearGradient(colors: [.white, .clear, .clear], startPoint: .top, endPoint: .center)
+            LinearGradient(colors: [.white, .clear], startPoint: .top, endPoint: .center)
                 .ignoresSafeArea()
         }
         

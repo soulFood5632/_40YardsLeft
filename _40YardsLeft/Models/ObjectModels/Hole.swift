@@ -71,7 +71,7 @@ struct Hole: Codable, Identifiable, Hashable {
             if shots[index].endPosition.lie == .penalty {
                 let newShot = Shot(type: shots[index].type,
                                    startPosition: shots[index].startPosition,
-                                   endPosition: shots[index].endPosition,
+                                   endPosition: shots[index + 1].endPosition,
                                    includesPenalty: true)
                 
                 shotList.append(newShot)
@@ -272,7 +272,7 @@ extension Hole {
     
     
     /// The score of the hole
-    var score: Int { self.shots.count }
+    var score: Int { self.shots.reduce(0) { $0 + $1.numOfShots } }
     
     /// The score of the hole to par.
     var scoreToPar: Int { score - holeData.par }

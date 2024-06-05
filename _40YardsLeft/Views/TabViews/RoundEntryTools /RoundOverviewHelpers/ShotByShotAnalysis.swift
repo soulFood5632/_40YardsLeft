@@ -17,9 +17,11 @@ struct ShotByShotAnalysis: View {
                 .font(.caption)
             
             Spacer()
-            
-            
-            Text("\(shot.0.strokesGained!, specifier: "%.2f")")
+            if let strokes = shot.0.strokesGained {
+                Text("\(strokes, specifier: "%.2f")")
+            } else {
+                Text("N/A")
+            }
         }
             
         

@@ -120,6 +120,12 @@ enum Province: String, CaseIterable, Codable, Hashable {
     case NS = "Nova Scotia"
     case PEI = "Prince Edward Island"
     case NL = "Newfoundland and Labrador"
+    case WS = "Washington"
+    case OR = "Oregon"
+    case CA = "California"
+    case AZ = "Arizona"
+    case ID = "Idaho"
+    case CO = "Colorado"
     
 }
 
@@ -147,7 +153,7 @@ extension Province {
 
 enum Country: String, CaseIterable, Codable, Hashable {
     case Canada = "Canada"
-//    case US = "United States"
+    case US = "United States"
 }
 
 
@@ -163,8 +169,8 @@ extension Country {
             return [
                 .BC, .AB, .MB, .NB, .NL, .NS, .ON, .PEI, .QC, .SK
             ]
-//        case .US:
-//            return []
+        case .US:
+            return [.WS, .OR, .CA, .AZ, .CO, .ID]
         }
     }
 }

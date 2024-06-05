@@ -206,7 +206,6 @@ extension Round {
     /// - This variable can be called during the round (it need to not be complete).
     var scoreToPar: Int {
         if isComplete {
-            
             return roundScore - totalPar
         }
         

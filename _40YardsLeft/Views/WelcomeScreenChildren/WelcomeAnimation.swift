@@ -16,11 +16,14 @@ struct WelcomeAnimation: View {
     @State private var loginForm = false
     @State private var user: User?
     @Binding var path: NavigationPath
+    @State private var isLoginReady = false
  
     
     var body: some View {
         
         VStack {
+            
+            
             
             let welcomeUserSize = animationMode.getSize(triggerValue: 1)
             
@@ -29,9 +32,9 @@ struct WelcomeAnimation: View {
             let loginSize: CGSize = animationMode.getSize(triggerValue: 1)
             
             Group {
-                Text("Welcome User")
+                Text("Welcome")
                     .foregroundColor(.white)
-                    .font(.system(size: 55))
+                    .font(.system(size: 75))
                     .bold()
                     .scaleEffect(welcomeUserSize)
                     .multilineTextAlignment(.center)
@@ -39,7 +42,7 @@ struct WelcomeAnimation: View {
                 
                 
                 Group {
-                    Text("Get Started Below")
+                    Text("Get Started")
                         .foregroundColor(.white)
                         .font(.system(size: 25))
                         .bold()
@@ -49,6 +52,9 @@ struct WelcomeAnimation: View {
                     Image(systemName: "arrow.down")
                         .foregroundColor(.white)
                         .font(.system(size: 20))
+                        .onTapGesture {
+                            self.isLoginReady = true
+                        }
                     
                 }
                 .scaleEffect(getStartedSize)
@@ -62,6 +68,7 @@ struct WelcomeAnimation: View {
                         } label: {
                             Label("Log In", systemImage: "person.crop.circle")
                         }
+                        .font(.title2)
                         .buttonStyle(.borderedProminent)
                         .padding(.top, 40)
                         
@@ -72,43 +79,40 @@ struct WelcomeAnimation: View {
                             Label("Create Account", systemImage: "person.crop.circle.badge.plus")
                             
                         }
+                        .font(.title2)
                         .buttonStyle(.borderedProminent)
                     } else if self.loginForm {
                         OldUserWelcome(user: self.$user,  showView: self.$loginForm)
+                            
                     } else if self.newUserForm {
                         NewUserForm(showView: self.$newUserForm, user: self.$user)
                     }
                     
                     
-                    
-//                    Button {
-//                        Task {
-//                            let tempUser = try await Authenticator.logIn(emailAddress: "loganu@shaw.ca", password: "Magenta^2")
-//
-//
-//
-//
-//
-//                            withAnimation(.easeInOut(duration: 1)) {
-//                                self.user = tempUser
-//                            }
-//                        }
-//
-//                    } label: {
-//                        Label("Admin", systemImage: "person.crop.circle.badge.plus")
-//
-//                    }
-//                    .buttonStyle(.borderedProminent)
-                    
-                    
+                    //                    Button {
+                    //                        Task {
+                    //                            let tempUser = try await Authenticator.logIn(emailAddress: "loganu@shaw.ca", password: "Magenta^2")
+                    //
+                    //                            withAnimation(.easeInOut(duration: 1)) {
+                    //                                self.user = tempUser
+                    //                            }
+                    //                        }
+                    //
+                    //                    } label: {
+                    //                        Label("Admin", systemImage: "person.crop.circle.badge.plus")
+                    //
+                    //                    }
+                    //                  .buttonStyle(.borderedProminent)
                 }
-                .font(.title2)
+                
                 .scaleEffect(loginSize)
+                
+                
             }
+            
             .padding(.horizontal)
             
-            
-            
+
         }
         .onChange(of: user) { newUser in
             if let newUser {
@@ -137,8 +141,8 @@ struct WelcomeAnimation: View {
             }
 
         }
-        .animation(.easeInOut, value: self.loginForm)
-        .animation(.easeInOut, value: self.newUserForm)
+        .animation(.easeInOut(duration: 1.5), value: self.loginForm)
+        .animation(.easeInOut(duration: 1.5), value: self.newUserForm)
         .onAppear {
             if let id =  UserDefaults.standard.string(forKey: "RememberMe") {
                 Task {
@@ -157,7 +161,14 @@ struct WelcomeAnimation: View {
 struct WelcomeAnimation_Previews: PreviewProvider {
     @State static private var user = NavigationPath()
     static var previews: some View {
-        WelcomeAnimation(path: self.$user)
-            .background(.black)
+        ZStack {
+            
+            RadialBackground()
+            
+            WelcomeAnimation(path: self.$user)
+                
+            
+            
+        }
     }
 }

@@ -18,38 +18,6 @@
             endingLineNumber = "65"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "B1D815FC-E26B-4235-8A14-CA24F0501E51 - 4a1ccfb2cfae837c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.String) -&gt; () in _40YardsLeft.TextFieldWithValiditity.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/TextFieldWithValiditity.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "300">
-               </Location>
-               <Location
-                  uuid = "B1D815FC-E26B-4235-8A14-CA24F0501E51 - 6c104aec03931316"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.String) -&gt; () in _40YardsLeft.TextFieldWithValiditity.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/TextFieldWithValiditity.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -130,38 +98,6 @@
             endingLineNumber = "35"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "EE749A0C-FF5C-4446-B315-9586171FB6C9 - 86a28e1e21ea624f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;, SwiftUI.Divider, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Grid&lt;SwiftUI.TupleView&lt;(SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;, SwiftUI.Divider, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;)&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;&gt;, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;&gt;&gt;)&gt; in _40YardsLeft.ScorecardImage.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/ScoreCardHelpers/ScorecardImage.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1172">
-               </Location>
-               <Location
-                  uuid = "EE749A0C-FF5C-4446-B315-9586171FB6C9 - cd526e81aacd2748"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;, SwiftUI.Divider, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Grid&lt;SwiftUI.TupleView&lt;(SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;, SwiftUI.Divider, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, SwiftUI.Text&gt;, SwiftUI.Text)&gt;&gt;, SwiftUI.GridRow&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.ClosedRange&lt;Swift.Int&gt;, Swift.Int, &lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;, _40YardsLeft.EmptyIfZeroText)&gt;&gt;)&gt;&gt;, SwiftUI._ConditionalContent&lt;SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;&gt;, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;&gt;&gt;)&gt; in _40YardsLeft.ScorecardImage.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/ScoreCardHelpers/ScorecardImage.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "260">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -226,38 +162,6 @@
             endingLineNumber = "106"
             landmarkName = "addShot(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "50022859-AC74-40D6-8E28-C1921952F9D9 - b2fd1b6b3ddcdfca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.Hole.addShot(_40YardsLeft.Shot) -&gt; Swift.Bool"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/ObjectModels/Hole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "50022859-AC74-40D6-8E28-C1921952F9D9 - b2fd1b6b3ddcdfca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.Hole.addShot(_40YardsLeft.Shot) -&gt; Swift.Bool"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/ObjectModels/Hole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "276">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -270,8 +174,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -306,38 +210,6 @@
             endingLineNumber = "49"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "605D0590-0A53-4935-B3FF-7A3BD44D68DD - a80ef76f7747566b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.RoundEntry.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntry.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "804">
-               </Location>
-               <Location
-                  uuid = "605D0590-0A53-4935-B3FF-7A3BD44D68DD - d52022709fe34813"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (_40YardsLeft.Course) -&gt; _40YardsLeft.RoundSetupView in _40YardsLeft.RoundEntry.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntry.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "436">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -370,38 +242,6 @@
             endingLineNumber = "15"
             landmarkName = "ContentView"
             landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "7D46BA21-6515-433B-B9BF-BE059F5594D3 - c2ac180200b3a35c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of _40YardsLeft.ContentView.path : SwiftUI.NavigationPath"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "7D46BA21-6515-433B-B9BF-BE059F5594D3 - 9093bdbfb423afd3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.ContentView.init() -&gt; _40YardsLeft.ContentView"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "444">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -514,53 +354,6 @@
             endingLineNumber = "263"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "9964AD50-2451-4B1A-A83D-FFEFED3F19EA - 7b49461cc6a5be59"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable () async -&gt; () in closure #4 (Swift.Int) -&gt; () in _40YardsLeft.HoleByHole.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/HoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  uuid = "9964AD50-2451-4B1A-A83D-FFEFED3F19EA - 5fdb7059cec4a030"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #4 (Swift.Int) -&gt; () in _40YardsLeft.HoleByHole.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/HoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "9964AD50-2451-4B1A-A83D-FFEFED3F19EA - 4d779d62924c3d70"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #4 (Swift.Int) -&gt; () in _40YardsLeft.HoleByHole.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/HoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -573,8 +366,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -589,8 +382,8 @@
             filePath = "_40YardsLeft/Models/ObjectModels/Round.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "updateHole(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -605,8 +398,8 @@
             filePath = "_40YardsLeft/Models/ObjectModels/Round.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "updateHole(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -637,72 +430,10 @@
             filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "86193C18-47FD-4F4D-9A21-207F4EA7B576 - fde1d31fced49b9d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #5 () -&gt; () in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "86193C18-47FD-4F4D-9A21-207F4EA7B576 - 29c00349cf381168"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #5 () -&gt; () in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "86193C18-47FD-4F4D-9A21-207F4EA7B576 - 40b4fd9b905c79b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #5 () -&gt; () in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "86193C18-47FD-4F4D-9A21-207F4EA7B576 - 10a0787a5e6ea59a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #5 () -&gt; () in closure #2 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: __C.CGSize, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -719,68 +450,6 @@
             endingLineNumber = "37"
             landmarkName = "logIn(emailAddress:password:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E7A97930-CAB5-4554-8C16-01B2DC6E8B8E - f77454cdc545993"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for static _40YardsLeft.Authenticator.logIn(emailAddress: Swift.String, password: Swift.String) async throws -&gt; __C.FIRUser"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/Authenticator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "E7A97930-CAB5-4554-8C16-01B2DC6E8B8E - 23fe9205cf77c76d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for static _40YardsLeft.Authenticator.logIn(emailAddress: Swift.String, password: Swift.String) async throws -&gt; __C.FIRUser"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/Authenticator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "E7A97930-CAB5-4554-8C16-01B2DC6E8B8E - dacbeb6b367f1d95"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for static _40YardsLeft.Authenticator.logIn(emailAddress: Swift.String, password: Swift.String) async throws -&gt; __C.FIRUser"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/Authenticator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "E7A97930-CAB5-4554-8C16-01B2DC6E8B8E - cf7a3c75450a7f94"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for static _40YardsLeft.Authenticator.logIn(emailAddress: Swift.String, password: Swift.String) async throws -&gt; __C.FIRUser"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/Authenticator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -793,8 +462,8 @@
             filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -825,8 +494,8 @@
             filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -841,72 +510,10 @@
             filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - 75caf0ee1b7c4b36"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - e94af51f65906f0c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - c12fad8ec7568f34"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "EDE24B65-DBBA-46D2-ADFA-434F40F383FE - fb5e3f3f15a2513b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #2 (Swift.Optional&lt;__C.FIRUser&gt;) -&gt; () in _40YardsLeft.WelcomeAnimation.body.getter : some"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -919,8 +526,8 @@
             filePath = "_40YardsLeft/Views/WelcomeScreenChildren/WelcomeAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -939,68 +546,6 @@
             endingLineNumber = "47"
             landmarkName = "getGolfer(id:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - b3105cd0cff63ebc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "316">
-               </Location>
-               <Location
-                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - d4eb99c8daa1da7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - 968c868f360f62be"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  uuid = "FD94EF21-0294-48FF-BD39-7391A984689B - e8b2d2602d3b04bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for static _40YardsLeft.DatabaseCommunicator.getGolfer(id: Swift.String) async throws -&gt; _40YardsLeft.Golfer"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/GitHub/_40YardsLeft/_40YardsLeft/Models/FirebaseTools/DatabaseCommunicator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1034,6 +579,36 @@
             endingLineNumber = "93"
             landmarkName = "strokesGainedStats"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6 - 79daed592497b65e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_40YardsLeft.PuttingStatView.strokesGainedStats.getter : Swift.Array&lt;_40YardsLeft.DisplayStat&lt;Swift.Double, Swift.Int&gt;&gt;"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93">
+               </Location>
+               <Location
+                  uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6 - 79daed592497b65e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_40YardsLeft.PuttingStatView.strokesGainedStats.getter : Swift.Array&lt;_40YardsLeft.DisplayStat&lt;Swift.Double, Swift.Int&gt;&gt;"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1066,6 +641,36 @@
             endingLineNumber = "30"
             landmarkName = "fillBuffer(with:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A7082FE6-A347-48FB-9E8D-CB14BEC7564E - f28a0d92451f8b1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_40YardsLeft.TeeBuffer.fillBuffer(with: _40YardsLeft.Tee) -&gt; ()"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/RoundEntry/RoundSetup/CourseHoleByHole.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30">
+               </Location>
+               <Location
+                  uuid = "A7082FE6-A347-48FB-9E8D-CB14BEC7564E - f28a0d92451f8b1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_40YardsLeft.TeeBuffer.fillBuffer(with: _40YardsLeft.Tee) -&gt; ()"
+                  moduleName = "_40YardsLeft"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/RoundEntry/RoundSetup/CourseHoleByHole.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -143,6 +143,7 @@ enum AnalysisFocus: String, CaseIterable, Hashable, Identifiable {
     case chipping = "Chipping"
     case putting = "Putting"
     case tee = "Tee"
+    // TODO: add the strokes gained functionality. 
     
     
 }
