@@ -579,36 +579,6 @@
             endingLineNumber = "93"
             landmarkName = "strokesGainedStats"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6 - 79daed592497b65e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.PuttingStatView.strokesGainedStats.getter : Swift.Array&lt;_40YardsLeft.DisplayStat&lt;Swift.Double, Swift.Int&gt;&gt;"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93">
-               </Location>
-               <Location
-                  uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6 - 79daed592497b65e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.PuttingStatView.strokesGainedStats.getter : Swift.Array&lt;_40YardsLeft.DisplayStat&lt;Swift.Double, Swift.Int&gt;&gt;"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -641,36 +611,6 @@
             endingLineNumber = "30"
             landmarkName = "fillBuffer(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A7082FE6-A347-48FB-9E8D-CB14BEC7564E - f28a0d92451f8b1f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.TeeBuffer.fillBuffer(with: _40YardsLeft.Tee) -&gt; ()"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/RoundEntry/RoundSetup/CourseHoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-               <Location
-                  uuid = "A7082FE6-A347-48FB-9E8D-CB14BEC7564E - f28a0d92451f8b1f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.TeeBuffer.fillBuffer(with: _40YardsLeft.Tee) -&gt; ()"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/RoundEntry/RoundSetup/CourseHoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
