@@ -152,7 +152,7 @@ struct HoleByHole: View {
 
             }
             .sheet(isPresented: self.$showRoundFinished, content: {
-                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showRoundFinished, round: self.round, isStat: true)
+                RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showRoundFinished, round: self.round, isStat: false)
             })
             
             .animation(.easeInOut, value: self.shotList[holeNumber - 1])
@@ -172,12 +172,6 @@ struct HoleByHole: View {
                             self.path.keepFirst()
                         } label: {
                             Text("Confirm")
-                        }
-
-                        Button {
-                            //no action
-                        } label: {
-                            Text("Cancel")
                         }
 
 
