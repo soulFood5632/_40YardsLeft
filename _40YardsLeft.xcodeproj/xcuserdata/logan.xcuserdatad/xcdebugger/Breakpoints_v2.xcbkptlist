@@ -110,8 +110,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -366,8 +366,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "postShots(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "_40YardsLeft/Views/TabViews/RoundEntryTools /HoleByHole.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -579,36 +579,6 @@
             endingLineNumber = "93"
             landmarkName = "strokesGainedStats"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6 - 79daed592497b65e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.PuttingStatView.strokesGainedStats.getter : Swift.Array&lt;_40YardsLeft.DisplayStat&lt;Swift.Double, Swift.Int&gt;&gt;"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93">
-               </Location>
-               <Location
-                  uuid = "AAB56ABD-F095-4CD8-AA32-2A1BE2CF52F6 - 79daed592497b65e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.PuttingStatView.strokesGainedStats.getter : Swift.Array&lt;_40YardsLeft.DisplayStat&lt;Swift.Double, Swift.Int&gt;&gt;"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/StatViewHelpers/SpecificAnalysisViews/PuttingStatView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -641,36 +611,6 @@
             endingLineNumber = "30"
             landmarkName = "fillBuffer(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A7082FE6-A347-48FB-9E8D-CB14BEC7564E - f28a0d92451f8b1f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.TeeBuffer.fillBuffer(with: _40YardsLeft.Tee) -&gt; ()"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/RoundEntry/RoundSetup/CourseHoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-               <Location
-                  uuid = "A7082FE6-A347-48FB-9E8D-CB14BEC7564E - f28a0d92451f8b1f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_40YardsLeft.TeeBuffer.fillBuffer(with: _40YardsLeft.Tee) -&gt; ()"
-                  moduleName = "_40YardsLeft"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/logan/Documents/Documents%20-%20Logan%E2%80%99s%20MacBook%20Air/GitHub/_40YardsLeft/_40YardsLeft/Views/TabViews/RoundEntryTools%20/RoundEntry/RoundSetup/CourseHoleByHole.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
