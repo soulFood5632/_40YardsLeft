@@ -21,6 +21,8 @@ struct HoleByHole: View {
     
     @State private var isDeleteRound = false
     @State private var isRoundSetup = false
+    
+    @State private var isHoleValid = false
 
     
     /// A state variable which holds a map to each shotIntermediate for each hole in the round
@@ -138,16 +140,15 @@ struct HoleByHole: View {
                     .padding()
                     
                 Spacer()
-                
-                Button {
-                    
-                    self.showRoundFinished = true
- 
-                } label: {
-                    Label("Finish Round", systemImage: "checkmark")
+                if self.round.isComplete {
+                    Button {
+                        self.showRoundFinished = true
+                    } label: {
+                        Label("Finish Round", systemImage: "checkmark")
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(!self.round.isComplete)
                 }
-                .buttonStyle(.bordered)
-                .disabled(!self.round.isComplete)
                  
 
             }
@@ -165,7 +166,7 @@ struct HoleByHole: View {
                     Button(role: .destructive) {
                         self.isDeleteRound = true
                     } label: {
-                        Image(systemName: "trash")
+                        Label("Restart Round", systemImage: "trash")
                     }
                     .confirmationDialog("Cancel Round", isPresented: self.$isDeleteRound, actions: {
                         Button(role: .destructive) {
@@ -182,30 +183,6 @@ struct HoleByHole: View {
 
                 }
                 
-                ToolbarItem(placement: .navigation) {
-                    Button(role: .cancel) {
-                        self.isRoundSetup = true
-                    } label: {
-                        Text("Change Tee")
-                    }
-                    .confirmationDialog("", isPresented: self.$isRoundSetup, actions: {
-                        Button(role: .destructive) {
-                            self.path.removeLast()
-                        } label: {
-                            Text("Confirm")
-                        }
-
-                        Button {
-                            //no action
-                        } label: {
-                            Text("Cancel")
-                        }
-
-
-                    }, message: {
-                        Text("Your scores will be deleted")
-                    })
-                }
                 
                 
         
@@ -219,9 +196,11 @@ struct HoleByHole: View {
                         } label: {
                             Label("Last Hole", systemImage: "arrow.backward.circle")
                         }
+                        .disabled(self.isHoleValid)
                         .font(.system(size: 25))
 
                     }
+                    
 
                     Spacer()
 
@@ -234,16 +213,20 @@ struct HoleByHole: View {
                         } label: {
                             Label("Next Hole", systemImage: "arrow.forward.circle")
                         }
+                        .disabled(self.isHoleValid)
                         .font(.system(size: 25))
                     } 
                 }
+                
+                
+                
                 
                 
                 ToolbarItem (placement: .navigationBarTrailing) {
                     Button {
                         self.showScorecard = true
                     } label: {
-                        Label("Scorecard", systemImage: "tablecells")
+                        Label("Scorecard", systemImage: "menucard")
                     }
                 }
             }
@@ -253,8 +236,10 @@ struct HoleByHole: View {
             })
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
-                Task {
-                    await self.postShots(for: holeNumber)
+                if self.isHoleValid {
+                    Task {
+                        await self.postShots(for: holeNumber)
+                    }
                 }
 
             })
@@ -263,15 +248,14 @@ struct HoleByHole: View {
             }
             .onChange(of: shotList) { newShotList in
                 
-                if newShotList[holeNumber - 1].last?.position.lie == .penalty {
-                    print("penalty found")
-
-                } else {
-
+                
+                
+                if isHoleValid {
                     Task {
                         await postShots(for: self.holeNumber)
                     }
                 }
+                
                 
             
                 
@@ -282,6 +266,29 @@ struct HoleByHole: View {
 }
 
 extension HoleByHole {
+    
+    private func isShotsValid(shotList: [ShotIntermediate]) -> Bool {
+        if shotList.last?.declaration == .drop {
+            print("inavlid hole found")
+            return false
+            
+        }
+        
+        if shotList.first?.position.lie != .tee {
+            return false
+        }
+        
+        if shotList.first?.declaration == .drop {
+            return false
+        }
+        
+        if shotList.isEmpty {
+            return false
+        }
+        
+        return true
+        
+    }
     
     
     
@@ -340,18 +347,25 @@ extension HoleByHole {
 }
 
 
-
-//MARK: Preciew
-struct HoleByHole_Previews: PreviewProvider {
-    @State static private var holeNumber = 1
-    @State private static var round = Round.emptyRoundExample1
-    @State private static var golfer = Golfer.golfer
-    @State private static var path = NavigationPath()
-    static var previews: some View {
+struct HHPreview: View {
+    var holeNumber = 1
+    
+    var round = Round.emptyRoundExample1
+    
+    @State var golfer = Golfer.golfer
+    
+    @State var path = NavigationPath()
+    
+    var body: some View {
+        
         NavigationStack {
             HoleByHole(golfer: $golfer, round: round, path: self.$path, holeNumber: holeNumber)
         }
     }
+}
+//MARK: Preciew
+#Preview {
+    HHPreview()
 }
 
 struct ShotIntermediate : Identifiable, Equatable {
