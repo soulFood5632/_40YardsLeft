@@ -196,7 +196,7 @@ struct HoleByHole: View {
                         } label: {
                             Label("Last Hole", systemImage: "arrow.backward.circle")
                         }
-                        .disabled(self.isHoleValid)
+                        .disabled(!self.isHoleValid)
                         .font(.system(size: 25))
 
                     }
@@ -213,7 +213,7 @@ struct HoleByHole: View {
                         } label: {
                             Label("Next Hole", systemImage: "arrow.forward.circle")
                         }
-                        .disabled(self.isHoleValid)
+                        .disabled(!self.isHoleValid)
                         .font(.system(size: 25))
                     } 
                 }
@@ -236,19 +236,20 @@ struct HoleByHole: View {
             })
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
+                
                 if self.isHoleValid {
                     Task {
                         await self.postShots(for: holeNumber)
                     }
                 }
+                
 
             })
             .onAppear {
                
             }
             .onChange(of: shotList) { newShotList in
-                
-                
+                self.isHoleValid = self.isShotsValid(shotList: newShotList[self.holeNumber - 1])
                 
                 if isHoleValid {
                     Task {
