@@ -124,16 +124,17 @@ struct HoleByHole: View {
                                         Image(systemName: "checkmark")
                                     }
                                     .disabled(shotList[holeNumber - 1].isEmpty)
+                                    
+                                    
                                 }
 
                                 Button(role: .destructive) {
-                                    self.shotList[holeNumber - 1].removeAll()
-                                    self.isHoleSaved[holeNumber - 1] = false
+                                    self.shotList[holeNumber - 1].remove(at: self.shotList[holeNumber - 1].count - 1)
                                 } label: {
-                                    Image(systemName: "arrow.counterclockwise")
+                                    Image(systemName: "delete.left")
                                 }
-                                .padding(.leading, 7)
-                                .disabled(shotList[holeNumber - 1].isEmpty)
+                                    .padding(.leading, 7)
+                                    .disabled(shotList[holeNumber - 1].isEmpty)
 
                             }
                         }
@@ -146,12 +147,13 @@ struct HoleByHole: View {
                     VStack {
                         Image(systemName: "exclamationmark.triangle")
                             .imageScale(.large)
-                            .padding(6)
+                            .padding(.horizontal, 6)
+                            .padding(.bottom, 5)
                         Text(errorMessage)
                             
                             
                     }
-                    .padding()
+                    .padding(15)
                     .background {
                         RoundedRectangle(cornerRadius: 10, style: .continuous)
                             .foregroundStyle(.red)
@@ -323,9 +325,10 @@ extension HoleByHole {
     }
     
     private func getNextValue(holeNumber: Int) -> ShotIntermediate {
-        if let lastPosition = self.shotList[holeNumber - 1].last?.position {
+        if let lastShot = self.shotList[holeNumber - 1].last {
             
-            let suggestedPosition = shotPredictor.predictedNextLocation(lastPosition, par: round.tee.holeData[holeNumber - 1].par)
+            
+            let suggestedPosition = shotPredictor.predictedNextLocation(lastShot)
             
             return .init(position: suggestedPosition, declaration: suggestedPosition.expectedShotType())
         }

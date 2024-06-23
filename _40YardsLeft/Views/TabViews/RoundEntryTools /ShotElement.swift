@@ -14,8 +14,10 @@ struct ShotElement: View {
     @State var hasChangedDecleration = false
     @FocusState var textFocus: Bool
     
-    @State var isAtHole = false // TODO: update
-    @State var isDrop = false // TODO: update
+    @State var isLoaded = false
+    
+    @State var isAtHole = false
+    @State var isDrop = false
     
     
     var body: some View {
@@ -102,18 +104,30 @@ struct ShotElement: View {
             
         }
         .onChange(of: self.isDrop) { newValue in
-            if newValue == true {
-                self.isAtHole = false
+            if self.isLoaded {
+                if newValue == true {
+                    self.isAtHole = false
+                }
+                mapDeclare()
             }
-            mapDeclare()
-            print(self.shot.declaration)
+            
         }
         .onChange(of: self.isAtHole) { newValue in
-            if newValue == true {
-                self.isDrop = false
+            if self.isLoaded {
+                if newValue == true {
+                    self.isDrop = false
+                }
+                mapDeclare()
             }
-            mapDeclare()
-            print(self.shot.declaration)
+            
+        }
+        .onAppear {
+            if self.shot.declaration == .atHole {
+                self.isAtHole = true
+            } else if self.shot.declaration == .drop {
+                self.isDrop = true
+            }
+            self.isLoaded = true
         }
         
        
@@ -130,9 +144,6 @@ extension ShotElement {
     func mapDeclare() {
         precondition(!(isAtHole && isDrop))
         
-        
-        
-        
         if isAtHole {
             self.shot.declaration = .atHole
         } else if isDrop {
@@ -144,6 +155,8 @@ extension ShotElement {
         }
         
     }
+    
+    
     func setDeclarationFrom(lie: Lie) {
         let yardage = self.shot.position.yardage
         switch lie {
