@@ -22,7 +22,7 @@ struct HoleByHole: View {
     @State private var isDeleteRound = false
     @State private var isRoundSetup = false
     
-    @State private var isHoleValid = false
+    @State private var isHoleValid: String?
 
     
     /// A state variable which holds a map to each shotIntermediate for each hole in the round
@@ -72,18 +72,19 @@ struct HoleByHole: View {
                                 GridRow {
                                     Text("To Hole")
                                     Text("Lie")
-                                    Text("Type")
+                                    Text("At Hole")
+                                    Text("Drop")
                                 }
                                 .bold()
                                 Divider()
+                                
 
-
-                                    ForEach($shotList[self.holeNumber - 1]) { shot in
-                                        GridRow {
-                                            ShotElement(shot: shot, isFinal: self.$isHoleSaved[holeNumber - 1])
-                                        }
-
+                                ForEach($shotList[self.holeNumber - 1]) { shot in
+                                    GridRow {
+                                        ShotElement(shot: shot, isFinal: self.$isHoleSaved[holeNumber - 1])
                                     }
+
+                                }
                                     
 
                             }
@@ -140,6 +141,25 @@ struct HoleByHole: View {
                     .padding()
                     
                 Spacer()
+                
+                if let errorMessage = self.isHoleValid {
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .imageScale(.large)
+                            .padding(6)
+                        Text(errorMessage)
+                            
+                            
+                    }
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .foregroundStyle(.red)
+                            .opacity(0.5)
+                    }
+                    
+                }
+                
                 if self.round.isComplete {
                     Button {
                         self.showRoundFinished = true
@@ -152,6 +172,7 @@ struct HoleByHole: View {
                  
 
             }
+            .animation(.easeInOut, value: self.isHoleValid)
             .sheet(isPresented: self.$showRoundFinished, content: {
                 RoundOverviewPage(golfer: self.$golfer, path: self.$path, showView: self.$showRoundFinished, round: self.round, isStat: false)
             })
@@ -183,29 +204,26 @@ struct HoleByHole: View {
 
                 }
                 
-                
-                
-        
-                
                 ToolbarItemGroup(placement: .bottomBar) {
-
+                    
+                    
                     if holeNumber > 1 {
                         Button {
                             self.holeNumber -= 1
-
+                            
                         } label: {
                             Label("Last Hole", systemImage: "arrow.backward.circle")
                         }
-                        .disabled(!self.isHoleValid)
+                        .disabled(self.isHoleValid != nil)
                         .font(.system(size: 25))
-
+                        
                     }
                     
-
+                    
                     Spacer()
-
-
-
+                    
+                    
+                    
                     Spacer()
                     if holeNumber < 18 {
                         Button {
@@ -213,9 +231,10 @@ struct HoleByHole: View {
                         } label: {
                             Label("Next Hole", systemImage: "arrow.forward.circle")
                         }
-                        .disabled(!self.isHoleValid)
+                        .disabled(self.isHoleValid != nil)
                         .font(.system(size: 25))
-                    } 
+                    }
+                    
                 }
                 
                 
@@ -237,7 +256,7 @@ struct HoleByHole: View {
             .navigationBarBackButtonHidden()
             .onChange(of: self.holeNumber, perform: { [holeNumber] newValue in
                 
-                if self.isHoleValid {
+                if self.isHoleValid == nil {
                     Task {
                         await self.postShots(for: holeNumber)
                     }
@@ -245,21 +264,15 @@ struct HoleByHole: View {
                 
 
             })
-            .onAppear {
-               
-            }
             .onChange(of: shotList) { newShotList in
                 self.isHoleValid = self.isShotsValid(shotList: newShotList[self.holeNumber - 1])
                 
-                if isHoleValid {
+                if isHoleValid == nil {
                     Task {
                         await postShots(for: self.holeNumber)
                     }
                 }
-                
-                
             
-                
             }
             
 
@@ -268,26 +281,36 @@ struct HoleByHole: View {
 
 extension HoleByHole {
     
-    private func isShotsValid(shotList: [ShotIntermediate]) -> Bool {
-        if shotList.last?.declaration == .drop {
-            print("inavlid hole found")
-            return false
+    private func isShotsValid(shotList: [ShotIntermediate]) -> String? {
+        
+        if let first = shotList.first {
+            if first.position.lie != .tee {
+                return "First shot must be from tee"
+            }
             
+            let valid_tee_shots: [ShotIntermediate.ShotDeclaration] = [
+                .drive,
+                .atHole,
+            ]
+            
+            if !valid_tee_shots.contains(first.declaration) {
+                return "First shot cannot be a drop"
+            }
         }
         
-        if shotList.first?.position.lie != .tee {
-            return false
+        if shotList.last?.declaration == .drop {
+            return "Last shot cannot be a drop"
         }
         
-        if shotList.first?.declaration == .drop {
-            return false
-        }
+        
+        
         
         if shotList.isEmpty {
-            return false
+            return "No shots have been posted"
         }
         
-        return true
+        
+        return nil
         
     }
     
@@ -391,7 +414,7 @@ struct ShotIntermediate : Identifiable, Equatable {
                 return .putt
                 
             case .penalty:
-                fatalError("You cannot go towards the hole if you are in a penatly area")
+                fatalError("Penalty cannot be to hole")
             }
         case .drop:
             return .penalty

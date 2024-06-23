@@ -58,8 +58,6 @@ struct Hole: Codable, Identifiable, Hashable {
         var index = 0
         precondition(self.isComplete)
         while true {
-            // it should not be possible for this to be the case. The first shot must not be a penatly, all penalties should have been handled at this point.
-            precondition(shots[index].startPosition.lie != .penalty)
             
             //if the last shot is holed then we can conclude that this list is done
             if shots[index].isHoled {

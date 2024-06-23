@@ -25,11 +25,21 @@ struct ScorecardView: View {
             .padding(.top, 10)
             
             GroupBox {
+                StrokesGainedGlance(round: round)
+                    .padding(5)
+            } label: {
+                Label("Stats", systemImage: "chart.bar")
+            }
+            .padding(.horizontal)
+            
+            GroupBox {
                 HoleButtons(round: round, holeNumber: self.$currentHole)
             } label: {
                 Label("Navigation", systemImage: "point.topleft.down.curvedto.point.bottomright.up")
             }
             .padding(.horizontal)
+            
+            
         }
         .onChange(of: self.currentHole) { _ in
             self.showView = false
@@ -38,10 +48,14 @@ struct ScorecardView: View {
 }
 
 
-struct ScorecardView_Previews: PreviewProvider {
-    @State private static var currentHole = 10
-    @State private static var showView = true
-    static var previews: some View {
+struct ScorecardView_Previews: View {
+    @State private var currentHole = 10
+    @State private var showView = true
+    var body: some View {
         ScorecardView(round: .completeRoundExample1, currentHole: self.$currentHole, showView: self.$showView)
     }
+}
+
+#Preview {
+    ScorecardView_Previews()
 }

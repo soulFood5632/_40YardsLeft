@@ -14,20 +14,19 @@ struct ShotElement: View {
     @State var hasChangedDecleration = false
     @FocusState var textFocus: Bool
     
+    @State var isAtHole = false // TODO: update
+    @State var isDrop = false // TODO: update
+    
+    
     var body: some View {
         
         Group {
             if !isFinal {
-                
-             
-                    
-                    
-                    
                 let isOnGreen = shot.position.lie == .green
                 VStack {
                     TextField("To Hole",
                                 value: isOnGreen ?  $shot.position.yardage.feet : $shot.position.yardage.yards,
-                                formatter: .wholeNumber)
+                              formatter: .wholeNumber)
                         .focused($textFocus)
                         .textFieldStyle(.roundedBorder)
                         .frame(width: 50, alignment: .center)
@@ -45,14 +44,6 @@ struct ShotElement: View {
                         
                 }
                 
-                
-                
-                
-                
-                
-                
-                
-                
                 Picker(selection: $shot.position.lie) {
                     ForEach(Lie.allCases) { shotType in
                         Text(shotType.rawValue)
@@ -64,18 +55,19 @@ struct ShotElement: View {
                         textFocus = false
                     })
                 
-                
-                
-                
-                
-                Picker(selection: $shot.declaration) {
-                    ForEach(ShotIntermediate.ShotDeclaration.allCases) { shotType in
-                        Text(shotType.rawValue)
-                        
-                    }
-                } label: {
-                    //empty label block
+                Toggle(isOn: self.$isAtHole) {
+                    //empty label
                 }
+                .toggleStyle(iOSCheckboxToggleStyle())
+            
+                Toggle(isOn: self.$isDrop) {
+                    // empty label
+                }
+                .toggleStyle(iOSCheckboxToggleStyle())
+                
+    
+                
+                
                 .onTapGesture{
                     self.hasChangedDecleration = true;
                     textFocus = false
@@ -99,16 +91,31 @@ struct ShotElement: View {
 
                 Text(shot.position.lie.rawValue)
                 
-                Text(shot.declaration.rawValue)
+                
+                Image(systemName: self.isAtHole ? "checkmark.square" : "square")
+                Image(systemName: self.isDrop ? "checkmark.square" : "square")
+                
+                
+                
                 
             }
             
         }
-        .onChange(of: self.shot.position) { position in
-            if !hasChangedDecleration {
-                setDeclarationFrom(lie: position.lie)
+        .onChange(of: self.isDrop) { newValue in
+            if newValue == true {
+                self.isAtHole = false
             }
+            mapDeclare()
+            print(self.shot.declaration)
         }
+        .onChange(of: self.isAtHole) { newValue in
+            if newValue == true {
+                self.isDrop = false
+            }
+            mapDeclare()
+            print(self.shot.declaration)
+        }
+        
        
         .animation(.easeInOut, value: self.textFocus)
         
@@ -119,6 +126,24 @@ struct ShotElement: View {
 }
 
 extension ShotElement {
+    
+    func mapDeclare() {
+        precondition(!(isAtHole && isDrop))
+        
+        
+        
+        
+        if isAtHole {
+            self.shot.declaration = .atHole
+        } else if isDrop {
+            self.shot.declaration = .drop
+        } else if self.shot.position.lie == .tee {
+            self.shot.declaration = .drive
+        } else {
+            self.shot.declaration = .other
+        }
+        
+    }
     func setDeclarationFrom(lie: Lie) {
         let yardage = self.shot.position.yardage
         switch lie {
@@ -140,24 +165,24 @@ extension ShotElement {
             }
         case .recovery:
             self.shot.declaration = .other
+        case .penalty:
+            self.shot.declaration = .drop
         case .bunker:
             if yardage > .yards(190) {
                 self.shot.declaration = .other
             } else {
                 self.shot.declaration = .atHole
             }
-        case .penalty:
-            self.shot.declaration = .drop
         case .green:
             self.shot.declaration = .atHole
         }
     }
 }
 
-struct ShotElement_Previews: PreviewProvider {
-    @State private static var shot = ShotIntermediate(position: Position(lie: .fairway, yardage: Distance(yards: 150)), declaration: .drive)
-    @State private static var isFinal = false
-    static var previews: some View {
+struct ShotElement_Previews: View {
+    @State private var shot = ShotIntermediate(position: Position(lie: .fairway, yardage: Distance(yards: 150)), declaration: .drive)
+    @State private var isFinal = false
+    var body: some View {
         Grid {
             GridRow {
                 ShotElement(shot: self.$shot, isFinal: $isFinal)
@@ -169,5 +194,26 @@ struct ShotElement_Previews: PreviewProvider {
             }
             .buttonStyle(.borderedProminent)
         }
+    }
+}
+
+#Preview {
+    ShotElement_Previews()
+}
+
+
+struct iOSCheckboxToggleStyle: ToggleStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        Button(action: {
+            configuration.isOn.toggle()
+
+        }, label: {
+            HStack {
+                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+                
+                configuration.label
+            }
+        })
     }
 }

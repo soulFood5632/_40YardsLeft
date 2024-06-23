@@ -6,6 +6,12 @@
 build/
 DerivedData/
 
+_40YardsLeft.xcodeproj
+_40YardsLeft/_40YardsLeft.entitlements
+_40YardsLeft/xcdatamodeId
+
+_40YardsLeft/Preview_Content
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
