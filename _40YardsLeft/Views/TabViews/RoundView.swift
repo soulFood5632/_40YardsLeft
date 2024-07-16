@@ -59,11 +59,17 @@ struct RoundView: View {
     }
 }
 
-struct RoundView_Previews: PreviewProvider {
-    
-    @State private static var golfer = Golfer.golfer
-    @State private static var navStack = NavigationPath()
-    static var previews: some View {
+struct RoundView_Previews: View {
+
+    @State private var golfer = Golfer.golfer
+    @State private var navStack = NavigationPath()
+    var body: some View {
         RoundView(golfer: $golfer, path: $navStack)
     }
 }
+
+#Preview {
+    RoundView_Previews()
+}
+
+

@@ -31,11 +31,14 @@ struct IndividualButton: View {
     
     private func getFillColour() -> Color {
         if activeHole == buttonNumber {
-            return .gray.opacity(0.6)
+            if round.isHoleFilled(self.buttonNumber) {
+                return .green.opacity(0.3)
+            }
+            return .gray.opacity(0.5)
         }
         
         if round.isHoleFilled(self.buttonNumber) {
-            return .green.opacity(0.6)
+            return .green.opacity(0.5)
         }
         
         return .gray.opacity(0.3)

@@ -79,26 +79,29 @@ extension ShotPredictor {
     ///  - par: The par of the hole which must be valid (between 3 and 5)
     ///
     /// - Returns: The predicted location of the next shot based on par
-    func predictedNextLocation(_ position: Position, par: Int) -> Position {
-        switch position.lie {
+    func predictedNextLocation(_ shotI: ShotIntermediate) -> Position {
+        if shotI.declaration == .drop {
+            return shotI.position
+        }
+        if shotI.declaration == .drive {
+            return expectShotFromTee(distance: shotI.position.yardage)
+        }
+        // hand
+        switch shotI.position.lie {
         case .tee:
-            precondition(par >= 3 && par <= 5)
-            if par == 3 {
-                return expectShotFromTeePar3(distance: position.yardage)
-            }
-            return expectShotFromTee(distance: position.yardage)
+            return expectShotFromTeePar3(distance: shotI.position.yardage)
         case .fairway:
-            return expectShotFromFairway(distance: position.yardage)
+            return expectShotFromFairway(distance: shotI.position.yardage)
         case .rough:
-            return expectShotFromRough(distance: position.yardage)
+            return expectShotFromRough(distance: shotI.position.yardage)
         case .penalty:
-            return expectShotFromPenalty(distance: position.yardage)
+            return expectShotFromPenalty(distance: shotI.position.yardage)
         case .bunker:
-            return expectShotFromBunker(distance: position.yardage)
+            return expectShotFromBunker(distance: shotI.position.yardage)
         case .recovery:
-            return expectShotFromRecovery(distance: position.yardage)
+            return expectShotFromRecovery(distance: shotI.position.yardage)
         case .green:
-            return expectShotFromGreen(distance: position.yardage)
+            return expectShotFromGreen(distance: shotI.position.yardage)
         }
     }
     

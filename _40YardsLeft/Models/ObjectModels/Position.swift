@@ -110,8 +110,6 @@ struct Position : Codable, Hashable {
 
     /// Two positions are equal if their lies and yardage are both equal to each other.
     static func == (lhs: Position, rhs: Position) -> Bool {
-        
-        
         return lhs.lie == rhs.lie && lhs.yardage == rhs.yardage
     }
 }
@@ -201,10 +199,10 @@ extension Position {
             }
             return .atHole
             
-        case .penalty:
-            return .drop
         case .recovery:
             return .other
+        case .penalty:
+            return .drop
         case .green:
             return .atHole
         }
@@ -236,6 +234,9 @@ enum Lie : String, Codable, Hashable, CaseIterable {
     case penalty = "Penalty"
     case recovery = "Recovery"
     case green = "Green"
+    
+    static var withoutPenalty: [Lie] { Self.allCases.filter{ $0 != .penalty } }
+    
 }
 
 
