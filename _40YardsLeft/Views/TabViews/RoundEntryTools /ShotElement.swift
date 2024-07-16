@@ -31,7 +31,7 @@ struct ShotElement: View {
                               formatter: .wholeNumber)
                         .focused($textFocus)
                         .textFieldStyle(.roundedBorder)
-                        .frame(width: 50, alignment: .center)
+                        .frame(width: 45, alignment: .center)
                         .keyboardType(.asciiCapableNumberPad)
                         .textContentType(.none)
                         .backgroundStyle(textFocus ? .gray : .green)
