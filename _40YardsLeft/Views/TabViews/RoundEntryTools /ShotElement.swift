@@ -47,7 +47,7 @@ struct ShotElement: View {
                 }
                 
                 Picker(selection: $shot.position.lie) {
-                    ForEach(Lie.allCases) { shotType in
+                    ForEach(Lie.withoutPenalty) { shotType in
                         Text(shotType.rawValue)
                         
                     }

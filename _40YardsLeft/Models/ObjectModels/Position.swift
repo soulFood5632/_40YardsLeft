@@ -234,6 +234,9 @@ enum Lie : String, Codable, Hashable, CaseIterable {
     case penalty = "Penalty"
     case recovery = "Recovery"
     case green = "Green"
+    
+    static var withoutPenalty: [Lie] { Self.allCases.filter{ $0 != .penalty } }
+    
 }
 
 
