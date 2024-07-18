@@ -295,22 +295,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DF735469-4E7D-4A30-BC4C-53B8B6BAE632"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "_40YardsLeft/ContentView.swift"
-            startingColumnNumber = "31"
-            endingColumnNumber = "31"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "path"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D1AD3F08-8663-499F-B8E8-FFD0AEF8E0CB"
             shouldBeEnabled = "No"
             ignoreCount = "0"

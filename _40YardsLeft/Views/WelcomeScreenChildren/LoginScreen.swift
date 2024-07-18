@@ -13,12 +13,12 @@
 //    @State private var user: User?
 //    @State private var loginForm = false
 //    @State private var newUserForm = false
-//    
+//
 //    var body: some View {
-//        
+//
 //
 //        VStack {
-//            
+//
 //            Group {
 //                Button {
 //                    self.loginForm = true
@@ -27,20 +27,20 @@
 //                }
 //                .buttonStyle(.borderedProminent)
 //                .padding(.top, 40)
-//                
-//                
+//
+//
 //                Button {
 //                    self.newUserForm = true
 //                } label: {
 //                    Label("Create Account", systemImage: "person.crop.circle.badge.plus")
-//                    
+//
 //                }
 //                .buttonStyle(.borderedProminent)
-//                
-//                
+//
+//
 //            }
 //            .font(.title2)
-//            
+//
 //        }
 //        .padding(.horizontal)
 //        .sheet(isPresented: self.$newUserForm, content: {
@@ -56,9 +56,9 @@
 //                }
 //            }
 //        }
-//        
+//
 //    }
-//    
+//
 //}
 //
 //struct LoginScreen_Previews: PreviewProvider {

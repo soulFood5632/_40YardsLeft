@@ -126,6 +126,7 @@
 		020B0FA629F6FCC1001E92E1 /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
 		020B0FA929F9A2C9001E92E1 /* ShotPredictorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictorTests.swift; sourceTree = "<group>"; };
 		020B0FAB29F9A5C0001E92E1 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
+		0215B4F62C48AE610094A854 /* format_script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = format_script.sh; sourceTree = "<group>"; };
 		0222862029DF930700FEBB91 /* TendancyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendancyAnalyzer.swift; sourceTree = "<group>"; };
 		0222862D29E0C2B900FEBB91 /* DistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTests.swift; sourceTree = "<group>"; };
 		0222865229E34BDD00FEBB91 /* PositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTests.swift; sourceTree = "<group>"; };
@@ -431,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				0230A6F92C45F51200AACB7D /* GoogleService-Info.plist */,
+				0215B4F62C48AE610094A854 /* format_script.sh */,
 				02E9DB9929C0FC2700AA15FA /* _40YardsLeft */,
 				0222862C29E0C2B900FEBB91 /* _40YardsLeftTests */,
 				02E9DB9829C0FC2700AA15FA /* Products */,
