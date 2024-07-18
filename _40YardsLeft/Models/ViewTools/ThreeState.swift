@@ -8,7 +8,7 @@
 import Foundation
 
 enum ThreeState {
-    case hot
-    case mild
-    case cold
+  case hot
+  case mild
+  case cold
 }

@@ -1,0 +1,14 @@
+{
+  "indentSwitchCaseLabels" : true,
+  "lineLength" : 90,
+  "maximumBlankLines" : 1,
+  "indentation" : {
+    "spaces" : 2
+  },
+  "rules" : {
+    "AlwaysUseLowerCamelCase" : true,
+    "NoParensAroundConditions" : true,
+    "UseTripleSlashForDocumentationComments" : true
+  },
+  "tabWidth" : 8
+}

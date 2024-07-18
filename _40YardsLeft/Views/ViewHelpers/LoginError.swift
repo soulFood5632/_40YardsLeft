@@ -1,5 +1,3 @@
-
-
 enum LoginError: Error {
-    case UserNotLoggedIn
+  case UserNotLoggedIn
 }

@@ -8,8 +8,8 @@
 import Foundation
 
 enum ViewScreens {
-    case home
-    case roundEntry
-    case stats
-    
+  case home
+  case roundEntry
+  case stats
+
 }

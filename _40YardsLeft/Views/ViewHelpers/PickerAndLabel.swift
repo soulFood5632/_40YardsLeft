@@ -11,33 +11,34 @@ import SwiftUI
 ///
 /// - Important: The picker will need to be encased in a grid when used.
 struct PickerAndLabel<T: Hashable>: View where T: Identifiable, T: StringRepresentable {
-    @Binding var pickedElement: T
-    let choices: [T]
-    let title: String
-    
-    var body: some View {
-        
-        Text(title + ":")
-            .bold()
-        
-        Picker(selection: $pickedElement) {
-            ForEach(choices) { country in
-                Text(country.toString())
-            }
-        } label: {
-            // empty label
-        }
-        
+  @Binding var pickedElement: T
+  let choices: [T]
+  let title: String
+
+  var body: some View {
+
+    Text(title + ":")
+      .bold()
+
+    Picker(selection: $pickedElement) {
+      ForEach(choices) { country in
+        Text(country.toString())
+      }
+    } label: {
+      // empty label
     }
+
+  }
 }
 
 struct PickerAndLabel_Previews: PreviewProvider {
-    @State private static var country = Country.Canada
-    
-    static var previews: some View {
-        Grid {
-            PickerAndLabel(pickedElement: self.$country, choices: Country.allCases, title: "Country")
-            
-        }
+  @State private static var country = Country.Canada
+
+  static var previews: some View {
+    Grid {
+      PickerAndLabel(
+        pickedElement: self.$country, choices: Country.allCases, title: "Country")
+
     }
+  }
 }

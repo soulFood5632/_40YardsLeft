@@ -30,7 +30,7 @@ struct ImageIcon: View {
     }
 }
 
-struct ImageIcon_Previews: PreviewProvider {
+struct ImageIcon_Previews: PreviewProvider {
     @State private static var currentScreen: ViewScreens = .home
     
     static var previews: some View {

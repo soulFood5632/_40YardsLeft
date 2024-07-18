@@ -8,5 +8,5 @@
 import Foundation
 
 protocol StringRepresentable {
-    func toString() -> String 
+  func toString() -> String
 }

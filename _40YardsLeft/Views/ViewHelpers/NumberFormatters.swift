@@ -8,9 +8,9 @@
 import Foundation
 
 extension Double {
-    func roundToPercent() -> String {
-        let roundedValue = (self * 100).rounded() / 100
-        
-        return roundedValue.formatted(.percent)
-    }
+  func roundToPercent() -> String {
+    let roundedValue = (self * 100).rounded() / 100
+
+    return roundedValue.formatted(.percent)
+  }
 }
