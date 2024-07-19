@@ -11,7 +11,7 @@ struct PuttingDetailView: View {
   let shots: [Shot]
 
   var puttingRanges: [Range<Distance>] {
-    Self.getSplitRegoins(at: [3, 5, 7, 10, 15, 20, 30, 60])
+    Distance.getSplitRegoins(at: [3, 5, 7, 10, 15, 20, 30, 60])
   }
 
   var strokesGained: (Double, Int) {
@@ -131,28 +131,7 @@ struct PuttingDetailView: View {
 
 extension PuttingDetailView {
 
-  /// Gets a list of ranges which have buckets which are separated at the given values
-  ///
-  /// - Parameter offsets: The length in feet where the buckets should seperate themselves from
-  /// - Returns: A list of regoins ordered from smallest to largest of regoins of distances.
-  static func getSplitRegoins(at offsets: [Int]) -> [Range<Distance>] {
-    var ranges = [Range<Distance>]()
-    var index = 0
-    while index < offsets.count {
-      if index == 0 {
-        ranges.append(Distance.zero..<Distance.feet(offsets[index]))
-      } else {
-        ranges.append(
-          Distance.feet(offsets[index - 1] + 1)..<Distance.feet(offsets[index]))
-      }
-      index += 1
-    }
 
-    ranges.append(Distance.feet(offsets[index - 1] + 1)..<Distance.MAX_DISTANCE)
-
-    return ranges
-
-  }
 }
 
 struct PuttingDetailView_Previews: PreviewProvider {

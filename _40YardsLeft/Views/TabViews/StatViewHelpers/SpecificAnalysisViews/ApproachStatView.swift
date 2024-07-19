@@ -42,6 +42,80 @@ struct ApproachStatView: View {
 
     }
   }
+    
+  var approachRanges: [Range<Distance>] {
+    Distance.getSplitRegoins(at: [75, 100, 125, 150, 175, 200, 250])
+  }
+  
+  var avgStrokesToHoleOut: [DisplayStat<Double, Int>] {
+    var statList = [DisplayStat<Double, Int>]()
+    
+    for range in self.approachRanges {
+      
+      var headerString: String
+      
+      if range.upperBound == Distance.MAX_DISTANCE {
+        headerString = String(format: "%.0f", range.lowerBound.feet) + "+"
+      } else {
+        headerString =
+        String(format: "%.0f", range.lowerBound.feet) + " - "
+        + String(format: "%.0f", range.upperBound.feet)
+      }
+      
+      let filter: (Shot) -> Bool = { shot in
+        return shot.type == .approach && range.contains(shot.startPosition.yardage)
+      }
+      let avgStrokes = rounds.strokesToHoleOut(filter).0
+      let totalShots = rounds.strokesToHoleOut(filter).1
+      
+      let perShot = (avgStrokes ?? 0)
+      
+      statList.append(
+        DisplayStat(
+          name: headerString,
+          value: perShot.isNaN ? 0 : perShot,
+          numOfSamples: totalShots,
+          formatter: "%.2f"))
+    }
+    
+    return statList
+  }
+
+  var strokesGainedStats: [DisplayStat<Double, Int>] {
+    var statList = [DisplayStat<Double, Int>]()
+    
+    for range in self.approachRanges {
+      
+      var headerString: String
+      
+      if range.upperBound == Distance.MAX_DISTANCE {
+        headerString = String(format: "%.0f", range.lowerBound.feet) + "+"
+      } else {
+        headerString =
+        String(format: "%.0f", range.lowerBound.feet) + " - "
+        + String(format: "%.0f", range.upperBound.feet)
+      }
+      
+      let filter: (Shot) -> Bool = { shot in
+        return shot.type == .approach && range.contains(shot.startPosition.yardage)
+      }
+      let strokesGained = shots.strokesGained(filter)
+      let totalShots = shots.filter(filter).count
+      
+      let perShot = Double(strokesGained) / Double(totalShots)
+      
+      statList.append(
+        DisplayStat(
+          name: headerString,
+          value: perShot.isNaN ? 0 : perShot,
+          numOfSamples: totalShots,
+          formatter: "%.2f"))
+    }
+    
+    return statList
+  }
+    
+
 
   var approachStats: [DisplayStat<Double, Int>] {
     [
@@ -152,9 +226,22 @@ struct ApproachStatView: View {
             Text("Overall")
               .font(.headline)
           }
+          
+          Section {
+            StatTable(titleValuePairs: self.strokesGainedStats)
+          } header: {
+            Text("Strokes Gained Breakdown")
+              .font(.headline)
+          }
+          
+          Section {
+            StatTable(titleValuePairs: self.avgStrokesToHoleOut)
+          } header: {
+            Text("Average Strokes to Hole Out")
+              .font(.headline)
+          }
 
           Section {
-
             DistanceAndLieFilter(distanceBounds: self.$distanceBounds, lies: $lies)
 
             StatTable(titleValuePairs: self.specificApproachStats)
@@ -176,8 +263,12 @@ struct ApproachStatView: View {
   }
 }
 
-struct ApproachStatView_Previews: PreviewProvider {
-  static var previews: some View {
+struct ApproachStatView_Previews: View {
+  var body: some View {
     ApproachStatView(rounds: [Round.completeRoundExample1])
   }
+}
+
+#Preview {
+  ApproachStatView_Previews()
 }

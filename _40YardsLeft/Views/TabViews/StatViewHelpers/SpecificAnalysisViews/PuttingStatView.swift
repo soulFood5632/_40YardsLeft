@@ -22,7 +22,7 @@ struct PuttingStatView: View {
   }
 
   var puttingRanges: [Range<Distance>] {
-    PuttingDetailView.getSplitRegoins(at: [3, 5, 7, 10, 15, 20, 30, 60])
+    Distance.getSplitRegoins(at: [3, 5, 7, 10, 15, 20, 30, 60])
   }
 
   var strokesGained: [DisplayStat<Double, Int>] {
