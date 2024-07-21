@@ -4,7 +4,7 @@
 //
 //  Created by Logan Underwood on 2023-04-26.
 //
-@testable import _40YardsLeft
+@testable import GolfApp
 import XCTest
 
 final class ShotPredictorTests: XCTestCase {

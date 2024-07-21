@@ -4,7 +4,7 @@
 //
 //  Created by Logan Underwood on 2023-05-12.
 //
-@testable import _40YardsLeft
+@testable import GolfApp
 import XCTest
 
 /// <#Description#>

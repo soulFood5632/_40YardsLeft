@@ -6,11 +6,12 @@
 //
 
 import XCTest
-@testable import _40YardsLeft
+@testable import GolfApp
 
 final class CourseTests: XCTestCase {
 
     private static func getCourse1() -> Course {
+      
         var course = Course(location: Address(addressLine1: "Morning Street", city: "Victoria", province: .BC, country: .Canada), name: "Northern Slopes Golf and Country Club")
         
         course.addTee(getTee1)

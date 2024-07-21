@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import _40YardsLeft
+@testable import GolfApp
 
 final class DistanceTests: XCTestCase {
 

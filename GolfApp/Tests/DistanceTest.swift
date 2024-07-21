@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import _40YardsLeft
+
 
 final class DistanceTest: XCTestCase {
 
