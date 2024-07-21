@@ -1,0 +1,1779 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		011B52C490F59302DCAE49F6 /* opensslWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EAF3E84A78709C2EC3FC59 /* opensslWrapper.framework */; };
+		01C4AFE246270F99013B4516 /* HoleDefiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672F9DFF08B0A099EB6EF0E4 /* HoleDefiner.swift */; };
+		02A7E15F2C4DB26A00A4DDFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02A7E15E2C4DB26A00A4DDFF /* GoogleService-Info.plist */; };
+		02A7E1612C4DB27E00A4DDFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02A7E1602C4DB27E00A4DDFF /* GoogleService-Info.plist */; };
+		02D43EB5D58B48DF7ADDCAE2 /* OldUserWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07733E0377DDA6FDF62867AE /* OldUserWelcome.swift */; };
+		053407431C4EB1CAB283BE2B /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B95C3815AEECCD5BA62A47E /* StatView.swift */; };
+		06A86B1353F17ED059327B88 /* RoundInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEA3071A56E8D5D04BBFD9C /* RoundInfo.swift */; };
+		06B3EAE55873024A6D638359 /* TendancyAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810FC60014D328119E4C3CBA /* TendancyAnalyzer.swift */; };
+		0754C3BE91266CE5AA078D0F /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CEA3B0728D4EE188A4D8D3 /* LoginScreen.swift */; };
+		078292AE1911404B6E402680 /* Promises_FBLPromises.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = C0143B13BDDCD28E36EFBA6C /* Promises_FBLPromises.bundle */; };
+		09A34F8A001DF03481C431C3 /* gRPC_opensslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 0AA109E4E69236895EEDC2F1 /* gRPC_opensslWrapper.bundle */; };
+		0A6FC3E6C22DD36ED2596EBA /* RecaptchaInterop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82796A2DB44F904FA2750DE /* RecaptchaInterop.framework */; };
+		0DB8EAAAEE8DEEE4441EF171 /* BasicCourseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD8A1DAE4ACD6911AB50E6 /* BasicCourseInfo.swift */; };
+		1027479B48764E8677063E93 /* EditableStaticText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD92314D6F0352D9381BAD6 /* EditableStaticText.swift */; };
+		10C85AF8FD3E93E45FA0A00F /* gRPC_grpcppWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 8F14F100B35E07BBE3B683FA /* gRPC_grpcppWrapper.bundle */; };
+		13AFD80142EFF9C74024C453 /* Firebase_FirebaseCoreExtension.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35319B6DA9DB0B093D01BCC8 /* Firebase_FirebaseCoreExtension.bundle */; };
+		13E12A2C731C4EBC94E7AD1E /* ShotFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B482913A5430C8AC481CEE9D /* ShotFilters.swift */; };
+		1562126701481450FBAF8FAD /* FirebaseSharedSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117B659DCF7D7C81055D47D3 /* FirebaseSharedSwift.framework */; };
+		156A65F5F46536504682317E /* FirebaseFirestoreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF38D93645A121509791758 /* FirebaseFirestoreSwift.framework */; };
+		16EFB112F656531901B5A92B /* abslWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74092C0B4582F7B7EC219405 /* abslWrapper.framework */; };
+		187A2C89AF0156F721F2F4F6 /* TuistBundle+GolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B873C63E5B649728FC6B5 /* TuistBundle+GolfApp.swift */; };
+		18E79C612B2E463E96F35D1D /* GoogleUtilities_GoogleUtilities_Network.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE6EAD02D4A83BFC744B9F88 /* GoogleUtilities_GoogleUtilities_Network.bundle */; };
+		1EF3E67EE8E24DA5FAE58F73 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4C38247BF5623C7AB65B33 /* FirebaseAuth.framework */; };
+		1F1D1B3BF59472EA1EA204F3 /* GoogleUtilities_GoogleUtilities_Environment.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = CF9669E9875712E16A63DF39 /* GoogleUtilities_GoogleUtilities_Environment.bundle */; };
+		1F475046C08A27691CE09B05 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3DB1D89DD957B108709CDB6 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */; };
+		1FA01C301A141CC03B06F4AD /* GoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323386932FE34C0EA19BE292 /* GoHome.swift */; };
+		24EC5D1A7248B48EF2197474 /* absl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16458E904D93408CF07A81D9 /* absl.xcframework */; };
+		25C50D65139523A21BE5B966 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E48BDCAF15F64BB8036CAA7 /* libz.tbd */; };
+		276A0109B34F4B0823A6FA04 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01595F4ED4F69A7553A446D9 /* FBLPromises.framework */; };
+		2A42378D7C3E417D85CC2ED1 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40846BB57A103EA4FC4AA84 /* WelcomeScreen.swift */; };
+		2BBCB94C40BBFCACFB630FE6 /* FirebaseFirestoreTarget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B1DA3084AB02AE6391AD8A /* FirebaseFirestoreTarget.framework */; };
+		2D943EF309E3C1BF0D063CB5 /* ChippingAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A93308858FA2F14333AE71 /* ChippingAnalysisView.swift */; };
+		2DD5D7E7B4F2589D76583F2B /* leveldb_leveldb.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 3DC2A9191BBF46A851D590A7 /* leveldb_leveldb.bundle */; };
+		2E0911AB1F42D18FA6BD7ED0 /* grpcWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072362AE75798347855252EF /* grpcWrapper.framework */; };
+		2E740B00C686B679D946F215 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED82739E6BB6E42ADD0EE685 /* SafariServices.framework */; };
+		2FA6020F2FAF5586EF464744 /* ViewScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1A2229D2A324A7C7F3CB40 /* ViewScreens.swift */; };
+		301D6E401DC54327C69C98E5 /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 5DDA3220CCD38EB3871BD95D /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle */; };
+		30732E36B02004C2C5D57849 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7760CB98849BE4A678131604 /* Preview Assets.xcassets */; };
+		31438056D20071F272159FA9 /* grpc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61541F51E3972C30EB3BBC7F /* grpc.xcframework */; };
+		321A6C1331EAFBADA6DDAE65 /* NewUserText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A504FD81C68908343C13A182 /* NewUserText.swift */; };
+		331A1E5DE7F3BC57006519B9 /* ApproachAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C1C0228AF45EF82BB5A931 /* ApproachAnalysis.swift */; };
+		361B256A8ED562AB77F4964F /* Firebase_FirebaseCoreInternal.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = F37E77314E0130C03DCB495D /* Firebase_FirebaseCoreInternal.bundle */; };
+		36CCB0A752072D04C0E6D1EF /* RoundPrepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34569A85E2A7E0417CF73151 /* RoundPrepView.swift */; };
+		37FFE187513EA92FF4C9B2DC /* GoogleUtilities_Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B1A8D776D8B338115D1FC37 /* GoogleUtilities_Logger.framework */; };
+		38B616A032BC6F2A65E16C72 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D439886C0E350BF4FB8A7 /* LoginError.swift */; };
+		391607013CB9CA8A8337AA68 /* IndividualButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE58120C4AB9039A9E516DA /* IndividualButton.swift */; };
+		3EA946AABA2ECF3DAAE12C92 /* Firebase_FirebaseAuth.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 24D37933699DF87601BE681B /* Firebase_FirebaseAuth.bundle */; };
+		3F7AAB0B13B5BCC32A9C7081 /* ApproachStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F061167D5888B2D388DE3 /* ApproachStatView.swift */; };
+		3FFDE7E18F44613A9B1B689F /* GTMSessionFetcherCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 694BDC311179CAB6CD3EA756 /* GTMSessionFetcherCore.framework */; };
+		3FFF1830AEAFAC20AA3EA759 /* HotStreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC147BE092F0A7E8E289AC9A /* HotStreak.swift */; };
+		4144D728C13A740EBFAECD1A /* SizeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A829668F49C22918BFE24C0E /* SizeAnimation.swift */; };
+		41A65BED1BB197FAFAFED528 /* GoogleUtilities_GoogleUtilities_Logger.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = CA4E18957D2813F527666A09 /* GoogleUtilities_GoogleUtilities_Logger.bundle */; };
+		444B8C6F18C16AEC57D03048 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2451A2A1FAAFB4E09ACFDF16 /* LoadingAnimation.swift */; };
+		463EDAF26B975BFFB88DA21D /* FocusedAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D510B22FCAE9838F44006B3 /* FocusedAnalysis.swift */; };
+		499490F95E8A698ED403BB5E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9528ECB855864D5C9EB1708F /* ProfileView.swift */; };
+		4A9CE6F14F3F615455BC41B7 /* FirebaseCoreExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0B7B260BB299F460E28AF /* FirebaseCoreExtension.framework */; };
+		4C7C3EAC82A0EBBC6A3D4AA7 /* PickerAndLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39893F5E5853A4E79B19AC /* PickerAndLabel.swift */; };
+		4EF9C4E68C6A64E214CA2F5B /* InputErrorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60CE9841F33222C02C5A9E8 /* InputErrorList.swift */; };
+		4F93268425DA377FE465EFC5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7FAE92F62D1DBC420697AA /* SystemConfiguration.framework */; };
+		541CC521328B89EC2B23A3E9 /* gRPC_opensslWrapper.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AA109E4E69236895EEDC2F1 /* gRPC_opensslWrapper.bundle */; };
+		544E114473A576C3BA50EC84 /* FirebaseFirestoreInternalWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7D5B95841737F90F9C971D0 /* FirebaseFirestoreInternalWrapper.framework */; };
+		55875DC557B056EDC5324E60 /* RoundFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856766E756682D66B6E4FA9 /* RoundFilterView.swift */; };
+		569AE58476A9BE6340837ED9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5538C567B371A1F4506474A /* SettingsView.swift */; };
+		58758D158B5516FEEEA3FDCB /* RadialBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A34BB96201437C2F32225 /* RadialBackground.swift */; };
+		591006312F1009A583129C3C /* PuttingStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C420D8EA8923141BA7F44DEA /* PuttingStatView.swift */; };
+		5999B339275F8FDC366F87CD /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723ACD602DA317AC219C880 /* Encodable.swift */; };
+		59B81EEDABF62D4006FB33DE /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D03E916DCB9A2EFAF5F2D1 /* FirebaseFirestore.framework */; };
+		5B9221543A51815A2CA2F2EB /* StrokesGainedGlance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF05F273E29329AFAE7CD8D /* StrokesGainedGlance.swift */; };
+		5E8F9EFC90F4C06B49266F33 /* FirebaseFirestoreSwiftTarget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9585EC163460F9BB02FDF68 /* FirebaseFirestoreSwiftTarget.framework */; };
+		5F62B98D378A7FB4802CC422 /* RoundEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3FDCD2EDAC883DBB6CA44 /* RoundEntry.swift */; };
+		619D158C7A2A9836FB217104 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2640BB776F703071840DD2F7 /* RoundView.swift */; };
+		61B4107B0AE595EAE3C5D161 /* GolfObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C621C7B95BD7D6BFBA3958B7 /* GolfObject.swift */; };
+		6A1A9A197309A65552691573 /* GoogleUtilities_Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6326F4C1671641B2950CB5F /* GoogleUtilities_Reachability.framework */; };
+		6A887028963CF44FC9613854 /* Hole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07C5BE9CA929683F7756AFE /* Hole.swift */; };
+		6A9779BBD328BD30B523574F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D88F66D250164FC29882EBB /* Menu.swift */; };
+		6D77389942CE0F1C99AEE3AE /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = A3DB1D89DD957B108709CDB6 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */; };
+		6EC3A01F6D086562A76BBC1D /* PuttingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960B61E69385E4FDEAEDB1E /* PuttingDetailView.swift */; };
+		70A8E450468F20D4B9865BA8 /* HoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7CB6F1BB82B747D4EE5FC5 /* HoleByHole.swift */; };
+		74C14D3E0D1183C83CD5C1A7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5302083C1AC8BA064ABF6522 /* libc++.tbd */; };
+		784F32225128EE6B06B67498 /* GoogleUtilities_AppDelegateSwizzler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B02EFBA356045F3255DE3A /* GoogleUtilities_AppDelegateSwizzler.framework */; };
+		792F35FFFFCCC4974CD37B28 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = D893AED182458361D4F5F5D4 /* Round.swift */; };
+		79E5D91920E728A4C9E44C00 /* abseil_abslWrapper.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1AE6AE1D318B8CD1F14CE391 /* abseil_abslWrapper.bundle */; };
+		7B0EAF05B332DF40BD6141A0 /* leveldb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9C58EAA3C0CC9024461968 /* leveldb.framework */; };
+		7C4B7386077E16ADF4AD3512 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9094FCE133FB32818AB96ACB /* Authenticator.swift */; };
+		7CD506135FC5F1E46091D0DC /* GoogleUtilities_Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F86F004D8755E6CD5483B7A /* GoogleUtilities_Network.framework */; };
+		7E3E4933962263D83EFF15C7 /* openssl_grpc.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1272CE3B1BCA00F20B5D8DD5 /* openssl_grpc.xcframework */; };
+		7F132516FAB3C6C0ABFD5D94 /* StringRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AC4DF05EFD121FABECFF4 /* StringRepresentable.swift */; };
+		81D7C22B5EBF41CD83F407E6 /* ThreeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D259C6FCC589B69E346021 /* ThreeState.swift */; };
+		82D0F8775E45CBC795FDC1DA /* GoogleUtilities_GoogleUtilities_Reachability.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA607AA8F4077B20AE1DAA63 /* GoogleUtilities_GoogleUtilities_Reachability.bundle */; };
+		83798DC3E8A74E6397FE00C8 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D166D103B927AF397BCA07FA /* nanopb.framework */; };
+		841B214AE559A58FA0335CA4 /* Firebase_FirebaseAuth.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 24D37933699DF87601BE681B /* Firebase_FirebaseAuth.bundle */; };
+		84C1321459BC1F5A4AFD7157 /* NavigationPopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97E19E179D268392961125D /* NavigationPopping.swift */; };
+		8858E6F115287CFF8CA7CBC4 /* WelcomeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102522B9CB5EF855BAFBF6FD /* WelcomeAnimation.swift */; };
+		89437260A128FDA478362A07 /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5DDA3220CCD38EB3871BD95D /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle */; };
+		89F13ABCFBE8AB2021C27F45 /* ScorecardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E9FE602A290B57E8B3470 /* ScorecardImage.swift */; };
+		8B243F4D1B9DADA7798CC7AB /* grpcpp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E0B59EE8DA406C73442B77 /* grpcpp.xcframework */; };
+		8B393C909D736E11DB33A0E7 /* CreateCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C8AED6CB29E77A8BECB96 /* CreateCourse.swift */; };
+		8FFFB57B3E4FFF103335F4D1 /* LogInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55681484021E94973C2EAC9D /* LogInScreen.swift */; };
+		91A8B33E8704C690F891FB05 /* ImageIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB735ACFA4B3FC4C782320F /* ImageIcon.swift */; };
+		942C827371896C9D4F8CA6A7 /* IsHot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8ECDDECB9FE85354816D97 /* IsHot.swift */; };
+		98E732E82BB3C0F77D26F3E4 /* CourseSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2DAA22B9C8131ABE0502CC /* CourseSearcher.swift */; };
+		99E5EBCA7010E652F07AC388 /* StrokesGainedGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D8DE7159611104B6EAC7B /* StrokesGainedGraph.swift */; };
+		9B06EE48179A50B19C1E558C /* ShotAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA77D8968D662E9350421EE9 /* ShotAnalyzer.swift */; };
+		9B17A5B80CE2EEBDD9E47120 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2163B8ADDB952622CC2A35 /* ContentView.swift */; };
+		9D783A57D9349B16561B39E9 /* grpcppWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4A2BE1E594CA75B2F03DC1 /* grpcppWrapper.framework */; };
+		9E264515D71865272081EF62 /* GoogleUtilities_NSData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739691D9D9A308E6497333E4 /* GoogleUtilities_NSData.framework */; };
+		9F32EB3F6CA60B563ABBE0C8 /* Promises_FBLPromises.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C0143B13BDDCD28E36EFBA6C /* Promises_FBLPromises.bundle */; };
+		9FA2F1BBCB20620B79202C21 /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FF52C09A545574578F167 /* Practice.swift */; };
+		A02F42C43D56BE6E024FE928 /* HotOrColdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C72D76B13AEB5851A9CDC /* HotOrColdView.swift */; };
+		A23DAD4830C321BBAE6B27C4 /* DatabaseCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E265BB687A3A49D0419C1 /* DatabaseCommunicator.swift */; };
+		A31101D22676D95DCDE5693B /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDF57B3EFB803FC58B0917 /* Course.swift */; };
+		A60627359209ED12258EE8D2 /* TextValiditity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C5A01317EB895725C91 /* TextValiditity.swift */; };
+		A7D8F1EF44B12E7FF2183D9B /* Firebase_FirebaseCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2FC446F35EC96E4809B149D1 /* Firebase_FirebaseCore.bundle */; };
+		A8251C945E8C79AC146ED1A0 /* RoundBasedStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD81E2847FB6C396DBB946 /* RoundBasedStats.swift */; };
+		A8FF5C4B852EC58CFC96F807 /* SpinningCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE094A1F80ED6437EBF987 /* SpinningCircle.swift */; };
+		B3FD1E71B2ECBF2AAEF5C031 /* Golfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16DA51A867802A96A64751B /* Golfer.swift */; };
+		B50B4F691586D3AE1BF71023 /* RoundViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874EEA3C089FCEE2E5D04A1E /* RoundViewList.swift */; };
+		B5EA4A22FF3F9862939E6A14 /* GoogleUtilities_GoogleUtilities_Logger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA4E18957D2813F527666A09 /* GoogleUtilities_GoogleUtilities_Logger.bundle */; };
+		B88F3B4619C8DDD2FAA42043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BD144133BDC5986CE309B90 /* Assets.xcassets */; };
+		BB6A7AD6BEF1B006EF356A4F /* Firebase_FirebaseCore.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 2FC446F35EC96E4809B149D1 /* Firebase_FirebaseCore.bundle */; };
+		BD00AEE08A76CFDE407E2685 /* GoogleUtilities_Environment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9204AFAACB7AB1BDD614231 /* GoogleUtilities_Environment.framework */; };
+		BE0A7F51C3944B64AE6944E6 /* third_party_IsAppEncrypted.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1D82C3E8F79093CF255256 /* third_party_IsAppEncrypted.framework */; };
+		C245F71C52327B9D948F5471 /* GoogleUtilities_GoogleUtilities_Reachability.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = AA607AA8F4077B20AE1DAA63 /* GoogleUtilities_GoogleUtilities_Reachability.bundle */; };
+		C361CFA6D1130CBDCEC18900 /* NewUserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97F237218610A6C4EDD4DF5 /* NewUserForm.swift */; };
+		C36CC8A7DDF73DA0334D9EB5 /* DistanceAndLieFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A82775D6801473B363E49CB /* DistanceAndLieFilter.swift */; };
+		C36E047F5D49DA21337ED87E /* leveldb_leveldb.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3DC2A9191BBF46A851D590A7 /* leveldb_leveldb.bundle */; };
+		C4543A3FFFB93CE4DF79A088 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30D2D92951E108995A166C3 /* Shot.swift */; };
+		C5AA5CB828830A098028BA34 /* FirebaseAppCheckInterop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1157A638BBA0A94973D79F46 /* FirebaseAppCheckInterop.framework */; };
+		C6D09F47C16846AA068A8DDD /* CourseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402430FE767FEE25DD0E3482 /* CourseFilter.swift */; };
+		C7112FD38537696E62F47469 /* StatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A11DFCCC9C1FC462E77AA4 /* StatTable.swift */; };
+		C7A287119E8349916B944174 /* Firebase_FirebaseCoreInternal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F37E77314E0130C03DCB495D /* Firebase_FirebaseCoreInternal.bundle */; };
+		C9418A7A3EA0BE3998001183 /* nanopb_nanopb.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 46DE5B49AF3D76DC58047BF3 /* nanopb_nanopb.bundle */; };
+		C98609C9939AD110DE180A59 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A99CD155CB0401EDFDBE1D0 /* Position.swift */; };
+		CDD0D9CA32B363A92BC68E27 /* HoleButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5767BCF992A8C667994D821 /* HoleButtons.swift */; };
+		CE367FFBF44BFC32A4A13FE9 /* FirebaseCoreInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FF8D7FA2BEC413989D54F6 /* FirebaseCoreInternal.framework */; };
+		CEAAF2BC85EF72F9EA8432AE /* StatAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83072C2520A168A707E90EC /* StatAnalysisView.swift */; };
+		CF27B8E26386EEDE6797ED57 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5B3C578A8FB266E3D70B06 /* FirebaseCore.framework */; };
+		CF45E14D41933D5BDBD68BC6 /* abseil_abslWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 1AE6AE1D318B8CD1F14CE391 /* abseil_abslWrapper.bundle */; };
+		D194E162B51CCF140DD1A260 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A3BE4581B928915E9BA45 /* ChangePasswordView.swift */; };
+		D1F3D1DAC19F97C7E26FF5F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D6CC950CBE4DC357CCD4DC /* UIKit.framework */; };
+		D1FBE93A44A67D53765F564A /* MakeANewGolferPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E72A03C5E5F06BD018901 /* MakeANewGolferPopUp.swift */; };
+		D2046DD401A0BC4C527E1F7B /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC16FDDC84C1639996E603FF /* Firebase.framework */; };
+		D5080864088D2B07EDE5FE2A /* RoundSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35B109088F993A4A21677F3 /* RoundSetupView.swift */; };
+		D5AECA7E448AB7F1E54DA3DF /* Firebase_FirebaseFirestore.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = DCFE28D3A653DDFAC47FE0E0 /* Firebase_FirebaseFirestore.bundle */; };
+		D64DCE7FC53BE3CA9DB41133 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E4FC4192DED4C361648F9C /* AppKit.framework */; platformFilters = (macos, ); };
+		D6C07DFC82E51C2BE8299323 /* GolfAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FA4818244679FB0A04D926 /* GolfAppApp.swift */; };
+		D7A41CEFF6F6EC3E45ECDBF3 /* ShotPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7E1F92E67FBC96BD12AE4C /* ShotPredictor.swift */; };
+		D7AC57A7D833D9F6A78DD768 /* ShortGameStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241FCD87D0657B5794407B7 /* ShortGameStatView.swift */; };
+		D80706545D6DF3D0B964A922 /* ShotByShotAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056BFB915C34CE76281B9CA /* ShotByShotAnalysis.swift */; };
+		DC5998AE3B91B8F74957B6E7 /* CourseHoleByHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4CB70C64E0C625F4A52DBC /* CourseHoleByHole.swift */; };
+		DCFE2ADC307A4AF63C719203 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06741F8D6B3B5039A40229B /* NumberFormatters.swift */; };
+		DD450BF95660090E79C62F6D /* ShotElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0779DFBB06E0D2E2D3129E /* ShotElement.swift */; };
+		DDE7B1663F1BD99A4E1357C2 /* TextFieldWithValiditity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7310B91325FD05A97014737 /* TextFieldWithValiditity.swift */; };
+		E03886906A59169CD2F23502 /* CenteredSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = B201A3E3D01FE0CEF109AF6E /* CenteredSquare.swift */; };
+		E0705800945E9D5A46ECCC6A /* Firebase_FirebaseFirestore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCFE28D3A653DDFAC47FE0E0 /* Firebase_FirebaseFirestore.bundle */; };
+		E0749E391A19BB84D0FFCFA4 /* ProfileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B17A025B514257BEEF42D3D /* ProfileDetails.swift */; };
+		E12DE9B405B4039B80796A4B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A338E87CC2F64DB3F1B4FB /* HomeView.swift */; };
+		E1931E1EFED2DE134E6AA173 /* GolfAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1926605FCF611C791BAAA1 /* GolfAppTests.swift */; };
+		E61B091A8F53502FE3917A1D /* nanopb_nanopb.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46DE5B49AF3D76DC58047BF3 /* nanopb_nanopb.bundle */; };
+		E639185BFEE159948B3A2B53 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390E3E86BD5FCDF93E7D2C5A /* ScorecardView.swift */; };
+		E69B992943AD68042C4123F1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5DC035B364FEC3C2CC5149 /* Security.framework */; };
+		E715A8E3280B1A3244BC624A /* gRPC_grpcWrapper.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = B508610442E5A00EDAB3FFC3 /* gRPC_grpcWrapper.bundle */; };
+		E7198A37DD6ECD5D91C10CB6 /* Firebase_FirebaseCoreExtension.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 35319B6DA9DB0B093D01BCC8 /* Firebase_FirebaseCoreExtension.bundle */; };
+		E850D53C3F12A469493D109D /* DrivingStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9383A060B4453D16282D192A /* DrivingStatView.swift */; };
+		E960D65C136584C8487872E2 /* PickACourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16049A4A0AB1F20A31039E9B /* PickACourse.swift */; };
+		E9B04653C304C856B6C42364 /* gRPC_grpcppWrapper.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8F14F100B35E07BBE3B683FA /* gRPC_grpcppWrapper.bundle */; };
+		EAE3A356A189FD93BF0F7B02 /* GeneralStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E854C245EFD06E08D0A8EF /* GeneralStatView.swift */; };
+		EB344812CF88A321CEFC4690 /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1B7A6EAA76A747826F355 /* SquareButton.swift */; };
+		EBA0AB2CD3B37ADE97C0AF15 /* ShotTypeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDD24DF714E6062782F3164 /* ShotTypeTool.swift */; };
+		EC4E5348C8033CA0ABBA0B75 /* gRPC_grpcWrapper.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B508610442E5A00EDAB3FFC3 /* gRPC_grpcWrapper.bundle */; };
+		EC7CB6BFA4FE7373115D1CC5 /* FirebaseFirestoreInternal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C618F2303A275BFC85EFCF06 /* FirebaseFirestoreInternal.xcframework */; };
+		ED283D1A4FEE0A5E43BC0E19 /* GoogleUtilities_GoogleUtilities_NSData.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = D78BB0B3F77BBF203AD91F54 /* GoogleUtilities_GoogleUtilities_NSData.bundle */; };
+		ED6D315693E1E0971D4281DF /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9873F4DB830D381D47F5F006 /* Distance.swift */; };
+		EF26B9F5CC352DC97E466B2B /* RoundOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CACDC6AED6A06D2545ABC22 /* RoundOverviewPage.swift */; };
+		EFFA4819B5A95BF99604178C /* TuistAssets+GolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29A74818EEBC4F3385E4FF2 /* TuistAssets+GolfApp.swift */; };
+		F06F6D654BF62A8ECCA2B68C /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D51E210A2B6702E400B14 /* AccountDetails.swift */; };
+		F2424547FD144A08BEF4DCF8 /* GoogleUtilities_GoogleUtilities_Network.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = EE6EAD02D4A83BFC744B9F88 /* GoogleUtilities_GoogleUtilities_Network.bundle */; };
+		F285B612FF971683C053A87D /* NewAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8237537E0B23033A3402EA61 /* NewAccountView.swift */; };
+		F2C1262761406771D63A1A9A /* SigmaSwiftStatistics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41DB65198BADD7ED5AEA8A3A /* SigmaSwiftStatistics.framework */; };
+		F5472CB6A4D297F25EF4DFC6 /* DrivingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD2728BAE3A9D3F6277E06 /* DrivingDetailView.swift */; };
+		F5C3685644DC834A19A1BAFF /* GolferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F1D94E77D96249AC96C486 /* GolferView.swift */; };
+		F6A7A33DAFF33271DCA3FD27 /* GoogleUtilities_GoogleUtilities_NSData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D78BB0B3F77BBF203AD91F54 /* GoogleUtilities_GoogleUtilities_NSData.bundle */; };
+		FA22383071747EE65EF79AE1 /* PasswordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E37CF26984952CA41A022B9 /* PasswordEntry.swift */; };
+		FF8B7901F8510A4446F8FFC2 /* GoogleUtilities_GoogleUtilities_Environment.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CF9669E9875712E16A63DF39 /* GoogleUtilities_GoogleUtilities_Environment.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4ECE8530CA5C56E90CAE4EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18E9B1046FEEE0FFF7EE43BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B120B961BE6342AFB88E998;
+			remoteInfo = GolfApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		03A8EF3306BAB07DCCA34D1A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30DD1BEF8D8F85CA30204CEB /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				3EA946AABA2ECF3DAAE12C92 /* Firebase_FirebaseAuth.bundle in Dependencies */,
+				BB6A7AD6BEF1B006EF356A4F /* Firebase_FirebaseCore.bundle in Dependencies */,
+				E7198A37DD6ECD5D91C10CB6 /* Firebase_FirebaseCoreExtension.bundle in Dependencies */,
+				361B256A8ED562AB77F4964F /* Firebase_FirebaseCoreInternal.bundle in Dependencies */,
+				D5AECA7E448AB7F1E54DA3DF /* Firebase_FirebaseFirestore.bundle in Dependencies */,
+				6D77389942CE0F1C99AEE3AE /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Dependencies */,
+				301D6E401DC54327C69C98E5 /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle in Dependencies */,
+				1F1D1B3BF59472EA1EA204F3 /* GoogleUtilities_GoogleUtilities_Environment.bundle in Dependencies */,
+				41A65BED1BB197FAFAFED528 /* GoogleUtilities_GoogleUtilities_Logger.bundle in Dependencies */,
+				ED283D1A4FEE0A5E43BC0E19 /* GoogleUtilities_GoogleUtilities_NSData.bundle in Dependencies */,
+				F2424547FD144A08BEF4DCF8 /* GoogleUtilities_GoogleUtilities_Network.bundle in Dependencies */,
+				C245F71C52327B9D948F5471 /* GoogleUtilities_GoogleUtilities_Reachability.bundle in Dependencies */,
+				078292AE1911404B6E402680 /* Promises_FBLPromises.bundle in Dependencies */,
+				CF45E14D41933D5BDBD68BC6 /* abseil_abslWrapper.bundle in Dependencies */,
+				E715A8E3280B1A3244BC624A /* gRPC_grpcWrapper.bundle in Dependencies */,
+				10C85AF8FD3E93E45FA0A00F /* gRPC_grpcppWrapper.bundle in Dependencies */,
+				09A34F8A001DF03481C431C3 /* gRPC_opensslWrapper.bundle in Dependencies */,
+				2DD5D7E7B4F2589D76583F2B /* leveldb_leveldb.bundle in Dependencies */,
+				C9418A7A3EA0BE3998001183 /* nanopb_nanopb.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		BB7BBF24B5EC76F5F4BCA9BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0056BFB915C34CE76281B9CA /* ShotByShotAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotByShotAnalysis.swift; sourceTree = "<group>"; };
+		01595F4ED4F69A7553A446D9 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02A7E15E2C4DB26A00A4DDFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02A7E1602C4DB27E00A4DDFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04A338E87CC2F64DB3F1B4FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		072362AE75798347855252EF /* grpcWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = grpcWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07733E0377DDA6FDF62867AE /* OldUserWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserWelcome.swift; sourceTree = "<group>"; };
+		0AA109E4E69236895EEDC2F1 /* gRPC_opensslWrapper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gRPC_opensslWrapper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C1A2229D2A324A7C7F3CB40 /* ViewScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewScreens.swift; sourceTree = "<group>"; };
+		0CFE094A1F80ED6437EBF987 /* SpinningCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningCircle.swift; sourceTree = "<group>"; };
+		0E2DAA22B9C8131ABE0502CC /* CourseSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearcher.swift; sourceTree = "<group>"; };
+		0F4A3BE4581B928915E9BA45 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		102522B9CB5EF855BAFBF6FD /* WelcomeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeAnimation.swift; sourceTree = "<group>"; };
+		1157A638BBA0A94973D79F46 /* FirebaseAppCheckInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseAppCheckInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		117B659DCF7D7C81055D47D3 /* FirebaseSharedSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseSharedSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1272CE3B1BCA00F20B5D8DD5 /* openssl_grpc.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = openssl_grpc.xcframework; sourceTree = "<group>"; };
+		12FF8D7FA2BEC413989D54F6 /* FirebaseCoreInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseCoreInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		153F061167D5888B2D388DE3 /* ApproachStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachStatView.swift; sourceTree = "<group>"; };
+		16049A4A0AB1F20A31039E9B /* PickACourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickACourse.swift; sourceTree = "<group>"; };
+		16458E904D93408CF07A81D9 /* absl.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = absl.xcframework; sourceTree = "<group>"; };
+		19FA4818244679FB0A04D926 /* GolfAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfAppApp.swift; sourceTree = "<group>"; };
+		1AE6AE1D318B8CD1F14CE391 /* abseil_abslWrapper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = abseil_abslWrapper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B1926605FCF611C791BAAA1 /* GolfAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfAppTests.swift; sourceTree = "<group>"; };
+		1E1D82C3E8F79093CF255256 /* third_party_IsAppEncrypted.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = third_party_IsAppEncrypted.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F7E265BB687A3A49D0419C1 /* DatabaseCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCommunicator.swift; sourceTree = "<group>"; };
+		1F9E72A03C5E5F06BD018901 /* MakeANewGolferPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeANewGolferPopUp.swift; sourceTree = "<group>"; };
+		2451A2A1FAAFB4E09ACFDF16 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
+		24D37933699DF87601BE681B /* Firebase_FirebaseAuth.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseAuth.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		2640BB776F703071840DD2F7 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		2B95C3815AEECCD5BA62A47E /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		2BD144133BDC5986CE309B90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2E0779DFBB06E0D2E2D3129E /* ShotElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotElement.swift; sourceTree = "<group>"; };
+		2FC1B7A6EAA76A747826F355 /* SquareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
+		2FC446F35EC96E4809B149D1 /* Firebase_FirebaseCore.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		323386932FE34C0EA19BE292 /* GoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoHome.swift; sourceTree = "<group>"; };
+		33A11DFCCC9C1FC462E77AA4 /* StatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTable.swift; sourceTree = "<group>"; };
+		34569A85E2A7E0417CF73151 /* RoundPrepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPrepView.swift; sourceTree = "<group>"; };
+		35319B6DA9DB0B093D01BCC8 /* Firebase_FirebaseCoreExtension.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseCoreExtension.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		375A34BB96201437C2F32225 /* RadialBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialBackground.swift; sourceTree = "<group>"; };
+		387E9FE602A290B57E8B3470 /* ScorecardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardImage.swift; sourceTree = "<group>"; };
+		390E3E86BD5FCDF93E7D2C5A /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
+		39F1D94E77D96249AC96C486 /* GolferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolferView.swift; sourceTree = "<group>"; };
+		3D88F66D250164FC29882EBB /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		3DC2A9191BBF46A851D590A7 /* leveldb_leveldb.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = leveldb_leveldb.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E39893F5E5853A4E79B19AC /* PickerAndLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAndLabel.swift; sourceTree = "<group>"; };
+		3E48BDCAF15F64BB8036CAA7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		402430FE767FEE25DD0E3482 /* CourseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseFilter.swift; sourceTree = "<group>"; };
+		41DB65198BADD7ED5AEA8A3A /* SigmaSwiftStatistics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SigmaSwiftStatistics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43CEA3B0728D4EE188A4D8D3 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		46DE5B49AF3D76DC58047BF3 /* nanopb_nanopb.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nanopb_nanopb.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		48A93308858FA2F14333AE71 /* ChippingAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChippingAnalysisView.swift; sourceTree = "<group>"; };
+		4B1A8D776D8B338115D1FC37 /* GoogleUtilities_Logger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Logger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E37CF26984952CA41A022B9 /* PasswordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEntry.swift; sourceTree = "<group>"; };
+		4F4FF52C09A545574578F167 /* Practice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
+		50D03E916DCB9A2EFAF5F2D1 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5302083C1AC8BA064ABF6522 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		55681484021E94973C2EAC9D /* LogInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreen.swift; sourceTree = "<group>"; };
+		5BE58120C4AB9039A9E516DA /* IndividualButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualButton.swift; sourceTree = "<group>"; };
+		5DDA3220CCD38EB3871BD95D /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DDD24DF714E6062782F3164 /* ShotTypeTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotTypeTool.swift; sourceTree = "<group>"; };
+		61541F51E3972C30EB3BBC7F /* grpc.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = grpc.xcframework; sourceTree = "<group>"; };
+		61C1C0228AF45EF82BB5A931 /* ApproachAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproachAnalysis.swift; sourceTree = "<group>"; };
+		64CDF57B3EFB803FC58B0917 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		671D439886C0E350BF4FB8A7 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		672F9DFF08B0A099EB6EF0E4 /* HoleDefiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleDefiner.swift; sourceTree = "<group>"; };
+		67E0B59EE8DA406C73442B77 /* grpcpp.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = grpcpp.xcframework; sourceTree = "<group>"; };
+		694BDC311179CAB6CD3EA756 /* GTMSessionFetcherCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcherCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69FD8A1DAE4ACD6911AB50E6 /* BasicCourseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCourseInfo.swift; sourceTree = "<group>"; };
+		6A4C38247BF5623C7AB65B33 /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C4A2BE1E594CA75B2F03DC1 /* grpcppWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = grpcppWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D7E1F92E67FBC96BD12AE4C /* ShotPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotPredictor.swift; sourceTree = "<group>"; };
+		739691D9D9A308E6497333E4 /* GoogleUtilities_NSData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_NSData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74092C0B4582F7B7EC219405 /* abslWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = abslWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7679744692F76CC79895D760 /* GolfAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GolfAppTests-Info.plist"; sourceTree = "<group>"; };
+		7760CB98849BE4A678131604 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		79B02EFBA356045F3255DE3A /* GoogleUtilities_AppDelegateSwizzler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_AppDelegateSwizzler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A99CD155CB0401EDFDBE1D0 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		7B17A025B514257BEEF42D3D /* ProfileDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetails.swift; sourceTree = "<group>"; };
+		810FC60014D328119E4C3CBA /* TendancyAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TendancyAnalyzer.swift; sourceTree = "<group>"; };
+		8237537E0B23033A3402EA61 /* NewAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountView.swift; sourceTree = "<group>"; };
+		82DB5C5A01317EB895725C91 /* TextValiditity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValiditity.swift; sourceTree = "<group>"; };
+		874EEA3C089FCEE2E5D04A1E /* RoundViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViewList.swift; sourceTree = "<group>"; };
+		87E854C245EFD06E08D0A8EF /* GeneralStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralStatView.swift; sourceTree = "<group>"; };
+		8856766E756682D66B6E4FA9 /* RoundFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundFilterView.swift; sourceTree = "<group>"; };
+		8A82775D6801473B363E49CB /* DistanceAndLieFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceAndLieFilter.swift; sourceTree = "<group>"; };
+		8E5DC035B364FEC3C2CC5149 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		8EB735ACFA4B3FC4C782320F /* ImageIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIcon.swift; sourceTree = "<group>"; };
+		8F14F100B35E07BBE3B683FA /* gRPC_grpcppWrapper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gRPC_grpcppWrapper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F2F471872299A811A600F55 /* GolfApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GolfApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F86F004D8755E6CD5483B7A /* GoogleUtilities_Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9094FCE133FB32818AB96ACB /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
+		90CDCFFDAF94930E81746628 /* GolfAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GolfAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9383A060B4453D16282D192A /* DrivingStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingStatView.swift; sourceTree = "<group>"; };
+		94D6CC950CBE4DC357CCD4DC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		9528ECB855864D5C9EB1708F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9723ACD602DA317AC219C880 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		9873F4DB830D381D47F5F006 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		9960B61E69385E4FDEAEDB1E /* PuttingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingDetailView.swift; sourceTree = "<group>"; };
+		9A5AC4DF05EFD121FABECFF4 /* StringRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
+		9CACDC6AED6A06D2545ABC22 /* RoundOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundOverviewPage.swift; sourceTree = "<group>"; };
+		9D510B22FCAE9838F44006B3 /* FocusedAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedAnalysis.swift; sourceTree = "<group>"; };
+		A13C72D76B13AEB5851A9CDC /* HotOrColdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotOrColdView.swift; sourceTree = "<group>"; };
+		A35B109088F993A4A21677F3 /* RoundSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundSetupView.swift; sourceTree = "<group>"; };
+		A3DB1D89DD957B108709CDB6 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTMSessionFetcher_GTMSessionFetcherCore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A504FD81C68908343C13A182 /* NewUserText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserText.swift; sourceTree = "<group>"; };
+		A82796A2DB44F904FA2750DE /* RecaptchaInterop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RecaptchaInterop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A829668F49C22918BFE24C0E /* SizeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAnimation.swift; sourceTree = "<group>"; };
+		A9204AFAACB7AB1BDD614231 /* GoogleUtilities_Environment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Environment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA607AA8F4077B20AE1DAA63 /* GoogleUtilities_GoogleUtilities_Reachability.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_Reachability.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABF05F273E29329AFAE7CD8D /* StrokesGainedGlance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesGainedGlance.swift; sourceTree = "<group>"; };
+		AF4CB70C64E0C625F4A52DBC /* CourseHoleByHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHoleByHole.swift; sourceTree = "<group>"; };
+		B201A3E3D01FE0CEF109AF6E /* CenteredSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredSquare.swift; sourceTree = "<group>"; };
+		B29A74818EEBC4F3385E4FF2 /* TuistAssets+GolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+GolfApp.swift"; sourceTree = "<group>"; };
+		B40846BB57A103EA4FC4AA84 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		B482913A5430C8AC481CEE9D /* ShotFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotFilters.swift; sourceTree = "<group>"; };
+		B508610442E5A00EDAB3FFC3 /* gRPC_grpcWrapper.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gRPC_grpcWrapper.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7C9256CEAB45EFC67AF7076 /* GolfApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GolfApp-Info.plist"; sourceTree = "<group>"; };
+		B7D5B95841737F90F9C971D0 /* FirebaseFirestoreInternalWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreInternalWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAF38D93645A121509791758 /* FirebaseFirestoreSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4B873C63E5B649728FC6B5 /* TuistBundle+GolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+GolfApp.swift"; sourceTree = "<group>"; };
+		BD9C58EAA3C0CC9024461968 /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0143B13BDDCD28E36EFBA6C /* Promises_FBLPromises.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Promises_FBLPromises.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C06741F8D6B3B5039A40229B /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
+		C16DA51A867802A96A64751B /* Golfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Golfer.swift; sourceTree = "<group>"; };
+		C420D8EA8923141BA7F44DEA /* PuttingStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuttingStatView.swift; sourceTree = "<group>"; };
+		C5767BCF992A8C667994D821 /* HoleButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleButtons.swift; sourceTree = "<group>"; };
+		C618F2303A275BFC85EFCF06 /* FirebaseFirestoreInternal.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; path = FirebaseFirestoreInternal.xcframework; sourceTree = "<group>"; };
+		C621C7B95BD7D6BFBA3958B7 /* GolfObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfObject.swift; sourceTree = "<group>"; };
+		C83072C2520A168A707E90EC /* StatAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatAnalysisView.swift; sourceTree = "<group>"; };
+		CA4E18957D2813F527666A09 /* GoogleUtilities_GoogleUtilities_Logger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_Logger.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB5B3C578A8FB266E3D70B06 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC147BE092F0A7E8E289AC9A /* HotStreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotStreak.swift; sourceTree = "<group>"; };
+		CC8ECDDECB9FE85354816D97 /* IsHot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsHot.swift; sourceTree = "<group>"; };
+		CF9669E9875712E16A63DF39 /* GoogleUtilities_GoogleUtilities_Environment.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_Environment.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07C5BE9CA929683F7756AFE /* Hole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hole.swift; sourceTree = "<group>"; };
+		D166D103B927AF397BCA07FA /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5538C567B371A1F4506474A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D60CE9841F33222C02C5A9E8 /* InputErrorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputErrorList.swift; sourceTree = "<group>"; };
+		D78BB0B3F77BBF203AD91F54 /* GoogleUtilities_GoogleUtilities_NSData.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_NSData.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D893AED182458361D4F5F5D4 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		D9585EC163460F9BB02FDF68 /* FirebaseFirestoreSwiftTarget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreSwiftTarget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCFE28D3A653DDFAC47FE0E0 /* Firebase_FirebaseFirestore.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseFirestore.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE3D8DE7159611104B6EAC7B /* StrokesGainedGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokesGainedGraph.swift; sourceTree = "<group>"; };
+		DF2163B8ADDB952622CC2A35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DFFD2728BAE3A9D3F6277E06 /* DrivingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDetailView.swift; sourceTree = "<group>"; };
+		E1E4FC4192DED4C361648F9C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		E241FCD87D0657B5794407B7 /* ShortGameStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortGameStatView.swift; sourceTree = "<group>"; };
+		E2D259C6FCC589B69E346021 /* ThreeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeState.swift; sourceTree = "<group>"; };
+		E5F0B7B260BB299F460E28AF /* FirebaseCoreExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseCoreExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91D51E210A2B6702E400B14 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
+		E97F237218610A6C4EDD4DF5 /* NewUserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserForm.swift; sourceTree = "<group>"; };
+		E9BD81E2847FB6C396DBB946 /* RoundBasedStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBasedStats.swift; sourceTree = "<group>"; };
+		EA77D8968D662E9350421EE9 /* ShotAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotAnalyzer.swift; sourceTree = "<group>"; };
+		EC16FDDC84C1639996E603FF /* Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED82739E6BB6E42ADD0EE685 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		EDC3FDCD2EDAC883DBB6CA44 /* RoundEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundEntry.swift; sourceTree = "<group>"; };
+		EDD92314D6F0352D9381BAD6 /* EditableStaticText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableStaticText.swift; sourceTree = "<group>"; };
+		EE6EAD02D4A83BFC744B9F88 /* GoogleUtilities_GoogleUtilities_Network.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_GoogleUtilities_Network.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE7CB6F1BB82B747D4EE5FC5 /* HoleByHole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleByHole.swift; sourceTree = "<group>"; };
+		F0EAF3E84A78709C2EC3FC59 /* opensslWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = opensslWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30D2D92951E108995A166C3 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
+		F37E77314E0130C03DCB495D /* Firebase_FirebaseCoreInternal.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase_FirebaseCoreInternal.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3B1DA3084AB02AE6391AD8A /* FirebaseFirestoreTarget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirebaseFirestoreTarget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6326F4C1671641B2950CB5F /* GoogleUtilities_Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities_Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7310B91325FD05A97014737 /* TextFieldWithValiditity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithValiditity.swift; sourceTree = "<group>"; };
+		F97E19E179D268392961125D /* NavigationPopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPopping.swift; sourceTree = "<group>"; };
+		FA7FAE92F62D1DBC420697AA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		FC8C8AED6CB29E77A8BECB96 /* CreateCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourse.swift; sourceTree = "<group>"; };
+		FEEA3071A56E8D5D04BBFD9C /* RoundInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundInfo.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DF5F52C1E66F6679D1E7DC3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D64DCE7FC53BE3CA9DB41133 /* AppKit.framework in Frameworks */,
+				2E740B00C686B679D946F215 /* SafariServices.framework in Frameworks */,
+				E69B992943AD68042C4123F1 /* Security.framework in Frameworks */,
+				4F93268425DA377FE465EFC5 /* SystemConfiguration.framework in Frameworks */,
+				D1F3D1DAC19F97C7E26FF5F9 /* UIKit.framework in Frameworks */,
+				74C14D3E0D1183C83CD5C1A7 /* libc++.tbd in Frameworks */,
+				25C50D65139523A21BE5B966 /* libz.tbd in Frameworks */,
+				276A0109B34F4B0823A6FA04 /* FBLPromises.framework in Frameworks */,
+				D2046DD401A0BC4C527E1F7B /* Firebase.framework in Frameworks */,
+				C5AA5CB828830A098028BA34 /* FirebaseAppCheckInterop.framework in Frameworks */,
+				1EF3E67EE8E24DA5FAE58F73 /* FirebaseAuth.framework in Frameworks */,
+				CF27B8E26386EEDE6797ED57 /* FirebaseCore.framework in Frameworks */,
+				4A9CE6F14F3F615455BC41B7 /* FirebaseCoreExtension.framework in Frameworks */,
+				CE367FFBF44BFC32A4A13FE9 /* FirebaseCoreInternal.framework in Frameworks */,
+				59B81EEDABF62D4006FB33DE /* FirebaseFirestore.framework in Frameworks */,
+				544E114473A576C3BA50EC84 /* FirebaseFirestoreInternalWrapper.framework in Frameworks */,
+				156A65F5F46536504682317E /* FirebaseFirestoreSwift.framework in Frameworks */,
+				5E8F9EFC90F4C06B49266F33 /* FirebaseFirestoreSwiftTarget.framework in Frameworks */,
+				2BBCB94C40BBFCACFB630FE6 /* FirebaseFirestoreTarget.framework in Frameworks */,
+				1562126701481450FBAF8FAD /* FirebaseSharedSwift.framework in Frameworks */,
+				3FFDE7E18F44613A9B1B689F /* GTMSessionFetcherCore.framework in Frameworks */,
+				784F32225128EE6B06B67498 /* GoogleUtilities_AppDelegateSwizzler.framework in Frameworks */,
+				BD00AEE08A76CFDE407E2685 /* GoogleUtilities_Environment.framework in Frameworks */,
+				37FFE187513EA92FF4C9B2DC /* GoogleUtilities_Logger.framework in Frameworks */,
+				9E264515D71865272081EF62 /* GoogleUtilities_NSData.framework in Frameworks */,
+				7CD506135FC5F1E46091D0DC /* GoogleUtilities_Network.framework in Frameworks */,
+				6A1A9A197309A65552691573 /* GoogleUtilities_Reachability.framework in Frameworks */,
+				0A6FC3E6C22DD36ED2596EBA /* RecaptchaInterop.framework in Frameworks */,
+				F2C1262761406771D63A1A9A /* SigmaSwiftStatistics.framework in Frameworks */,
+				16EFB112F656531901B5A92B /* abslWrapper.framework in Frameworks */,
+				2E0911AB1F42D18FA6BD7ED0 /* grpcWrapper.framework in Frameworks */,
+				9D783A57D9349B16561B39E9 /* grpcppWrapper.framework in Frameworks */,
+				7B0EAF05B332DF40BD6141A0 /* leveldb.framework in Frameworks */,
+				83798DC3E8A74E6397FE00C8 /* nanopb.framework in Frameworks */,
+				011B52C490F59302DCAE49F6 /* opensslWrapper.framework in Frameworks */,
+				BE0A7F51C3944B64AE6944E6 /* third_party_IsAppEncrypted.framework in Frameworks */,
+				24EC5D1A7248B48EF2197474 /* absl.xcframework in Frameworks */,
+				EC7CB6BFA4FE7373115D1CC5 /* FirebaseFirestoreInternal.xcframework in Frameworks */,
+				31438056D20071F272159FA9 /* grpc.xcframework in Frameworks */,
+				8B243F4D1B9DADA7798CC7AB /* grpcpp.xcframework in Frameworks */,
+				7E3E4933962263D83EFF15C7 /* openssl_grpc.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5451C9955B5DDD1E361B36A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03734B525BBA5CB09CC48E7D /* CreateCourse */ = {
+			isa = PBXGroup;
+			children = (
+				69FD8A1DAE4ACD6911AB50E6 /* BasicCourseInfo.swift */,
+				FC8C8AED6CB29E77A8BECB96 /* CreateCourse.swift */,
+			);
+			path = CreateCourse;
+			sourceTree = "<group>";
+		};
+		0F185050A62735D072670C90 /* FirebaseFirestoreInternal */ = {
+			isa = PBXGroup;
+			children = (
+				C618F2303A275BFC85EFCF06 /* FirebaseFirestoreInternal.xcframework */,
+			);
+			path = FirebaseFirestoreInternal;
+			sourceTree = "<group>";
+		};
+		101BEA24AA8C51ED85BBB721 /* WelcomeScreenChildren */ = {
+			isa = PBXGroup;
+			children = (
+				96692CFC588A898896D0C372 /* WelcomeAnimationProperties */,
+				43CEA3B0728D4EE188A4D8D3 /* LoginScreen.swift */,
+				8237537E0B23033A3402EA61 /* NewAccountView.swift */,
+				E97F237218610A6C4EDD4DF5 /* NewUserForm.swift */,
+				A504FD81C68908343C13A182 /* NewUserText.swift */,
+				07733E0377DDA6FDF62867AE /* OldUserWelcome.swift */,
+				4E37CF26984952CA41A022B9 /* PasswordEntry.swift */,
+				375A34BB96201437C2F32225 /* RadialBackground.swift */,
+				102522B9CB5EF855BAFBF6FD /* WelcomeAnimation.swift */,
+			);
+			path = WelcomeScreenChildren;
+			sourceTree = "<group>";
+		};
+		1ADFEFF909843F17683A1A3F /* RoundEntryTools  */ = {
+			isa = PBXGroup;
+			children = (
+				52EDB9F983A31EF92AD02672 /* RoundEntry */,
+				1DBBE2DAA48B5628CAD9A499 /* RoundOverviewHelpers */,
+				DFBF40339ECAC4F5165FB8F4 /* ScoreCardHelpers */,
+				EE7CB6F1BB82B747D4EE5FC5 /* HoleByHole.swift */,
+				9CACDC6AED6A06D2545ABC22 /* RoundOverviewPage.swift */,
+				390E3E86BD5FCDF93E7D2C5A /* ScorecardView.swift */,
+				2E0779DFBB06E0D2E2D3129E /* ShotElement.swift */,
+			);
+			path = "RoundEntryTools ";
+			sourceTree = "<group>";
+		};
+		1DBBE2DAA48B5628CAD9A499 /* RoundOverviewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				E9BD81E2847FB6C396DBB946 /* RoundBasedStats.swift */,
+				0056BFB915C34CE76281B9CA /* ShotByShotAnalysis.swift */,
+			);
+			path = RoundOverviewHelpers;
+			sourceTree = "<group>";
+		};
+		2B9FEC592E8B3DDDCE4496B9 /* Tuist */ = {
+			isa = PBXGroup;
+			children = (
+				A837312812D0B6858AED702E /* .build */,
+			);
+			path = Tuist;
+			sourceTree = "<group>";
+		};
+		2BA69FDCC635DD41A7531C4A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7760CB98849BE4A678131604 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3A38D99C46C6CAC3B81C32BE /* openssl_grpc */ = {
+			isa = PBXGroup;
+			children = (
+				1272CE3B1BCA00F20B5D8DD5 /* openssl_grpc.xcframework */,
+			);
+			path = openssl_grpc;
+			sourceTree = "<group>";
+		};
+		3BBDB114AFA68261FC21ED34 /* ViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				B201A3E3D01FE0CEF109AF6E /* CenteredSquare.swift */,
+				EDD92314D6F0352D9381BAD6 /* EditableStaticText.swift */,
+				323386932FE34C0EA19BE292 /* GoHome.swift */,
+				A13C72D76B13AEB5851A9CDC /* HotOrColdView.swift */,
+				2451A2A1FAAFB4E09ACFDF16 /* LoadingAnimation.swift */,
+				671D439886C0E350BF4FB8A7 /* LoginError.swift */,
+				F97E19E179D268392961125D /* NavigationPopping.swift */,
+				C06741F8D6B3B5039A40229B /* NumberFormatters.swift */,
+				3E39893F5E5853A4E79B19AC /* PickerAndLabel.swift */,
+				0CFE094A1F80ED6437EBF987 /* SpinningCircle.swift */,
+				2FC1B7A6EAA76A747826F355 /* SquareButton.swift */,
+				F7310B91325FD05A97014737 /* TextFieldWithValiditity.swift */,
+			);
+			path = ViewHelpers;
+			sourceTree = "<group>";
+		};
+		3C5EBEB6CA5765F36471C5A2 /* PickingCourseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				402430FE767FEE25DD0E3482 /* CourseFilter.swift */,
+				0E2DAA22B9C8131ABE0502CC /* CourseSearcher.swift */,
+			);
+			path = PickingCourseHelper;
+			sourceTree = "<group>";
+		};
+		44A1475778BFC241EED1FC8B /* SpecificAnalysisViews */ = {
+			isa = PBXGroup;
+			children = (
+				153F061167D5888B2D388DE3 /* ApproachStatView.swift */,
+				8A82775D6801473B363E49CB /* DistanceAndLieFilter.swift */,
+				9383A060B4453D16282D192A /* DrivingStatView.swift */,
+				87E854C245EFD06E08D0A8EF /* GeneralStatView.swift */,
+				C420D8EA8923141BA7F44DEA /* PuttingStatView.swift */,
+				E241FCD87D0657B5794407B7 /* ShortGameStatView.swift */,
+			);
+			path = SpecificAnalysisViews;
+			sourceTree = "<group>";
+		};
+		52EDB9F983A31EF92AD02672 /* RoundEntry */ = {
+			isa = PBXGroup;
+			children = (
+				03734B525BBA5CB09CC48E7D /* CreateCourse */,
+				3C5EBEB6CA5765F36471C5A2 /* PickingCourseHelper */,
+				A4A427366CCA9DE1634D27CD /* RoundSetup */,
+				16049A4A0AB1F20A31039E9B /* PickACourse.swift */,
+			);
+			path = RoundEntry;
+			sourceTree = "<group>";
+		};
+		52F0F88262E125E50EB59B6A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B29A74818EEBC4F3385E4FF2 /* TuistAssets+GolfApp.swift */,
+				BC4B873C63E5B649728FC6B5 /* TuistBundle+GolfApp.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		52F9173DAFD5173CF193D144 /* GolferAtAGlance */ = {
+			isa = PBXGroup;
+			children = (
+				39F1D94E77D96249AC96C486 /* GolferView.swift */,
+				CC147BE092F0A7E8E289AC9A /* HotStreak.swift */,
+				3D88F66D250164FC29882EBB /* Menu.swift */,
+			);
+			path = GolferAtAGlance;
+			sourceTree = "<group>";
+		};
+		566D5DF20B0A974445685956 /* ObjectModels */ = {
+			isa = PBXGroup;
+			children = (
+				64CDF57B3EFB803FC58B0917 /* Course.swift */,
+				9873F4DB830D381D47F5F006 /* Distance.swift */,
+				9723ACD602DA317AC219C880 /* Encodable.swift */,
+				C16DA51A867802A96A64751B /* Golfer.swift */,
+				C621C7B95BD7D6BFBA3958B7 /* GolfObject.swift */,
+				D07C5BE9CA929683F7756AFE /* Hole.swift */,
+				7A99CD155CB0401EDFDBE1D0 /* Position.swift */,
+				4F4FF52C09A545574578F167 /* Practice.swift */,
+				D893AED182458361D4F5F5D4 /* Round.swift */,
+				F30D2D92951E108995A166C3 /* Shot.swift */,
+			);
+			path = ObjectModels;
+			sourceTree = "<group>";
+		};
+		5FC16246BA896A7E8D6C4D34 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7ABF7740E22ACBE66BFB766D /* TabViewChildren */,
+				B885FB3E10A7836A0A4701A1 /* TabViews */,
+				3BBDB114AFA68261FC21ED34 /* ViewHelpers */,
+				D40182DE1393FBE47F44A930 /* ViewTools */,
+				101BEA24AA8C51ED85BBB721 /* WelcomeScreenChildren */,
+				04A338E87CC2F64DB3F1B4FB /* HomeView.swift */,
+				1F9E72A03C5E5F06BD018901 /* MakeANewGolferPopUp.swift */,
+				B40846BB57A103EA4FC4AA84 /* WelcomeScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		618BFE0888165E2F5A07E7CD /* firebase-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				0F185050A62735D072670C90 /* FirebaseFirestoreInternal */,
+			);
+			path = "firebase-ios-sdk";
+			sourceTree = "<group>";
+		};
+		6BA7C1C6329BA052AE8833BC /* SettingsHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				E91D51E210A2B6702E400B14 /* AccountDetails.swift */,
+				0F4A3BE4581B928915E9BA45 /* ChangePasswordView.swift */,
+				7B17A025B514257BEEF42D3D /* ProfileDetails.swift */,
+			);
+			path = SettingsHelpers;
+			sourceTree = "<group>";
+		};
+		6DC807FD7AAA87CC4C760311 /* GolfApp */ = {
+			isa = PBXGroup;
+			children = (
+				74C5EE57EB1DF60B50CDFB89 /* Resources */,
+				EE67384CFF9BFD967B8FF620 /* Sources */,
+				C6CB00E790C0D1895888B3D2 /* Tests */,
+			);
+			path = GolfApp;
+			sourceTree = "<group>";
+		};
+		6FE303A0D641B52A67DFB823 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8671CE261029477B68FAA35A /* DataAnaylsis */,
+				78C8C70D947B4E15CF3DE4BB /* FirebaseTools */,
+				566D5DF20B0A974445685956 /* ObjectModels */,
+				D60CE9841F33222C02C5A9E8 /* InputErrorList.swift */,
+				55681484021E94973C2EAC9D /* LogInScreen.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74C5EE57EB1DF60B50CDFB89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BA69FDCC635DD41A7531C4A /* Preview Content */,
+				2BD144133BDC5986CE309B90 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		78C8C70D947B4E15CF3DE4BB /* FirebaseTools */ = {
+			isa = PBXGroup;
+			children = (
+				9094FCE133FB32818AB96ACB /* Authenticator.swift */,
+				1F7E265BB687A3A49D0419C1 /* DatabaseCommunicator.swift */,
+			);
+			path = FirebaseTools;
+			sourceTree = "<group>";
+		};
+		792F3AFB68DF43FC38AFFEBB /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				B7C9256CEAB45EFC67AF7076 /* GolfApp-Info.plist */,
+				7679744692F76CC79895D760 /* GolfAppTests-Info.plist */,
+			);
+			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		7ABF7740E22ACBE66BFB766D /* TabViewChildren */ = {
+			isa = PBXGroup;
+			children = (
+				8EB735ACFA4B3FC4C782320F /* ImageIcon.swift */,
+			);
+			path = TabViewChildren;
+			sourceTree = "<group>";
+		};
+		85526EF1452882018A5FC653 /* Derived */ = {
+			isa = PBXGroup;
+			children = (
+				792F3AFB68DF43FC38AFFEBB /* InfoPlists */,
+				52F0F88262E125E50EB59B6A /* Sources */,
+			);
+			path = Derived;
+			sourceTree = "<group>";
+		};
+		85C15E4912A58C9C66E9C336 /* artifacts */ = {
+			isa = PBXGroup;
+			children = (
+				BA5A70787F8364D6FF426652 /* abseil-cpp-binary */,
+				618BFE0888165E2F5A07E7CD /* firebase-ios-sdk */,
+				A73A696B311C981D9363F60A /* grpc-binary */,
+			);
+			path = artifacts;
+			sourceTree = "<group>";
+		};
+		8671CE261029477B68FAA35A /* DataAnaylsis */ = {
+			isa = PBXGroup;
+			children = (
+				EA77D8968D662E9350421EE9 /* ShotAnalyzer.swift */,
+				B482913A5430C8AC481CEE9D /* ShotFilters.swift */,
+				6D7E1F92E67FBC96BD12AE4C /* ShotPredictor.swift */,
+				810FC60014D328119E4C3CBA /* TendancyAnalyzer.swift */,
+			);
+			path = DataAnaylsis;
+			sourceTree = "<group>";
+		};
+		88F7221191BE76FFA46DD43E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1E4FC4192DED4C361648F9C /* AppKit.framework */,
+				5302083C1AC8BA064ABF6522 /* libc++.tbd */,
+				3E48BDCAF15F64BB8036CAA7 /* libz.tbd */,
+				ED82739E6BB6E42ADD0EE685 /* SafariServices.framework */,
+				8E5DC035B364FEC3C2CC5149 /* Security.framework */,
+				FA7FAE92F62D1DBC420697AA /* SystemConfiguration.framework */,
+				94D6CC950CBE4DC357CCD4DC /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C1581210ABFC1075E300401 /* StatViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				B46A310A039AA2487B9C4864 /* ShotTypeAnaylsis */,
+				44A1475778BFC241EED1FC8B /* SpecificAnalysisViews */,
+				9D510B22FCAE9838F44006B3 /* FocusedAnalysis.swift */,
+				8856766E756682D66B6E4FA9 /* RoundFilterView.swift */,
+				C83072C2520A168A707E90EC /* StatAnalysisView.swift */,
+				33A11DFCCC9C1FC462E77AA4 /* StatTable.swift */,
+				DE3D8DE7159611104B6EAC7B /* StrokesGainedGraph.swift */,
+			);
+			path = StatViewHelpers;
+			sourceTree = "<group>";
+		};
+		8F0F82FFBBCE3A5391245861 = {
+			isa = PBXGroup;
+			children = (
+				EEDA2B786F05AA9A404B36D5 /* Project */,
+				94C5F0B07F471E57D563B329 /* Products */,
+				88F7221191BE76FFA46DD43E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		94C5F0B07F471E57D563B329 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AE6AE1D318B8CD1F14CE391 /* abseil_abslWrapper.bundle */,
+				74092C0B4582F7B7EC219405 /* abslWrapper.framework */,
+				01595F4ED4F69A7553A446D9 /* FBLPromises.framework */,
+				24D37933699DF87601BE681B /* Firebase_FirebaseAuth.bundle */,
+				2FC446F35EC96E4809B149D1 /* Firebase_FirebaseCore.bundle */,
+				35319B6DA9DB0B093D01BCC8 /* Firebase_FirebaseCoreExtension.bundle */,
+				F37E77314E0130C03DCB495D /* Firebase_FirebaseCoreInternal.bundle */,
+				DCFE28D3A653DDFAC47FE0E0 /* Firebase_FirebaseFirestore.bundle */,
+				EC16FDDC84C1639996E603FF /* Firebase.framework */,
+				1157A638BBA0A94973D79F46 /* FirebaseAppCheckInterop.framework */,
+				6A4C38247BF5623C7AB65B33 /* FirebaseAuth.framework */,
+				CB5B3C578A8FB266E3D70B06 /* FirebaseCore.framework */,
+				E5F0B7B260BB299F460E28AF /* FirebaseCoreExtension.framework */,
+				12FF8D7FA2BEC413989D54F6 /* FirebaseCoreInternal.framework */,
+				50D03E916DCB9A2EFAF5F2D1 /* FirebaseFirestore.framework */,
+				B7D5B95841737F90F9C971D0 /* FirebaseFirestoreInternalWrapper.framework */,
+				BAF38D93645A121509791758 /* FirebaseFirestoreSwift.framework */,
+				D9585EC163460F9BB02FDF68 /* FirebaseFirestoreSwiftTarget.framework */,
+				F3B1DA3084AB02AE6391AD8A /* FirebaseFirestoreTarget.framework */,
+				117B659DCF7D7C81055D47D3 /* FirebaseSharedSwift.framework */,
+				8F2F471872299A811A600F55 /* GolfApp.app */,
+				90CDCFFDAF94930E81746628 /* GolfAppTests.xctest */,
+				79B02EFBA356045F3255DE3A /* GoogleUtilities_AppDelegateSwizzler.framework */,
+				A9204AFAACB7AB1BDD614231 /* GoogleUtilities_Environment.framework */,
+				5DDA3220CCD38EB3871BD95D /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle */,
+				CF9669E9875712E16A63DF39 /* GoogleUtilities_GoogleUtilities_Environment.bundle */,
+				CA4E18957D2813F527666A09 /* GoogleUtilities_GoogleUtilities_Logger.bundle */,
+				EE6EAD02D4A83BFC744B9F88 /* GoogleUtilities_GoogleUtilities_Network.bundle */,
+				D78BB0B3F77BBF203AD91F54 /* GoogleUtilities_GoogleUtilities_NSData.bundle */,
+				AA607AA8F4077B20AE1DAA63 /* GoogleUtilities_GoogleUtilities_Reachability.bundle */,
+				4B1A8D776D8B338115D1FC37 /* GoogleUtilities_Logger.framework */,
+				8F86F004D8755E6CD5483B7A /* GoogleUtilities_Network.framework */,
+				739691D9D9A308E6497333E4 /* GoogleUtilities_NSData.framework */,
+				F6326F4C1671641B2950CB5F /* GoogleUtilities_Reachability.framework */,
+				8F14F100B35E07BBE3B683FA /* gRPC_grpcppWrapper.bundle */,
+				B508610442E5A00EDAB3FFC3 /* gRPC_grpcWrapper.bundle */,
+				0AA109E4E69236895EEDC2F1 /* gRPC_opensslWrapper.bundle */,
+				6C4A2BE1E594CA75B2F03DC1 /* grpcppWrapper.framework */,
+				072362AE75798347855252EF /* grpcWrapper.framework */,
+				A3DB1D89DD957B108709CDB6 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle */,
+				694BDC311179CAB6CD3EA756 /* GTMSessionFetcherCore.framework */,
+				3DC2A9191BBF46A851D590A7 /* leveldb_leveldb.bundle */,
+				BD9C58EAA3C0CC9024461968 /* leveldb.framework */,
+				46DE5B49AF3D76DC58047BF3 /* nanopb_nanopb.bundle */,
+				D166D103B927AF397BCA07FA /* nanopb.framework */,
+				F0EAF3E84A78709C2EC3FC59 /* opensslWrapper.framework */,
+				C0143B13BDDCD28E36EFBA6C /* Promises_FBLPromises.bundle */,
+				A82796A2DB44F904FA2750DE /* RecaptchaInterop.framework */,
+				41DB65198BADD7ED5AEA8A3A /* SigmaSwiftStatistics.framework */,
+				1E1D82C3E8F79093CF255256 /* third_party_IsAppEncrypted.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96692CFC588A898896D0C372 /* WelcomeAnimationProperties */ = {
+			isa = PBXGroup;
+			children = (
+				A829668F49C22918BFE24C0E /* SizeAnimation.swift */,
+			);
+			path = WelcomeAnimationProperties;
+			sourceTree = "<group>";
+		};
+		9C8F1856BA04B4A7A2C37F87 /* absl */ = {
+			isa = PBXGroup;
+			children = (
+				16458E904D93408CF07A81D9 /* absl.xcframework */,
+			);
+			path = absl;
+			sourceTree = "<group>";
+		};
+		A0D1F9DB545B904B155BDBF9 /* grpcpp */ = {
+			isa = PBXGroup;
+			children = (
+				67E0B59EE8DA406C73442B77 /* grpcpp.xcframework */,
+			);
+			path = grpcpp;
+			sourceTree = "<group>";
+		};
+		A4A427366CCA9DE1634D27CD /* RoundSetup */ = {
+			isa = PBXGroup;
+			children = (
+				AF4CB70C64E0C625F4A52DBC /* CourseHoleByHole.swift */,
+				672F9DFF08B0A099EB6EF0E4 /* HoleDefiner.swift */,
+				34569A85E2A7E0417CF73151 /* RoundPrepView.swift */,
+				A35B109088F993A4A21677F3 /* RoundSetupView.swift */,
+			);
+			path = RoundSetup;
+			sourceTree = "<group>";
+		};
+		A73A696B311C981D9363F60A /* grpc-binary */ = {
+			isa = PBXGroup;
+			children = (
+				A93A3E3BAE45569ED9621090 /* grpc */,
+				A0D1F9DB545B904B155BDBF9 /* grpcpp */,
+				3A38D99C46C6CAC3B81C32BE /* openssl_grpc */,
+			);
+			path = "grpc-binary";
+			sourceTree = "<group>";
+		};
+		A837312812D0B6858AED702E /* .build */ = {
+			isa = PBXGroup;
+			children = (
+				85C15E4912A58C9C66E9C336 /* artifacts */,
+			);
+			path = .build;
+			sourceTree = "<group>";
+		};
+		A93A3E3BAE45569ED9621090 /* grpc */ = {
+			isa = PBXGroup;
+			children = (
+				61541F51E3972C30EB3BBC7F /* grpc.xcframework */,
+			);
+			path = grpc;
+			sourceTree = "<group>";
+		};
+		AAAEF679BFAF4B3F6E1CA92E /* RoundViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				FEEA3071A56E8D5D04BBFD9C /* RoundInfo.swift */,
+				874EEA3C089FCEE2E5D04A1E /* RoundViewList.swift */,
+			);
+			path = RoundViewHelpers;
+			sourceTree = "<group>";
+		};
+		B46A310A039AA2487B9C4864 /* ShotTypeAnaylsis */ = {
+			isa = PBXGroup;
+			children = (
+				61C1C0228AF45EF82BB5A931 /* ApproachAnalysis.swift */,
+				48A93308858FA2F14333AE71 /* ChippingAnalysisView.swift */,
+				DFFD2728BAE3A9D3F6277E06 /* DrivingDetailView.swift */,
+				9960B61E69385E4FDEAEDB1E /* PuttingDetailView.swift */,
+			);
+			path = ShotTypeAnaylsis;
+			sourceTree = "<group>";
+		};
+		B885FB3E10A7836A0A4701A1 /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				52F9173DAFD5173CF193D144 /* GolferAtAGlance */,
+				1ADFEFF909843F17683A1A3F /* RoundEntryTools  */,
+				AAAEF679BFAF4B3F6E1CA92E /* RoundViewHelpers */,
+				6BA7C1C6329BA052AE8833BC /* SettingsHelpers */,
+				8C1581210ABFC1075E300401 /* StatViewHelpers */,
+				9528ECB855864D5C9EB1708F /* ProfileView.swift */,
+				EDC3FDCD2EDAC883DBB6CA44 /* RoundEntry.swift */,
+				2640BB776F703071840DD2F7 /* RoundView.swift */,
+				D5538C567B371A1F4506474A /* SettingsView.swift */,
+				2B95C3815AEECCD5BA62A47E /* StatView.swift */,
+			);
+			path = TabViews;
+			sourceTree = "<group>";
+		};
+		BA5A70787F8364D6FF426652 /* abseil-cpp-binary */ = {
+			isa = PBXGroup;
+			children = (
+				9C8F1856BA04B4A7A2C37F87 /* absl */,
+			);
+			path = "abseil-cpp-binary";
+			sourceTree = "<group>";
+		};
+		C6CB00E790C0D1895888B3D2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1B1926605FCF611C791BAAA1 /* GolfAppTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D40182DE1393FBE47F44A930 /* ViewTools */ = {
+			isa = PBXGroup;
+			children = (
+				CC8ECDDECB9FE85354816D97 /* IsHot.swift */,
+				5DDD24DF714E6062782F3164 /* ShotTypeTool.swift */,
+				9A5AC4DF05EFD121FABECFF4 /* StringRepresentable.swift */,
+				82DB5C5A01317EB895725C91 /* TextValiditity.swift */,
+				E2D259C6FCC589B69E346021 /* ThreeState.swift */,
+				0C1A2229D2A324A7C7F3CB40 /* ViewScreens.swift */,
+			);
+			path = ViewTools;
+			sourceTree = "<group>";
+		};
+		DFBF40339ECAC4F5165FB8F4 /* ScoreCardHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				C5767BCF992A8C667994D821 /* HoleButtons.swift */,
+				5BE58120C4AB9039A9E516DA /* IndividualButton.swift */,
+				387E9FE602A290B57E8B3470 /* ScorecardImage.swift */,
+				ABF05F273E29329AFAE7CD8D /* StrokesGainedGlance.swift */,
+			);
+			path = ScoreCardHelpers;
+			sourceTree = "<group>";
+		};
+		EE67384CFF9BFD967B8FF620 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				02A7E15E2C4DB26A00A4DDFF /* GoogleService-Info.plist */,
+				6FE303A0D641B52A67DFB823 /* Models */,
+				5FC16246BA896A7E8D6C4D34 /* Views */,
+				DF2163B8ADDB952622CC2A35 /* ContentView.swift */,
+				19FA4818244679FB0A04D926 /* GolfAppApp.swift */,
+				02A7E1602C4DB27E00A4DDFF /* GoogleService-Info.plist */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EEDA2B786F05AA9A404B36D5 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				85526EF1452882018A5FC653 /* Derived */,
+				6DC807FD7AAA87CC4C760311 /* GolfApp */,
+				2B9FEC592E8B3DDDCE4496B9 /* Tuist */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B120B961BE6342AFB88E998 /* GolfApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AE85183C98C96CFC41F76A6 /* Build configuration list for PBXNativeTarget "GolfApp" */;
+			buildPhases = (
+				91A0222C8FD0B027494A9F92 /* Sources */,
+				534E6559DA9CDA6E77EF0686 /* Resources */,
+				03A8EF3306BAB07DCCA34D1A /* Embed Frameworks */,
+				DF5F52C1E66F6679D1E7DC3A /* Frameworks */,
+				30DD1BEF8D8F85CA30204CEB /* Dependencies */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GolfApp;
+			productName = GolfApp;
+			productReference = 8F2F471872299A811A600F55 /* GolfApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		85A74DCA538BC3F8B54FE0CD /* GolfAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5372018E0D45D307CBE5E63A /* Build configuration list for PBXNativeTarget "GolfAppTests" */;
+			buildPhases = (
+				EA77728E6EBE4F2EEE67F6EE /* Sources */,
+				88FA361210633DCDA9540A49 /* Resources */,
+				BB7BBF24B5EC76F5F4BCA9BE /* Embed Frameworks */,
+				F5451C9955B5DDD1E361B36A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC6B84F5ADC9001F757C5651 /* PBXTargetDependency */,
+			);
+			name = GolfAppTests;
+			productName = GolfAppTests;
+			productReference = 90CDCFFDAF94930E81746628 /* GolfAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18E9B1046FEEE0FFF7EE43BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+					85A74DCA538BC3F8B54FE0CD = {
+						TestTargetID = 6B120B961BE6342AFB88E998;
+					};
+				};
+			};
+			buildConfigurationList = 776903BC3A4556F3778C1204 /* Build configuration list for PBXProject "GolfApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 8F0F82FFBBCE3A5391245861;
+			productRefGroup = 94C5F0B07F471E57D563B329 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B120B961BE6342AFB88E998 /* GolfApp */,
+				85A74DCA538BC3F8B54FE0CD /* GolfAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		534E6559DA9CDA6E77EF0686 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B88F3B4619C8DDD2FAA42043 /* Assets.xcassets in Resources */,
+				30732E36B02004C2C5D57849 /* Preview Assets.xcassets in Resources */,
+				841B214AE559A58FA0335CA4 /* Firebase_FirebaseAuth.bundle in Resources */,
+				A7D8F1EF44B12E7FF2183D9B /* Firebase_FirebaseCore.bundle in Resources */,
+				13AFD80142EFF9C74024C453 /* Firebase_FirebaseCoreExtension.bundle in Resources */,
+				C7A287119E8349916B944174 /* Firebase_FirebaseCoreInternal.bundle in Resources */,
+				E0705800945E9D5A46ECCC6A /* Firebase_FirebaseFirestore.bundle in Resources */,
+				1F475046C08A27691CE09B05 /* GTMSessionFetcher_GTMSessionFetcherCore.bundle in Resources */,
+				89437260A128FDA478362A07 /* GoogleUtilities_GoogleUtilities_AppDelegateSwizzler.bundle in Resources */,
+				FF8B7901F8510A4446F8FFC2 /* GoogleUtilities_GoogleUtilities_Environment.bundle in Resources */,
+				B5EA4A22FF3F9862939E6A14 /* GoogleUtilities_GoogleUtilities_Logger.bundle in Resources */,
+				F6A7A33DAFF33271DCA3FD27 /* GoogleUtilities_GoogleUtilities_NSData.bundle in Resources */,
+				18E79C612B2E463E96F35D1D /* GoogleUtilities_GoogleUtilities_Network.bundle in Resources */,
+				82D0F8775E45CBC795FDC1DA /* GoogleUtilities_GoogleUtilities_Reachability.bundle in Resources */,
+				9F32EB3F6CA60B563ABBE0C8 /* Promises_FBLPromises.bundle in Resources */,
+				79E5D91920E728A4C9E44C00 /* abseil_abslWrapper.bundle in Resources */,
+				EC4E5348C8033CA0ABBA0B75 /* gRPC_grpcWrapper.bundle in Resources */,
+				E9B04653C304C856B6C42364 /* gRPC_grpcppWrapper.bundle in Resources */,
+				541CC521328B89EC2B23A3E9 /* gRPC_opensslWrapper.bundle in Resources */,
+				02A7E1612C4DB27E00A4DDFF /* GoogleService-Info.plist in Resources */,
+				02A7E15F2C4DB26A00A4DDFF /* GoogleService-Info.plist in Resources */,
+				C36E047F5D49DA21337ED87E /* leveldb_leveldb.bundle in Resources */,
+				E61B091A8F53502FE3917A1D /* nanopb_nanopb.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88FA361210633DCDA9540A49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91A0222C8FD0B027494A9F92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFA4819B5A95BF99604178C /* TuistAssets+GolfApp.swift in Sources */,
+				187A2C89AF0156F721F2F4F6 /* TuistBundle+GolfApp.swift in Sources */,
+				9B17A5B80CE2EEBDD9E47120 /* ContentView.swift in Sources */,
+				D6C07DFC82E51C2BE8299323 /* GolfAppApp.swift in Sources */,
+				9B06EE48179A50B19C1E558C /* ShotAnalyzer.swift in Sources */,
+				13E12A2C731C4EBC94E7AD1E /* ShotFilters.swift in Sources */,
+				D7A41CEFF6F6EC3E45ECDBF3 /* ShotPredictor.swift in Sources */,
+				06B3EAE55873024A6D638359 /* TendancyAnalyzer.swift in Sources */,
+				7C4B7386077E16ADF4AD3512 /* Authenticator.swift in Sources */,
+				A23DAD4830C321BBAE6B27C4 /* DatabaseCommunicator.swift in Sources */,
+				4EF9C4E68C6A64E214CA2F5B /* InputErrorList.swift in Sources */,
+				8FFFB57B3E4FFF103335F4D1 /* LogInScreen.swift in Sources */,
+				A31101D22676D95DCDE5693B /* Course.swift in Sources */,
+				ED6D315693E1E0971D4281DF /* Distance.swift in Sources */,
+				5999B339275F8FDC366F87CD /* Encodable.swift in Sources */,
+				61B4107B0AE595EAE3C5D161 /* GolfObject.swift in Sources */,
+				B3FD1E71B2ECBF2AAEF5C031 /* Golfer.swift in Sources */,
+				6A887028963CF44FC9613854 /* Hole.swift in Sources */,
+				C98609C9939AD110DE180A59 /* Position.swift in Sources */,
+				9FA2F1BBCB20620B79202C21 /* Practice.swift in Sources */,
+				792F35FFFFCCC4974CD37B28 /* Round.swift in Sources */,
+				C4543A3FFFB93CE4DF79A088 /* Shot.swift in Sources */,
+				E12DE9B405B4039B80796A4B /* HomeView.swift in Sources */,
+				D1FBE93A44A67D53765F564A /* MakeANewGolferPopUp.swift in Sources */,
+				91A8B33E8704C690F891FB05 /* ImageIcon.swift in Sources */,
+				F5C3685644DC834A19A1BAFF /* GolferView.swift in Sources */,
+				3FFF1830AEAFAC20AA3EA759 /* HotStreak.swift in Sources */,
+				6A9779BBD328BD30B523574F /* Menu.swift in Sources */,
+				499490F95E8A698ED403BB5E /* ProfileView.swift in Sources */,
+				5F62B98D378A7FB4802CC422 /* RoundEntry.swift in Sources */,
+				70A8E450468F20D4B9865BA8 /* HoleByHole.swift in Sources */,
+				0DB8EAAAEE8DEEE4441EF171 /* BasicCourseInfo.swift in Sources */,
+				8B393C909D736E11DB33A0E7 /* CreateCourse.swift in Sources */,
+				E960D65C136584C8487872E2 /* PickACourse.swift in Sources */,
+				C6D09F47C16846AA068A8DDD /* CourseFilter.swift in Sources */,
+				98E732E82BB3C0F77D26F3E4 /* CourseSearcher.swift in Sources */,
+				DC5998AE3B91B8F74957B6E7 /* CourseHoleByHole.swift in Sources */,
+				01C4AFE246270F99013B4516 /* HoleDefiner.swift in Sources */,
+				36CCB0A752072D04C0E6D1EF /* RoundPrepView.swift in Sources */,
+				D5080864088D2B07EDE5FE2A /* RoundSetupView.swift in Sources */,
+				A8251C945E8C79AC146ED1A0 /* RoundBasedStats.swift in Sources */,
+				D80706545D6DF3D0B964A922 /* ShotByShotAnalysis.swift in Sources */,
+				EF26B9F5CC352DC97E466B2B /* RoundOverviewPage.swift in Sources */,
+				CDD0D9CA32B363A92BC68E27 /* HoleButtons.swift in Sources */,
+				391607013CB9CA8A8337AA68 /* IndividualButton.swift in Sources */,
+				89F13ABCFBE8AB2021C27F45 /* ScorecardImage.swift in Sources */,
+				5B9221543A51815A2CA2F2EB /* StrokesGainedGlance.swift in Sources */,
+				E639185BFEE159948B3A2B53 /* ScorecardView.swift in Sources */,
+				DD450BF95660090E79C62F6D /* ShotElement.swift in Sources */,
+				619D158C7A2A9836FB217104 /* RoundView.swift in Sources */,
+				06A86B1353F17ED059327B88 /* RoundInfo.swift in Sources */,
+				B50B4F691586D3AE1BF71023 /* RoundViewList.swift in Sources */,
+				F06F6D654BF62A8ECCA2B68C /* AccountDetails.swift in Sources */,
+				D194E162B51CCF140DD1A260 /* ChangePasswordView.swift in Sources */,
+				E0749E391A19BB84D0FFCFA4 /* ProfileDetails.swift in Sources */,
+				569AE58476A9BE6340837ED9 /* SettingsView.swift in Sources */,
+				053407431C4EB1CAB283BE2B /* StatView.swift in Sources */,
+				463EDAF26B975BFFB88DA21D /* FocusedAnalysis.swift in Sources */,
+				55875DC557B056EDC5324E60 /* RoundFilterView.swift in Sources */,
+				331A1E5DE7F3BC57006519B9 /* ApproachAnalysis.swift in Sources */,
+				2D943EF309E3C1BF0D063CB5 /* ChippingAnalysisView.swift in Sources */,
+				F5472CB6A4D297F25EF4DFC6 /* DrivingDetailView.swift in Sources */,
+				6EC3A01F6D086562A76BBC1D /* PuttingDetailView.swift in Sources */,
+				3F7AAB0B13B5BCC32A9C7081 /* ApproachStatView.swift in Sources */,
+				C36CC8A7DDF73DA0334D9EB5 /* DistanceAndLieFilter.swift in Sources */,
+				E850D53C3F12A469493D109D /* DrivingStatView.swift in Sources */,
+				EAE3A356A189FD93BF0F7B02 /* GeneralStatView.swift in Sources */,
+				591006312F1009A583129C3C /* PuttingStatView.swift in Sources */,
+				D7AC57A7D833D9F6A78DD768 /* ShortGameStatView.swift in Sources */,
+				CEAAF2BC85EF72F9EA8432AE /* StatAnalysisView.swift in Sources */,
+				C7112FD38537696E62F47469 /* StatTable.swift in Sources */,
+				99E5EBCA7010E652F07AC388 /* StrokesGainedGraph.swift in Sources */,
+				E03886906A59169CD2F23502 /* CenteredSquare.swift in Sources */,
+				1027479B48764E8677063E93 /* EditableStaticText.swift in Sources */,
+				1FA01C301A141CC03B06F4AD /* GoHome.swift in Sources */,
+				A02F42C43D56BE6E024FE928 /* HotOrColdView.swift in Sources */,
+				444B8C6F18C16AEC57D03048 /* LoadingAnimation.swift in Sources */,
+				38B616A032BC6F2A65E16C72 /* LoginError.swift in Sources */,
+				84C1321459BC1F5A4AFD7157 /* NavigationPopping.swift in Sources */,
+				DCFE2ADC307A4AF63C719203 /* NumberFormatters.swift in Sources */,
+				4C7C3EAC82A0EBBC6A3D4AA7 /* PickerAndLabel.swift in Sources */,
+				A8FF5C4B852EC58CFC96F807 /* SpinningCircle.swift in Sources */,
+				EB344812CF88A321CEFC4690 /* SquareButton.swift in Sources */,
+				DDE7B1663F1BD99A4E1357C2 /* TextFieldWithValiditity.swift in Sources */,
+				942C827371896C9D4F8CA6A7 /* IsHot.swift in Sources */,
+				EBA0AB2CD3B37ADE97C0AF15 /* ShotTypeTool.swift in Sources */,
+				7F132516FAB3C6C0ABFD5D94 /* StringRepresentable.swift in Sources */,
+				A60627359209ED12258EE8D2 /* TextValiditity.swift in Sources */,
+				81D7C22B5EBF41CD83F407E6 /* ThreeState.swift in Sources */,
+				2FA6020F2FAF5586EF464744 /* ViewScreens.swift in Sources */,
+				2A42378D7C3E417D85CC2ED1 /* WelcomeScreen.swift in Sources */,
+				0754C3BE91266CE5AA078D0F /* LoginScreen.swift in Sources */,
+				F285B612FF971683C053A87D /* NewAccountView.swift in Sources */,
+				C361CFA6D1130CBDCEC18900 /* NewUserForm.swift in Sources */,
+				321A6C1331EAFBADA6DDAE65 /* NewUserText.swift in Sources */,
+				02D43EB5D58B48DF7ADDCAE2 /* OldUserWelcome.swift in Sources */,
+				FA22383071747EE65EF79AE1 /* PasswordEntry.swift in Sources */,
+				58758D158B5516FEEEA3FDCB /* RadialBackground.swift in Sources */,
+				8858E6F115287CFF8CA7CBC4 /* WelcomeAnimation.swift in Sources */,
+				4144D728C13A740EBFAECD1A /* SizeAnimation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA77728E6EBE4F2EEE67F6EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1931E1EFED2DE134E6AA173 /* GolfAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC6B84F5ADC9001F757C5651 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GolfApp;
+			target = 6B120B961BE6342AFB88E998 /* GolfApp */;
+			targetProxy = B4ECE8530CA5C56E90CAE4EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1CEB0A624AE4FA04408C6E28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3ADAED39F8C9C09BD6241B42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/artifacts/abseil-cpp-binary/absl",
+					"$(SRCROOT)/Tuist/.build/artifacts/firebase-ios-sdk/FirebaseFirestoreInternal",
+					"$(SRCROOT)/Tuist/.build/artifacts/grpc-binary/grpc",
+					"$(SRCROOT)/Tuist/.build/artifacts/grpc-binary/grpcpp",
+					"$(SRCROOT)/Tuist/.build/artifacts/grpc-binary/openssl_grpc",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/NSData+zlib/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Network/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Reachability/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/abseil-cpp-binary/absl-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAppCheck/Interop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAuth/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Extension",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseFirestoreInternal",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreSwiftWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpcpp-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/openssl-grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/interop-ios-for-google-sdks/RecaptchaEnterprise/RecaptchaInterop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/nanopb/spm_headers",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/GolfApp-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.GolfApp;
+				PRODUCT_NAME = GolfApp;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		95BE2D76D42A9B919D6484FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/NSData+zlib/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Network/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Reachability/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/abseil-cpp-binary/absl-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAppCheck/Interop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAuth/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Extension",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseFirestoreInternal",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreSwiftWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpcpp-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/openssl-grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/interop-ios-for-google-sdks/RecaptchaEnterprise/RecaptchaInterop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/nanopb/spm_headers",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/GolfAppTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.GolfAppTests;
+				PRODUCT_NAME = GolfAppTests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GolfApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GolfApp";
+				TEST_TARGET_NAME = GolfApp;
+			};
+			name = Release;
+		};
+		9AB4D5081572AD50C673DE7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9AC33F9708B8FBB278936BD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/artifacts/abseil-cpp-binary/absl",
+					"$(SRCROOT)/Tuist/.build/artifacts/firebase-ios-sdk/FirebaseFirestoreInternal",
+					"$(SRCROOT)/Tuist/.build/artifacts/grpc-binary/grpc",
+					"$(SRCROOT)/Tuist/.build/artifacts/grpc-binary/grpcpp",
+					"$(SRCROOT)/Tuist/.build/artifacts/grpc-binary/openssl_grpc",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/NSData+zlib/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Network/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Reachability/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/abseil-cpp-binary/absl-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAppCheck/Interop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAuth/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Extension",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseFirestoreInternal",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreSwiftWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpcpp-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/openssl-grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/interop-ios-for-google-sdks/RecaptchaEnterprise/RecaptchaInterop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/nanopb/spm_headers",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/GolfApp-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.GolfApp;
+				PRODUCT_NAME = GolfApp;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D64FADF834E75CC862E6ABC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(inherited)",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/NSData+zlib/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Network/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/GoogleUtilities/Reachability/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/abseil-cpp-binary/absl-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAppCheck/Interop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseAuth/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Extension",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseCore/Sources/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/FirebaseFirestoreInternal",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreSwiftWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseFirestoreWrap/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/grpcpp-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/grpc-binary/openssl-grpc-Wrapper/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/gtm-session-fetcher/Sources/Core/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/interop-ios-for-google-sdks/RecaptchaEnterprise/RecaptchaInterop/Public",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb",
+					"$(SRCROOT)/Tuist/.build/checkouts/leveldb/include",
+					"$(SRCROOT)/Tuist/.build/checkouts/nanopb/spm_headers",
+					"$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include",
+				);
+				INFOPLIST_FILE = "Derived/InfoPlists/GolfAppTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap",
+					"-fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/firebase-ios-sdk/CoreOnly/Sources/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAppCheckInterop/FirebaseAppCheckInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseAuth/FirebaseAuth.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCore/FirebaseCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseCoreExtension/FirebaseCoreExtension.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreInternalWrapper/FirebaseFirestoreInternalWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreSwiftTarget/FirebaseFirestoreSwiftTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/FirebaseFirestoreTarget/FirebaseFirestoreTarget.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GTMSessionFetcherCore/GTMSessionFetcherCore.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_AppDelegateSwizzler/GoogleUtilities_AppDelegateSwizzler.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Environment/GoogleUtilities_Environment.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Logger/GoogleUtilities_Logger.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_NSData/GoogleUtilities_NSData.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Network/GoogleUtilities_Network.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/GoogleUtilities_Reachability/GoogleUtilities_Reachability.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/RecaptchaInterop/RecaptchaInterop.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/abslWrapper/abslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcWrapper/grpcWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/grpcppWrapper/grpcppWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/leveldb/leveldb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/nanopb/nanopb.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/opensslWrapper/opensslWrapper.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/Tuist/.build/tuist-derived/third_party_IsAppEncrypted/third_party_IsAppEncrypted.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.GolfAppTests;
+				PRODUCT_NAME = GolfAppTests;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GolfApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GolfApp";
+				TEST_TARGET_NAME = GolfApp;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5372018E0D45D307CBE5E63A /* Build configuration list for PBXNativeTarget "GolfAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D64FADF834E75CC862E6ABC5 /* Debug */,
+				95BE2D76D42A9B919D6484FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		776903BC3A4556F3778C1204 /* Build configuration list for PBXProject "GolfApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB4D5081572AD50C673DE7D /* Debug */,
+				1CEB0A624AE4FA04408C6E28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AE85183C98C96CFC41F76A6 /* Build configuration list for PBXNativeTarget "GolfApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AC33F9708B8FBB278936BD3 /* Debug */,
+				3ADAED39F8C9C09BD6241B42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 18E9B1046FEEE0FFF7EE43BB /* Project object */;
+}
