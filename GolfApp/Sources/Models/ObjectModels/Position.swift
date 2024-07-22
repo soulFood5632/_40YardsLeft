@@ -42,7 +42,7 @@ struct Position: Codable, Hashable {
       -7.54163032 * pow(10, -23.0),
     ],
     .rough: Self.ROUGH_POLY,
-    .recovery: RECOVERY_POLY,
+    .other: RECOVERY_POLY,
     .green: GREEN_POLY,
     .bunker: BUNKER_POLY,
     .tee: TEE_POLY,
@@ -200,7 +200,7 @@ extension Position {
         }
         return .atHole
 
-      case .recovery:
+      case .other:
         return .other
       case .penalty:
         return .drop
@@ -233,7 +233,7 @@ enum Lie: String, Codable, Hashable, CaseIterable {
   case tee = "Tee"
   case bunker = "Sand"
   case penalty = "Penalty"
-  case recovery = "Recovery"
+  case other = "Other"
   case green = "Green"
 
   static var withoutPenalty: [Lie] { Self.allCases.filter { $0 != .penalty } }

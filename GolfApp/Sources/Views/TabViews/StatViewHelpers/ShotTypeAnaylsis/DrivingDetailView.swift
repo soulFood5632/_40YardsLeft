@@ -25,7 +25,7 @@ struct DrivingDetailView: View {
 
   var treePercentage: (Double?, Int) {
     return (
-      shots.percentageEndingIn(lies: [.recovery], shotType: .drive),
+      shots.percentageEndingIn(lies: [.other], shotType: .drive),
       shots.filter { $0.type == .drive }.count
     )
   }
