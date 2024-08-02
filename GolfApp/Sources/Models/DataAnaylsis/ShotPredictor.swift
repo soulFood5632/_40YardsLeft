@@ -88,7 +88,7 @@ extension ShotPredictor {
         return expectShotFromPenalty(distance: shotI.position.yardage)
       case .bunker:
         return expectShotFromBunker(distance: shotI.position.yardage)
-      case .recovery:
+      case .other:
         return expectShotFromRecovery(distance: shotI.position.yardage)
       case .green:
         return expectShotFromGreen(distance: shotI.position.yardage)
@@ -224,7 +224,7 @@ extension ShotPredictor {
           return .approach
         }
         return .chip_pitch
-      case .recovery:
+      case .other:
         return .other
       case .penalty:
         return .other

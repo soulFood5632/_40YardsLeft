@@ -150,7 +150,7 @@ extension ShotElement {
     switch lie {
       case .tee:
         break
-      // had to remove this section becuase it changed par 3's to drives whomp whomp
+      
       //            self.shot.declaration = .drive
       case .fairway:
         if yardage > .yards(300) {
@@ -164,7 +164,7 @@ extension ShotElement {
         } else {
           self.shot.declaration = .atHole
         }
-      case .recovery:
+      case .other:
         self.shot.declaration = .other
       case .penalty:
         self.shot.declaration = .drop

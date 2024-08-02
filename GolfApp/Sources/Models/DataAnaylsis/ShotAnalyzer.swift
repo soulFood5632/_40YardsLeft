@@ -351,7 +351,7 @@ extension Array where Element == Round {
         .filter(ShotFilters.allTeeShots)
 
       return (
-        shots.percentageEndingIn(lies: [.recovery], shotType: .drive),
+        shots.percentageEndingIn(lies: [.other], shotType: .drive),
         shots.filter(ShotFilters.allTeeShots).count
       )
     } catch {
