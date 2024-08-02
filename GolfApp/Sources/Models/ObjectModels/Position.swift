@@ -237,6 +237,25 @@ enum Lie: String, Codable, Hashable, CaseIterable {
   case green = "Green"
 
   static var withoutPenalty: [Lie] { Self.allCases.filter { $0 != .penalty } }
+  
+  init(from decoder: any Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    let value = try container.decode(String.self)
+    
+    if value == "Recovery" {
+      self = .other
+      return
+    }
+    
+    if let new_lie = Lie(rawValue: value) {
+      self = new_lie
+      return
+    }
+    
+    throw DecodingError.dataCorruptedError(in: container, debugDescription: "The Lie provided does not exist.`")
+    
+    
+  }
 
 }
 
