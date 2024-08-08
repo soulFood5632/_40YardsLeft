@@ -213,9 +213,12 @@ struct iOSCheckboxToggleStyle: ToggleStyle {
       },
       label: {
         HStack {
+          
+          configuration.label
+          
           Image(systemName: configuration.isOn ? "checkmark.square" : "square")
 
-          configuration.label
+          
         }
       })
   }
