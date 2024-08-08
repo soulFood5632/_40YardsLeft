@@ -8,7 +8,20 @@
 import SwiftUI
 import FirebaseAuth
 
-struct NewUserInfo: Equatable {
+
+
+struct UserInfo: Equatable {
+  
+  struct EntryIssue: Equatable {
+    var emailIssues: [String]
+    var passwordIssues: [String]
+    var usernameIssues: [String]
+    
+    func allIssues() -> [String] {
+      return emailIssues + passwordIssues + usernameIssues
+    }
+    
+  }
   var password: String
   var email: String
   var username: String
@@ -17,7 +30,21 @@ struct NewUserInfo: Equatable {
   static let PASSWORD_LENGTH = 7
   static let USERNAME_LENGTH = (3, 15)
   
-  func isValid() async -> [String: [String]] {
+  init(password: String, email: String, username: String, gender: Gender) {
+    self.password = password
+    self.email = email
+    self.username = username
+    self.gender = gender
+  }
+  
+  init() {
+    self.password = ""
+    self.email = ""
+    self.username = ""
+    self.gender = .man
+  }
+  
+  func isValid() async -> UserInfo.EntryIssue {
     
     // email logic
     let email_valid = Task {
@@ -47,14 +74,20 @@ struct NewUserInfo: Equatable {
     // username logic
     let username_valid = Task {
       
-      condition_list = [
+      let condition_list = [
         (self.username.count < Self.USERNAME_LENGTH.0, "Username must have \(Self.USERNAME_LENGTH.0) characters"),
         (self.username.count > Self.USERNAME_LENGTH.1, "Username must have less than \(Self.USERNAME_LENGTH.1) characters"),
-        (self.username)
+        (self.username.contains("[^A-Za-z0-9]"), "Username must be numbers and letters")
         
       ]
       
+      return condition_list.filter { $0.0 }.map { $0.1 }
+      
     }
+    
+    
+    
+    return await UserInfo.EntryIssue(emailIssues: email_valid.value, passwordIssues: password_valid.value, usernameIssues: username_valid.value)
     
   } //TODO: complete the logic here.
   
@@ -72,112 +105,126 @@ extension String {
   }
 }
 
-struct NewUserFormUpdate: View {
-  @State private var newUserInfo = NewUserInfo(password: "", email: "", username: "", gender: .man)
-
-  @State private var rememberMe = true
-  @Binding var showView: Bool
-  @State private var isPasswordHidden = true
+struct UserDefintion: View {
+  @Binding var userInfo: UserInfo
   
-  @Binding var user: User?
-  @State private var alert: (Bool, String?) = (false, nil)
+  @State private var isPasswordHidden = true
   
   private let cornerRadius = CGFloat(10)
   private let strokeLength = CGFloat(2)
   
-  
-  
   var body: some View {
-    Group {
-      TextField(
-        "Email Address",
-        text: self.$newUserInfo.email
-      )
-      .textContentType(.emailAddress)
-      .keyboardType(.emailAddress)
+    TextField(
+      "Email Address",
+      text: self.$userInfo.email
+    )
+    .textContentType(.emailAddress)
+    .keyboardType(.emailAddress)
+    .overlay {
+      RoundedRectangle(cornerRadius: self.cornerRadius)
+        .stroke(.blue, lineWidth: self.strokeLength)
+    }
+    
+    
+    HStack {
+      Group {
+        if self.isPasswordHidden {
+          SecureField("Password", text: self.$userInfo.password)
+        } else {
+          TextField("Password", text: self.$userInfo.password)
+        }
+      }
+      .textContentType(.password)
       .overlay {
         RoundedRectangle(cornerRadius: self.cornerRadius)
           .stroke(.blue, lineWidth: self.strokeLength)
       }
       
       
-      HStack {
-        Group {
-          if self.isPasswordHidden {
-            SecureField("Password", text: self.$newUserInfo.password)
-          } else {
-            TextField("Password", text: self.$newUserInfo.password)
-          }
-        }
-        .textContentType(.password)
-        .overlay {
-          RoundedRectangle(cornerRadius: self.cornerRadius)
-            .stroke(.blue, lineWidth: self.strokeLength)
-        }
-        
-        
-        
-        
-        Button {
-          self.isPasswordHidden.toggle()
-        } label: {
-          self.isPasswordHidden ? Image(systemName: "eye") : Image(systemName: "eye.slash")
-        }
-        
+      
+      
+      Button {
+        self.isPasswordHidden.toggle()
+      } label: {
+        self.isPasswordHidden ? Image(systemName: "eye") : Image(systemName: "eye.slash")
       }
-      .animation(.easeInOut, value: self.isPasswordHidden)
       
-      TextField("Username", text: self.$newUserInfo.username)
-        .textContentType(.name)
-        .overlay {
-          RoundedRectangle(cornerRadius: self.cornerRadius)
-            .stroke(.blue, lineWidth: self.strokeLength)
+    }
+    .animation(.easeInOut, value: self.isPasswordHidden)
+    
+    TextField("Username", text: self.$userInfo.username)
+      .textContentType(.name)
+      .overlay {
+        RoundedRectangle(cornerRadius: self.cornerRadius)
+          .stroke(.blue, lineWidth: self.strokeLength)
+      }
+    
+    HStack {
+      Spacer()
+      Text("Man")
+        .onTapGesture {
+          self.userInfo.gender = .man
         }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 3)
+        .background {
+          if self.userInfo.gender == .man {
+            RoundedRectangle(cornerRadius: self.cornerRadius)
+              .opacity(0.1)
+              .blur(radius: 1)
+          }
+        }
+        .foregroundStyle(self.userInfo.gender == .man ? .blue : .gray)
       
-      HStack {
-        Spacer()
-        Text("Man")
-          .onTapGesture {
-            self.newUserInfo.gender = .man
-          }
-          .padding(.horizontal, 10)
-          .padding(.vertical, 3)
-          .background {
-            if self.newUserInfo.gender == .man {
-              RoundedRectangle(cornerRadius: self.cornerRadius)
-                .opacity(0.1)
-                .blur(radius: 1)
-            }
-          }
-          .foregroundStyle(self.newUserInfo.gender == .man ? .blue : .gray)
-        
-          
-        
-        Text("Woman")
-          .onTapGesture {
-            self.newUserInfo.gender = .woman
-          }
-          .padding(.horizontal, 10)
-          .padding(.vertical, 3)
-          .background {
-            if self.newUserInfo.gender == .woman {
-              RoundedRectangle(cornerRadius: self.cornerRadius)
-                .opacity(0.1)
-                .blur(radius: 1)
-            }
-          }
-          .foregroundStyle(self.newUserInfo.gender == .woman ? .blue : .gray)
-          
-        Menu {
-          Text("The gender you would use for handicap calculations")
-        } label: {
-          Image(systemName: "info")
+      
+      
+      Text("Woman")
+        .onTapGesture {
+          self.userInfo.gender = .woman
         }
-        
-        
+        .padding(.horizontal, 10)
+        .padding(.vertical, 3)
+        .background {
+          if self.userInfo.gender == .woman {
+            RoundedRectangle(cornerRadius: self.cornerRadius)
+              .opacity(0.1)
+              .blur(radius: 1)
+          }
+        }
+        .foregroundStyle(self.userInfo.gender == .woman ? .blue : .gray)
+      
+      Menu {
+        Text("The gender you would use for handicap calculations")
+      } label: {
+        Image(systemName: "info")
+      }
+      Spacer()
+    }
+    
+  }
+}
 
-        Spacer()
-      }
+struct NewUserFormUpdate: View {
+  @State private var newUserInfo = UserInfo()
+  @State private var issuesWithData = UserInfo.EntryIssue(emailIssues: [], passwordIssues: [], usernameIssues: [])
+  
+  private var isValidInfo: Bool { issuesWithData.allIssues().isEmpty }
+
+  @State private var rememberMe = true
+  @Binding var showView: Bool
+  
+  
+  @Binding var user: User?
+  @State private var alert: (Bool, String?) = (false, nil)
+  
+  
+  
+  
+  
+  var body: some View {
+    Group {
+      
+      UserDefintion(userInfo: self.$newUserInfo)
       
       Button {
         Task {
@@ -197,14 +244,24 @@ struct NewUserFormUpdate: View {
       .frame(height: 50)
       .frame(maxWidth: .infinity)
       .background {
-        LinearGradient(colors: [self.newUserInfo.isValid.isEmpty ? .green : .gray, self.newUserInfo.isValid.isEmpty ? .blue: .gray], startPoint: .topLeading, endPoint: .bottomTrailing)
+        LinearGradient(colors: [self.isValidInfo ? .green : .gray, self.isValidInfo ? .blue: .gray], startPoint: .topLeading, endPoint: .bottomTrailing)
       }
+      .disabled(!self.isValidInfo)
       .clipShape(.rect(cornerRadius: 20))
     }
     .animation(.easeInOut, value: self.newUserInfo.gender)
     .padding(.horizontal)
     .padding(.vertical, 3)
-    
+    .onChange(of: self.newUserInfo, { oldValue, newValue in
+      Task {
+        self.issuesWithData = await newValue.isValid()
+      }
+    })
+    .onAppear {
+      Task {
+        self.issuesWithData = await self.newUserInfo.isValid()
+      }
+    }
     .textFieldStyle(.roundedBorder)
   }
 }
