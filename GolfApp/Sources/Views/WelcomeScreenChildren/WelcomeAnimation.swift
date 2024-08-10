@@ -24,6 +24,13 @@ struct LoginInfo: Equatable {
   }
   
   var isValid: Bool { self.emailAddress != "" && self.password != "" } // TODO: implement an actual checking method here.
+  
+  mutating func reset(email: Bool) -> Void {
+    if email {
+      self.emailAddress = ""
+    }
+    self.password = ""
+  }
 }
 
 struct WelcomeAnimation: View {
@@ -35,7 +42,7 @@ struct WelcomeAnimation: View {
   @State private var loginInfo = LoginInfo()
   @State private var rememberMe = false
   
-  @State private var alert: String?
+  @State private var alert: (Bool, String?) = (false, nil)
   
   @State private var user: User?
   @Binding var path: NavigationPath
@@ -65,7 +72,8 @@ struct WelcomeAnimation: View {
               self.user = try await login(loginInfo: self.loginInfo, rememberMe: self.rememberMe)
             } catch {
               self.spinLoginButton = false
-              self.alert = error.localizedDescription
+              self.alert.0 = true
+              self.alert.1 = error.localizedDescription
             }
           }
         } label: {
@@ -109,11 +117,31 @@ struct WelcomeAnimation: View {
     }
     .padding()
     .sheet(isPresented: self.$creatingNewUser, content: {
-      
+      NewUserFormUpdate(showView: self.$creatingNewUser, user: self.$user)
+        .padding()
+        .toolbar {
+          ToolbarItem(placement: .cancellationAction) {
+            Label("Cancel", systemImage: "trash")
+
+          }
+        }
     })
     .animation(.easeInOut, value: self.loginInfo)
     .animation(.easeInOut(duration: 0.2), value: self.spinLoginButton)
     .animation(.easeInOut, value: self.user)
+    .alert("Login Error", isPresented: self.$alert.0, actions: {
+      Button {
+        self.loginInfo.reset(email: false)
+      } label: {
+        Text("Retry")
+      }
+    }, message: {
+      if let alertDesc = self.alert.1 {
+        Text(alertDesc)
+      } else {
+        EmptyView()
+      }
+    })
     .onChange(of: user) { newUser in
       if let newUser {
 
@@ -133,7 +161,8 @@ struct WelcomeAnimation: View {
             path.append(golfer)
           } catch {
             self.spinLoginButton = false
-            self.alert = "An issue has occured in collecting cached user data. Please Login"
+            self.alert.0 = true
+            self.alert.1 = "An issue has occured in collecting cached user data. Please Login"
           }
         }
       }
@@ -182,9 +211,8 @@ struct LoginDetails: View {
       .keyboardType(.emailAddress)
       .overlay {
         RoundedRectangle(cornerRadius: self.cornerRadius)
-          .stroke(.green, lineWidth: self.strokeLength)
+          .stroke(self.emailAddress.isEmpty ? .gray : .blue, lineWidth: self.strokeLength)
       }
-      .padding(.horizontal)
       .padding(.vertical, 5)
       
       HStack {
@@ -198,7 +226,7 @@ struct LoginDetails: View {
         .textContentType(.password)
         .overlay {
           RoundedRectangle(cornerRadius: self.cornerRadius)
-            .stroke(.blue, lineWidth: self.strokeLength)
+            .stroke(self.password.isEmpty ? .gray : .blue, lineWidth: self.strokeLength)
         }
         .padding(.vertical, 5)
         
@@ -211,7 +239,7 @@ struct LoginDetails: View {
         }
         .foregroundStyle(.blue)
       }
-      .padding(.horizontal)
+      
       
       .animation(.easeInOut, value: self.isPasswordHidden)
     }

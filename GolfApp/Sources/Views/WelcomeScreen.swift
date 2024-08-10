@@ -18,12 +18,10 @@ struct WelcomeScreen: View {
 
   var body: some View {
 
-    ZStack {
-      RadialBackground()
-
+    
       WelcomeAnimation(path: self.$path)
 
-    }
+    
 
   }
 }
