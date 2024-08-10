@@ -13,8 +13,7 @@ struct WelcomeScreen: View {
 
   @Binding var path: NavigationPath
 
-  private static let END_RADIUS: CGFloat = 400
-  private static let START_RADIUS: CGFloat = 100
+
 
   var body: some View {
 
@@ -24,4 +23,9 @@ struct WelcomeScreen: View {
     
 
   }
+}
+
+#Preview {
+  @State var path = NavigationPath()
+  return WelcomeScreen(path: $path)
 }

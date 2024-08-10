@@ -70,6 +70,7 @@ struct WelcomeAnimation: View {
             do {
               
               self.user = try await login(loginInfo: self.loginInfo, rememberMe: self.rememberMe)
+              self.spinLoginButton = false
             } catch {
               self.spinLoginButton = false
               self.alert.0 = true
@@ -77,14 +78,15 @@ struct WelcomeAnimation: View {
             }
           }
         } label: {
-          Group {
+          
+          HStack {
             if self.spinLoginButton {
               SpinningCircle(isLoading: self.spinLoginButton)
               
-            } else {
+            }
               Text("Login")
                 .opacity(self.loginInfo.isValid ? 1 : 0.6)
-            }
+            
           }
           .font(.title2)
           .bold()
