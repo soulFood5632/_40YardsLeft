@@ -103,6 +103,7 @@ struct WelcomeAnimation: View {
           LinearGradient(colors: [self.loginInfo.isValid ? .green : .gray, self.loginInfo.isValid ? .blue: .gray], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
         .clipShape(.rect(cornerRadius: 20))
+        .padding(.bottom, 8)
         
         
         
@@ -175,11 +176,14 @@ struct WelcomeAnimation: View {
           
         }
         
+      } else {
+        self.rememberMe = false
       }
-    }
-    .onDisappear {
       self.spinLoginButton = false
       self.loginInfo.reset(email: true)
+    }
+    .onDisappear {
+      
     }
   }
 

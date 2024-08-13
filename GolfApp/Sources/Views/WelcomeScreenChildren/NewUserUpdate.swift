@@ -27,7 +27,7 @@ struct UserDefintion: View {
   
   private static let cornerRadius = CGFloat(10)
   private static let strokeLength = CGFloat(2)
-  private static let infoPadding = CGFloat(8)
+  private static let infoPadding = CGFloat(12)
   
   var body: some View {
     HStack {
@@ -253,6 +253,7 @@ struct NewUserFormUpdate: View {
         LinearGradient(colors: [self.isValidInfo ? .green : .gray, self.isValidInfo ? .blue: .gray], startPoint: .topLeading, endPoint: .bottomTrailing)
       }
       .disabled(!self.isValidInfo)
+      
       .clipShape(.rect(cornerRadius: 20))
     }
     .animation(.easeInOut, value: self.issuesWithData)
