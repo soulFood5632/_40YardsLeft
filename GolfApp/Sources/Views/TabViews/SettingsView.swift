@@ -16,6 +16,7 @@ struct newSettings {
 
 struct SettingsView: View {
   @Binding var golfer: Golfer
+  @Binding var path: NavigationPath
 
   var body: some View {
 
@@ -43,8 +44,11 @@ struct SettingsView: View {
         Button("Log Out", role: .destructive) {
           do {
             try Auth.auth().signOut()
+            path.keepFirst(0)
+            
+            
           } catch {
-            //TODO: finish this error checking mechanism
+            
             print(error.localizedDescription)
           }
         }
@@ -55,11 +59,4 @@ struct SettingsView: View {
 
 }
 
-struct SettingsView_Previews: PreviewProvider {
-  @State static private var golfer: Golfer = .golfer
-  static var previews: some View {
-    NavigationStack {
-      SettingsView(golfer: self.$golfer)
-    }
-  }
-}
+

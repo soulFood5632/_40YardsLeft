@@ -8,6 +8,70 @@
 import FirebaseAuth
 import SwiftUI
 
+struct NewUserFormU: View {
+  @State private var password = ""
+  @State private var email = ""
+  @State private var username = ""
+  @State private var gender = Gender.man
+  @State private var rememberMe = true
+  @Binding var showView: Bool
+  @State private var isPasswordHidden = true
+  
+  @Binding var user: User?
+  @State private var alert: (Bool, String?) = (false, nil)
+  
+  private let cornerRadius = CGFloat(10)
+  private let strokeLength = CGFloat(10)
+  
+  
+
+  var body: some View {
+    Group {
+      TextField(
+        "Email Address",
+        text: self.$email
+      )
+      .textContentType(.emailAddress)
+      .keyboardType(.emailAddress)
+      .overlay {
+        RoundedRectangle(cornerRadius: self.cornerRadius)
+          .stroke(.green, lineWidth: self.strokeLength)
+      }
+      .padding(.horizontal)
+      .padding(.vertical, 5)
+      
+      HStack {
+        Group {
+          if self.isPasswordHidden {
+            SecureField("Password", text: self.$password)
+          } else {
+            TextField("Password", text: self.$password)
+          }
+        }
+        .textContentType(.password)
+        .overlay {
+          RoundedRectangle(cornerRadius: self.cornerRadius)
+            .stroke(.blue, lineWidth: self.strokeLength)
+        }
+        .padding(.vertical, 5)
+        
+        
+        
+        Button {
+          self.isPasswordHidden.toggle()
+        } label: {
+          self.isPasswordHidden ? Image(systemName: "eye") : Image(systemName: "eye.slash")
+        }
+        .foregroundStyle(.blue)
+      }
+      .padding(.horizontal)
+      
+      .animation(.easeInOut, value: self.isPasswordHidden)
+    }
+    .textFieldStyle(.roundedBorder)
+  }
+}
+
 struct NewUserForm: View {
   @State private var email: String = ""
   @State private var password: String = ""
