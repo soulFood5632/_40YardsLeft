@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
   @State var golfer: Golfer
@@ -119,7 +120,14 @@ struct ProfileView: View {
       }
 
       Button(role: .destructive) {
-        self.path.keepFirst(0)
+        do {
+          UserDefaults.standard.removeObject(forKey: "RememberMe")
+      
+          try Auth.auth().signOut()
+          self.path.keepFirst(0)
+        } catch {
+          // do nothing
+        }
       } label: {
         Text("Log Out")
       }

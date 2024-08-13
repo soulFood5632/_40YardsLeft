@@ -70,7 +70,7 @@ struct WelcomeAnimation: View {
             do {
               
               self.user = try await login(loginInfo: self.loginInfo, rememberMe: self.rememberMe)
-              self.spinLoginButton = false
+              
             } catch {
               self.spinLoginButton = false
               self.alert.0 = true
@@ -136,7 +136,7 @@ struct WelcomeAnimation: View {
       .padding()
     })
     .animation(.easeInOut, value: self.loginInfo)
-    .animation(.easeInOut(duration: 0.2), value: self.spinLoginButton)
+    .animation(.easeInOut(duration: 0.3), value: self.spinLoginButton)
     .animation(.easeInOut, value: self.user)
     .alert("Login Error", isPresented: self.$alert.0, actions: {
       Button {
@@ -147,9 +147,7 @@ struct WelcomeAnimation: View {
     }, message: {
       if let alertDesc = self.alert.1 {
         Text(alertDesc)
-      } else {
-        EmptyView()
-      }
+      } 
     })
     .onChange(of: user) { newUser in
       if let newUser {
@@ -168,13 +166,20 @@ struct WelcomeAnimation: View {
           do {
             let golfer = try await DatabaseCommunicator.getGolfer(id: id)
             path.append(golfer)
+            
           } catch {
-            self.spinLoginButton = false
+            self.spinLoginButton = true
             self.alert.0 = true
             self.alert.1 = "An issue has occured in collecting cached user data. Please Login"
           }
+          
         }
+        
       }
+    }
+    .onDisappear {
+      self.spinLoginButton = false
+      self.loginInfo.reset(email: true)
     }
   }
 
