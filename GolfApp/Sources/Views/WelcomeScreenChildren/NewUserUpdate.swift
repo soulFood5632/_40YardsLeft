@@ -214,10 +214,6 @@ struct NewUserFormUpdate: View {
   @Binding var user: User?
   @State private var alert: (Bool, String?) = (false, nil)
   
-  
-  
-  
-  
   var body: some View {
     Group {
       
@@ -225,10 +221,14 @@ struct NewUserFormUpdate: View {
       
       Button {
         Task {
+          self.isCreatingUser = true
           do {
+            
             self.user = try await self.newUserInfo.createUser()
+            self.isCreatingUser = false
             self.showView = false
           } catch {
+            self.isCreatingUser = false
             self.alert.0 = true
             self.alert.1 = error.localizedDescription
           }
@@ -236,13 +236,16 @@ struct NewUserFormUpdate: View {
       } label: {
         HStack {
           if self.isCreatingUser {
-            SpinningCircle(isLoading: true)
+            RingView()
+              
+          } else {
+            Text("Create User")
+              .font(.title2)
+              .bold()
+             
           }
-          Text("Create User")
-            .font(.title2)
-            .bold()
-            .foregroundStyle(.white)
         }
+        .foregroundStyle(.white)
       }
       .frame(height: 50)
       .frame(maxWidth: .infinity)
@@ -276,8 +279,6 @@ struct NewUserFormUpdate: View {
     }, message: {
       if let alertMessage = self.alert.1 {
         Text(alertMessage)
-      } else {
-        EmptyView()
       }
     })
     .textFieldStyle(.roundedBorder)

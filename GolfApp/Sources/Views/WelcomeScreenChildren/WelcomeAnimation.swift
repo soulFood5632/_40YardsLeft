@@ -120,15 +120,20 @@ struct WelcomeAnimation: View {
       }
     }
     .padding()
+    
     .sheet(isPresented: self.$creatingNewUser, content: {
-      NewUserFormUpdate(showView: self.$creatingNewUser, user: self.$user)
-        .padding()
-        .toolbar {
-          ToolbarItem(placement: .cancellationAction) {
-            Label("Cancel", systemImage: "trash")
-
-          }
-        }
+      VStack {
+        
+        Text("Create New Account")
+          .font(.largeTitle)
+        
+        
+        NewUserFormUpdate(showView: self.$creatingNewUser, user: self.$user)
+          .presentationDetents([.medium, .large])
+          
+          
+      }
+      .padding()
     })
     .animation(.easeInOut, value: self.loginInfo)
     .animation(.easeInOut(duration: 0.2), value: self.spinLoginButton)
