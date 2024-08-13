@@ -79,13 +79,15 @@ struct WelcomeAnimation: View {
           }
         } label: {
           
-          HStack {
+          Group {
             if self.spinLoginButton {
-              SpinningCircle(isLoading: self.spinLoginButton)
+              RingView()
+                .foregroundStyle(.white)
               
-            }
+            } else {
               Text("Login")
                 .opacity(self.loginInfo.isValid ? 1 : 0.6)
+            }
             
           }
           .font(.title2)
